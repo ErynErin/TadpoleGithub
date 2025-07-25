@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://d36tom1si6b3s"]
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://bayw48t6lnk4y"]
 
-[ext_resource type="Script" uid="uid://bokjf5n5vyr5r" path="res://scenes/inventory_things/inventory_item.gd" id="1_qjd3j"]
-[ext_resource type="Texture2D" uid="uid://raxfpg3mnw68" path="res://assets/Sprites/bomb.png" id="2_38kyn"]
+[ext_resource type="Script" uid="uid://bokjf5n5vyr5r" path="res://scenes/inventory_things/inv_item.gd" id="1_xt5fp"]
+[ext_resource type="Texture2D" uid="uid://dtf77o117mfx5" path="res://assets/Sprites/key_red.png" id="2_8dsmg"]
 
 [resource]
-script = ExtResource("1_qjd3j")
-name = "bomb"
-texture = ExtResource("2_38kyn")
+script = ExtResource("1_xt5fp")
+name = "key"
+texture = ExtResource("2_8dsmg")
 metadata/_custom_type_script = "uid://bokjf5n5vyr5r"

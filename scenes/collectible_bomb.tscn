@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://4m0c4x6ggxmf"]
+
+[ext_resource type="Script" uid="uid://dpv8uqnfqpfyr" path="res://scripts/collectible_item.gd" id="1_geqhe"]
+[ext_resource type="Resource" uid="uid://d36tom1si6b3s" path="res://scenes/inventory_things/bomb.tres" id="2_geqhe"]
+[ext_resource type="Texture2D" uid="uid://raxfpg3mnw68" path="res://assets/Sprites/bomb.png" id="3_1edig"]
+[ext_resource type="PackedScene" uid="uid://w308ey44b88k" path="res://scenes/InteractionArea.tscn" id="4_1jxtk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rek4e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1edig")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_80uw4"]
+radius = 41.003
+
+[node name="Collectible Item" type="Area2D"]
+script = ExtResource("1_geqhe")
+item = ExtResource("2_geqhe")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rek4e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -0.5)
+shape = SubResource("CircleShape2D_80uw4")
+
+[node name="InteractionArea" parent="." instance=ExtResource("4_1jxtk")]
+action_name = "collect"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(-1, -0.5)
+shape = SubResource("CircleShape2D_80uw4")
+
+[connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]

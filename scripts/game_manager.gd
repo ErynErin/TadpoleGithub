@@ -5,7 +5,7 @@ var max_health = 100.0
 var current_health = 100.0
 var strength = 50
 var speed = 200
-var inventory = []
+@export var inv: Inv
 
 func add_hunger():
 	if hunger != 5:
@@ -82,3 +82,6 @@ func set_health(new_health: float):
 #
 #func _on_pressed():
 	#GameManager.take_damage(10)
+
+func collect(item):
+	inv.insert(item)

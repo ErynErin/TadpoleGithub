@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://ds8i10qow8msb"]
+
+[ext_resource type="PackedScene" uid="uid://2ekg37xdx0xv" path="res://scenes/inventory_things/inv_slot_ui.tscn" id="1_m3weq"]
+[ext_resource type="Script" uid="uid://tnjstoetnoxu" path="res://scenes/inventory_things/inv_ui.gd" id="1_shr07"]
+
+[node name="inv_ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_shr07")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 500
+
+[node name="Inventory Slot" parent="VBoxContainer" instance=ExtResource("1_m3weq")]
+layout_mode = 2
+
+[node name="Inventory Slot2" parent="VBoxContainer" instance=ExtResource("1_m3weq")]
+layout_mode = 2
+
+[node name="Inventory Slot3" parent="VBoxContainer" instance=ExtResource("1_m3weq")]
+layout_mode = 2
