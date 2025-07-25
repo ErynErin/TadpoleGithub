@@ -1,9 +1,10 @@
-[gd_scene load_steps=23 format=4 uid="uid://bxbpdqodjnw4o"]
+[gd_scene load_steps=25 format=4 uid="uid://bxbpdqodjnw4o"]
 
 [ext_resource type="PackedScene" uid="uid://mo3hkwq7pjdf" path="res://scenes/player.tscn" id="1_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://bhmp2yor88pqg" path="res://assets/Spritesheets/spritesheet.png" id="2_iywne"]
 [ext_resource type="Texture2D" uid="uid://dstx2u8jyy8j6" path="res://assets/Spritesheets/spritesheet-backgrounds-default.png" id="2_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://cr32xo4u1mxdy" path="res://assets/Spritesheets/spritesheet-tiles-default.png" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://ds8i10qow8msb" path="res://scenes/inventory_things/inv_ui.tscn" id="4_ca42v"]
 [ext_resource type="Texture2D" uid="uid://v8643apg6unr" path="res://assets/GUI/4.png" id="5_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://cqn1xtwbw5n5l" path="res://scenes/food.tscn" id="5_iywne"]
 [ext_resource type="Texture2D" uid="uid://j1bgwact0hsf" path="res://assets/GUI/circle.png" id="6_gee14"]
@@ -14,7 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://cmole1wjk2k70" path="res://scenes/merchant_shop.tscn" id="11_trtic"]
 [ext_resource type="PackedScene" uid="uid://cww0g8165fubq" path="res://scenes/pause_menu.tscn" id="13_ca42v"]
 [ext_resource type="PackedScene" uid="uid://bd1qu81rucmuf" path="res://scenes/merchant.tscn" id="13_kvuet"]
-[ext_resource type="PackedScene" uid="uid://co4b1kiuq2dcm" path="res://scenes/collectible_item.tscn" id="17_rysoc"]
+[ext_resource type="PackedScene" uid="uid://co4b1kiuq2dcm" path="res://scenes/collectible_key.tscn" id="17_rysoc"]
+[ext_resource type="PackedScene" uid="uid://4m0c4x6ggxmf" path="res://scenes/collectible_bomb.tscn" id="17_ssvqc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lbhrr"]
 texture = ExtResource("2_lnu2h")
@@ -9538,6 +9540,13 @@ layer = 5
 scale = Vector2(0.5, 0.5)
 transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
 
+[node name="inv_ui" parent="GUI" instance=ExtResource("4_ca42v")]
+offset_left = 50.0
+offset_top = 300.0
+offset_right = 50.0
+offset_bottom = 300.0
+scale = Vector2(0.3, 0.3)
+
 [node name="Main Menu Button" type="TextureButton" parent="GUI"]
 offset_right = 1000.0
 offset_bottom = 1000.0
@@ -9631,5 +9640,11 @@ position = Vector2(547, 340)
 position = Vector2(-215, 309)
 
 [node name="Collectible Item" parent="." instance=ExtResource("17_rysoc")]
-visible = false
-position = Vector2(645, 334)
+position = Vector2(115, 338)
+
+[node name="Collectible Item2" parent="." instance=ExtResource("17_rysoc")]
+position = Vector2(198, 340)
+
+[node name="Collectible Item3" parent="." instance=ExtResource("17_ssvqc")]
+position = Vector2(-64, 336)
+scale = Vector2(0.9, 0.9)

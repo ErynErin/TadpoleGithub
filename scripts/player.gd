@@ -1,13 +1,10 @@
 extends CharacterBody2D
 
-var SPEED = 200.0
 const JUMP_VELOCITY = -600.0
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-@export var inv: Inventory
-
 func _physics_process(delta: float) -> void:
-	SPEED = GameManager.speed
+	var SPEED = GameManager.speed
 	
 	# Add the gravity.
 	if not is_on_floor():

@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://co4b1kiuq2dcm"]
+
+[ext_resource type="Script" uid="uid://dpv8uqnfqpfyr" path="res://scripts/collectible_item.gd" id="1_vdfb2"]
+[ext_resource type="Resource" uid="uid://bayw48t6lnk4y" path="res://scenes/inventory_things/key.tres" id="2_2t1da"]
+[ext_resource type="PackedScene" uid="uid://w308ey44b88k" path="res://scenes/InteractionArea.tscn" id="2_vdfb2"]
+[ext_resource type="Texture2D" uid="uid://dtf77o117mfx5" path="res://assets/Sprites/key_red.png" id="4_1pelc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rek4e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_1pelc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2t1da"]
+size = Vector2(65, 25)
+
+[node name="Collectible Item" type="Area2D"]
+script = ExtResource("1_vdfb2")
+item = ExtResource("2_2t1da")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rek4e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_2t1da")
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_vdfb2")]
+action_name = "collect"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_2t1da")
+
+[connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]

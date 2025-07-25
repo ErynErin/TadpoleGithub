@@ -1,5 +1,22 @@
 extends Resource
 
-class_name Inventory
+class_name Inv
 
-@export var items: Array[InvItem]
+signal update
+
+@export var slots: Array[InvSlot]
+
+func insert(item: InvItem):
+	var item_slots = slots.filter(func(slots): return slots.item == item)
+	if !item_slots.is_empty():
+		item_slots[0].amount += 1
+	else:
+		var empty_slots = slots.filter(func(slots): return slots.item == null)
+		if !empty_slots.is_empty():
+			empty_slots[0].item = item
+			empty_slots[0].amount = 1
+			
+	for i in range(slots.size()): # Debugging
+		if slots[i] != null and slots[i].item != null:
+			print("Slot ", i, ": ", slots[i].item.name, " x", slots[i].amount)
+	update.emit()
