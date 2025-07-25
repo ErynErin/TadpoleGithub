@@ -15,4 +15,8 @@ func insert(item: InvItem):
 		if !empty_slots.is_empty():
 			empty_slots[0].item = item
 			empty_slots[0].amount = 1
+			
+	for i in range(slots.size()): # Debugging
+		if slots[i] != null and slots[i].item != null:
+			print("Slot ", i, ": ", slots[i].item.name, " x", slots[i].amount)
 	update.emit()
