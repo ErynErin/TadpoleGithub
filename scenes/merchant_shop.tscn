@@ -1,0 +1,107 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmole1wjk2k70"]
+
+[ext_resource type="Script" uid="uid://bshybnqtmehsh" path="res://scripts/merchant_shop.gd" id="1_nhdr3"]
+
+[node name="merchant shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nhdr3")
+
+[node name="Shop Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -186.0
+offset_top = -241.5
+offset_right = 186.0
+offset_bottom = 241.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Shop Panel"]
+layout_mode = 2
+offset_left = 108.0
+offset_top = 17.5
+offset_right = 226.0
+offset_bottom = 40.5
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Merchant Shop"
+
+[node name="Exit Shop" type="Button" parent="Shop Panel"]
+layout_mode = 2
+offset_left = 331.0
+offset_top = 12.5
+offset_right = 361.0
+offset_bottom = 43.5
+size_flags_vertical = 0
+text = "X"
+
+[node name="Current Stats" type="VBoxContainer" parent="Shop Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.5
+offset_top = -151.5
+offset_right = 68.5
+offset_bottom = -72.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="Health Label" type="Label" parent="Shop Panel/Current Stats"]
+layout_mode = 2
+text = "Health: 100"
+
+[node name="Strength Label" type="Label" parent="Shop Panel/Current Stats"]
+layout_mode = 2
+text = "Strength: 50"
+
+[node name="Speed Label" type="Label" parent="Shop Panel/Current Stats"]
+layout_mode = 2
+text = "Speed: 200"
+
+[node name="Buttons" type="VBoxContainer" parent="Shop Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.5
+offset_top = -21.5
+offset_right = 151.5
+offset_bottom = 181.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="Health Button" type="Button" parent="Shop Panel/Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Increase Health"
+
+[node name="Strength Button" type="Button" parent="Shop Panel/Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Increase Strength"
+
+[node name="Speed Button" type="Button" parent="Shop Panel/Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Increase Speed"
+
+[connection signal="pressed" from="Shop Panel/Exit Shop" to="." method="_on_exit_shop_pressed"]
+[connection signal="pressed" from="Shop Panel/Buttons/Health Button" to="." method="_on_health_button_pressed"]
+[connection signal="pressed" from="Shop Panel/Buttons/Strength Button" to="." method="_on_strength_button_pressed"]
+[connection signal="pressed" from="Shop Panel/Buttons/Speed Button" to="." method="_on_speed_button_pressed"]
