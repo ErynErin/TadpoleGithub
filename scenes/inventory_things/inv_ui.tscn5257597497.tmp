@@ -88,5 +88,3 @@ layout_mode = 2
 
 [node name="Item Display" type="Sprite2D" parent="VBoxContainer/TextureButton3/CenterContainer/Panel"]
 scale = Vector2(5, 5)
-
-[connection signal="pressed" from="VBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]

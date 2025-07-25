@@ -1,6 +1,6 @@
-extends Panel
+extends TextureButton
 
-@onready var item_display: Sprite2D = $"CenterContainer/Panel/Item Display"
+@export var item_display: Sprite2D
 
 func update(slot: InvSlot):
 	if !slot.item:
