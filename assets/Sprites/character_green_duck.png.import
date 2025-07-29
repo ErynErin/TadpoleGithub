@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddj1pxiqhmp3q"
-path="res://.godot/imported/fish_blue_swim_a.png-0f29868df8e4317dd9150b043e78f781.ctex"
+uid="uid://b0exbs4ntjqus"
+path="res://.godot/imported/character_green_duck.png-ee8c6f60a7cbd947ca44efce7a06d357.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/fish_blue_swim_a.png"
-dest_files=["res://.godot/imported/fish_blue_swim_a.png-0f29868df8e4317dd9150b043e78f781.ctex"]
+source_file="res://assets/Sprites/character_green_duck.png"
+dest_files=["res://.godot/imported/character_green_duck.png-ee8c6f60a7cbd947ca44efce7a06d357.ctex"]
 
 [params]
 

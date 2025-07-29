@@ -25,9 +25,11 @@ func _physics_process(delta: float) -> void:
 		animated_sprite.flip_h = true
 	elif direction > 0:
 		animated_sprite.flip_h = false
-		
+	
 	if is_on_floor():
-		if direction == 0:
+		if Input.is_action_just_pressed("attack") and is_on_floor():
+			animated_sprite.play("attack") # Temporary and very buggy
+		elif direction == 0:
 			animated_sprite.play("idle")
 		else:
 			animated_sprite.play("walk")
