@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://bxbpdqodjnw4o"]
+[gd_scene load_steps=31 format=4 uid="uid://bxbpdqodjnw4o"]
 
 [ext_resource type="Texture2D" uid="uid://b1cqamltlg0so" path="res://assets/BG/Nursery/1.png" id="1_37s47"]
 [ext_resource type="PackedScene" uid="uid://mo3hkwq7pjdf" path="res://scenes/player.tscn" id="1_yqjtg"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bd1qu81rucmuf" path="res://scenes/merchant.tscn" id="13_kvuet"]
 [ext_resource type="PackedScene" uid="uid://co4b1kiuq2dcm" path="res://scenes/collectible_key.tscn" id="17_rysoc"]
 [ext_resource type="PackedScene" uid="uid://4m0c4x6ggxmf" path="res://scenes/collectible_bomb.tscn" id="17_ssvqc"]
+[ext_resource type="PackedScene" uid="uid://dym2rjp4dr104" path="res://scenes/boss_1.tscn" id="23_bt5mj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lbhrr"]
 texture = ExtResource("2_lnu2h")
@@ -9581,6 +9582,7 @@ motion_mirroring = Vector2(2560, 0)
 texture = ExtResource("5_bhx41")
 
 [node name="Tiles" type="Node2D" parent="."]
+visible = false
 position = Vector2(0, -90)
 
 [node name="sky" type="TileMapLayer" parent="Tiles"]
@@ -9670,6 +9672,7 @@ scale = Vector2(2, 2)
 
 [node name="Tadpole" parent="." instance=ExtResource("1_yqjtg")]
 z_index = 5
+metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Tadpole"]
 limit_left = -925
@@ -9719,3 +9722,6 @@ position = Vector2(198, 280)
 [node name="Collectible Item3" parent="." instance=ExtResource("17_ssvqc")]
 position = Vector2(-64, 280)
 scale = Vector2(0.9, 0.9)
+
+[node name="Boss1" parent="." instance=ExtResource("23_bt5mj")]
+position = Vector2(704, 216)
