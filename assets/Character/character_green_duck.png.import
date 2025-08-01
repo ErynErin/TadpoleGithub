@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvtc3wikd8kxw"
-path="res://.godot/imported/character_green_idle.png-4bf3f615ea5e6bdbd4c17be9e4b6163b.ctex"
+uid="uid://b0exbs4ntjqus"
+path="res://.godot/imported/character_green_duck.png-e42e7da0370b86a80a397f53043ece7a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/character_green_idle.png"
-dest_files=["res://.godot/imported/character_green_idle.png-4bf3f615ea5e6bdbd4c17be9e4b6163b.ctex"]
+source_file="res://assets/Character/character_green_duck.png"
+dest_files=["res://.godot/imported/character_green_duck.png-e42e7da0370b86a80a397f53043ece7a.ctex"]
 
 [params]
 

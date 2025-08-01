@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bd1qu81rucmuf"]
 
 [ext_resource type="Script" uid="uid://c7uosxndqn2iv" path="res://scripts/merchant.gd" id="1_12ke4"]
-[ext_resource type="Texture2D" uid="uid://mxodb6juqorm" path="res://assets/Sprites/character_pink_front.png" id="1_v18v5"]
+[ext_resource type="Texture2D" uid="uid://mxodb6juqorm" path="res://assets/Character/character_pink_front.png" id="1_v18v5"]
 [ext_resource type="PackedScene" uid="uid://w308ey44b88k" path="res://scenes/InteractionArea.tscn" id="3_7rnkl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7rnkl"]
