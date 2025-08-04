@@ -9505,6 +9505,7 @@ distance = -925.0
 [node name="Ted Game" type="Node2D"]
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
+physics_interpolation_mode = 0
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Parallax2D"]
 
