@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 InteractionManager="*res://scenes/InteractionManager.tscn"
 GameManager="*res://scenes/game_manager.tscn"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [dotnet]
 
 project/assembly_name="Tadpole"
