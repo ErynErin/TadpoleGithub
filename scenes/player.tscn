@@ -393,7 +393,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mv62"]
 radius = 42.0
-height = 120.0
+height = 208.0
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
@@ -401,14 +401,14 @@ script = ExtResource("1_dgf4m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(23, -2)
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_v3hta")
-animation = &"attack"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5, -6)
+position = Vector2(-20, -16)
 shape = SubResource("CapsuleShape2D_0mv62")
 
 [node name="Sword" parent="." instance=ExtResource("7_fjrip")]
+visible = false
 position = Vector2(29, 27)
-scale = Vector2(0.8, 0.8)

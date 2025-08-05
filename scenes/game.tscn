@@ -9494,13 +9494,13 @@ sources/1 = SubResource("TileSetAtlasSource_p57ef")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lbhrr"]
 resource_local_to_scene = true
-distance = -413.0
+distance = -530.0
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lbhrr"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p57ef"]
 normal = Vector2(1, 0)
-distance = -925.0
+distance = -1014.0
 
 [node name="Ted Game" type="Node2D"]
 
@@ -9510,76 +9510,86 @@ physics_interpolation_mode = 0
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Parallax2D"]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
-motion_mirroring = Vector2(2560, 0)
+motion_mirroring = Vector2(3840, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer"]
+scale = Vector2(1.6, 1.6)
 texture = ExtResource("1_37s47")
 
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
-position = Vector2(1280, 0)
-motion_mirroring = Vector2(2560, 0)
+motion_mirroring = Vector2(3840, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer6"]
+position = Vector2(2048, 0)
+scale = Vector2(1.6, 1.6)
 texture = ExtResource("1_37s47")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
 motion_scale = Vector2(0.3, 1)
-motion_mirroring = Vector2(2560, 0)
+motion_mirroring = Vector2(3840, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer2"]
+scale = Vector2(1.6, 1.6)
 texture = ExtResource("2_bt5mj")
 
-[node name="ParallaxLayer7" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
-position = Vector2(1280, 0)
+[node name="ParallaxLayer8" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
 motion_scale = Vector2(0.3, 1)
-motion_mirroring = Vector2(2560, 0)
+motion_mirroring = Vector2(3840, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer7"]
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer8"]
+position = Vector2(2048, 0)
+scale = Vector2(1.6, 1.6)
 texture = ExtResource("2_bt5mj")
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
 motion_scale = Vector2(0.4, 1)
-motion_mirroring = Vector2(2560, 0)
+motion_mirroring = Vector2(3840, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer3"]
+scale = Vector2(1.6, 1.6)
 texture = ExtResource("3_e1j6l")
 
-[node name="ParallaxLayer8" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
-position = Vector2(1280, 0)
+[node name="ParallaxLayer9" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
 motion_scale = Vector2(0.4, 1)
-motion_mirroring = Vector2(2560, 0)
+motion_mirroring = Vector2(3840, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer8"]
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer9"]
+position = Vector2(2048, 0)
+scale = Vector2(1.6, 1.6)
 texture = ExtResource("3_e1j6l")
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
 motion_scale = Vector2(0.6, 1)
-motion_mirroring = Vector2(2560, 0)
+motion_mirroring = Vector2(3840, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer4"]
+scale = Vector2(1.6, 1.6)
 texture = ExtResource("4_pl11u")
 
-[node name="ParallaxLayer9" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
-position = Vector2(1280, 0)
+[node name="ParallaxLayer10" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
 motion_scale = Vector2(0.6, 1)
-motion_mirroring = Vector2(2560, 0)
+motion_mirroring = Vector2(3840, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer9"]
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer10"]
+position = Vector2(2048, 0)
+scale = Vector2(1.6, 1.6)
 texture = ExtResource("4_pl11u")
 
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
 motion_scale = Vector2(0.8, 1)
-motion_mirroring = Vector2(2560, 0)
+motion_mirroring = Vector2(4096, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer5"]
+scale = Vector2(1.6, 1.6)
 texture = ExtResource("5_bhx41")
 
-[node name="ParallaxLayer10" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
-position = Vector2(1280, 0)
+[node name="ParallaxLayer7" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
 motion_scale = Vector2(0.8, 1)
-motion_mirroring = Vector2(2560, 0)
+motion_mirroring = Vector2(3840, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer10"]
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer7"]
+position = Vector2(2048, 0)
+scale = Vector2(1.6, 1.6)
 texture = ExtResource("5_bhx41")
 
 [node name="Tiles" type="Node2D" parent="."]
@@ -9612,8 +9622,8 @@ tile_set = SubResource("TileSet_iywne")
 
 [node name="GUI" type="CanvasLayer" parent="."]
 layer = 5
-scale = Vector2(0.5, 0.5)
-transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
+scale = Vector2(0.9, 0.9)
+transform = Transform2D(0.9, 0, 0, 0.9, 0, 0)
 
 [node name="inv_ui" parent="GUI" instance=ExtResource("4_ca42v")]
 offset_left = 50.0
@@ -9673,11 +9683,12 @@ scale = Vector2(2, 2)
 
 [node name="Tadpole" parent="." instance=ExtResource("1_yqjtg")]
 z_index = 5
+position = Vector2(-100, 0)
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Tadpole"]
-limit_left = -925
-limit_bottom = 360
+limit_left = -1030
+limit_bottom = 500
 
 [node name="World Boundaries" type="Node2D" parent="."]
 
@@ -9697,32 +9708,41 @@ shape = SubResource("WorldBoundaryShape2D_p57ef")
 metadata/_edit_lock_ = true
 
 [node name="food" parent="Food" instance=ExtResource("5_iywne")]
-position = Vector2(337, 280)
+position = Vector2(438, 399)
+scale = Vector2(1.3, 1.3)
 
 [node name="food2" parent="Food" instance=ExtResource("5_iywne")]
-position = Vector2(267, 280)
+position = Vector2(368, 399)
+scale = Vector2(1.3, 1.3)
 
 [node name="food3" parent="Food" instance=ExtResource("5_iywne")]
-position = Vector2(407, 280)
+position = Vector2(508, 399)
+scale = Vector2(1.3, 1.3)
 
 [node name="food4" parent="Food" instance=ExtResource("5_iywne")]
-position = Vector2(477, 280)
+position = Vector2(578, 399)
+scale = Vector2(1.3, 1.3)
 
 [node name="food5" parent="Food" instance=ExtResource("5_iywne")]
-position = Vector2(547, 280)
+position = Vector2(648, 399)
+scale = Vector2(1.3, 1.3)
 
 [node name="Merchant" parent="." instance=ExtResource("13_kvuet")]
-position = Vector2(-215, 250)
+position = Vector2(-359, 329)
+scale = Vector2(1.5, 1.5)
 
 [node name="Collectible Item" parent="." instance=ExtResource("17_rysoc")]
-position = Vector2(115, 280)
+position = Vector2(-29, 390)
+scale = Vector2(1.3, 1.3)
 
 [node name="Collectible Item2" parent="." instance=ExtResource("17_rysoc")]
-position = Vector2(198, 280)
+position = Vector2(54, 390)
+scale = Vector2(1.3, 1.3)
 
 [node name="Collectible Item3" parent="." instance=ExtResource("17_ssvqc")]
-position = Vector2(-64, 280)
-scale = Vector2(0.9, 0.9)
+position = Vector2(-155, 390)
+scale = Vector2(1.3, 1.3)
 
 [node name="Boss1" parent="." instance=ExtResource("23_bt5mj")]
-position = Vector2(704, 216)
+position = Vector2(908, 288)
+scale = Vector2(2, 2)
