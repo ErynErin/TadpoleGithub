@@ -410,5 +410,4 @@ position = Vector2(-20, -16)
 shape = SubResource("CapsuleShape2D_0mv62")
 
 [node name="Sword" parent="." instance=ExtResource("7_fjrip")]
-visible = false
 position = Vector2(29, 27)
