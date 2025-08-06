@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dynueqqum74mm"]
+
+[ext_resource type="PackedScene" uid="uid://mo3hkwq7pjdf" path="res://scenes/player.tscn" id="1_hf301"]
+
+[node name="Boss 1" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_hf301")]
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+limit_left = -1030
+limit_bottom = 500
