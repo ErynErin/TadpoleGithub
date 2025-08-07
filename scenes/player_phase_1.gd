@@ -1,5 +1,4 @@
 extends CharacterBody2D
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 const JUMP_VELOCITY = -600.0
 
@@ -46,6 +45,6 @@ func _physics_process(delta: float) -> void:
 		else:
 			animated_sprite.play("walk")
 	else:
-		animation_player.play("jump")
+		animated_sprite.play("idle")
 
 	move_and_slide()

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dynueqqum74mm"]
 
-[ext_resource type="PackedScene" uid="uid://mo3hkwq7pjdf" path="res://scenes/player.tscn" id="1_hf301"]
+[ext_resource type="PackedScene" uid="uid://mo3hkwq7pjdf" path="res://scenes/player_phase1.tscn" id="1_hf301"]
 
 [node name="Boss 1" type="Node2D"]
 
