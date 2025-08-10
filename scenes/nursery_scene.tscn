@@ -24,7 +24,7 @@
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lbhrr"]
 resource_local_to_scene = true
-distance = -530.0
+distance = -581.0
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lbhrr"]
 
@@ -207,19 +207,20 @@ visible = false
 scale = Vector2(1.11, 1.11)
 
 [node name="Tadpole" parent="." instance=ExtResource("15_b0kx5")]
-visible = false
 z_index = 5
 position = Vector2(6, 73)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("17_b40aj")
 
 [node name="Camera2D" type="Camera2D" parent="Tadpole"]
-visible = false
-position = Vector2(-10, 404)
+position = Vector2(-12, 1142)
 scale = Vector2(0.6, 0.6)
 offset = Vector2(0, -400)
-zoom = Vector2(1.1, 1.1)
+zoom = Vector2(1.13, 1.13)
 process_callback = 0
+limit_top = -900
+limit_bottom = 1200
+limit_smoothed = true
 position_smoothing_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
