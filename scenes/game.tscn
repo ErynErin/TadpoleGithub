@@ -9604,6 +9604,7 @@ scale = Vector2(1.6, 1.6)
 texture = ExtResource("11_v2yb1")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Parallax2D"]
+visible = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
 motion_mirroring = Vector2(4096, 0)

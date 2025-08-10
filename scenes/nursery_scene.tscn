@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ctsfo15bt6b8k"]
+[gd_scene load_steps=27 format=3 uid="uid://ctsfo15bt6b8k"]
 
 [ext_resource type="Texture2D" uid="uid://cstcdjnw86nfs" path="res://assets/BG/Phase 1/1.png" id="1_36xgi"]
 [ext_resource type="Texture2D" uid="uid://c3xww2i2skpq1" path="res://assets/BG/Phase 1/2.png" id="2_is0ew"]
@@ -21,6 +21,9 @@
 [ext_resource type="PackedScene" uid="uid://4m0c4x6ggxmf" path="res://scenes/collectible_bomb.tscn" id="18_u2qq7"]
 [ext_resource type="PackedScene" uid="uid://cmole1wjk2k70" path="res://scenes/merchant_shop.tscn" id="22_odwuh"]
 [ext_resource type="PackedScene" uid="uid://dym2rjp4dr104" path="res://scenes/boss_1.tscn" id="29_jo13e"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_heptv"]
+distance = 122.738
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lbhrr"]
 resource_local_to_scene = true
@@ -208,7 +211,7 @@ scale = Vector2(1.11, 1.11)
 
 [node name="Tadpole" parent="." instance=ExtResource("15_b0kx5")]
 z_index = 5
-position = Vector2(6, 73)
+position = Vector2(-1080.36, 58.5956)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("17_b40aj")
 
@@ -218,7 +221,7 @@ scale = Vector2(0.6, 0.6)
 offset = Vector2(0, -400)
 zoom = Vector2(1.13, 1.13)
 process_callback = 0
-limit_top = -900
+limit_top = -180
 limit_bottom = 1200
 limit_smoothed = true
 position_smoothing_enabled = true
@@ -227,6 +230,14 @@ editor_draw_drag_margin = true
 
 [node name="World Boundaries" type="Node2D" parent="."]
 position = Vector2(1, 68)
+
+[node name="top" type="StaticBody2D" parent="World Boundaries"]
+position = Vector2(1, -786)
+rotation = 3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World Boundaries/top"]
+position = Vector2(-4.00001, -68)
+shape = SubResource("WorldBoundaryShape2D_heptv")
 
 [node name="bottom" type="StaticBody2D" parent="World Boundaries"]
 position = Vector2(1, 579)
