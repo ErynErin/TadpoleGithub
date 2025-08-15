@@ -1,16 +1,12 @@
-[gd_scene load_steps=76 format=3 uid="uid://n2kpc3lqtixf"]
+[gd_scene load_steps=72 format=3 uid="uid://n2kpc3lqtixf"]
 
-[ext_resource type="Script" uid="uid://bacgfetitvj0a" path="res://scripts/boss_1_crab.gd" id="1_77um1"]
 [ext_resource type="Texture2D" uid="uid://6o6r6xhyyy1s" path="res://assets/temp_boss/idle.png" id="1_nkq05"]
 [ext_resource type="Texture2D" uid="uid://dug8vh0m3ibgb" path="res://assets/temp_boss/attacking.png" id="1_xg8c7"]
 [ext_resource type="Texture2D" uid="uid://ib8hncjeni6a" path="res://assets/temp_boss/death.png" id="2_c2w0x"]
 [ext_resource type="Texture2D" uid="uid://51bqlw5sil5s" path="res://assets/temp_boss/skill1.png" id="3_dok65"]
 [ext_resource type="Texture2D" uid="uid://bsgadrn8h0ibw" path="res://assets/temp_boss/summon.png" id="3_rftn5"]
 [ext_resource type="Script" uid="uid://3naoiejwhm43" path="res://scenes/finite_state_machine.gd" id="6_oyfq2"]
-[ext_resource type="Script" uid="uid://cpo1bh7viugx5" path="res://scripts/idle.gd" id="7_2fmk1"]
-[ext_resource type="Script" uid="uid://bvjf65qis2bxe" path="res://scripts/follow.gd" id="9_2fmk1"]
-[ext_resource type="Script" uid="uid://ksiuergpmxf4" path="res://scripts/death.gd" id="9_svihy"]
-[ext_resource type="Script" uid="uid://cdk8du17x87wf" path="res://scripts/attack.gd" id="11_svihy"]
+[ext_resource type="Script" uid="uid://br5bbnmw0qcs2" path="res://scripts/state.gd" id="7_tynpm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1w25y"]
 atlas = ExtResource("1_xg8c7")
@@ -529,20 +525,6 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
 }
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FiniteStateMachine/death")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(1.5),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"boss_slained"
-}]
-}
 
 [sub_resource type="Animation" id="Animation_c2w0x"]
 resource_name = "idle"
@@ -644,16 +626,15 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c2w0x"]
-radius = 8.0
-height = 54.0
+radius = 11.0
+height = 52.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c2w0x"]
-size = Vector2(142, 112)
+size = Vector2(195, 177)
 
 [node name="Boss1" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("1_77um1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 0)
@@ -667,16 +648,14 @@ libraries = {
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-7, 5)
+position = Vector2(-4, 5)
 shape = SubResource("CapsuleShape2D_c2w0x")
-disabled = true
 
 [node name="Player Detector" type="Area2D" parent="."]
 position = Vector2(-4, 5)
-collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player Detector"]
-position = Vector2(1, -7)
+position = Vector2(0.5, 4.5)
 shape = SubResource("RectangleShape2D_c2w0x")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -688,9 +667,8 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -204.5
-offset_top = -180.0
+offset_top = -88.0
 offset_right = 204.5
-offset_bottom = -92.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
@@ -710,16 +688,20 @@ text = "debug"
 [node name="FiniteStateMachine" type="Node2D" parent="."]
 script = ExtResource("6_oyfq2")
 
-[node name="idle" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("7_2fmk1")
+[node name="Idle" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("7_tynpm")
 
-[node name="death" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("9_svihy")
+[node name="Death" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("7_tynpm")
 
-[node name="follow" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("9_2fmk1")
+[node name="Follow" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("7_tynpm")
 
-[node name="attack" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("11_svihy")
+[node name="Attack" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("7_tynpm")
 
-[connection signal="body_entered" from="Player Detector" to="FiniteStateMachine/idle" method="_on_player_detector_body_entered"]
+[node name="Teleport" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("7_tynpm")
+
+[node name="SpawnMinions" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("7_tynpm")

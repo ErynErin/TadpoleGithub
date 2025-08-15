@@ -79,8 +79,9 @@ offset = Vector2(22, -32)
 
 [node name="HitBox" type="Area2D" parent="Sprite2D"]
 position = Vector2(12, 71)
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("2_n355p")
-metadata/_custom_type_script = "uid://cfdlbfbudy12s"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HitBox"]
 position = Vector2(-12, -102)
@@ -91,3 +92,5 @@ disabled = true
 libraries = {
 &"": SubResource("AnimationLibrary_k5whp")
 }
+
+[connection signal="body_entered" from="Sprite2D/HitBox" to="." method="_on_hit_box_body_entered"]

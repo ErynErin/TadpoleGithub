@@ -1,6 +1,6 @@
 [gd_scene load_steps=93 format=3 uid="uid://mo3hkwq7pjdf"]
 
-[ext_resource type="Script" uid="uid://dmn6tt0hggyqb" path="res://scripts/player.gd" id="1_dgf4m"]
+[ext_resource type="Script" path="res://scenes/player_phase_1.gd" id="1_m07t0"]
 [ext_resource type="Texture2D" uid="uid://c6xehwxoftg4l" path="res://assets/1st stage mc/1st idle/1st idle0000.png" id="2_cbf1i"]
 [ext_resource type="Texture2D" uid="uid://d1naregop4mnn" path="res://assets/1st stage mc/1st death/1st death/1st death0000.png" id="3_4vfid"]
 [ext_resource type="Texture2D" uid="uid://drjrcvaiu4bld" path="res://assets/1st stage mc/1st death/1st death/1st death0001.png" id="4_ljgr3"]
@@ -397,7 +397,7 @@ height = 208.0
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
-script = ExtResource("1_dgf4m")
+script = ExtResource("1_m07t0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(23, -2)
@@ -410,5 +410,4 @@ position = Vector2(-20, -16)
 shape = SubResource("CapsuleShape2D_0mv62")
 
 [node name="Sword" parent="." instance=ExtResource("7_fjrip")]
-visible = false
 position = Vector2(29, 27)
