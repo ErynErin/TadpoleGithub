@@ -1,0 +1,301 @@
+[gd_scene load_steps=27 format=3 uid="uid://ctsfo15bt6b8k"]
+
+[ext_resource type="Texture2D" uid="uid://cstcdjnw86nfs" path="res://assets/BG/Phase 1/1.png" id="1_36xgi"]
+[ext_resource type="Texture2D" uid="uid://c3xww2i2skpq1" path="res://assets/BG/Phase 1/2.png" id="2_is0ew"]
+[ext_resource type="Texture2D" uid="uid://ci5h6qat4a3lg" path="res://assets/BG/Phase 1/3.png" id="3_xlmt5"]
+[ext_resource type="Texture2D" uid="uid://btvfpva4ccs2p" path="res://assets/BG/Phase 1/4.png" id="4_heptv"]
+[ext_resource type="Texture2D" uid="uid://cx2obingrau0c" path="res://assets/BG/Phase 1/5.png" id="5_b40aj"]
+[ext_resource type="Texture2D" uid="uid://kh5wubyc7n3t" path="res://assets/BG/Phase 1/6.png" id="6_lm3lo"]
+[ext_resource type="PackedScene" uid="uid://ds8i10qow8msb" path="res://scenes/inventory_things/inv_ui.tscn" id="7_neo3g"]
+[ext_resource type="Texture2D" uid="uid://j1bgwact0hsf" path="res://assets/GUI/circle.png" id="8_tw4wf"]
+[ext_resource type="Texture2D" uid="uid://v8643apg6unr" path="res://assets/GUI/4.png" id="9_mhegv"]
+[ext_resource type="Texture2D" uid="uid://b7eekxtporomm" path="res://assets/GUI/2.png" id="10_i1oot"]
+[ext_resource type="Script" uid="uid://d22ltv5khw2fa" path="res://scripts/health_bar.gd" id="11_6rsge"]
+[ext_resource type="Texture2D" uid="uid://cpf5ahqnmuv2" path="res://assets/GUI/hunger.png" id="12_gfx3w"]
+[ext_resource type="Texture2D" uid="uid://usodpdet6r8k" path="res://assets/GUI/hunger under bar.png" id="13_5lbhe"]
+[ext_resource type="PackedScene" uid="uid://cww0g8165fubq" path="res://scenes/pause_menu.tscn" id="14_iud5h"]
+[ext_resource type="PackedScene" uid="uid://mo3hkwq7pjdf" path="res://scenes/player_phase1.tscn" id="15_b0kx5"]
+[ext_resource type="PackedScene" uid="uid://cqn1xtwbw5n5l" path="res://scenes/food.tscn" id="16_c07hn"]
+[ext_resource type="Script" uid="uid://qdyt6iet83op" path="res://scenes/player_phase_1.gd" id="17_b40aj"]
+[ext_resource type="PackedScene" uid="uid://co4b1kiuq2dcm" path="res://scenes/collectible_key.tscn" id="17_khd5g"]
+[ext_resource type="PackedScene" uid="uid://4m0c4x6ggxmf" path="res://scenes/collectible_bomb.tscn" id="18_u2qq7"]
+[ext_resource type="PackedScene" uid="uid://cmole1wjk2k70" path="res://scenes/merchant_shop.tscn" id="22_odwuh"]
+[ext_resource type="PackedScene" uid="uid://dym2rjp4dr104" path="res://scenes/boss_1.tscn" id="29_jo13e"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_heptv"]
+distance = 122.738
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lbhrr"]
+resource_local_to_scene = true
+distance = -581.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lbhrr"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p57ef"]
+normal = Vector2(1, 0)
+distance = -1014.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xlmt5"]
+size = Vector2(659, 75)
+
+[node name="Ted Game" type="Node2D"]
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+physics_interpolation_mode = 0
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Parallax2D"]
+offset = Vector2(0, -40)
+scale = Vector2(1.5, 1.5)
+transform = Transform2D(1.5, 0, 0, 1.5, 0, -40)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
+motion_mirroring = Vector2(4096, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer"]
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("1_36xgi")
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
+motion_mirroring = Vector2(4096, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer6"]
+position = Vector2(2048, 0)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("1_36xgi")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
+motion_scale = Vector2(0.3, 1)
+motion_mirroring = Vector2(4096, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer2"]
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("2_is0ew")
+
+[node name="ParallaxLayer8" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
+motion_scale = Vector2(0.3, 1)
+motion_mirroring = Vector2(4096, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer8"]
+position = Vector2(2048, 0)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("2_is0ew")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
+motion_scale = Vector2(0.4, 1)
+motion_mirroring = Vector2(4096, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer3"]
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("3_xlmt5")
+
+[node name="ParallaxLayer9" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
+motion_scale = Vector2(0.4, 1)
+motion_mirroring = Vector2(4096, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer9"]
+position = Vector2(2048, 0)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("3_xlmt5")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
+motion_scale = Vector2(0.6, 1)
+motion_mirroring = Vector2(4096, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer4"]
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("4_heptv")
+
+[node name="ParallaxLayer10" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
+motion_scale = Vector2(0.6, 1)
+motion_mirroring = Vector2(4096, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer10"]
+position = Vector2(2048, 0)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("4_heptv")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
+motion_scale = Vector2(0.7, 1)
+motion_mirroring = Vector2(4096, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer5"]
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("5_b40aj")
+
+[node name="ParallaxLayer7" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
+motion_scale = Vector2(0.7, 1)
+motion_mirroring = Vector2(4096, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer7"]
+position = Vector2(2048, 0)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("5_b40aj")
+
+[node name="ParallaxLayer11" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
+motion_scale = Vector2(0.8, 1)
+motion_mirroring = Vector2(4096, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer11"]
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("6_lm3lo")
+
+[node name="ParallaxLayer12" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
+motion_scale = Vector2(0.8, 1)
+motion_mirroring = Vector2(4096, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer12"]
+position = Vector2(2048, 0)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("6_lm3lo")
+
+[node name="GUI" type="CanvasLayer" parent="."]
+layer = 5
+scale = Vector2(0.6, 0.6)
+transform = Transform2D(0.6, 0, 0, 0.6, 0, 0)
+
+[node name="inv_ui" parent="GUI" instance=ExtResource("7_neo3g")]
+offset_left = 50.0
+offset_top = 300.0
+offset_right = 50.0
+offset_bottom = 300.0
+scale = Vector2(0.17, 0.17)
+
+[node name="Main Menu Button" type="TextureButton" parent="GUI"]
+offset_right = 1000.0
+offset_bottom = 1000.0
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(30, 30)
+tooltip_text = "Menu"
+texture_normal = ExtResource("8_tw4wf")
+
+[node name="health bar" type="TextureProgressBar" parent="GUI"]
+offset_left = 220.0
+offset_top = -100.0
+offset_right = 1220.0
+offset_bottom = 900.0
+scale = Vector2(0.4, 0.4)
+tooltip_text = "Health"
+value = 50.0
+texture_over = ExtResource("9_mhegv")
+texture_progress = ExtResource("10_i1oot")
+script = ExtResource("11_6rsge")
+
+[node name="hunger bar" type="TextureProgressBar" parent="GUI"]
+offset_left = 230.0
+offset_top = 50.0
+offset_right = 1230.0
+offset_bottom = 1050.0
+scale = Vector2(0.25, 0.25)
+tooltip_text = "Hunger"
+stretch_margin_top = 12
+stretch_margin_right = 12
+stretch_margin_bottom = 12
+texture_over = ExtResource("12_gfx3w")
+texture_progress = ExtResource("10_i1oot")
+
+[node name="hunger lower bar" type="NinePatchRect" parent="GUI"]
+offset_left = 230.0
+offset_top = 58.0
+offset_right = 230.0
+offset_bottom = 292.0
+texture = ExtResource("13_5lbhe")
+region_rect = Rect2(0, 0, 790, 1000)
+
+[node name="merchant shop" parent="GUI" instance=ExtResource("22_odwuh")]
+visible = false
+scale = Vector2(1.11, 1.11)
+
+[node name="Pause Menu" parent="GUI" instance=ExtResource("14_iud5h")]
+visible = false
+scale = Vector2(1.11, 1.11)
+
+[node name="Tadpole" parent="." instance=ExtResource("15_b0kx5")]
+z_index = 5
+position = Vector2(-1080.36, 58.5956)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("17_b40aj")
+
+[node name="Camera2D" type="Camera2D" parent="Tadpole"]
+position = Vector2(-12, 1142)
+scale = Vector2(0.6, 0.6)
+offset = Vector2(0, -400)
+zoom = Vector2(1.13, 1.13)
+process_callback = 0
+limit_top = -180
+limit_bottom = 1200
+limit_smoothed = true
+position_smoothing_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="World Boundaries" type="Node2D" parent="."]
+position = Vector2(1, 68)
+
+[node name="top" type="StaticBody2D" parent="World Boundaries"]
+position = Vector2(1, -786)
+rotation = 3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World Boundaries/top"]
+position = Vector2(-4.00001, -68)
+shape = SubResource("WorldBoundaryShape2D_heptv")
+
+[node name="bottom" type="StaticBody2D" parent="World Boundaries"]
+position = Vector2(1, 579)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World Boundaries/bottom"]
+position = Vector2(-2, -576)
+shape = SubResource("WorldBoundaryShape2D_lbhrr")
+
+[node name="left" type="StaticBody2D" parent="World Boundaries"]
+position = Vector2(-990, 0)
+physics_material_override = SubResource("PhysicsMaterial_lbhrr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="World Boundaries/left"]
+shape = SubResource("WorldBoundaryShape2D_p57ef")
+
+[node name="Food" type="Node2D" parent="."]
+visible = false
+metadata/_edit_lock_ = true
+
+[node name="food" parent="Food" instance=ExtResource("16_c07hn")]
+position = Vector2(438, 399)
+scale = Vector2(1.3, 1.3)
+
+[node name="food2" parent="Food" instance=ExtResource("16_c07hn")]
+position = Vector2(368, 399)
+scale = Vector2(1.3, 1.3)
+
+[node name="food3" parent="Food" instance=ExtResource("16_c07hn")]
+position = Vector2(508, 399)
+scale = Vector2(1.3, 1.3)
+
+[node name="food4" parent="Food" instance=ExtResource("16_c07hn")]
+position = Vector2(578, 399)
+scale = Vector2(1.3, 1.3)
+
+[node name="food5" parent="Food" instance=ExtResource("16_c07hn")]
+position = Vector2(648, 399)
+scale = Vector2(1.3, 1.3)
+
+[node name="Collectible Item" parent="." instance=ExtResource("17_khd5g")]
+position = Vector2(-29, 390)
+scale = Vector2(1.3, 1.3)
+
+[node name="Collectible Item2" parent="." instance=ExtResource("17_khd5g")]
+position = Vector2(54, 390)
+scale = Vector2(1.3, 1.3)
+
+[node name="Collectible Item3" parent="." instance=ExtResource("18_u2qq7")]
+position = Vector2(-155, 390)
+scale = Vector2(1.3, 1.3)
+
+[node name="Boss1" parent="." instance=ExtResource("29_jo13e")]
+position = Vector2(908, 288)
+scale = Vector2(2, 2)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(740, 525.5)
+shape = SubResource("RectangleShape2D_xlmt5")
+debug_color = Color(0.987983, 0.106434, 1.92523e-07, 0.42)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=37 format=4 uid="uid://bxbpdqodjnw4o"]
 
 [ext_resource type="Texture2D" uid="uid://cstcdjnw86nfs" path="res://assets/BG/Phase 1/1.png" id="1_e1j6l"]
-[ext_resource type="PackedScene" uid="uid://mo3hkwq7pjdf" path="res://scenes/player.tscn" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://mo3hkwq7pjdf" path="res://scenes/player_phase1.tscn" id="1_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://bhmp2yor88pqg" path="res://assets/Spritesheets/spritesheet.png" id="2_iywne"]
 [ext_resource type="Texture2D" uid="uid://dstx2u8jyy8j6" path="res://assets/Spritesheets/spritesheet-backgrounds-default.png" id="2_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://cr32xo4u1mxdy" path="res://assets/Spritesheets/spritesheet-tiles-default.png" id="2_lnu2h"]
@@ -9604,6 +9604,7 @@ scale = Vector2(1.6, 1.6)
 texture = ExtResource("11_v2yb1")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Parallax2D"]
+visible = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
 motion_mirroring = Vector2(4096, 0)
