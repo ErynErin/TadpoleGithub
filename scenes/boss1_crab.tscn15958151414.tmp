@@ -644,8 +644,8 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c2w0x"]
-radius = 8.0
-height = 54.0
+radius = 6.0
+height = 42.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c2w0x"]
 size = Vector2(142, 112)
@@ -682,6 +682,7 @@ shape = SubResource("RectangleShape2D_c2w0x")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
