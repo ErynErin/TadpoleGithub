@@ -25,7 +25,7 @@ func _ready():
 	set_physics_process(false)
 
 func _physics_process(delta: float) -> void:
-	velocity = direction.normalized() * 40
+	velocity = direction.normalized() * 100
 	move_and_collide(velocity * delta)
 
 func take_damage():

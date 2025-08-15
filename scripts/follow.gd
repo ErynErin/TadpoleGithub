@@ -10,5 +10,5 @@ func exit():
 	owner.set_physics_process(false)
 	
 func transition():
-	if owner.direction.length() < 80:
+	if owner.direction.length() < 100:
 		get_parent().change_state("attack")

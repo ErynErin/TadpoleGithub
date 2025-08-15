@@ -682,17 +682,14 @@ shape = SubResource("RectangleShape2D_c2w0x")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
-anchors_preset = 7
+visible = false
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
 offset_left = -204.5
-offset_top = -180.0
 offset_right = 204.5
-offset_bottom = -92.0
+offset_bottom = 88.0
 grow_horizontal = 2
-grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 max_value = 10.0
@@ -700,6 +697,7 @@ step = 1.0
 value = 10.0
 
 [node name="Debug" type="Label" parent="."]
+visible = false
 offset_left = -22.0
 offset_top = -50.0
 offset_right = 27.0

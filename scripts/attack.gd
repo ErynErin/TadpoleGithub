@@ -15,5 +15,5 @@ func combo():
 	combo()
 
 func transition():
-	if owner.direction.length() > 80:
+	if owner.direction.length() > 100:
 		get_parent().change_state("follow")
