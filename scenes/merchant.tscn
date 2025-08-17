@@ -1,20 +1,69 @@
-[gd_scene load_steps=6 format=3 uid="uid://bd1qu81rucmuf"]
+[gd_scene load_steps=17 format=3 uid="uid://bd1qu81rucmuf"]
 
 [ext_resource type="Script" uid="uid://c7uosxndqn2iv" path="res://scripts/merchant.gd" id="1_12ke4"]
-[ext_resource type="Texture2D" uid="uid://mxodb6juqorm" path="res://assets/Character/character_pink_front.png" id="1_v18v5"]
+[ext_resource type="Texture2D" uid="uid://4bfnf0qvptgi" path="res://assets/Characters/Merchant/Sol_Idle/Sol_1.png" id="2_m0sul"]
 [ext_resource type="PackedScene" uid="uid://w308ey44b88k" path="res://scenes/InteractionArea.tscn" id="3_7rnkl"]
+[ext_resource type="Texture2D" uid="uid://c622keaafaq4y" path="res://assets/Characters/Merchant/Sol_Idle/Sol_2.png" id="3_yebnt"]
+[ext_resource type="Texture2D" uid="uid://sqcmyo6itylv" path="res://assets/Characters/Merchant/Sol_Idle/Sol_3.png" id="4_dskwx"]
+[ext_resource type="Texture2D" uid="uid://dnl6ojto0r88h" path="res://assets/Characters/Merchant/Sol_Idle/Sol_4.png" id="5_hcxxr"]
+[ext_resource type="Texture2D" uid="uid://c6r4b4qlpkawl" path="res://assets/Characters/Merchant/Sol_Idle/Sol_5.png" id="6_al4p4"]
+[ext_resource type="Texture2D" uid="uid://dgtr48fawusna" path="res://assets/Characters/Merchant/Sol_Idle/Sol_6.png" id="7_xf0xi"]
+[ext_resource type="Texture2D" uid="uid://cojeckc6b80fk" path="res://assets/Characters/Merchant/Sol_Idle/Sol_7.png" id="8_611vg"]
+[ext_resource type="Texture2D" uid="uid://c7epi2ka3jbtj" path="res://assets/Characters/Merchant/Sol_Idle/Sol_8.png" id="9_x4g5r"]
+[ext_resource type="Texture2D" uid="uid://bu0pnqc87wepb" path="res://assets/Characters/Merchant/Sol_Idle/Sol_9.png" id="10_3e3y4"]
+[ext_resource type="Texture2D" uid="uid://busxgs1l0wt0d" path="res://assets/Characters/Merchant/Sol_Talk/Talk_1.png" id="11_hcxxr"]
+[ext_resource type="Texture2D" uid="uid://sv8iocxy344n" path="res://assets/Characters/Merchant/Sol_Talk/Talk_2.png" id="12_al4p4"]
+[ext_resource type="Texture2D" uid="uid://bwl0n4uxoome3" path="res://assets/Characters/Merchant/Sol_Talk/Talk_3.png" id="13_xf0xi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7rnkl"]
-size = Vector2(128, 94)
+size = Vector2(1463, 1651)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1xj0k"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_v18v5")
+"texture": ExtResource("2_m0sul")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yebnt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dskwx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hcxxr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_al4p4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xf0xi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_611vg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_x4g5r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_3e3y4")
 }],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_hcxxr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_al4p4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_xf0xi")
+}],
+"loop": true,
+"name": &"talk",
 "speed": 5.0
 }]
 
@@ -23,17 +72,19 @@ collision_mask = 2
 script = ExtResource("1_12ke4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 13)
+position = Vector2(86, 13)
 shape = SubResource("RectangleShape2D_7rnkl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1xj0k")
 animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.813256
 
 [node name="InteractionArea" parent="." instance=ExtResource("3_7rnkl")]
 action_name = "talk"
-y_position = 70.0
+y_position = 150.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
-position = Vector2(1, 13)
+position = Vector2(72.5, -8.5)
 shape = SubResource("RectangleShape2D_7rnkl")

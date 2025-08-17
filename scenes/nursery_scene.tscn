@@ -16,9 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://cww0g8165fubq" path="res://scenes/pause_menu.tscn" id="14_iud5h"]
 [ext_resource type="PackedScene" uid="uid://mo3hkwq7pjdf" path="res://scenes/player_phase1.tscn" id="15_b0kx5"]
 [ext_resource type="PackedScene" uid="uid://cqn1xtwbw5n5l" path="res://scenes/food.tscn" id="16_c07hn"]
-[ext_resource type="Script" uid="uid://qdyt6iet83op" path="res://scenes/player_phase_1.gd" id="17_b40aj"]
 [ext_resource type="PackedScene" uid="uid://co4b1kiuq2dcm" path="res://scenes/collectible_key.tscn" id="17_khd5g"]
 [ext_resource type="PackedScene" uid="uid://4m0c4x6ggxmf" path="res://scenes/collectible_bomb.tscn" id="18_u2qq7"]
+[ext_resource type="PackedScene" uid="uid://bd1qu81rucmuf" path="res://scenes/merchant.tscn" id="21_heptv"]
 [ext_resource type="PackedScene" uid="uid://cmole1wjk2k70" path="res://scenes/merchant_shop.tscn" id="22_odwuh"]
 [ext_resource type="PackedScene" uid="uid://dym2rjp4dr104" path="res://scenes/boss_1.tscn" id="29_jo13e"]
 
@@ -115,7 +115,7 @@ scale = Vector2(1.6, 1.6)
 texture = ExtResource("4_heptv")
 
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
-motion_scale = Vector2(0.7, 1)
+motion_scale = Vector2(0.8, 1)
 motion_mirroring = Vector2(4096, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer5"]
@@ -123,7 +123,7 @@ scale = Vector2(1.6, 1.6)
 texture = ExtResource("5_b40aj")
 
 [node name="ParallaxLayer7" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
-motion_scale = Vector2(0.7, 1)
+motion_scale = Vector2(0.8, 1)
 motion_mirroring = Vector2(4096, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer7"]
@@ -131,22 +131,13 @@ position = Vector2(2048, 0)
 scale = Vector2(1.6, 1.6)
 texture = ExtResource("5_b40aj")
 
-[node name="ParallaxLayer11" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
-motion_scale = Vector2(0.8, 1)
-motion_mirroring = Vector2(4096, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer11"]
-scale = Vector2(1.6, 1.6)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 3
+position = Vector2(10000, 0)
+scale = Vector2(2.6, 2.6)
 texture = ExtResource("6_lm3lo")
-
-[node name="ParallaxLayer12" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
-motion_scale = Vector2(0.8, 1)
-motion_mirroring = Vector2(4096, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer12"]
-position = Vector2(2048, 0)
-scale = Vector2(1.6, 1.6)
-texture = ExtResource("6_lm3lo")
+region_enabled = true
+region_rect = Rect2(0, 0, 10000, 720)
 
 [node name="GUI" type="CanvasLayer" parent="."]
 layer = 5
@@ -202,18 +193,16 @@ texture = ExtResource("13_5lbhe")
 region_rect = Rect2(0, 0, 790, 1000)
 
 [node name="merchant shop" parent="GUI" instance=ExtResource("22_odwuh")]
-visible = false
-scale = Vector2(1.11, 1.11)
+scale = Vector2(1.67, 1.67)
 
 [node name="Pause Menu" parent="GUI" instance=ExtResource("14_iud5h")]
 visible = false
-scale = Vector2(1.11, 1.11)
+scale = Vector2(1.67, 1.67)
 
 [node name="Tadpole" parent="." instance=ExtResource("15_b0kx5")]
 z_index = 5
 position = Vector2(-1080.36, 58.5956)
 scale = Vector2(0.5, 0.5)
-script = ExtResource("17_b40aj")
 
 [node name="Camera2D" type="Camera2D" parent="Tadpole"]
 position = Vector2(-12, 1142)
@@ -299,3 +288,7 @@ scale = Vector2(2, 2)
 position = Vector2(740, 525.5)
 shape = SubResource("RectangleShape2D_xlmt5")
 debug_color = Color(0.987983, 0.106434, 1.92523e-07, 0.42)
+
+[node name="Merchant" parent="." instance=ExtResource("21_heptv")]
+position = Vector2(-351, 519)
+scale = Vector2(0.13, 0.13)

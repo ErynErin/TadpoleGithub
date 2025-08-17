@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://dym2rjp4dr104"]
 
-[ext_resource type="Texture2D" uid="uid://c1cp4ei80j6ny" path="res://assets/Character/boss1.png" id="1_gu4qg"]
-[ext_resource type="Script" uid="uid://o2uqwaj753v6" path="res://scripts/boss_1.gd" id="1_qrnk6"]
-[ext_resource type="Script" uid="uid://dktsel320mpw7" path="res://scripts/hurtbox.gd" id="2_vwre8"]
+[ext_resource type="Texture2D" uid="uid://c1cp4ei80j6ny" path="res://assets/Characters/boss1.png" id="1_gu4qg"]
+[ext_resource type="Script" path="res://scripts/boss_1.gd" id="1_qrnk6"]
+[ext_resource type="Script" path="res://scripts/hurtbox.gd" id="2_vwre8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qrnk6"]
 radius = 113.773
