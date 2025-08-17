@@ -2,9 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://cstcdjnw86nfs" path="res://assets/BG/Phase 1/1.png" id="1_e1j6l"]
 [ext_resource type="PackedScene" uid="uid://mo3hkwq7pjdf" path="res://scenes/player_phase1.tscn" id="1_yqjtg"]
-[ext_resource type="Texture2D" uid="uid://bhmp2yor88pqg" path="res://assets/Spritesheets/spritesheet.png" id="2_iywne"]
-[ext_resource type="Texture2D" uid="uid://dstx2u8jyy8j6" path="res://assets/Spritesheets/spritesheet-backgrounds-default.png" id="2_lbhrr"]
-[ext_resource type="Texture2D" uid="uid://cr32xo4u1mxdy" path="res://assets/Spritesheets/spritesheet-tiles-default.png" id="2_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://c3xww2i2skpq1" path="res://assets/BG/Phase 1/2.png" id="2_pl11u"]
 [ext_resource type="Texture2D" uid="uid://ci5h6qat4a3lg" path="res://assets/BG/Phase 1/3.png" id="3_bhx41"]
 [ext_resource type="PackedScene" uid="uid://ds8i10qow8msb" path="res://scenes/inventory_things/inv_ui.tscn" id="4_ca42v"]
@@ -30,8 +27,11 @@
 [ext_resource type="PackedScene" uid="uid://4m0c4x6ggxmf" path="res://scenes/collectible_bomb.tscn" id="17_ssvqc"]
 [ext_resource type="PackedScene" uid="uid://dym2rjp4dr104" path="res://scenes/boss_1.tscn" id="23_bt5mj"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bhx41"]
+load_path = "res://.godot/imported/spritesheet-tiles-default.png-c90359289ed8b792519cab90b7cb5467.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lbhrr"]
-texture = ExtResource("2_lnu2h")
+texture = SubResource("CompressedTexture2D_bhx41")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -4468,8 +4468,11 @@ texture = ExtResource("2_lnu2h")
 66:71/0 = 0
 67:71/0 = 0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qnb83"]
+load_path = "res://.godot/imported/spritesheet.png-310850ccfc8ca0c297d3b5c6bc8ec9d9.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p57ef"]
-texture = ExtResource("2_iywne")
+texture = SubResource("CompressedTexture2D_qnb83")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -5906,8 +5909,11 @@ texture = ExtResource("2_iywne")
 37:47/0 = 0
 38:47/0 = 0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sww3w"]
+load_path = "res://.godot/imported/spritesheet-backgrounds-default.png-b0537d751b6e38ee652b1b9663a0ad7b.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iywne"]
-texture = ExtResource("2_lbhrr")
+texture = SubResource("CompressedTexture2D_sww3w")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -9843,7 +9849,7 @@ scale = Vector2(1.3, 1.3)
 
 [node name="Merchant" parent="." instance=ExtResource("13_kvuet")]
 position = Vector2(-359, 329)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(0.13, 0.13)
 
 [node name="Collectible Item" parent="." instance=ExtResource("17_rysoc")]
 position = Vector2(-29, 390)
