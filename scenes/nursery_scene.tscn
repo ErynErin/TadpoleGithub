@@ -193,6 +193,7 @@ texture = ExtResource("13_5lbhe")
 region_rect = Rect2(0, 0, 790, 1000)
 
 [node name="merchant shop" parent="GUI" instance=ExtResource("22_odwuh")]
+visible = false
 scale = Vector2(1.67, 1.67)
 
 [node name="Pause Menu" parent="GUI" instance=ExtResource("14_iud5h")]
@@ -267,14 +268,17 @@ position = Vector2(648, 399)
 scale = Vector2(1.3, 1.3)
 
 [node name="Collectible Item" parent="." instance=ExtResource("17_khd5g")]
+visible = false
 position = Vector2(-29, 390)
 scale = Vector2(1.3, 1.3)
 
 [node name="Collectible Item2" parent="." instance=ExtResource("17_khd5g")]
+visible = false
 position = Vector2(54, 390)
 scale = Vector2(1.3, 1.3)
 
 [node name="Collectible Item3" parent="." instance=ExtResource("18_u2qq7")]
+visible = false
 position = Vector2(-155, 390)
 scale = Vector2(1.3, 1.3)
 
