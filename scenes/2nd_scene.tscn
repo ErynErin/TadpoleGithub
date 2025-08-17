@@ -182,11 +182,11 @@ region_rect = Rect2(0, 0, 790, 1000)
 
 [node name="merchant shop" parent="GUI" instance=ExtResource("14_dwpsk")]
 visible = false
-scale = Vector2(1.11, 1.11)
+scale = Vector2(1.67, 1.67)
 
 [node name="Pause Menu" parent="GUI" instance=ExtResource("15_2npaq")]
 visible = false
-scale = Vector2(1.11, 1.11)
+scale = Vector2(1.67, 1.67)
 
 [node name="Tadpole" parent="." instance=ExtResource("16_tljbm")]
 z_index = 5
