@@ -1,0 +1,137 @@
+[gd_scene load_steps=22 format=3 uid="uid://c5tua5gjv5pkm"]
+
+[ext_resource type="Script" path="res://scripts/boss_1.gd" id="1_dwiof"]
+[ext_resource type="Texture2D" uid="uid://dcmx13nol21g" path="res://assets/Characters/Water Beetle Tank/Idle/Beetle_1.png" id="2_7td01"]
+[ext_resource type="Texture2D" uid="uid://xf8qcro3txbb" path="res://assets/Characters/Water Beetle Tank/Idle/Beetle_2.png" id="3_o3y43"]
+[ext_resource type="Texture2D" uid="uid://v55co2ofobhu" path="res://assets/Characters/Water Beetle Tank/Idle/Beetle_3.png" id="4_hsvp8"]
+[ext_resource type="Texture2D" uid="uid://bd5oth578p3e3" path="res://assets/Characters/Water Beetle Tank/Idle/Beetle_4.png" id="5_2456h"]
+[ext_resource type="Texture2D" uid="uid://dhwoj8ykedmny" path="res://assets/Characters/Water Beetle Tank/Idle/Beetle_5.png" id="6_xacup"]
+[ext_resource type="Texture2D" uid="uid://17fi332rvt7v" path="res://assets/Characters/Water Beetle Tank/Idle/Beetle_6.png" id="7_f7841"]
+[ext_resource type="Script" path="res://scripts/hurtbox.gd" id="8_34ahk"]
+[ext_resource type="Texture2D" uid="uid://c4nip53g83up3" path="res://assets/Characters/Water Beetle Tank/Idle/Beetle_7.png" id="8_w4g3c"]
+[ext_resource type="Texture2D" uid="uid://b4hj7k1rkewdp" path="res://assets/Characters/Water Beetle Tank/Walk/BeetleW_0010.png" id="9_b22ny"]
+[ext_resource type="Texture2D" uid="uid://dvrf8be40sjgf" path="res://assets/Characters/Water Beetle Tank/Walk/BeetleW_0020.png" id="10_fsykm"]
+[ext_resource type="Texture2D" uid="uid://d2kn0betwcu2k" path="res://assets/Characters/Water Beetle Tank/Walk/BeetleW_0030.png" id="11_qwuav"]
+[ext_resource type="Texture2D" uid="uid://cgbccbf2kfyuo" path="res://assets/Characters/Water Beetle Tank/Walk/BeetleW_0040.png" id="12_colja"]
+[ext_resource type="Texture2D" uid="uid://c66upcrjal627" path="res://assets/Characters/Water Beetle Tank/Walk/BeetleW_0050.png" id="13_k3a51"]
+[ext_resource type="Texture2D" uid="uid://qlgvxwi17enp" path="res://assets/Characters/Water Beetle Tank/Walk/BeetleW_0060.png" id="14_1flc0"]
+[ext_resource type="Texture2D" uid="uid://ruy0ta77dwow" path="res://assets/Characters/Water Beetle Tank/Walk/BeetleW_0070.png" id="15_emu2c"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jyln6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7td01")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_o3y43")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hsvp8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2456h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xacup")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_f7841")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_w4g3c")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_b22ny")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_fsykm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_qwuav")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_colja")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_k3a51")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_1flc0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_emu2c")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 7.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qrnk6"]
+radius = 160.0
+height = 530.0
+
+[sub_resource type="Animation" id="Animation_6wt1p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qrnk6"]
+resource_name = "hurt"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.233333, 0.366667, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2ng8k"]
+_data = {
+&"RESET": SubResource("Animation_6wt1p"),
+&"hurt": SubResource("Animation_qrnk6")
+}
+
+[node name="Beetle" type="Node2D"]
+script = ExtResource("1_dwiof")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(17, -33)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_jyln6")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.453519
+
+[node name="HurtBox" type="Area2D" parent="Sprite2D"]
+script = ExtResource("8_34ahk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HurtBox"]
+position = Vector2(-225, -20)
+shape = SubResource("CapsuleShape2D_qrnk6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_2ng8k")
+}

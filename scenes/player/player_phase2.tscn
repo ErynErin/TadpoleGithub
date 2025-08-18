@@ -75,7 +75,7 @@
 [ext_resource type="Texture2D" uid="uid://c1e8eya7qsrm4" path="res://assets/2nd stage mc/2nd walk/2nd walk0011.png" id="73_i8ffp"]
 [ext_resource type="Texture2D" uid="uid://ctdrsdr438kad" path="res://assets/2nd stage mc/2nd walk/2nd walk0012.png" id="74_mwm4v"]
 [ext_resource type="Texture2D" uid="uid://df544hp1cmcx7" path="res://assets/2nd stage mc/2nd walk/2nd walk0013.png" id="75_kdhuw"]
-[ext_resource type="PackedScene" uid="uid://bb6ksj6c85ixy" path="res://scenes/sword.tscn" id="90_1y3x4"]
+[ext_resource type="PackedScene" uid="uid://bb6ksj6c85ixy" path="res://scenes/player/sword.tscn" id="90_1y3x4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v3hta"]
 animations = [{

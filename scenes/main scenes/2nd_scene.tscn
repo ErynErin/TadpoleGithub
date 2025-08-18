@@ -1,24 +1,24 @@
 [gd_scene load_steps=25 format=3 uid="uid://tfi7geif3tnx"]
 
-[ext_resource type="Texture2D" uid="uid://cc6aiqta7j02x" path="res://assets/BG/Phase 2/1.png" id="7_aqdem"]
-[ext_resource type="PackedScene" uid="uid://ds8i10qow8msb" path="res://scenes/inventory_things/inv_ui.tscn" id="7_w82rq"]
-[ext_resource type="Texture2D" uid="uid://j1bgwact0hsf" path="res://assets/GUI/circle.png" id="8_rjjk6"]
-[ext_resource type="Texture2D" uid="uid://darwte4arx7h6" path="res://assets/BG/Phase 2/2.png" id="8_w82rq"]
-[ext_resource type="Texture2D" uid="uid://v8643apg6unr" path="res://assets/GUI/4.png" id="9_plhnw"]
-[ext_resource type="Texture2D" uid="uid://bxbt6hevkcww1" path="res://assets/BG/Phase 2/3.png" id="9_rjjk6"]
-[ext_resource type="Texture2D" uid="uid://dc86inuelf7ii" path="res://assets/BG/Phase 2/4.png" id="10_plhnw"]
-[ext_resource type="Texture2D" uid="uid://b7eekxtporomm" path="res://assets/GUI/2.png" id="10_t7lwq"]
-[ext_resource type="Texture2D" uid="uid://rxnciromwi5l" path="res://assets/BG/Phase 2/5.png" id="11_t7lwq"]
-[ext_resource type="Script" uid="uid://d22ltv5khw2fa" path="res://scripts/health_bar.gd" id="11_x2w7c"]
-[ext_resource type="Texture2D" uid="uid://cpf5ahqnmuv2" path="res://assets/GUI/hunger.png" id="12_pktkd"]
-[ext_resource type="Texture2D" uid="uid://usodpdet6r8k" path="res://assets/GUI/hunger under bar.png" id="13_8hqba"]
-[ext_resource type="PackedScene" uid="uid://cmole1wjk2k70" path="res://scenes/merchant_shop.tscn" id="14_dwpsk"]
-[ext_resource type="PackedScene" uid="uid://cww0g8165fubq" path="res://scenes/pause_menu.tscn" id="15_2npaq"]
-[ext_resource type="PackedScene" uid="uid://mo3hkwq7pjdf" path="res://scenes/player_phase1.tscn" id="16_tljbm"]
-[ext_resource type="PackedScene" uid="uid://cqn1xtwbw5n5l" path="res://scenes/food.tscn" id="18_whigq"]
-[ext_resource type="PackedScene" uid="uid://co4b1kiuq2dcm" path="res://scenes/collectible_key.tscn" id="19_nexeh"]
-[ext_resource type="PackedScene" uid="uid://4m0c4x6ggxmf" path="res://scenes/collectible_bomb.tscn" id="20_3lrop"]
-[ext_resource type="PackedScene" uid="uid://dym2rjp4dr104" path="res://scenes/boss_1.tscn" id="21_f42y2"]
+[ext_resource type="Texture2D" uid="uid://cc6aiqta7j02x" path="res://assets/BG/Phase 2/1.png" id="1_8cnt7"]
+[ext_resource type="Texture2D" uid="uid://darwte4arx7h6" path="res://assets/BG/Phase 2/2.png" id="2_hxr17"]
+[ext_resource type="Texture2D" uid="uid://bxbt6hevkcww1" path="res://assets/BG/Phase 2/3.png" id="3_xt07n"]
+[ext_resource type="Texture2D" uid="uid://dc86inuelf7ii" path="res://assets/BG/Phase 2/4.png" id="4_o0xnl"]
+[ext_resource type="Texture2D" uid="uid://rxnciromwi5l" path="res://assets/BG/Phase 2/5.png" id="5_0j7h1"]
+[ext_resource type="PackedScene" uid="uid://ds8i10qow8msb" path="res://scenes/inventory_things/inv_ui.tscn" id="6_1ue7e"]
+[ext_resource type="Texture2D" uid="uid://j1bgwact0hsf" path="res://assets/GUI/circle.png" id="7_hruyw"]
+[ext_resource type="Texture2D" uid="uid://v8643apg6unr" path="res://assets/GUI/4.png" id="8_eat4w"]
+[ext_resource type="Texture2D" uid="uid://b7eekxtporomm" path="res://assets/GUI/2.png" id="9_vunhf"]
+[ext_resource type="Script" uid="uid://d22ltv5khw2fa" path="res://scripts/health_bar.gd" id="10_dhypx"]
+[ext_resource type="Texture2D" uid="uid://cpf5ahqnmuv2" path="res://assets/GUI/hunger.png" id="11_u2lhb"]
+[ext_resource type="Texture2D" uid="uid://usodpdet6r8k" path="res://assets/GUI/hunger under bar.png" id="12_a7lh1"]
+[ext_resource type="PackedScene" uid="uid://cmole1wjk2k70" path="res://scenes/gui/merchant_shop.tscn" id="13_basu7"]
+[ext_resource type="PackedScene" uid="uid://cww0g8165fubq" path="res://scenes/gui/pause_menu.tscn" id="14_htklb"]
+[ext_resource type="PackedScene" uid="uid://mo3hkwq7pjdf" path="res://scenes/player/player_phase1.tscn" id="15_by23s"]
+[ext_resource type="PackedScene" uid="uid://cqn1xtwbw5n5l" path="res://scenes/collectibles/food.tscn" id="16_v21xm"]
+[ext_resource type="PackedScene" uid="uid://co4b1kiuq2dcm" path="res://scenes/collectibles/collectible_key.tscn" id="17_ahopw"]
+[ext_resource type="PackedScene" uid="uid://4m0c4x6ggxmf" path="res://scenes/collectibles/collectible_bomb.tscn" id="18_4xua6"]
+[ext_resource type="PackedScene" uid="uid://dym2rjp4dr104" path="res://scenes/enemies/boss_1.tscn" id="19_j2ddk"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_heptv"]
 distance = 122.738
@@ -52,7 +52,7 @@ motion_mirroring = Vector2(4096, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground2/ParallaxLayer"]
 scale = Vector2(1.6, 1.6)
-texture = ExtResource("7_aqdem")
+texture = ExtResource("1_8cnt7")
 
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground2"]
 motion_scale = Vector2(0.1, 1)
@@ -61,7 +61,7 @@ motion_mirroring = Vector2(4096, 0)
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground2/ParallaxLayer6"]
 position = Vector2(2048, 0)
 scale = Vector2(1.6, 1.6)
-texture = ExtResource("7_aqdem")
+texture = ExtResource("1_8cnt7")
 flip_h = true
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground2"]
@@ -70,7 +70,7 @@ motion_mirroring = Vector2(4096, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground2/ParallaxLayer2"]
 scale = Vector2(1.6, 1.6)
-texture = ExtResource("8_w82rq")
+texture = ExtResource("2_hxr17")
 
 [node name="ParallaxLayer8" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground2"]
 motion_scale = Vector2(0.3, 1)
@@ -79,7 +79,7 @@ motion_mirroring = Vector2(4096, 0)
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground2/ParallaxLayer8"]
 position = Vector2(2048, 0)
 scale = Vector2(1.6, 1.6)
-texture = ExtResource("8_w82rq")
+texture = ExtResource("2_hxr17")
 flip_h = true
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground2"]
@@ -89,7 +89,7 @@ motion_mirroring = Vector2(4096, 0)
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground2/ParallaxLayer3"]
 position = Vector2(133.333, 0)
 scale = Vector2(1.80833, 1.6)
-texture = ExtResource("9_rjjk6")
+texture = ExtResource("3_xt07n")
 
 [node name="ParallaxLayer9" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground2"]
 motion_scale = Vector2(0.4, 1)
@@ -98,7 +98,7 @@ motion_mirroring = Vector2(4096, 0)
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground2/ParallaxLayer9"]
 position = Vector2(2048, -100)
 scale = Vector2(1.6, 1.6)
-texture = ExtResource("9_rjjk6")
+texture = ExtResource("3_xt07n")
 flip_h = true
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground2"]
@@ -107,7 +107,7 @@ motion_mirroring = Vector2(4096, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground2/ParallaxLayer4"]
 scale = Vector2(1.6, 1.6)
-texture = ExtResource("10_plhnw")
+texture = ExtResource("4_o0xnl")
 
 [node name="ParallaxLayer10" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground2"]
 motion_scale = Vector2(0.6, 1)
@@ -116,14 +116,14 @@ motion_mirroring = Vector2(4096, 0)
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground2/ParallaxLayer10"]
 position = Vector2(2048, 0)
 scale = Vector2(1.6, 1.6)
-texture = ExtResource("10_plhnw")
+texture = ExtResource("4_o0xnl")
 flip_h = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_repeat = 3
 position = Vector2(9000, 10)
 scale = Vector2(2.26, 2.26)
-texture = ExtResource("11_t7lwq")
+texture = ExtResource("5_0j7h1")
 region_enabled = true
 region_rect = Rect2(0, 0, 10000, 720)
 
@@ -132,7 +132,7 @@ layer = 5
 scale = Vector2(0.6, 0.6)
 transform = Transform2D(0.6, 0, 0, 0.6, 0, 0)
 
-[node name="inv_ui" parent="GUI" instance=ExtResource("7_w82rq")]
+[node name="inv_ui" parent="GUI" instance=ExtResource("6_1ue7e")]
 offset_left = 50.0
 offset_top = 300.0
 offset_right = 50.0
@@ -145,7 +145,7 @@ offset_bottom = 1000.0
 scale = Vector2(0.2, 0.2)
 pivot_offset = Vector2(30, 30)
 tooltip_text = "Menu"
-texture_normal = ExtResource("8_rjjk6")
+texture_normal = ExtResource("7_hruyw")
 
 [node name="health bar" type="TextureProgressBar" parent="GUI"]
 offset_left = 220.0
@@ -155,9 +155,9 @@ offset_bottom = 900.0
 scale = Vector2(0.4, 0.4)
 tooltip_text = "Health"
 value = 50.0
-texture_over = ExtResource("9_plhnw")
-texture_progress = ExtResource("10_t7lwq")
-script = ExtResource("11_x2w7c")
+texture_over = ExtResource("8_eat4w")
+texture_progress = ExtResource("9_vunhf")
+script = ExtResource("10_dhypx")
 
 [node name="hunger bar" type="TextureProgressBar" parent="GUI"]
 offset_left = 230.0
@@ -169,26 +169,26 @@ tooltip_text = "Hunger"
 stretch_margin_top = 12
 stretch_margin_right = 12
 stretch_margin_bottom = 12
-texture_over = ExtResource("12_pktkd")
-texture_progress = ExtResource("10_t7lwq")
+texture_over = ExtResource("11_u2lhb")
+texture_progress = ExtResource("9_vunhf")
 
 [node name="hunger lower bar" type="NinePatchRect" parent="GUI"]
 offset_left = 230.0
 offset_top = 58.0
 offset_right = 230.0
 offset_bottom = 292.0
-texture = ExtResource("13_8hqba")
+texture = ExtResource("12_a7lh1")
 region_rect = Rect2(0, 0, 790, 1000)
 
-[node name="merchant shop" parent="GUI" instance=ExtResource("14_dwpsk")]
+[node name="merchant shop" parent="GUI" instance=ExtResource("13_basu7")]
 visible = false
 scale = Vector2(1.67, 1.67)
 
-[node name="Pause Menu" parent="GUI" instance=ExtResource("15_2npaq")]
+[node name="Pause Menu" parent="GUI" instance=ExtResource("14_htklb")]
 visible = false
 scale = Vector2(1.67, 1.67)
 
-[node name="Tadpole" parent="." instance=ExtResource("16_tljbm")]
+[node name="Tadpole" parent="." instance=ExtResource("15_by23s")]
 z_index = 5
 position = Vector2(-1080.36, 58.5956)
 scale = Vector2(0.5, 0.5)
@@ -235,39 +235,39 @@ shape = SubResource("WorldBoundaryShape2D_p57ef")
 visible = false
 metadata/_edit_lock_ = true
 
-[node name="food" parent="Food" instance=ExtResource("18_whigq")]
+[node name="food" parent="Food" instance=ExtResource("16_v21xm")]
 position = Vector2(438, 399)
 scale = Vector2(1.3, 1.3)
 
-[node name="food2" parent="Food" instance=ExtResource("18_whigq")]
+[node name="food2" parent="Food" instance=ExtResource("16_v21xm")]
 position = Vector2(368, 399)
 scale = Vector2(1.3, 1.3)
 
-[node name="food3" parent="Food" instance=ExtResource("18_whigq")]
+[node name="food3" parent="Food" instance=ExtResource("16_v21xm")]
 position = Vector2(508, 399)
 scale = Vector2(1.3, 1.3)
 
-[node name="food4" parent="Food" instance=ExtResource("18_whigq")]
+[node name="food4" parent="Food" instance=ExtResource("16_v21xm")]
 position = Vector2(578, 399)
 scale = Vector2(1.3, 1.3)
 
-[node name="food5" parent="Food" instance=ExtResource("18_whigq")]
+[node name="food5" parent="Food" instance=ExtResource("16_v21xm")]
 position = Vector2(648, 399)
 scale = Vector2(1.3, 1.3)
 
-[node name="Collectible Item" parent="." instance=ExtResource("19_nexeh")]
+[node name="Collectible Item" parent="." instance=ExtResource("17_ahopw")]
 position = Vector2(-29, 390)
 scale = Vector2(1.3, 1.3)
 
-[node name="Collectible Item2" parent="." instance=ExtResource("19_nexeh")]
+[node name="Collectible Item2" parent="." instance=ExtResource("17_ahopw")]
 position = Vector2(54, 390)
 scale = Vector2(1.3, 1.3)
 
-[node name="Collectible Item3" parent="." instance=ExtResource("20_3lrop")]
+[node name="Collectible Item3" parent="." instance=ExtResource("18_4xua6")]
 position = Vector2(-155, 390)
 scale = Vector2(1.3, 1.3)
 
-[node name="Boss1" parent="." instance=ExtResource("21_f42y2")]
+[node name="Boss1" parent="." instance=ExtResource("19_j2ddk")]
 position = Vector2(908, 288)
 scale = Vector2(2, 2)
 
