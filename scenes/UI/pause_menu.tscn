@@ -1,11 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctw57l6kowhya"]
+[gd_scene load_steps=2 format=3 uid="uid://ctw57l6kowhya"]
 
 [ext_resource type="Script" uid="uid://c0t2fkbp051yy" path="res://scripts/pause_menu.gd" id="1_myx47"]
-[ext_resource type="Shader" path="res://scenes/gui/pause_menu.gdshader" id="1_n87rw"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_myx47"]
-shader = ExtResource("1_n87rw")
-shader_parameter/lod = 1.5
 
 [node name="Pause Menu" type="Control"]
 layout_mode = 3
@@ -15,15 +10,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_myx47")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_myx47")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 layout_mode = 1

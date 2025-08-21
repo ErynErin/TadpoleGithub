@@ -1,4 +1,4 @@
-extends Area2D
+extends AnimatedSprite2D
 
 @onready var interaction_area: InteractionArea = $InteractionArea
 
