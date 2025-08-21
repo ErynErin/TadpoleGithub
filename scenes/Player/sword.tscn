@@ -36,7 +36,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_n355p"]
 resource_name = "attack"
-length = 0.25
+length = 0.27
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -56,10 +56,10 @@ tracks/1/path = NodePath(".:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.201486),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.0, 0.897099]
+"values": [0.0, 0.897099, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k5whp"]
