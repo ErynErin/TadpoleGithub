@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://deg2ul1s8v3ia"]
+[gd_scene load_steps=79 format=3 uid="uid://basdg6biv03al"]
 
 [ext_resource type="Script" uid="uid://dmn6tt0hggyqb" path="res://scripts/player.gd" id="1_vajuk"]
 [ext_resource type="Texture2D" uid="uid://doljgsdei1mie" path="res://assets/2nd stage mc/2nd idle/2nd idle0000.png" id="2_7ix7b"]
