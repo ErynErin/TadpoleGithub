@@ -15,10 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://sv8iocxy344n" path="res://assets/Characters/Merchant/Sol_Talk/Talk_2.png" id="12_al4p4"]
 [ext_resource type="Texture2D" uid="uid://bwl0n4uxoome3" path="res://assets/Characters/Merchant/Sol_Talk/Talk_3.png" id="13_xf0xi"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7rnkl"]
-size = Vector2(1463, 1651)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_1xj0k"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_7uljk"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -50,7 +47,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -67,23 +64,19 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Merchant" type="Area2D"]
-collision_mask = 2
-script = ExtResource("1_12ke4")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7rnkl"]
+size = Vector2(1463, 1651)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(86, 13)
-shape = SubResource("RectangleShape2D_7rnkl")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_1xj0k")
+[node name="Merchant" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_7uljk")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.813256
+frame_progress = 0.920466
+script = ExtResource("1_12ke4")
 
 [node name="InteractionArea" parent="." instance=ExtResource("3_7rnkl")]
 action_name = "talk"
-y_position = 150.0
+y_position = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 position = Vector2(72.5, -8.5)
