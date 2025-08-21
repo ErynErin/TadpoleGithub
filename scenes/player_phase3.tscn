@@ -1,7 +1,6 @@
-[gd_scene load_steps=67 format=3 uid="uid://n6fetdvrmpa3"]
+[gd_scene load_steps=65 format=3 uid="uid://mlspxc2wfne5"]
 
 [ext_resource type="Script" uid="uid://dmn6tt0hggyqb" path="res://scripts/player.gd" id="1_kbckl"]
-[ext_resource type="Texture2D" uid="uid://doljgsdei1mie" path="res://assets/2nd stage mc/2nd idle/2nd idle0000.png" id="2_l7yr8"]
 [ext_resource type="Texture2D" uid="uid://grcpw57j0fip" path="res://assets/3rd stage mc/3rd death/3rd death0000.png" id="3_mmtyl"]
 [ext_resource type="Texture2D" uid="uid://bbm6p850djhxs" path="res://assets/3rd stage mc/3rd death/3rd death0001.png" id="4_p5pjs"]
 [ext_resource type="Texture2D" uid="uid://b6y3y4wei3g45" path="res://assets/3rd stage mc/3rd death/3rd death0002.png" id="5_2uw21"]
@@ -63,15 +62,14 @@
 [ext_resource type="Texture2D" uid="uid://bbkd6i52u70v5" path="res://assets/3rd stage mc/3rd walking/3rd walking0004.png" id="61_uqfbl"]
 [ext_resource type="Texture2D" uid="uid://bsun8r13clyl7" path="res://assets/3rd stage mc/3rd walking/3rd walking0005.png" id="62_jjuvo"]
 [ext_resource type="Texture2D" uid="uid://du33fwqvweg6r" path="res://assets/3rd stage mc/3rd walking/3rd walking0006.png" id="63_7qlbm"]
-[ext_resource type="PackedScene" uid="uid://bb6ksj6c85ixy" path="res://scenes/sword.tscn" id="76_2816y"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v3hta"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_l7yr8")
+"texture": ExtResource("57_kglp7")
 }],
-"loop": false,
+"loop": true,
 "name": &"attack",
 "speed": 11.0
 }, {
@@ -190,7 +188,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 11.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -260,7 +258,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 11.0
+"speed": 16.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -286,7 +284,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 11.0
+"speed": 10.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mv62"]
@@ -298,15 +296,12 @@ collision_layer = 2
 script = ExtResource("1_kbckl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(118, -114)
+position = Vector2(30, -25)
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_v3hta")
-animation = &"walk"
+animation = &"attack"
+frame_progress = 0.939235
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-21, -7)
 shape = SubResource("CapsuleShape2D_0mv62")
-
-[node name="Sword" parent="." instance=ExtResource("76_2816y")]
-visible = false
-position = Vector2(29, 27)
