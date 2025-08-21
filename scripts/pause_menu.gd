@@ -1,5 +1,6 @@
 extends Control
 
+
 func _ready():
 	hide()
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -14,6 +15,7 @@ func pause():
 
 func _unhandled_input(event):
 	if event.is_action_pressed("escape"):
+		print("clicked")
 		if get_tree().paused == false:
 			pause()
 		else:

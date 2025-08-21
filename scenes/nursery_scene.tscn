@@ -206,7 +206,6 @@ visible = false
 scale = Vector2(1.11, 1.11)
 
 [node name="Pause Menu" parent="GUI" instance=ExtResource("14_iud5h")]
-visible = false
 scale = Vector2(1.11, 1.11)
 
 [node name="Tadpole" parent="." instance=ExtResource("15_b0kx5")]
