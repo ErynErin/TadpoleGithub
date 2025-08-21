@@ -136,23 +136,13 @@ position = Vector2(2048, 0)
 scale = Vector2(1.6, 1.6)
 texture = ExtResource("5_b40aj")
 
-[node name="ParallaxLayer11" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
-motion_mirroring = Vector2(4096, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer11"]
-scale = Vector2(1.6, 1.6)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(3090, 40)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("6_lm3lo")
-
-[node name="ParallaxLayer12" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
-motion_mirroring = Vector2(4096, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer12"]
-position = Vector2(2048, 0)
-scale = Vector2(1.6, 1.6)
-texture = ExtResource("6_lm3lo")
-
-[node name="ParallaxLayer13" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
-motion_mirroring = Vector2(4096, 0)
+region_enabled = true
+region_rect = Rect2(0, 0, 10000, 720)
 
 [node name="GUI" type="CanvasLayer" parent="."]
 layer = 5
@@ -209,10 +199,14 @@ region_rect = Rect2(0, 0, 790, 1000)
 
 [node name="merchant shop" parent="GUI" instance=ExtResource("22_odwuh")]
 visible = false
+offset_right = 960.0
+offset_bottom = 540.0
 scale = Vector2(1.11, 1.11)
 
 [node name="Pause Menu" parent="GUI" instance=ExtResource("14_iud5h")]
 visible = false
+offset_right = 958.0
+offset_bottom = 546.0
 scale = Vector2(1.11, 1.11)
 
 [node name="Tadpole" parent="." instance=ExtResource("15_b0kx5")]
@@ -312,12 +306,12 @@ position = Vector2(740, 525.5)
 shape = SubResource("RectangleShape2D_xlmt5")
 debug_color = Color(0.987983, 0.106434, 1.92523e-07, 0.42)
 
-[node name="Merchant" parent="." instance=ExtResource("8_nsaye")]
-position = Vector2(-1326, 556)
-scale = Vector2(0.15, 0.15)
-
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(-228, 715.75)
 shape = SubResource("RectangleShape2D_y2ypf")
+
+[node name="Merchant" parent="StaticBody2D2" instance=ExtResource("8_nsaye")]
+position = Vector2(-702, 545)
+scale = Vector2(0.15, 0.15)

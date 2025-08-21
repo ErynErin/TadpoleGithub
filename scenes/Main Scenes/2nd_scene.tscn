@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cfv4f6bi46hrx"]
+[gd_scene load_steps=25 format=3 uid="uid://cfv4f6bi46hrx"]
 
 [ext_resource type="Texture2D" uid="uid://cc6aiqta7j02x" path="res://assets/BG/Phase 2/1.png" id="7_aqdem"]
 [ext_resource type="PackedScene" uid="uid://ds8i10qow8msb" path="res://scenes/inventory_things/inv_ui.tscn" id="7_w82rq"]
@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://cmole1wjk2k70" path="res://scenes/UI/merchant_shop.tscn" id="14_dwpsk"]
 [ext_resource type="PackedScene" uid="uid://ctw57l6kowhya" path="res://scenes/UI/pause_menu.tscn" id="15_2npaq"]
 [ext_resource type="PackedScene" uid="uid://mo3hkwq7pjdf" path="res://scenes/Player/player_phase1.tscn" id="16_tljbm"]
-[ext_resource type="Script" uid="uid://qdyt6iet83op" path="res://scripts/player_phase_1.gd" id="17_ihwlw"]
 [ext_resource type="PackedScene" uid="uid://cqn1xtwbw5n5l" path="res://scenes/Collectibles/food.tscn" id="18_whigq"]
 [ext_resource type="PackedScene" uid="uid://co4b1kiuq2dcm" path="res://scenes/Collectibles/collectible_key.tscn" id="19_nexeh"]
 [ext_resource type="PackedScene" uid="uid://4m0c4x6ggxmf" path="res://scenes/Collectibles/collectible_bomb.tscn" id="20_3lrop"]
@@ -120,22 +119,13 @@ scale = Vector2(1.6, 1.6)
 texture = ExtResource("10_plhnw")
 flip_h = true
 
-[node name="ParallaxLayer5" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground2"]
-motion_scale = Vector2(0.8, 1)
-motion_mirroring = Vector2(4096, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground2/ParallaxLayer5"]
-scale = Vector2(1.6, 1.6)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(0, 26)
+scale = Vector2(2.4, 2.4)
 texture = ExtResource("11_t7lwq")
-
-[node name="ParallaxLayer7" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground2"]
-motion_scale = Vector2(0.8, 1)
-motion_mirroring = Vector2(4096, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground2/ParallaxLayer7"]
-position = Vector2(2048, 0)
-scale = Vector2(1.6, 1.6)
-texture = ExtResource("11_t7lwq")
+region_enabled = true
+region_rect = Rect2(0, 0, 10000, 720)
 
 [node name="GUI" type="CanvasLayer" parent="."]
 layer = 5
@@ -202,7 +192,6 @@ scale = Vector2(1.11, 1.11)
 z_index = 5
 position = Vector2(-1080.36, 58.5956)
 scale = Vector2(0.5, 0.5)
-script = ExtResource("17_ihwlw")
 
 [node name="Camera2D" type="Camera2D" parent="Tadpole"]
 position = Vector2(-12, 1142)
