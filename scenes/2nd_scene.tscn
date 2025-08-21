@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cpf5ahqnmuv2" path="res://assets/GUI/hunger.png" id="12_pktkd"]
 [ext_resource type="Texture2D" uid="uid://usodpdet6r8k" path="res://assets/GUI/hunger under bar.png" id="13_8hqba"]
 [ext_resource type="PackedScene" uid="uid://cmole1wjk2k70" path="res://scenes/merchant_shop.tscn" id="14_dwpsk"]
-[ext_resource type="PackedScene" uid="uid://cww0g8165fubq" path="res://scenes/pause_menu.tscn" id="15_2npaq"]
+[ext_resource type="PackedScene" uid="uid://ctw57l6kowhya" path="res://scenes/pause_menu.tscn" id="15_2npaq"]
 [ext_resource type="PackedScene" uid="uid://mo3hkwq7pjdf" path="res://scenes/player_phase1.tscn" id="16_tljbm"]
 [ext_resource type="Script" path="res://scenes/player_phase_1.gd" id="17_ihwlw"]
 [ext_resource type="PackedScene" uid="uid://cqn1xtwbw5n5l" path="res://scenes/food.tscn" id="18_whigq"]
