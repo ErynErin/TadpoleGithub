@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqtty7lrvbm0a"]
+
+[ext_resource type="Texture2D" uid="uid://3yhk5ufsn5ut" path="res://assets/BG/UI LAYOUTS.png" id="1_86ygs"]
+[ext_resource type="Texture2D" uid="uid://b2bv0m1kumlxp" path="res://icon.svg" id="2_b5e6c"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_86ygs")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 217.0
+offset_top = 139.0
+offset_right = 700.0
+offset_bottom = 640.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_b5e6c")
+
+[node name="Start" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1145.0
+offset_top = 156.0
+offset_right = 1185.0
+offset_bottom = 179.0
+scale = Vector2(5.105, 5.105)
+text = "Start"
+
+[node name="Exit" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1095.0
+offset_top = 756.0
+offset_right = 1135.0
+offset_bottom = 779.0
+scale = Vector2(5.105, 5.105)
+text = "Exit"
