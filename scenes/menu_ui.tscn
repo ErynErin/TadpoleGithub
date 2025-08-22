@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqtty7lrvbm0a"]
+[gd_scene load_steps=5 format=3 uid="uid://cqtty7lrvbm0a"]
 
 [ext_resource type="Texture2D" uid="uid://3yhk5ufsn5ut" path="res://assets/BG/UI LAYOUTS.png" id="1_86ygs"]
-[ext_resource type="Texture2D" uid="uid://b2bv0m1kumlxp" path="res://icon.svg" id="2_b5e6c"]
+[ext_resource type="Texture2D" uid="uid://cw7325mblfy3q" path="res://assets/GUI/Menu Assets/!Start_Menu.png" id="3_tner2"]
+[ext_resource type="Texture2D" uid="uid://ceqeac4udw3q7" path="res://assets/GUI/Menu Assets/!Options_Menu.png" id="4_ld3xo"]
+[ext_resource type="Texture2D" uid="uid://b2ls0ptekgaoi" path="res://assets/GUI/Menu Assets/!Quit_Menu.png" id="5_oa3d6"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -16,29 +18,26 @@ offset_bottom = 40.0
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_86ygs")
 
-[node name="TextureRect2" type="TextureRect" parent="."]
+[node name="Start" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 217.0
-offset_top = 139.0
-offset_right = 700.0
-offset_bottom = 640.0
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_b5e6c")
+offset_left = 1061.0
+offset_top = 81.0
+offset_right = 1322.0
+offset_bottom = 346.0
+texture_normal = ExtResource("3_tner2")
 
-[node name="Start" type="Label" parent="."]
+[node name="Options" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 1145.0
-offset_top = 156.0
-offset_right = 1185.0
-offset_bottom = 179.0
-scale = Vector2(5.105, 5.105)
-text = "Start"
+offset_left = 1085.0
+offset_top = 712.0
+offset_right = 1346.0
+offset_bottom = 977.0
+texture_normal = ExtResource("4_ld3xo")
 
-[node name="Exit" type="Label" parent="."]
+[node name="Quit" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 1095.0
-offset_top = 756.0
-offset_right = 1135.0
-offset_bottom = 779.0
-scale = Vector2(5.105, 5.105)
-text = "Exit"
+offset_left = 1349.0
+offset_top = 352.0
+offset_right = 1610.0
+offset_bottom = 617.0
+texture_normal = ExtResource("5_oa3d6")
