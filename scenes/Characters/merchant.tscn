@@ -76,7 +76,7 @@ script = ExtResource("1_12ke4")
 
 [node name="InteractionArea" parent="." instance=ExtResource("3_7rnkl")]
 action_name = "talk"
-y_position = 200.0
+y_position = 150.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 position = Vector2(72.5, -8.5)
