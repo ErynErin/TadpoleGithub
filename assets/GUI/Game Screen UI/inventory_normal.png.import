@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://usodpdet6r8k"
-path="res://.godot/imported/hunger under bar.png-af44e8e92d5d5b24679a2d4f07cc48fb.ctex"
+uid="uid://bfivyn20hdj47"
+path="res://.godot/imported/inventory_normal.png-f9a193b9c8b37df1bd02365c9c6369a6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/GUI/hunger under bar.png"
-dest_files=["res://.godot/imported/hunger under bar.png-af44e8e92d5d5b24679a2d4f07cc48fb.ctex"]
+source_file="res://assets/GUI/Game Screen UI/inventory_normal.png"
+dest_files=["res://.godot/imported/inventory_normal.png-f9a193b9c8b37df1bd02365c9c6369a6.ctex"]
 
 [params]
 

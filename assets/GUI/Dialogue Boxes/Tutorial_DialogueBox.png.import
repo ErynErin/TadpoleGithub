@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://j1bgwact0hsf"
-path="res://.godot/imported/circle.png-1f4cc87a062d639967ca16a5a0666f4a.ctex"
+uid="uid://bxy50f8joix0l"
+path="res://.godot/imported/Tutorial_DialogueBox.png-24cbf5a7dd779e4837d05081ea181995.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/GUI/circle.png"
-dest_files=["res://.godot/imported/circle.png-1f4cc87a062d639967ca16a5a0666f4a.ctex"]
+source_file="res://assets/GUI/Dialogue Boxes/Tutorial_DialogueBox.png"
+dest_files=["res://.godot/imported/Tutorial_DialogueBox.png-24cbf5a7dd779e4837d05081ea181995.ctex"]
 
 [params]
 

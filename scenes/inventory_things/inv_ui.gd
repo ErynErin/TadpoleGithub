@@ -10,6 +10,3 @@ func _ready():
 func update_slots():
 	for i in range(min(inv.slots.size(), slots.size())):
 		slots[i].update(inv.slots[i])
-
-func _on_texture_button_pressed() -> void:
-	pass # Replace with function body.

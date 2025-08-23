@@ -1,6 +1,5 @@
 extends Control
 
-
 func _ready():
 	hide()
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -15,21 +14,16 @@ func pause():
 
 func _unhandled_input(event):
 	if event.is_action_pressed("escape"):
-		print("clicked")
 		if get_tree().paused == false:
 			pause()
 		else:
 			resume()
 
-func _on_resume_pressed() -> void:
+func _on_continue_pressed() -> void:
 	resume()
 
-func _on_restart_pressed() -> void:
-	resume()
-	get_tree().reload_current_scene()
-
-func _on_settings_pressed() -> void:
-	pass # Open settings
+func _on_options_pressed() -> void:
+	pass # Replace with function body.
 
 func _on_quit_pressed() -> void:
-	pass # Open main menu
+	get_tree().change_scene_to_file("res://scenes/Main Scenes/menu_ui.tscn")

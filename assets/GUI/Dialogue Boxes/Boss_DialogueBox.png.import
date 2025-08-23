@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpf5ahqnmuv2"
-path="res://.godot/imported/hunger.png-ee966fb03a0df86bc95eb4d66046bd17.ctex"
+uid="uid://chwsplawy4aqd"
+path="res://.godot/imported/Boss_DialogueBox.png-8abd6279e2f90d2d69ceaec054643d3f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/GUI/hunger.png"
-dest_files=["res://.godot/imported/hunger.png-ee966fb03a0df86bc95eb4d66046bd17.ctex"]
+source_file="res://assets/GUI/Dialogue Boxes/Boss_DialogueBox.png"
+dest_files=["res://.godot/imported/Boss_DialogueBox.png-8abd6279e2f90d2d69ceaec054643d3f.ctex"]
 
 [params]
 

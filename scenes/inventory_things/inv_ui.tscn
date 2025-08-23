@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://ds8i10qow8msb"]
 
 [ext_resource type="Script" uid="uid://tnjstoetnoxu" path="res://scenes/inventory_things/inv_ui.gd" id="1_shr07"]
-[ext_resource type="Texture2D" uid="uid://bfivyn20hdj47" path="res://assets/GUI/inventory_normal.png" id="2_hxxd7"]
-[ext_resource type="Texture2D" uid="uid://dh630u37jbdts" path="res://assets/GUI/inventory_pressed.png" id="3_2lnyx"]
-[ext_resource type="Texture2D" uid="uid://bbqshqdubqg64" path="res://assets/GUI/inventory_hover.png" id="4_u0bvq"]
+[ext_resource type="Texture2D" uid="uid://bfivyn20hdj47" path="res://assets/GUI/Game Screen UI/inventory_normal.png" id="2_hxxd7"]
+[ext_resource type="Texture2D" uid="uid://dh630u37jbdts" path="res://assets/GUI/Game Screen UI/inventory_pressed.png" id="3_2lnyx"]
+[ext_resource type="Texture2D" uid="uid://bbqshqdubqg64" path="res://assets/GUI/Game Screen UI/inventory_hover.png" id="4_u0bvq"]
 [ext_resource type="Script" uid="uid://fnqi6josjiha" path="res://scenes/inventory_things/inv_slot_ui.gd" id="5_2lnyx"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_aytox"]
@@ -88,5 +88,3 @@ layout_mode = 2
 
 [node name="Item Display" type="Sprite2D" parent="VBoxContainer/TextureButton3/CenterContainer/Panel"]
 scale = Vector2(5, 5)
-
-[connection signal="pressed" from="VBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]

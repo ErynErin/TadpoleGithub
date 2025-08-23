@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bwcf4k17uddwb" path="res://assets/Characters/Water Beetle Tank/Walk/BeetleW_0040.png" id="5_53mw5"]
 [ext_resource type="Texture2D" uid="uid://c0u0xv62k7cjb" path="res://assets/Characters/Water Beetle Tank/Walk/BeetleW_0050.png" id="6_f4xe4"]
 [ext_resource type="Texture2D" uid="uid://4pv8qw02hbrf" path="res://assets/Characters/Water Beetle Tank/Walk/BeetleW_0060.png" id="7_ee44k"]
-[ext_resource type="Script" path="res://scripts/hurtbox.gd" id="8_jrr2h"]
+[ext_resource type="Script" uid="uid://dktsel320mpw7" path="res://scripts/hurtbox.gd" id="8_jrr2h"]
 [ext_resource type="Texture2D" uid="uid://dv1yf85kb2dqw" path="res://assets/Characters/Water Beetle Tank/Walk/BeetleW_0070.png" id="8_k76xx"]
 [ext_resource type="Texture2D" uid="uid://baew70obuy0ft" path="res://assets/Characters/Water Beetle Tank/Idle/Beetle_1.png" id="9_mhe5e"]
 [ext_resource type="Texture2D" uid="uid://bjjyaf3dc3r58" path="res://assets/Characters/Water Beetle Tank/Idle/Beetle_2.png" id="10_5gsta"]
