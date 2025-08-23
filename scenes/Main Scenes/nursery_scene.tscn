@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://d0hqwpnv7oakw"]
+[gd_scene load_steps=29 format=3 uid="uid://d0hqwpnv7oakw"]
 
 [ext_resource type="Texture2D" uid="uid://cstcdjnw86nfs" path="res://assets/BG/Phase 1/1.png" id="1_36xgi"]
 [ext_resource type="Texture2D" uid="uid://c3xww2i2skpq1" path="res://assets/BG/Phase 1/2.png" id="2_is0ew"]
@@ -9,15 +9,16 @@
 [ext_resource type="PackedScene" uid="uid://ds8i10qow8msb" path="res://scenes/inventory_things/inv_ui.tscn" id="7_neo3g"]
 [ext_resource type="PackedScene" uid="uid://bntvonb1a06nv" path="res://scenes/Characters/beetle.tscn" id="7_y2ypf"]
 [ext_resource type="PackedScene" uid="uid://bd1qu81rucmuf" path="res://scenes/Characters/merchant.tscn" id="8_nsaye"]
-[ext_resource type="Texture2D" uid="uid://j1bgwact0hsf" path="res://assets/GUI/circle.png" id="8_tw4wf"]
-[ext_resource type="Texture2D" uid="uid://v8643apg6unr" path="res://assets/GUI/4.png" id="9_mhegv"]
+[ext_resource type="Texture2D" uid="uid://j1bgwact0hsf" path="res://assets/GUI/Game Screen UI/circle.png" id="8_tw4wf"]
+[ext_resource type="Texture2D" uid="uid://v8643apg6unr" path="res://assets/GUI/Game Screen UI/4.png" id="9_mhegv"]
 [ext_resource type="PackedScene" uid="uid://xov1nahqgphe" path="res://scenes/Characters/worm.tscn" id="9_p0owv"]
-[ext_resource type="Texture2D" uid="uid://b7eekxtporomm" path="res://assets/GUI/2.png" id="10_i1oot"]
+[ext_resource type="Texture2D" uid="uid://b7eekxtporomm" path="res://assets/GUI/Game Screen UI/2.png" id="10_i1oot"]
 [ext_resource type="Script" uid="uid://d22ltv5khw2fa" path="res://scripts/health_bar.gd" id="11_6rsge"]
-[ext_resource type="Texture2D" uid="uid://cpf5ahqnmuv2" path="res://assets/GUI/hunger.png" id="12_gfx3w"]
-[ext_resource type="Texture2D" uid="uid://usodpdet6r8k" path="res://assets/GUI/hunger under bar.png" id="13_5lbhe"]
+[ext_resource type="Texture2D" uid="uid://cpf5ahqnmuv2" path="res://assets/GUI/Game Screen UI/hunger.png" id="12_gfx3w"]
+[ext_resource type="Texture2D" uid="uid://usodpdet6r8k" path="res://assets/GUI/Game Screen UI/hunger under bar.png" id="13_5lbhe"]
 [ext_resource type="PackedScene" uid="uid://ctw57l6kowhya" path="res://scenes/UI/pause_menu.tscn" id="14_iud5h"]
 [ext_resource type="PackedScene" uid="uid://mo3hkwq7pjdf" path="res://scenes/Player/player_phase1.tscn" id="15_b0kx5"]
+[ext_resource type="PackedScene" uid="uid://3fegt1mkcao1" path="res://scenes/UI/merchant_dialogue.tscn" id="15_y2ypf"]
 [ext_resource type="PackedScene" uid="uid://cqn1xtwbw5n5l" path="res://scenes/Collectibles/food.tscn" id="16_c07hn"]
 [ext_resource type="PackedScene" uid="uid://co4b1kiuq2dcm" path="res://scenes/Collectibles/collectible_key.tscn" id="17_khd5g"]
 [ext_resource type="PackedScene" uid="uid://4m0c4x6ggxmf" path="res://scenes/Collectibles/collectible_bomb.tscn" id="18_u2qq7"]
@@ -195,9 +196,11 @@ region_rect = Rect2(0, 0, 790, 1000)
 
 [node name="merchant shop" parent="GUI" instance=ExtResource("22_odwuh")]
 visible = false
-offset_right = 960.0
-offset_bottom = 540.0
-scale = Vector2(1.11, 1.11)
+scale = Vector2(1.67, 1.67)
+
+[node name="MerchantDialogue" parent="GUI" instance=ExtResource("15_y2ypf")]
+visible = false
+scale = Vector2(1.67, 1.67)
 
 [node name="Pause Menu" parent="GUI" instance=ExtResource("14_iud5h")]
 visible = false
@@ -305,5 +308,6 @@ debug_color = Color(0.987983, 0.106434, 1.92523e-07, 0.42)
 [node name="Merchant" parent="." instance=ExtResource("8_nsaye")]
 position = Vector2(-702, 545)
 scale = Vector2(0.15, 0.15)
+frame_progress = 0.959508
 
 [node name="CollectibleItems" type="Node2D" parent="."]

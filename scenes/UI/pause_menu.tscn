@@ -1,6 +1,62 @@
-[gd_scene load_steps=2 format=3 uid="uid://ctw57l6kowhya"]
+[gd_scene load_steps=15 format=3 uid="uid://ctw57l6kowhya"]
 
 [ext_resource type="Script" uid="uid://c0t2fkbp051yy" path="res://scripts/pause_menu.gd" id="1_myx47"]
+[ext_resource type="Texture2D" uid="uid://ck0c0yhdgvau2" path="res://assets/GUI/Menu Assets/Continue_Paused.png" id="2_bl585"]
+[ext_resource type="Texture2D" uid="uid://3pk5f2j3qj5b" path="res://assets/GUI/Menu Assets/Options_Paused.png" id="3_feath"]
+[ext_resource type="Texture2D" uid="uid://dyd07n6pu7ylr" path="res://assets/GUI/Menu Assets/QuitToMenu_Paused.png" id="4_w67w4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mko1u"]
+texture = ExtResource("2_bl585")
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+modulate_color = Color(0.744181, 0.744181, 0.744181, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_feath"]
+texture = ExtResource("2_bl585")
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+modulate_color = Color(1.2, 1.2, 1.2, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w67w4"]
+texture = ExtResource("2_bl585")
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_feath"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sipkl"]
+texture = ExtResource("3_feath")
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+modulate_color = Color(0.744181, 0.744181, 0.744181, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eir0s"]
+texture = ExtResource("3_feath")
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+modulate_color = Color(1.2, 1.2, 1.2, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3pfkw"]
+texture = ExtResource("3_feath")
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_feba6"]
+texture = ExtResource("4_w67w4")
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+modulate_color = Color(0.744181, 0.744181, 0.744181, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2uduj"]
+texture = ExtResource("4_w67w4")
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+modulate_color = Color(1.2, 1.2, 1.2, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m20o5"]
+texture = ExtResource("4_w67w4")
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 
 [node name="Pause Menu" type="Control"]
 layout_mode = 3
@@ -18,58 +74,59 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.117647)
+color = Color(0, 0, 0, 0.27451)
 
-[node name="Panel" type="Panel" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -191.5
-offset_top = -243.0
-offset_right = 191.5
-offset_bottom = 243.0
+offset_left = -280.5
+offset_top = -367.5
+offset_right = 280.5
+offset_bottom = 367.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -124.0
-offset_top = -180.0
-offset_right = 124.0
-offset_bottom = 180.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 30
-
-[node name="Resume" type="Button" parent="Panel/VBoxContainer"]
+[node name="Continue" type="Button" parent="VBoxContainer"]
+layout_direction = 4
 layout_mode = 2
 size_flags_vertical = 3
-text = "Resume"
+theme_override_styles/focus = SubResource("StyleBoxTexture_mko1u")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_mko1u")
+theme_override_styles/hover = SubResource("StyleBoxTexture_feath")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_mko1u")
+theme_override_styles/normal = SubResource("StyleBoxTexture_w67w4")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_feath")
 
-[node name="Restart" type="Button" parent="Panel/VBoxContainer"]
+[node name="Options" type="Button" parent="VBoxContainer"]
+layout_direction = 4
 layout_mode = 2
 size_flags_vertical = 3
-text = "Restart"
+theme_override_styles/focus = SubResource("StyleBoxTexture_sipkl")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_sipkl")
+theme_override_styles/hover = SubResource("StyleBoxTexture_eir0s")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_sipkl")
+theme_override_styles/normal = SubResource("StyleBoxTexture_3pfkw")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_feath")
 
-[node name="Settings" type="Button" parent="Panel/VBoxContainer"]
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_direction = 4
 layout_mode = 2
 size_flags_vertical = 3
-text = "Settings"
+theme_override_styles/focus = SubResource("StyleBoxTexture_feba6")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_feba6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2uduj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_feba6")
+theme_override_styles/normal = SubResource("StyleBoxTexture_m20o5")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_feath")
 
-[node name="Exit" type="Button" parent="Panel/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Exit"
-
-[connection signal="pressed" from="Panel/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/Exit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

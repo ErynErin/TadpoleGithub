@@ -50,8 +50,20 @@ func add_speed():
 	speed += 50
 	print("speed:", speed)
 
+func show_dialogue(dialogue_scene):
+	var current_scene = get_tree().current_scene
+	var dialogue = current_scene.get_node("GUI/" + dialogue_scene)
+	dialogue.visible = true
+	
+func hide_dialogue(dialogue_scene):
+	var current_scene = get_tree().current_scene
+	var dialogue = current_scene.get_node("GUI/" + dialogue_scene)
+	dialogue.visible = false
+
 func show_shop():
 	var current_scene = get_tree().current_scene
+	var merchant_dialogue = current_scene.get_node("GUI/MerchantDialogue")
+	
 	var merchant_shop = current_scene.get_node("GUI/merchant shop")
 	merchant_shop.visible = true
 	

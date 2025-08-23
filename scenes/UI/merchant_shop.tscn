@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmole1wjk2k70"]
+[gd_scene load_steps=4 format=3 uid="uid://cmole1wjk2k70"]
 
 [ext_resource type="Script" uid="uid://bshybnqtmehsh" path="res://scripts/merchant_shop.gd" id="1_nhdr3"]
+[ext_resource type="Texture2D" uid="uid://dqur42p46m4dh" path="res://assets/GUI/Menu Assets/Merchant Shop.png" id="3_qyu7k"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_786rh"]
+texture = ExtResource("3_qyu7k")
 
 [node name="merchant shop" type="Control"]
 layout_mode = 3
@@ -13,19 +17,12 @@ script = ExtResource("1_nhdr3")
 
 [node name="Shop Panel" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -186.0
-offset_top = -241.5
-offset_right = 186.0
-offset_bottom = 241.5
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_786rh")
 
 [node name="Title" type="Label" parent="Shop Panel"]
+visible = false
 layout_mode = 2
 offset_left = 108.0
 offset_top = 17.5
@@ -36,12 +33,17 @@ theme_override_font_sizes/font_size = 20
 text = "Merchant Shop"
 
 [node name="Exit Shop" type="Button" parent="Shop Panel"]
-layout_mode = 2
-offset_left = 331.0
-offset_top = 12.5
-offset_right = 361.0
-offset_bottom = 43.5
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -257.0
+offset_top = 53.0
+offset_right = -107.0
+offset_bottom = 203.0
+grow_horizontal = 0
 size_flags_vertical = 0
+theme_override_font_sizes/font_size = 80
 text = "X"
 
 [node name="Current Stats" type="VBoxContainer" parent="Shop Panel"]
@@ -51,54 +53,61 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -68.5
-offset_top = -151.5
-offset_right = 68.5
-offset_bottom = -72.5
+offset_left = -117.0
+offset_top = -160.0
+offset_right = 117.0
+offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 5
 
 [node name="Health Label" type="Label" parent="Shop Panel/Current Stats"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 40
 text = "Health: 100"
 
 [node name="Strength Label" type="Label" parent="Shop Panel/Current Stats"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 40
 text = "Strength: 50"
 
 [node name="Speed Label" type="Label" parent="Shop Panel/Current Stats"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 40
 text = "Speed: 200"
 
-[node name="Buttons" type="VBoxContainer" parent="Shop Panel"]
+[node name="Buttons" type="HBoxContainer" parent="Shop Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -151.5
-offset_top = -21.5
-offset_right = 151.5
-offset_bottom = 181.5
+offset_left = -628.5
+offset_top = 110.0
+offset_right = 628.5
+offset_bottom = 210.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 15
+theme_override_constants/separation = 50
+alignment = 1
 
 [node name="Health Button" type="Button" parent="Shop Panel/Buttons"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 40
 text = "Increase Health"
 
 [node name="Strength Button" type="Button" parent="Shop Panel/Buttons"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 40
 text = "Increase Strength"
 
 [node name="Speed Button" type="Button" parent="Shop Panel/Buttons"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 40
 text = "Increase Speed"
 
 [connection signal="pressed" from="Shop Panel/Exit Shop" to="." method="_on_exit_shop_pressed"]
