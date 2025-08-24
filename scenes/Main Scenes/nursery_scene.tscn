@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://d0hqwpnv7oakw"]
+[gd_scene load_steps=30 format=3 uid="uid://d0hqwpnv7oakw"]
 
 [ext_resource type="Texture2D" uid="uid://cstcdjnw86nfs" path="res://assets/BG/Phase 1/1.png" id="1_36xgi"]
 [ext_resource type="Texture2D" uid="uid://c3xww2i2skpq1" path="res://assets/BG/Phase 1/2.png" id="2_is0ew"]
@@ -9,20 +9,26 @@
 [ext_resource type="PackedScene" uid="uid://ds8i10qow8msb" path="res://scenes/inventory_things/inv_ui.tscn" id="7_neo3g"]
 [ext_resource type="PackedScene" uid="uid://bntvonb1a06nv" path="res://scenes/Characters/beetle.tscn" id="7_y2ypf"]
 [ext_resource type="PackedScene" uid="uid://bd1qu81rucmuf" path="res://scenes/Characters/merchant.tscn" id="8_nsaye"]
-[ext_resource type="Texture2D" uid="uid://j1bgwact0hsf" path="res://assets/GUI/Game Screen UI/circle.png" id="8_tw4wf"]
-[ext_resource type="Texture2D" uid="uid://v8643apg6unr" path="res://assets/GUI/Game Screen UI/4.png" id="9_mhegv"]
 [ext_resource type="PackedScene" uid="uid://xov1nahqgphe" path="res://scenes/Characters/worm.tscn" id="9_p0owv"]
-[ext_resource type="Texture2D" uid="uid://b7eekxtporomm" path="res://assets/GUI/Game Screen UI/2.png" id="10_i1oot"]
 [ext_resource type="Script" uid="uid://d22ltv5khw2fa" path="res://scripts/health_bar.gd" id="11_6rsge"]
 [ext_resource type="Texture2D" uid="uid://cpf5ahqnmuv2" path="res://assets/GUI/Game Screen UI/hunger.png" id="12_gfx3w"]
 [ext_resource type="Texture2D" uid="uid://usodpdet6r8k" path="res://assets/GUI/Game Screen UI/hunger under bar.png" id="13_5lbhe"]
 [ext_resource type="PackedScene" uid="uid://ctw57l6kowhya" path="res://scenes/UI/pause_menu.tscn" id="14_iud5h"]
 [ext_resource type="PackedScene" uid="uid://mo3hkwq7pjdf" path="res://scenes/Player/player_phase1.tscn" id="15_b0kx5"]
+[ext_resource type="Texture2D" uid="uid://cvojlptff1xk5" path="res://assets/GUI/Game Screen UI/P1_health.png" id="15_gbf57"]
 [ext_resource type="PackedScene" uid="uid://3fegt1mkcao1" path="res://scenes/UI/merchant_dialogue.tscn" id="15_y2ypf"]
 [ext_resource type="PackedScene" uid="uid://cqn1xtwbw5n5l" path="res://scenes/Collectibles/food.tscn" id="16_c07hn"]
 [ext_resource type="PackedScene" uid="uid://co4b1kiuq2dcm" path="res://scenes/Collectibles/collectible_key.tscn" id="17_khd5g"]
 [ext_resource type="PackedScene" uid="uid://4m0c4x6ggxmf" path="res://scenes/Collectibles/collectible_bomb.tscn" id="18_u2qq7"]
 [ext_resource type="PackedScene" uid="uid://cmole1wjk2k70" path="res://scenes/UI/merchant_shop.tscn" id="22_odwuh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y2ypf"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nsaye"]
+bg_color = Color(1, 0.321569, 0.364706, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nh5hk"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_heptv"]
 distance = 122.738
@@ -133,7 +139,7 @@ position = Vector2(2048, 0)
 scale = Vector2(1.6, 1.6)
 texture = ExtResource("5_b40aj")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="BG Sprite" type="Sprite2D" parent="."]
 texture_repeat = 2
 position = Vector2(3090, -50)
 scale = Vector2(2.5, 2.5)
@@ -146,34 +152,31 @@ layer = 5
 scale = Vector2(0.6, 0.6)
 transform = Transform2D(0.6, 0, 0, 0.6, 0, 0)
 
-[node name="inv_ui" parent="GUI" instance=ExtResource("7_neo3g")]
-offset_left = 50.0
-offset_top = 300.0
-offset_right = 50.0
-offset_bottom = 300.0
-scale = Vector2(0.17, 0.17)
-
-[node name="Main Menu Button" type="TextureButton" parent="GUI"]
-offset_right = 1000.0
-offset_bottom = 1000.0
-scale = Vector2(0.2, 0.2)
-pivot_offset = Vector2(30, 30)
-tooltip_text = "Menu"
-texture_normal = ExtResource("8_tw4wf")
-
-[node name="health bar" type="TextureProgressBar" parent="GUI"]
-offset_left = 220.0
-offset_top = -100.0
-offset_right = 1220.0
-offset_bottom = 900.0
-scale = Vector2(0.4, 0.4)
-tooltip_text = "Health"
+[node name="ProgressBar" type="ProgressBar" parent="GUI"]
+offset_left = 458.0
+offset_top = 157.0
+offset_right = 787.0
+offset_bottom = 205.0
+theme_override_styles/background = SubResource("StyleBoxFlat_y2ypf")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nsaye")
 value = 50.0
-texture_over = ExtResource("9_mhegv")
-texture_progress = ExtResource("10_i1oot")
+show_percentage = false
 script = ExtResource("11_6rsge")
 
+[node name="Gen UI" type="TextureRect" parent="GUI"]
+offset_right = 3206.4
+offset_bottom = 1803.6
+texture = ExtResource("15_gbf57")
+
+[node name="inv_ui" parent="GUI" instance=ExtResource("7_neo3g")]
+offset_left = 100.0
+offset_top = 450.0
+offset_right = 100.0
+offset_bottom = 450.0
+scale = Vector2(0.17, 0.17)
+
 [node name="hunger bar" type="TextureProgressBar" parent="GUI"]
+visible = false
 offset_left = 230.0
 offset_top = 50.0
 offset_right = 1230.0
@@ -184,7 +187,7 @@ stretch_margin_top = 12
 stretch_margin_right = 12
 stretch_margin_bottom = 12
 texture_over = ExtResource("12_gfx3w")
-texture_progress = ExtResource("10_i1oot")
+texture_progress = SubResource("CompressedTexture2D_nh5hk")
 
 [node name="hunger lower bar" type="NinePatchRect" parent="GUI"]
 offset_left = 230.0
@@ -208,12 +211,12 @@ offset_right = 958.0
 offset_bottom = 546.0
 scale = Vector2(1.11, 1.11)
 
-[node name="Tadpole" parent="." instance=ExtResource("15_b0kx5")]
+[node name="player" parent="." instance=ExtResource("15_b0kx5")]
 z_index = 5
 position = Vector2(-1080.36, 58.5956)
 scale = Vector2(0.5, 0.5)
 
-[node name="Camera2D" type="Camera2D" parent="Tadpole"]
+[node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(-12, 1142)
 scale = Vector2(0.6, 0.6)
 offset = Vector2(0, -400)
@@ -276,38 +279,46 @@ position = Vector2(648, 399)
 scale = Vector2(1.3, 1.3)
 
 [node name="Water Beetle Tank" parent="." instance=ExtResource("7_y2ypf")]
-position = Vector2(-153, 584)
+position = Vector2(1287, 590)
 scale = Vector2(1.7, 1.7)
 
-[node name="Worm" parent="." instance=ExtResource("9_p0owv")]
-position = Vector2(-407, 589)
-scale = Vector2(0.55, 0.55)
+[node name="CollectibleItems" type="Node2D" parent="."]
 
-[node name="Collectible Item" parent="." instance=ExtResource("17_khd5g")]
+[node name="Collectible Item" parent="CollectibleItems" instance=ExtResource("17_khd5g")]
 visible = false
 position = Vector2(-29, 390)
 scale = Vector2(1.3, 1.3)
 
-[node name="Collectible Item2" parent="." instance=ExtResource("17_khd5g")]
+[node name="Collectible Item2" parent="CollectibleItems" instance=ExtResource("17_khd5g")]
 visible = false
 position = Vector2(54, 390)
 scale = Vector2(1.3, 1.3)
 
-[node name="Collectible Item3" parent="." instance=ExtResource("18_u2qq7")]
+[node name="Collectible Item3" parent="CollectibleItems" instance=ExtResource("18_u2qq7")]
 visible = false
 position = Vector2(-155, 390)
 scale = Vector2(1.3, 1.3)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Parkour" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Parkour"]
 position = Vector2(740, 525.5)
 shape = SubResource("RectangleShape2D_xlmt5")
 debug_color = Color(0.987983, 0.106434, 1.92523e-07, 0.42)
 
 [node name="Merchant" parent="." instance=ExtResource("8_nsaye")]
-position = Vector2(-702, 545)
+position = Vector2(-1477, 538)
 scale = Vector2(0.15, 0.15)
 frame_progress = 0.959508
 
-[node name="CollectibleItems" type="Node2D" parent="."]
+[node name="Worm" parent="." instance=ExtResource("9_p0owv")]
+position = Vector2(-368, 557)
+scale = Vector2(0.55, 0.55)
+
+[node name="Worm2" parent="." instance=ExtResource("9_p0owv")]
+position = Vector2(-148, 557)
+scale = Vector2(0.55, 0.55)
+
+[node name="Worm3" parent="." instance=ExtResource("9_p0owv")]
+position = Vector2(78, 557)
+scale = Vector2(0.55, 0.55)

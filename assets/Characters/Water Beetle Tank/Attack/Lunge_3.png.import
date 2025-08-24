@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://j1bgwact0hsf"
-path="res://.godot/imported/circle.png-52c70739931f185aa916938cb28142cb.ctex"
+uid="uid://bpmwi6ovfyswp"
+path="res://.godot/imported/Lunge_3.png-c6294beccf56a3e46c635f1be6d71a87.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/GUI/Game Screen UI/circle.png"
-dest_files=["res://.godot/imported/circle.png-52c70739931f185aa916938cb28142cb.ctex"]
+source_file="res://assets/Characters/Water Beetle Tank/Attack/Lunge_3.png"
+dest_files=["res://.godot/imported/Lunge_3.png-c6294beccf56a3e46c635f1be6d71a87.ctex"]
 
 [params]
 

@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://d4ivs71nmsg48" path="res://assets/Characters/Worm/Crawl/Crawl_5.png" id="6_wwk1g"]
 [ext_resource type="Texture2D" uid="uid://cgoy7ibc4bnfb" path="res://assets/Characters/Worm/Worm_Rest.png" id="7_okkck"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tiyqp"]
+radius = 93.0
+height = 350.0
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_46d1w"]
 animations = [{
 "frames": [{
@@ -39,6 +43,10 @@ animations = [{
 "name": &"rest",
 "speed": 5.0
 }]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qrnk6"]
+radius = 485.0
+height = 1810.0
 
 [sub_resource type="Animation" id="Animation_6wt1p"]
 length = 0.001
@@ -80,22 +88,30 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tiyqp"]
 size = Vector2(1811, 1129)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tiyqp"]
-radius = 89.0
-height = 180.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qrnk6"]
-radius = 485.0
-height = 1810.0
-
 [node name="Worm" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_tiyqp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-8, 42)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_tiyqp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_46d1w")
 animation = &"crawl"
 autoplay = "rest"
+
+[node name="HurtBox" type="Area2D" parent="AnimatedSprite2D"]
+scale = Vector2(1, 1)
+script = ExtResource("3_tdamb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/HurtBox"]
+position = Vector2(-35, 205)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_qrnk6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -104,34 +120,11 @@ libraries = {
 
 [node name="Player Detector" type="Area2D" parent="."]
 position = Vector2(-4, 5)
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player Detector"]
 position = Vector2(13, -14)
 shape = SubResource("RectangleShape2D_tiyqp")
 
-[node name="Timer" type="Timer" parent="."]
-
-[node name="BiteBox" type="Area2D" parent="."]
-collision_layer = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BiteBox"]
-position = Vector2(-110, 42)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_tiyqp")
-
-[node name="HurtBox" type="Area2D" parent="."]
-scale = Vector2(0.2, 0.2)
-collision_layer = 4
-collision_mask = 2
-script = ExtResource("3_tdamb")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(-35, 205)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_qrnk6")
-
 [connection signal="body_entered" from="Player Detector" to="." method="_on_player_detector_body_entered"]
 [connection signal="body_exited" from="Player Detector" to="." method="_on_player_detector_body_exited"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="area_entered" from="BiteBox" to="." method="_on_bite_box_area_entered"]
-[connection signal="area_exited" from="BiteBox" to="." method="_on_bite_box_area_exited"]

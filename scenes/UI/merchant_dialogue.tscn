@@ -42,6 +42,7 @@ frame_progress = 0.706321
 flip_h = true
 
 [node name="Dialogue Box" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_gjgv3")

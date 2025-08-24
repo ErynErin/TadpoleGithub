@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dynueqqum74mm"]
+[gd_scene load_steps=12 format=3 uid="uid://dynueqqum74mm"]
 
 [ext_resource type="PackedScene" uid="uid://mo3hkwq7pjdf" path="res://scenes/Player/player_phase1.tscn" id="1_hf301"]
 [ext_resource type="Texture2D" uid="uid://cstcdjnw86nfs" path="res://assets/BG/Phase 1/1.png" id="7_vwwe3"]
@@ -7,16 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://btvfpva4ccs2p" path="res://assets/BG/Phase 1/4.png" id="10_0ndjk"]
 [ext_resource type="Texture2D" uid="uid://cx2obingrau0c" path="res://assets/BG/Phase 1/5.png" id="11_07spf"]
 [ext_resource type="Texture2D" uid="uid://iwggw3st1ihx" path="res://assets/BG/Phase 1/6.PNG" id="12_m47m0"]
-[ext_resource type="PackedScene" uid="uid://ds8i10qow8msb" path="res://scenes/inventory_things/inv_ui.tscn" id="13_8e4e8"]
-[ext_resource type="Texture2D" uid="uid://j1bgwact0hsf" path="res://assets/GUI/Game Screen UI/circle.png" id="14_craxn"]
-[ext_resource type="Texture2D" uid="uid://v8643apg6unr" path="res://assets/GUI/Game Screen UI/4.png" id="15_welnn"]
-[ext_resource type="Texture2D" uid="uid://b7eekxtporomm" path="res://assets/GUI/Game Screen UI/2.png" id="16_p2cpo"]
 [ext_resource type="PackedScene" uid="uid://n2kpc3lqtixf" path="res://scenes/boss1_crab.tscn" id="17_2l5k5"]
-[ext_resource type="Script" uid="uid://d22ltv5khw2fa" path="res://scripts/health_bar.gd" id="17_41eou"]
-[ext_resource type="Texture2D" uid="uid://cpf5ahqnmuv2" path="res://assets/GUI/Game Screen UI/hunger.png" id="18_eb4ij"]
-[ext_resource type="Texture2D" uid="uid://usodpdet6r8k" path="res://assets/GUI/Game Screen UI/hunger under bar.png" id="19_uqwlr"]
-[ext_resource type="PackedScene" uid="uid://cmole1wjk2k70" path="res://scenes/UI/merchant_shop.tscn" id="20_ihemi"]
-[ext_resource type="PackedScene" uid="uid://ctw57l6kowhya" path="res://scenes/UI/pause_menu.tscn" id="21_qofws"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_2l5k5"]
 resource_local_to_scene = true
@@ -137,67 +128,6 @@ motion_mirroring = Vector2(4096, 0)
 position = Vector2(2048, 0)
 scale = Vector2(1.6, 1.6)
 texture = ExtResource("12_m47m0")
-
-[node name="GUI" type="CanvasLayer" parent="."]
-layer = 5
-scale = Vector2(0.6, 0.6)
-transform = Transform2D(0.6, 0, 0, 0.6, 0, 0)
-
-[node name="inv_ui" parent="GUI" instance=ExtResource("13_8e4e8")]
-offset_left = 50.0
-offset_top = 300.0
-offset_right = 50.0
-offset_bottom = 300.0
-scale = Vector2(0.17, 0.17)
-
-[node name="Main Menu Button" type="TextureButton" parent="GUI"]
-offset_right = 1000.0
-offset_bottom = 1000.0
-scale = Vector2(0.2, 0.2)
-pivot_offset = Vector2(30, 30)
-tooltip_text = "Menu"
-texture_normal = ExtResource("14_craxn")
-
-[node name="health bar" type="TextureProgressBar" parent="GUI"]
-offset_left = 220.0
-offset_top = -100.0
-offset_right = 1220.0
-offset_bottom = 900.0
-scale = Vector2(0.4, 0.4)
-tooltip_text = "Health"
-value = 50.0
-texture_over = ExtResource("15_welnn")
-texture_progress = ExtResource("16_p2cpo")
-script = ExtResource("17_41eou")
-
-[node name="hunger bar" type="TextureProgressBar" parent="GUI"]
-offset_left = 230.0
-offset_top = 50.0
-offset_right = 1230.0
-offset_bottom = 1050.0
-scale = Vector2(0.25, 0.25)
-tooltip_text = "Hunger"
-stretch_margin_top = 12
-stretch_margin_right = 12
-stretch_margin_bottom = 12
-texture_over = ExtResource("18_eb4ij")
-texture_progress = ExtResource("16_p2cpo")
-
-[node name="hunger lower bar" type="NinePatchRect" parent="GUI"]
-offset_left = 230.0
-offset_top = 58.0
-offset_right = 230.0
-offset_bottom = 292.0
-texture = ExtResource("19_uqwlr")
-region_rect = Rect2(0, 0, 790, 1000)
-
-[node name="merchant shop" parent="GUI" instance=ExtResource("20_ihemi")]
-visible = false
-scale = Vector2(1.11, 1.11)
-
-[node name="Pause Menu" parent="GUI" instance=ExtResource("21_qofws")]
-visible = false
-scale = Vector2(1.11, 1.11)
 
 [node name="player" parent="." instance=ExtResource("1_hf301")]
 z_index = 5
