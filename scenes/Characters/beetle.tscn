@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bntvonb1a06nv"]
+[gd_scene load_steps=29 format=3 uid="uid://bntvonb1a06nv"]
 
 [ext_resource type="Script" uid="uid://o2uqwaj753v6" path="res://scripts/boss_1.gd" id="1_ojmcc"]
 [ext_resource type="Texture2D" uid="uid://crwataw8s03l8" path="res://assets/Characters/Water Beetle Tank/Walk/BeetleW_0010.png" id="2_j2l52"]
@@ -9,11 +9,17 @@
 [ext_resource type="Texture2D" uid="uid://4pv8qw02hbrf" path="res://assets/Characters/Water Beetle Tank/Walk/BeetleW_0060.png" id="7_ee44k"]
 [ext_resource type="Script" uid="uid://dktsel320mpw7" path="res://scripts/hurtbox.gd" id="8_jrr2h"]
 [ext_resource type="Texture2D" uid="uid://dv1yf85kb2dqw" path="res://assets/Characters/Water Beetle Tank/Walk/BeetleW_0070.png" id="8_k76xx"]
+[ext_resource type="Texture2D" uid="uid://dghbom71t0q6i" path="res://assets/Characters/Water Beetle Tank/Attack/Lunge_1.png" id="9_k76xx"]
 [ext_resource type="Texture2D" uid="uid://baew70obuy0ft" path="res://assets/Characters/Water Beetle Tank/Idle/Beetle_1.png" id="9_mhe5e"]
 [ext_resource type="Texture2D" uid="uid://bjjyaf3dc3r58" path="res://assets/Characters/Water Beetle Tank/Idle/Beetle_2.png" id="10_5gsta"]
+[ext_resource type="Texture2D" uid="uid://c1ykx3imhqyyu" path="res://assets/Characters/Water Beetle Tank/Attack/Lunge_2.png" id="10_mhe5e"]
+[ext_resource type="Texture2D" uid="uid://bpmwi6ovfyswp" path="res://assets/Characters/Water Beetle Tank/Attack/Lunge_3.png" id="11_5gsta"]
 [ext_resource type="Texture2D" uid="uid://cf0uacje6i3qm" path="res://assets/Characters/Water Beetle Tank/Idle/Beetle_3.png" id="11_r2iln"]
 [ext_resource type="Texture2D" uid="uid://clpnih26tql23" path="res://assets/Characters/Water Beetle Tank/Idle/Beetle_4.png" id="12_emjoi"]
+[ext_resource type="Texture2D" uid="uid://bwtml8clt4j7b" path="res://assets/Characters/Water Beetle Tank/Attack/Lunge_4.png" id="12_r2iln"]
+[ext_resource type="Texture2D" uid="uid://diqmbxga4jjmw" path="res://assets/Characters/Water Beetle Tank/Attack/Lunge_5.png" id="13_emjoi"]
 [ext_resource type="Texture2D" uid="uid://c2ndwkwk3uq15" path="res://assets/Characters/Water Beetle Tank/Idle/Beetle_5.png" id="13_qr3hx"]
+[ext_resource type="Texture2D" uid="uid://bxij8eqqw5410" path="res://assets/Characters/Water Beetle Tank/Attack/Lunge_6.png" id="14_qr3hx"]
 [ext_resource type="Texture2D" uid="uid://qo0ghtjjb10g" path="res://assets/Characters/Water Beetle Tank/Idle/Beetle_6.png" id="14_stksv"]
 [ext_resource type="Texture2D" uid="uid://3rjop35mltqt" path="res://assets/Characters/Water Beetle Tank/Idle/Beetle_7.png" id="15_ans0d"]
 
@@ -44,6 +50,29 @@ animations = [{
 "loop": true,
 "name": &"crawl",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_k76xx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_mhe5e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_5gsta")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_r2iln")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_emjoi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_qr3hx")
+}],
+"loop": true,
+"name": &"lunge",
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -113,7 +142,11 @@ _data = {
 &"hurt": SubResource("Animation_qrnk6")
 }
 
-[node name="Boss1" type="Node2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k76xx"]
+radius = 36.0
+height = 106.0
+
+[node name="Boss1" type="CharacterBody2D"]
 script = ExtResource("1_ojmcc")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
@@ -122,7 +155,7 @@ scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_46d1w")
 animation = &"crawl"
 autoplay = "rest"
-frame_progress = 0.647096
+frame_progress = 0.789342
 
 [node name="HurtBox" type="Area2D" parent="Sprite2D"]
 script = ExtResource("8_jrr2h")
@@ -135,3 +168,7 @@ shape = SubResource("CapsuleShape2D_qrnk6")
 libraries = {
 &"": SubResource("AnimationLibrary_2ng8k")
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -6)
+shape = SubResource("CapsuleShape2D_k76xx")

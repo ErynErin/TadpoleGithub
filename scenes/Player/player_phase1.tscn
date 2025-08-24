@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://mo3hkwq7pjdf"]
+[gd_scene load_steps=97 format=3 uid="uid://mo3hkwq7pjdf"]
 
 [ext_resource type="Script" uid="uid://qdyt6iet83op" path="res://scripts/player_phase_1.gd" id="1_m07t0"]
 [ext_resource type="Texture2D" uid="uid://c6xehwxoftg4l" path="res://assets/1st stage mc/1st idle/1st idle0000.png" id="2_cbf1i"]
@@ -90,6 +90,7 @@
 [ext_resource type="Texture2D" uid="uid://d1oh7rwrcpu7b" path="res://assets/1st stage mc/1st walk/1st walk0009.png" id="87_p5nqv"]
 [ext_resource type="Texture2D" uid="uid://dhfrh34o85o5f" path="res://assets/1st stage mc/1st walk/1st walk0010.png" id="88_1pym2"]
 [ext_resource type="Texture2D" uid="uid://oojga4s58xw0" path="res://assets/1st stage mc/1st walk/1st walk0011.png" id="89_pgdua"]
+[ext_resource type="Script" uid="uid://dktsel320mpw7" path="res://scripts/hurtbox.gd" id="91_onspj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v3hta"]
 animations = [{
@@ -395,8 +396,44 @@ animations = [{
 radius = 42.0
 height = 208.0
 
+[sub_resource type="Animation" id="Animation_jtvlm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_onspj"]
+resource_name = "hurt"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 0.2, 0.366667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vy06v"]
+_data = {
+&"RESET": SubResource("Animation_jtvlm"),
+&"hurt": SubResource("Animation_onspj")
+}
+
 [node name="player" type="CharacterBody2D" groups=["player"]]
-collision_layer = 2
+collision_layer = 129
 script = ExtResource("1_m07t0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -410,5 +447,21 @@ position = Vector2(-20, -16)
 shape = SubResource("CapsuleShape2D_0mv62")
 
 [node name="Sword" parent="." instance=ExtResource("7_fjrip")]
-visible = false
-position = Vector2(29, 27)
+position = Vector2(-3, 29)
+scale = Vector2(0.5, 0.5)
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_mask = 8
+script = ExtResource("91_onspj")
+metadata/_custom_type_script = "uid://dktsel320mpw7"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-20, -16)
+shape = SubResource("CapsuleShape2D_0mv62")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vy06v")
+}
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

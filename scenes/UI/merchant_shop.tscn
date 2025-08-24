@@ -69,7 +69,7 @@ text = "Health: 100"
 [node name="Strength Label" type="Label" parent="Shop Panel/Current Stats"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "Strength: 50"
+text = "Strength: 10"
 
 [node name="Speed Label" type="Label" parent="Shop Panel/Current Stats"]
 layout_mode = 2

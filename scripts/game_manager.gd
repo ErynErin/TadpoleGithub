@@ -3,7 +3,7 @@ extends Node
 var hunger = 0
 var max_health = 100.0
 var current_health = 100.0
-var strength = 50
+var strength = 10
 var speed = 200
 @export var inv: Inv
 
@@ -43,7 +43,7 @@ func add_health():
 	print("health: ", max_health)
 	
 func add_strength():
-	strength += 50
+	strength += 20
 	print("strength: ", strength)
 	
 func add_speed():
@@ -61,9 +61,7 @@ func hide_dialogue(dialogue_scene):
 	dialogue.visible = false
 
 func show_shop():
-	var current_scene = get_tree().current_scene
-	var merchant_dialogue = current_scene.get_node("GUI/MerchantDialogue")
-	
+	var current_scene = get_tree().current_scene	
 	var merchant_shop = current_scene.get_node("GUI/merchant shop")
 	merchant_shop.visible = true
 	
@@ -78,6 +76,8 @@ func take_damage(damage: float):
 	current_health -= damage
 	current_health = max(current_health, 0)  # Don't go below 0
 	health_changed.emit(current_health, max_health)
+	print("Player Health Decreased by " + str(damage))
+	print("New Health " + str(current_health))
 
 func heal(amount: float):
 	current_health += amount

@@ -4,8 +4,8 @@ var enemy_health = 50
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func take_damage(amount: int) -> void:
-	enemy_health -= 10
+	enemy_health -= amount
 	animation_player.play("hurt")
-	print("Remaining Health: ", enemy_health)
+	print("Remaining Beetl Health: ", enemy_health)
 	if enemy_health <= 0:
 		queue_free()

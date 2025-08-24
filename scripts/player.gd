@@ -1,10 +1,9 @@
 extends CharacterBody2D
-#@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 const JUMP_VELOCITY = -600.0
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var sword: Node2D = $Sword
+@onready var sword: AnimatedSprite2D = $Sword
 
 func _physics_process(delta: float) -> void:
 	var SPEED = GameManager.speed

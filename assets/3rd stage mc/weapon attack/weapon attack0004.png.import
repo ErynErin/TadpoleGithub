@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://v8643apg6unr"
-path="res://.godot/imported/4.png-33735365d36fd06f0ff9fcc7e64d84ec.ctex"
+uid="uid://c4but2nvvcprr"
+path="res://.godot/imported/weapon attack0004.png-55500cccaf5dfff7058346d5a698c1ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/GUI/Game Screen UI/4.png"
-dest_files=["res://.godot/imported/4.png-33735365d36fd06f0ff9fcc7e64d84ec.ctex"]
+source_file="res://assets/3rd stage mc/weapon attack/weapon attack0004.png"
+dest_files=["res://.godot/imported/weapon attack0004.png-55500cccaf5dfff7058346d5a698c1ec.ctex"]
 
 [params]
 

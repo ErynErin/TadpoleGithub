@@ -75,6 +75,7 @@ frame_progress = 0.926525
 script = ExtResource("1_12ke4")
 
 [node name="InteractionArea" parent="." instance=ExtResource("3_7rnkl")]
+collision_mask = 128
 action_name = "talk"
 y_position = 150.0
 

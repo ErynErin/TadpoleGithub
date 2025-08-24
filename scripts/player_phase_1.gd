@@ -3,7 +3,8 @@ extends CharacterBody2D
 const JUMP_VELOCITY = -600.0
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var sword: Sprite2D = $Sword
+@onready var sword: AnimatedSprite2D = $Sword
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _physics_process(delta: float) -> void:
 	var SPEED = GameManager.speed
@@ -31,10 +32,10 @@ func _physics_process(delta: float) -> void:
 				
 	if direction < 0:
 		animated_sprite.flip_h = true
-		sword.flip_h = false
+		sword.flip_h = true
 	elif direction > 0:
 		animated_sprite.flip_h = false
-		sword.flip_h = true
+		sword.flip_h = false
 	
 	if is_on_floor():
 		if Input.is_action_just_pressed("attack"):
@@ -50,3 +51,9 @@ func _physics_process(delta: float) -> void:
 		animated_sprite.play("idle")
 
 	move_and_slide()
+
+func take_damage(damage: float):
+	GameManager.take_damage(damage)
+
+func _on_hurt_box_area_entered(_area) -> void:
+	animation_player.play("hurt")

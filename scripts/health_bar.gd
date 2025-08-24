@@ -1,4 +1,4 @@
-extends TextureProgressBar
+extends ProgressBar
 
 func _ready():
 	GameManager.health_changed.connect(_on_health_changed)
