@@ -1,11 +1,11 @@
-[gd_scene load_steps=30 format=3 uid="uid://d0hqwpnv7oakw"]
+[gd_scene load_steps=32 format=3 uid="uid://d0hqwpnv7oakw"]
 
 [ext_resource type="Texture2D" uid="uid://cstcdjnw86nfs" path="res://assets/BG/Phase 1/1.png" id="1_36xgi"]
 [ext_resource type="Texture2D" uid="uid://c3xww2i2skpq1" path="res://assets/BG/Phase 1/2.png" id="2_is0ew"]
 [ext_resource type="Texture2D" uid="uid://ci5h6qat4a3lg" path="res://assets/BG/Phase 1/3.png" id="3_xlmt5"]
 [ext_resource type="Texture2D" uid="uid://btvfpva4ccs2p" path="res://assets/BG/Phase 1/4.png" id="4_heptv"]
 [ext_resource type="Texture2D" uid="uid://cx2obingrau0c" path="res://assets/BG/Phase 1/5.png" id="5_b40aj"]
-[ext_resource type="Texture2D" uid="uid://iwggw3st1ihx" path="res://assets/BG/Phase 1/6.PNG" id="6_y2ypf"]
+[ext_resource type="Texture2D" uid="uid://iwggw3st1ihx" path="res://assets/BG/Phase 1/6.png" id="6_y2ypf"]
 [ext_resource type="PackedScene" uid="uid://ds8i10qow8msb" path="res://scenes/inventory_things/inv_ui.tscn" id="7_neo3g"]
 [ext_resource type="PackedScene" uid="uid://bntvonb1a06nv" path="res://scenes/Characters/beetle.tscn" id="7_y2ypf"]
 [ext_resource type="PackedScene" uid="uid://bd1qu81rucmuf" path="res://scenes/Characters/merchant.tscn" id="8_nsaye"]
@@ -20,7 +20,10 @@
 [ext_resource type="PackedScene" uid="uid://cqn1xtwbw5n5l" path="res://scenes/Collectibles/food.tscn" id="16_c07hn"]
 [ext_resource type="PackedScene" uid="uid://co4b1kiuq2dcm" path="res://scenes/Collectibles/collectible_key.tscn" id="17_khd5g"]
 [ext_resource type="PackedScene" uid="uid://4m0c4x6ggxmf" path="res://scenes/Collectibles/collectible_bomb.tscn" id="18_u2qq7"]
+[ext_resource type="PackedScene" uid="uid://bftc28p7dgwy6" path="res://scenes/Platforms/P1 Working Platforms/p1_center_plat.tscn" id="22_gbf57"]
 [ext_resource type="PackedScene" uid="uid://cmole1wjk2k70" path="res://scenes/UI/merchant_shop.tscn" id="22_odwuh"]
+[ext_resource type="PackedScene" uid="uid://bokyvhomjmfi4" path="res://scenes/Platforms/P1 Working Platforms/p1_left_plat.tscn" id="23_nsaye"]
+[ext_resource type="PackedScene" uid="uid://wtpm74wh30kh" path="res://scenes/Platforms/P1 Working Platforms/p1_right_plat.tscn" id="24_p0owv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y2ypf"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -42,9 +45,6 @@ distance = -581.0
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p57ef"]
 normal = Vector2(1, 0)
 distance = -1014.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xlmt5"]
-size = Vector2(659, 75)
 
 [node name="Ted Game" type="Node2D"]
 
@@ -149,6 +149,7 @@ region_rect = Rect2(0, 0, 10000, 720)
 
 [node name="GUI" type="CanvasLayer" parent="."]
 layer = 5
+visible = false
 scale = Vector2(0.6, 0.6)
 transform = Transform2D(0.6, 0, 0, 0.6, 0, 0)
 
@@ -206,6 +207,7 @@ visible = false
 scale = Vector2(1.67, 1.67)
 
 [node name="Pause Menu" parent="GUI" instance=ExtResource("14_iud5h")]
+process_mode = 1
 visible = false
 offset_right = 958.0
 offset_bottom = 546.0
@@ -213,7 +215,7 @@ scale = Vector2(1.11, 1.11)
 
 [node name="player" parent="." instance=ExtResource("15_b0kx5")]
 z_index = 5
-position = Vector2(-1080.36, 58.5956)
+position = Vector2(-1384.55, -56.9818)
 scale = Vector2(0.5, 0.5)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
@@ -222,10 +224,11 @@ scale = Vector2(0.6, 0.6)
 offset = Vector2(0, -400)
 zoom = Vector2(1.13, 1.13)
 process_callback = 0
-limit_top = -180
+limit_top = -190
 limit_bottom = 1200
 limit_smoothed = true
 position_smoothing_enabled = true
+position_smoothing_speed = 3.0
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
@@ -233,7 +236,7 @@ editor_draw_drag_margin = true
 position = Vector2(1, 68)
 
 [node name="top" type="StaticBody2D" parent="World Boundaries"]
-position = Vector2(1, -786)
+position = Vector2(1, -842.492)
 rotation = 3.14159
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World Boundaries/top"]
@@ -295,30 +298,32 @@ visible = false
 position = Vector2(-155, 390)
 scale = Vector2(1.3, 1.3)
 
-[node name="Parkour" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Parkour"]
-position = Vector2(-183, 737)
-shape = SubResource("RectangleShape2D_xlmt5")
-debug_color = Color(0.987983, 0.106434, 1.92523e-07, 0.42)
-
 [node name="Merchant" parent="." instance=ExtResource("8_nsaye")]
-position = Vector2(808, 533)
+position = Vector2(6373, 582.6)
 scale = Vector2(0.15, 0.15)
 frame_progress = 0.959508
 
 [node name="Worm" parent="." instance=ExtResource("9_p0owv")]
-position = Vector2(1740, 584)
+position = Vector2(4782, 612)
 scale = Vector2(0.55, 0.55)
 
 [node name="Worm2" parent="." instance=ExtResource("9_p0owv")]
-position = Vector2(1960, 584)
+position = Vector2(5002, 612)
 scale = Vector2(0.55, 0.55)
 
 [node name="Worm3" parent="." instance=ExtResource("9_p0owv")]
-position = Vector2(2186, 584)
+position = Vector2(5228, 612)
 scale = Vector2(0.55, 0.55)
 
 [node name="Beetle" parent="." instance=ExtResource("7_y2ypf")]
-position = Vector2(467, 600)
+position = Vector2(6032, 649.6)
 scale = Vector2(1.5, 1.5)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("22_gbf57")]
+position = Vector2(-1397.48, 153.591)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("23_nsaye")]
+position = Vector2(-1496.27, 154.604)
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("24_p0owv")]
+position = Vector2(-1299.85, 153.087)
