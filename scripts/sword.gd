@@ -8,6 +8,6 @@ func sword_attack() -> void:
 	play("attack")
 
 func _on_hit_box_area_entered(area) -> void:
-	if area is HurtBox:
+	if area is HurtBox and area.owner.has_method("take_damage"):
 		area.owner.take_damage(GameManager.strength)
 		print("Damage dealth to enemy: " + str(GameManager.strength))

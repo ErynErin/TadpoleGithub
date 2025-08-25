@@ -5,7 +5,6 @@ const POISON_TICK_RATE = 2.0
 const POISON_DURATION = 6.0 
 
 var actual_speed: float = 0.0
-var direction : Vector2
 var enemy_health = 50
 var player_entered: bool = false
 var is_poisoned: bool = false
@@ -25,6 +24,7 @@ func _ready():
 	sprite_2d.play("rest")
 
 func _physics_process(delta):
+	var direction : Vector2
 	if is_instance_valid(player) and player_entered:
 		direction = global_position.direction_to(player.global_position)
 		global_position.x += direction.x * actual_speed * delta
@@ -69,7 +69,6 @@ func _on_timer_timeout() -> void:
 		player._on_hurt_box_area_entered(null)
 
 func _on_bite_box_area_entered(area) -> void:
-	print("-------bite box entered-------")
 	if area.owner != null and area.owner.is_in_group("player"):
 		player_in_bite_range = true
 		if !is_poisoned:

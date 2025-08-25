@@ -1,59 +1,59 @@
 [gd_scene load_steps=16 format=3 uid="uid://cqtty7lrvbm0a"]
 
-[ext_resource type="Texture2D" uid="uid://3yhk5ufsn5ut" path="res://assets/BG/UI LAYOUTS.png" id="1_2ux5y"]
-[ext_resource type="Script" uid="uid://chlwbioy2akg7" path="res://scripts/menu_ui.gd" id="1_tec61"]
-[ext_resource type="Texture2D" uid="uid://cw7325mblfy3q" path="res://assets/GUI/Menu Assets/!Start_Menu.png" id="2_fcije"]
-[ext_resource type="Texture2D" uid="uid://ceqeac4udw3q7" path="res://assets/GUI/Menu Assets/!Options_Menu.png" id="4_7xew8"]
-[ext_resource type="Texture2D" uid="uid://b2ls0ptekgaoi" path="res://assets/GUI/Menu Assets/!Quit_Menu.png" id="5_svote"]
+[ext_resource type="Script" uid="uid://chlwbioy2akg7" path="res://scripts/menu_ui.gd" id="1_tlx78"]
+[ext_resource type="Texture2D" uid="uid://3yhk5ufsn5ut" path="res://assets/BG/UI LAYOUTS.png" id="2_fkk5t"]
+[ext_resource type="Texture2D" uid="uid://cw7325mblfy3q" path="res://assets/GUI/Menu Assets/!Start_Menu.png" id="3_7vtdj"]
+[ext_resource type="Texture2D" uid="uid://ceqeac4udw3q7" path="res://assets/GUI/Menu Assets/!Options_Menu.png" id="4_almrq"]
+[ext_resource type="Texture2D" uid="uid://b2ls0ptekgaoi" path="res://assets/GUI/Menu Assets/!Quit_Menu.png" id="5_olqsj"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fcije"]
-texture = ExtResource("2_fcije")
+texture = ExtResource("3_7vtdj")
 modulate_color = Color(0.526423, 0.526423, 0.526423, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2ux5y"]
-texture = ExtResource("2_fcije")
+texture = ExtResource("3_7vtdj")
 modulate_color = Color(1.3, 1.3, 1.3, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4v3q3"]
-texture = ExtResource("2_fcije")
+texture = ExtResource("3_7vtdj")
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_2ux5y"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7xew8"]
-texture = ExtResource("4_7xew8")
+texture = ExtResource("4_almrq")
 modulate_color = Color(0.526423, 0.526423, 0.526423, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_svote"]
-texture = ExtResource("4_7xew8")
+texture = ExtResource("4_almrq")
 modulate_color = Color(1.3, 1.3, 1.3, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8miy4"]
-texture = ExtResource("4_7xew8")
+texture = ExtResource("4_almrq")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_afy00"]
-texture = ExtResource("5_svote")
+texture = ExtResource("5_olqsj")
 modulate_color = Color(0.526423, 0.526423, 0.526423, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jlyh1"]
-texture = ExtResource("5_svote")
+texture = ExtResource("5_olqsj")
 modulate_color = Color(1.3, 1.3, 1.3, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3wkid"]
-texture = ExtResource("5_svote")
+texture = ExtResource("5_olqsj")
 
 [node name="Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("1_tec61")
+script = ExtResource("1_tlx78")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("1_2ux5y")
+texture = ExtResource("2_fkk5t")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
