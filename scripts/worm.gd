@@ -16,7 +16,6 @@ var poison_elapsed_time: float = 0.0
 @onready var sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var player_detector: Area2D = $"Player Detector"
 @onready var poison_timer: Timer = $Timer
-@onready var bite_box: Area2D = $BiteBox
 
 func _ready():
 	actual_speed = (randi() % (100 - 40 + 1)) + 40

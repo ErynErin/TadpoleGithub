@@ -451,7 +451,8 @@ position = Vector2(-3, 29)
 scale = Vector2(0.5, 0.5)
 
 [node name="HurtBox" type="Area2D" parent="."]
-collision_mask = 8
+collision_layer = 8
+collision_mask = 16
 script = ExtResource("91_onspj")
 metadata/_custom_type_script = "uid://dktsel320mpw7"
 
