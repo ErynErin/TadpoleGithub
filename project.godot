@@ -101,6 +101,13 @@ Sprint={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_3="player_hitbox"
+2d_physics/layer_4="player_hurtbox"
+2d_physics/layer_5="enemy_hitbox"
+2d_physics/layer_6="enemy_hurtbox"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
