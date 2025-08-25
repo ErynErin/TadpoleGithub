@@ -149,7 +149,6 @@ region_rect = Rect2(0, 0, 10000, 720)
 
 [node name="GUI" type="CanvasLayer" parent="."]
 layer = 5
-visible = false
 scale = Vector2(0.6, 0.6)
 transform = Transform2D(0.6, 0, 0, 0.6, 0, 0)
 
