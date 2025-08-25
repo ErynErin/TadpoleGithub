@@ -1,13 +1,12 @@
-[gd_scene load_steps=24 format=3 uid="uid://cfv4f6bi46hrx"]
+[gd_scene load_steps=25 format=3 uid="uid://cfv4f6bi46hrx"]
 
 [ext_resource type="Texture2D" uid="uid://cc6aiqta7j02x" path="res://assets/BG/Phase 2/1.png" id="7_aqdem"]
 [ext_resource type="PackedScene" uid="uid://ds8i10qow8msb" path="res://scenes/inventory_things/inv_ui.tscn" id="7_w82rq"]
-[ext_resource type="Texture2D" uid="uid://j1bgwact0hsf" path="res://assets/GUI/Game Screen UI/circle.png" id="8_rjjk6"]
+[ext_resource type="Texture2D" uid="uid://cvojlptff1xk5" path="res://assets/GUI/Game Screen UI/P1_health.png" id="7_ysw53"]
 [ext_resource type="Texture2D" uid="uid://darwte4arx7h6" path="res://assets/BG/Phase 2/2.png" id="8_w82rq"]
-[ext_resource type="Texture2D" uid="uid://v8643apg6unr" path="res://assets/GUI/Game Screen UI/4.png" id="9_plhnw"]
 [ext_resource type="Texture2D" uid="uid://bxbt6hevkcww1" path="res://assets/BG/Phase 2/3.png" id="9_rjjk6"]
 [ext_resource type="Texture2D" uid="uid://dc86inuelf7ii" path="res://assets/BG/Phase 2/4.png" id="10_plhnw"]
-[ext_resource type="Texture2D" uid="uid://b7eekxtporomm" path="res://assets/GUI/Game Screen UI/2.png" id="10_t7lwq"]
+[ext_resource type="Texture2D" uid="uid://c3xww2i2skpq1" path="res://assets/BG/Phase 1/2.png" id="10_t7lwq"]
 [ext_resource type="Texture2D" uid="uid://rxnciromwi5l" path="res://assets/BG/Phase 2/5.png" id="11_t7lwq"]
 [ext_resource type="Script" uid="uid://d22ltv5khw2fa" path="res://scripts/health_bar.gd" id="11_x2w7c"]
 [ext_resource type="Texture2D" uid="uid://cpf5ahqnmuv2" path="res://assets/GUI/Game Screen UI/hunger.png" id="12_pktkd"]
@@ -18,6 +17,12 @@
 [ext_resource type="PackedScene" uid="uid://cqn1xtwbw5n5l" path="res://scenes/Collectibles/food.tscn" id="18_whigq"]
 [ext_resource type="PackedScene" uid="uid://co4b1kiuq2dcm" path="res://scenes/Collectibles/collectible_key.tscn" id="19_nexeh"]
 [ext_resource type="PackedScene" uid="uid://4m0c4x6ggxmf" path="res://scenes/Collectibles/collectible_bomb.tscn" id="20_3lrop"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ysw53"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3xvx2"]
+bg_color = Color(1, 0.321569, 0.364706, 1)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_heptv"]
 distance = 122.738
@@ -131,6 +136,22 @@ layer = 5
 scale = Vector2(0.6, 0.6)
 transform = Transform2D(0.6, 0, 0, 0.6, 0, 0)
 
+[node name="ProgressBar" type="ProgressBar" parent="GUI"]
+offset_left = 458.0
+offset_top = 157.0
+offset_right = 787.0
+offset_bottom = 205.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ysw53")
+theme_override_styles/fill = SubResource("StyleBoxFlat_3xvx2")
+value = 50.0
+show_percentage = false
+script = ExtResource("11_x2w7c")
+
+[node name="Gen UI" type="TextureRect" parent="GUI"]
+offset_right = 3206.4
+offset_bottom = 1803.6
+texture = ExtResource("7_ysw53")
+
 [node name="inv_ui" parent="GUI" instance=ExtResource("7_w82rq")]
 offset_left = 50.0
 offset_top = 300.0
@@ -144,21 +165,9 @@ offset_bottom = 1000.0
 scale = Vector2(0.2, 0.2)
 pivot_offset = Vector2(30, 30)
 tooltip_text = "Menu"
-texture_normal = ExtResource("8_rjjk6")
-
-[node name="health bar" type="TextureProgressBar" parent="GUI"]
-offset_left = 220.0
-offset_top = -100.0
-offset_right = 1220.0
-offset_bottom = 900.0
-scale = Vector2(0.4, 0.4)
-tooltip_text = "Health"
-value = 50.0
-texture_over = ExtResource("9_plhnw")
-texture_progress = ExtResource("10_t7lwq")
-script = ExtResource("11_x2w7c")
 
 [node name="hunger bar" type="TextureProgressBar" parent="GUI"]
+visible = false
 offset_left = 230.0
 offset_top = 50.0
 offset_right = 1230.0
