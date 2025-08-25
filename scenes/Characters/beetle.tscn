@@ -103,7 +103,7 @@ animations = [{
 "texture": ExtResource("15_ans0d")
 }],
 "loop": true,
-"name": &"rest",
+"name": &"stand",
 "speed": 5.0
 }]
 
@@ -112,7 +112,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/path = NodePath("Pivot/Sprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -128,7 +128,7 @@ length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/path = NodePath("Pivot/Sprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -155,19 +155,21 @@ height = 610.0
 radius = 30.0
 height = 106.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mhe5e"]
-radius = 36.0
-height = 118.0
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_mhe5e"]
+a = Vector2(8, 55)
+b = Vector2(-9, 55)
 
 [node name="Beetle" type="CharacterBody2D"]
 script = ExtResource("1_k76xx")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Pivot"]
 position = Vector2(44, -1)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_46d1w")
-animation = &"rest"
-autoplay = "rest"
+animation = &"crawl"
+autoplay = "stand"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -181,17 +183,11 @@ position = Vector2(-4, 5)
 position = Vector2(0, -13)
 shape = SubResource("RectangleShape2D_k76xx")
 
-[node name="ChargeTimer" type="Timer" parent="."]
-
-[node name="VulnerableTimer" type="Timer" parent="."]
-
-[node name="AttackTimer" type="Timer" parent="."]
-
 [node name="HurtBox" type="Area2D" parent="."]
 position = Vector2(44, -1)
 scale = Vector2(0.2, 0.2)
-collision_layer = 4
-collision_mask = 2
+collision_layer = 32
+collision_mask = 4
 script = ExtResource("8_jrr2h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
@@ -200,7 +196,8 @@ shape = SubResource("CapsuleShape2D_qrnk6")
 disabled = true
 
 [node name="HitBox" type="Area2D" parent="."]
-collision_layer = 8
+collision_layer = 16
+collision_mask = 8
 script = ExtResource("23_mhe5e")
 metadata/_custom_type_script = "uid://cfdlbfbudy12s"
 
@@ -208,15 +205,12 @@ metadata/_custom_type_script = "uid://cfdlbfbudy12s"
 position = Vector2(-10, 22)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_5gsta")
+disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(1, -8)
-shape = SubResource("CapsuleShape2D_mhe5e")
-one_way_collision = true
+position = Vector2(-1, -7)
+shape = SubResource("SegmentShape2D_mhe5e")
 
 [connection signal="body_entered" from="Player Detector" to="." method="_on_player_detector_body_entered"]
 [connection signal="body_exited" from="Player Detector" to="." method="_on_player_detector_body_exited"]
-[connection signal="timeout" from="ChargeTimer" to="." method="_on_charge_timer_timeout"]
-[connection signal="timeout" from="VulnerableTimer" to="." method="_on_vulnerable_timer_timeout"]
-[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
