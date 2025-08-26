@@ -29,11 +29,8 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("13_emjoi")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_qr3hx")
 }],
-"loop": false,
+"loop": true,
 "name": &"attack",
 "speed": 5.0
 }, {
@@ -105,6 +102,14 @@ animations = [{
 "loop": true,
 "name": &"stand",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_qr3hx")
+}],
+"loop": true,
+"name": &"vulnerable",
+"speed": 5.0
 }]
 
 [sub_resource type="Animation" id="Animation_6wt1p"]
@@ -168,7 +173,7 @@ script = ExtResource("1_k76xx")
 position = Vector2(44, -1)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_46d1w")
-animation = &"crawl"
+animation = &"vulnerable"
 autoplay = "stand"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -210,6 +215,7 @@ disabled = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -7)
 shape = SubResource("SegmentShape2D_mhe5e")
+one_way_collision = true
 
 [connection signal="body_entered" from="Player Detector" to="." method="_on_player_detector_body_entered"]
 [connection signal="body_exited" from="Player Detector" to="." method="_on_player_detector_body_exited"]
