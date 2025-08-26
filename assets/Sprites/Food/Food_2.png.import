@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://iwggw3st1ihx"
-path="res://.godot/imported/6.PNG-e420335f94b47141d6af49f0bfbfab36.ctex"
+uid="uid://upqibdalcf1c"
+path="res://.godot/imported/Food_2.png-6c6e008b73db9975d77175c8fa4afb73.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/BG/Phase 1/6.PNG"
-dest_files=["res://.godot/imported/6.PNG-e420335f94b47141d6af49f0bfbfab36.ctex"]
+source_file="res://assets/Sprites/Food/Food_2.png"
+dest_files=["res://.godot/imported/Food_2.png-6c6e008b73db9975d77175c8fa4afb73.ctex"]
 
 [params]
 
