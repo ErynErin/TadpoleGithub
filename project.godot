@@ -21,6 +21,10 @@ InteractionManager="*res://scenes/InteractionManager.tscn"
 GameManager="*res://scenes/game_manager.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
+[dialogue_manager]
+
+runtime/balloon_path="res://dialogues/balloon.tscn"
+
 [display]
 
 window/size/viewport_width=1920

@@ -1,0 +1,361 @@
+[gd_scene load_steps=12 format=3 uid="uid://su0dpcey3lmf"]
+
+[ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
+[ext_resource type="Texture2D" uid="uid://bxy50f8joix0l" path="res://assets/GUI/Dialogue Boxes/Tutorial_DialogueBox.png" id="2_ooonl"]
+[ext_resource type="FontFile" uid="uid://chvpvepqarnv6" path="res://assets/Fonts/Tedtadpole-Regular.ttf" id="2_pa16h"]
+[ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
+
+[sub_resource type="GDScript" id="GDScript_gqa88"]
+script/source = "extends CanvasLayer
+## A basic dialogue balloon for use with Dialogue Manager.
+
+## The action to use for advancing the dialogue
+@export var next_action: StringName = &\"ui_accept\"
+
+## The action to use to skip typing the dialogue
+@export var skip_action: StringName = &\"ui_cancel\"
+
+## The dialogue resource
+var resource: DialogueResource
+
+## Temporary game states
+var temporary_game_states: Array = []
+
+## See if we are waiting for the player
+var is_waiting_for_input: bool = false
+
+## See if we are running a long mutation and should hide the balloon
+var will_hide_balloon: bool = false
+
+## A dictionary to store any ephemeral variables
+var locals: Dictionary = {}
+
+var _locale: String = TranslationServer.get_locale()
+
+## The current line
+var dialogue_line: DialogueLine:
+	set(value):
+		if value:
+			dialogue_line = value
+			apply_dialogue_line()
+		else:
+			# The dialogue has finished so close the balloon
+			queue_free()
+	get:
+		return dialogue_line
+
+## A cooldown timer for delaying the balloon hide when encountering a mutation.
+var mutation_cooldown: Timer = Timer.new()
+
+## The base balloon anchor
+@onready var balloon: Control = %Balloon
+
+## The label showing the name of the currently speaking character
+@onready var character_label: RichTextLabel = %CharacterLabel
+
+## The label showing the currently spoken dialogue
+@onready var dialogue_label: DialogueLabel = %DialogueLabel
+
+## The menu of responses
+@onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
+
+
+func _ready() -> void:
+	balloon.hide()
+	Engine.get_singleton(\"DialogueManager\").mutated.connect(_on_mutated)
+
+	# If the responses menu doesn't have a next action set, use this one
+	if responses_menu.next_action.is_empty():
+		responses_menu.next_action = next_action
+
+	mutation_cooldown.timeout.connect(_on_mutation_cooldown_timeout)
+	add_child(mutation_cooldown)
+
+
+func _unhandled_input(_event: InputEvent) -> void:
+	# Only the balloon is allowed to handle input while it's showing
+	get_viewport().set_input_as_handled()
+
+
+func _notification(what: int) -> void:
+	## Detect a change of locale and update the current dialogue line to show the new language
+	if what == NOTIFICATION_TRANSLATION_CHANGED and _locale != TranslationServer.get_locale() and is_instance_valid(dialogue_label):
+		_locale = TranslationServer.get_locale()
+		var visible_ratio = dialogue_label.visible_ratio
+		self.dialogue_line = await resource.get_next_dialogue_line(dialogue_line.id)
+		if visible_ratio < 1:
+			dialogue_label.skip_typing()
+
+
+## Start some dialogue
+func start(dialogue_resource: DialogueResource, title: String, extra_game_states: Array = []) -> void:
+	temporary_game_states = [self] + extra_game_states
+	is_waiting_for_input = false
+	resource = dialogue_resource
+	self.dialogue_line = await resource.get_next_dialogue_line(title, temporary_game_states)
+
+
+## Apply any changes to the balloon given a new [DialogueLine].
+func apply_dialogue_line() -> void:
+	mutation_cooldown.stop()
+
+	is_waiting_for_input = false
+	balloon.focus_mode = Control.FOCUS_ALL
+	balloon.grab_focus()
+
+	character_label.visible = not dialogue_line.character.is_empty()
+	character_label.text = tr(dialogue_line.character, \"dialogue\")
+
+	dialogue_label.hide()
+	dialogue_label.dialogue_line = dialogue_line
+
+	responses_menu.hide()
+	responses_menu.responses = dialogue_line.responses
+
+	# Show our balloon
+	balloon.show()
+	will_hide_balloon = false
+
+	dialogue_label.show()
+	if not dialogue_line.text.is_empty():
+		dialogue_label.type_out()
+		await dialogue_label.finished_typing
+
+	# Wait for input
+	if dialogue_line.responses.size() > 0:
+		balloon.focus_mode = Control.FOCUS_NONE
+		responses_menu.show()
+	elif dialogue_line.time != \"\":
+		var time = dialogue_line.text.length() * 0.02 if dialogue_line.time == \"auto\" else dialogue_line.time.to_float()
+		await get_tree().create_timer(time).timeout
+		next(dialogue_line.next_id)
+	else:
+		is_waiting_for_input = true
+		balloon.focus_mode = Control.FOCUS_ALL
+		balloon.grab_focus()
+
+
+## Go to the next line
+func next(next_id: String) -> void:
+	self.dialogue_line = await resource.get_next_dialogue_line(next_id, temporary_game_states)
+
+
+#region Signals
+
+
+func _on_mutation_cooldown_timeout() -> void:
+	if will_hide_balloon:
+		will_hide_balloon = false
+		balloon.hide()
+
+
+func _on_mutated(_mutation: Dictionary) -> void:
+	is_waiting_for_input = false
+	will_hide_balloon = true
+	mutation_cooldown.start(0.1)
+
+
+func _on_balloon_gui_input(event: InputEvent) -> void:
+	# See if we need to skip typing of the dialogue
+	if dialogue_label.is_typing:
+		var mouse_was_clicked: bool = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed()
+		var skip_button_was_pressed: bool = event.is_action_pressed(skip_action)
+		if mouse_was_clicked or skip_button_was_pressed:
+			get_viewport().set_input_as_handled()
+			dialogue_label.skip_typing()
+			return
+
+	if not is_waiting_for_input: return
+	if dialogue_line.responses.size() > 0: return
+
+	# When there are no response options the balloon itself is the clickable thing
+	get_viewport().set_input_as_handled()
+
+	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+		next(dialogue_line.next_id)
+	elif event.is_action_pressed(next_action) and get_viewport().gui_get_focus_owner() == balloon:
+		next(dialogue_line.next_id)
+
+
+func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
+	next(response.next_id)
+
+
+#endregion
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.329412, 0.329412, 0.329412, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ri4m3"]
+bg_color = Color(0.121569, 0.121569, 0.121569, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e0njw"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.6, 0.6, 0.6, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pa16h"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qkmqt"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Theme" id="Theme_qq3yp"]
+default_font = ExtResource("2_pa16h")
+default_font_size = 30
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/fonts/font = ExtResource("2_pa16h")
+Button/styles/disabled = SubResource("StyleBoxFlat_spyqn")
+Button/styles/focus = SubResource("StyleBoxFlat_ri4m3")
+Button/styles/hover = SubResource("StyleBoxFlat_e0njw")
+Button/styles/normal = SubResource("StyleBoxFlat_e0njw")
+Button/styles/pressed = SubResource("StyleBoxFlat_pa16h")
+MarginContainer/constants/margin_bottom = 15
+MarginContainer/constants/margin_left = 30
+MarginContainer/constants/margin_right = 30
+MarginContainer/constants/margin_top = 15
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_qkmqt")
+
+[node name="ExampleBalloon" type="CanvasLayer"]
+layer = 100
+script = SubResource("GDScript_gqa88")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(958.794, 531.045)
+texture = ExtResource("2_ooonl")
+
+[node name="Balloon" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_qq3yp")
+
+[node name="MarginContainer" type="MarginContainer" parent="Balloon"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 371.775
+offset_top = -321.343
+offset_right = 458.775
+offset_bottom = 268.657
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="Balloon/MarginContainer"]
+clip_children = 2
+layout_mode = 2
+mouse_filter = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Balloon/MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="CharacterLabel" type="RichTextLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "Character"
+fit_content = true
+scroll_active = false
+
+[node name="DialogueLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_a8ve6")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "Dialogue..."
+
+[node name="ResponsesMenu" type="VBoxContainer" parent="Balloon" node_paths=PackedStringArray("response_template")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -290.5
+offset_top = -35.0
+offset_right = 290.5
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 2
+alignment = 1
+script = ExtResource("3_72ixx")
+response_template = NodePath("ResponseExample")
+
+[node name="ResponseExample" type="Button" parent="Balloon/ResponsesMenu"]
+layout_mode = 2
+text = "Response example"
+
+[connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
+[connection signal="response_selected" from="Balloon/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]
