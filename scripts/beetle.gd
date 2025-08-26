@@ -96,14 +96,14 @@ func _attack_state(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 		has_jumped = true
 		print("ATTACK started. Jumping.")
-
+	#print(player_was_hit)
 	if state_timer >= ATTACK_DURATION:
 		print("ATTACK duration finished. Checking for player hit.")
 		if player_was_hit:
 			print("Player was hit.")
 			if is_player_in_range:
-				print("Player still in range. Looping to CHARGE.")
-				_change_state(State.CHARGE)
+				print("Player still in range. Looping to STAND.")
+				_change_state(State.STAND)
 			else:
 				print("Player out of range. Transitioning to CRAWL.")
 				_change_state(State.CRAWL)
@@ -124,9 +124,7 @@ func _vulnerable_state(delta: float) -> void:
 			print("Player not in range. Transitioning to STAND.")
 			_change_state(State.STAND)
 
-# Main state transition function.
 func _change_state(new_state) -> void:
-	print("Changing state from ", current_state, " to ", new_state)
 	current_state = new_state
 	state_timer = 0.0
 	has_jumped = false # Reset jump flag on state change
@@ -136,43 +134,37 @@ func _change_state(new_state) -> void:
 		State.STAND:
 			hurt_box.set_deferred("monitoring", false)
 			hit_box.set_deferred("monitoring", false)
-			get_node("CollisionShape2D").set_deferred("disabled", false)
 			sprite_2d.play("stand")
 		State.CRAWL:
 			hurt_box.set_deferred("monitoring", false)
 			hit_box.set_deferred("monitoring", false)
-			# Re-enable beetle's collision
-			get_node("CollisionShape2D").set_deferred("disabled", false)
 			sprite_2d.play("crawl")
 		State.CHARGE:
 			hurt_box.set_deferred("monitoring", false)
 			hit_box.set_deferred("monitoring", false)
-			get_node("CollisionShape2D").set_deferred("disabled", false)
 			sprite_2d.play("charge")
 		State.ATTACK:
 			hurt_box.set_deferred("monitoring", false)
 			hit_box.set_deferred("monitoring", true)
-			get_node("CollisionShape2D").set_deferred("disabled", true)
 			sprite_2d.play("attack")
 		State.VULNERABLE:
 			hurt_box.set_deferred("monitoring", true)
 			hit_box.set_deferred("monitoring", false)
-			get_node("CollisionShape2D").set_deferred("disabled", false)
 			sprite_2d.play("vulnerable")
 
-# Signals to handle player detection.
 func _on_player_detector_body_entered(body: Node2D) -> void:
 	if body == player:
 		is_player_in_range = true
-		print("Player entered detection area. is_player_in_range = ", is_player_in_range)
-		if current_state != State.CHARGE and current_state != State.ATTACK:
+		print("Player entered detection area.")
+		# Only transition to CHARGE if the current state is STAND or CRAWL.
+		if current_state == State.STAND or current_state == State.CRAWL:
 			print("Player detected, not in a locked state. Transitioning to CHARGE.")
 			_change_state(State.CHARGE)
 
 func _on_player_detector_body_exited(body: Node2D) -> void:
 	if body == player:
 		is_player_in_range = false
-		print("Player exited detection area. is_player_in_range = ", is_player_in_range)
+		print("Player exited detection area")
 
 func take_damage(damage: float) -> void:
 	enemy_health -= damage
@@ -182,8 +174,8 @@ func take_damage(damage: float) -> void:
 		print("Beetle defeated! Queueing free.")
 		queue_free()
 
-func _on_hit_box_area_entered(area: Area2D) -> void:
-	if area.is_in_group("player_hurt_box"):
+func _on_hit_box_area_entered(area) -> void:
+	if area.owner.is_in_group("player"):
 		print("Player's HurtBox was hit.")
 		player_was_hit = true
-		GameManager.take_damage(10)
+		GameManager.take_damage(10.0)
