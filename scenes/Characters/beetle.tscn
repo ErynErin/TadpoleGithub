@@ -24,6 +24,10 @@
 [ext_resource type="Texture2D" uid="uid://3rjop35mltqt" path="res://assets/Characters/Water Beetle Tank/Idle/Beetle_7.png" id="15_ans0d"]
 [ext_resource type="Script" uid="uid://cfdlbfbudy12s" path="res://scripts/hitbox.gd" id="23_mhe5e"]
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_mhe5e"]
+a = Vector2(8, 55)
+b = Vector2(-9, 55)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_46d1w"]
 animations = [{
 "frames": [{
@@ -160,14 +164,15 @@ height = 610.0
 radius = 30.0
 height = 106.0
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_mhe5e"]
-a = Vector2(8, 55)
-b = Vector2(-9, 55)
-
 [node name="Beetle" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_k76xx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -7)
+shape = SubResource("SegmentShape2D_mhe5e")
+one_way_collision = true
 
 [node name="Pivot" type="Node2D" parent="."]
 
@@ -211,11 +216,6 @@ metadata/_custom_type_script = "uid://cfdlbfbudy12s"
 position = Vector2(-10, 22)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_5gsta")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -7)
-shape = SubResource("SegmentShape2D_mhe5e")
-one_way_collision = true
 
 [connection signal="body_entered" from="Player Detector" to="." method="_on_player_detector_body_entered"]
 [connection signal="body_exited" from="Player Detector" to="." method="_on_player_detector_body_exited"]
