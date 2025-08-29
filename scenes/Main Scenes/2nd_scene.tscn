@@ -1,28 +1,33 @@
-[gd_scene load_steps=25 format=3 uid="uid://cfv4f6bi46hrx"]
+[gd_scene load_steps=27 format=3 uid="uid://cfv4f6bi46hrx"]
 
 [ext_resource type="Texture2D" uid="uid://cc6aiqta7j02x" path="res://assets/BG/Phase 2/1.png" id="7_aqdem"]
 [ext_resource type="PackedScene" uid="uid://ds8i10qow8msb" path="res://scenes/inventory_things/inv_ui.tscn" id="7_w82rq"]
-[ext_resource type="Texture2D" uid="uid://cvojlptff1xk5" path="res://assets/GUI/Game Screen UI/P1_health.png" id="7_ysw53"]
+[ext_resource type="Texture2D" uid="uid://5m0ipjw8b0j3" path="res://assets/GUI/Game Screen UI/P2_health.png" id="7_ysw53"]
+[ext_resource type="Script" uid="uid://0dthjh7hw83f" path="res://scripts/pause_button.gd" id="8_3xvx2"]
 [ext_resource type="Texture2D" uid="uid://darwte4arx7h6" path="res://assets/BG/Phase 2/2.png" id="8_w82rq"]
 [ext_resource type="Texture2D" uid="uid://bxbt6hevkcww1" path="res://assets/BG/Phase 2/3.png" id="9_rjjk6"]
 [ext_resource type="Texture2D" uid="uid://dc86inuelf7ii" path="res://assets/BG/Phase 2/4.png" id="10_plhnw"]
-[ext_resource type="Texture2D" uid="uid://c3xww2i2skpq1" path="res://assets/BG/Phase 1/2.png" id="10_t7lwq"]
 [ext_resource type="Texture2D" uid="uid://rxnciromwi5l" path="res://assets/BG/Phase 2/5.png" id="11_t7lwq"]
 [ext_resource type="Script" uid="uid://d22ltv5khw2fa" path="res://scripts/health_bar.gd" id="11_x2w7c"]
 [ext_resource type="Texture2D" uid="uid://cpf5ahqnmuv2" path="res://assets/GUI/Game Screen UI/hunger.png" id="12_pktkd"]
+[ext_resource type="PackedScene" uid="uid://3fegt1mkcao1" path="res://scenes/UI/merchant_dialogue.tscn" id="12_ysw53"]
 [ext_resource type="Texture2D" uid="uid://usodpdet6r8k" path="res://assets/GUI/Game Screen UI/hunger under bar.png" id="13_8hqba"]
 [ext_resource type="PackedScene" uid="uid://cmole1wjk2k70" path="res://scenes/UI/merchant_shop.tscn" id="14_dwpsk"]
 [ext_resource type="PackedScene" uid="uid://ctw57l6kowhya" path="res://scenes/UI/pause_menu.tscn" id="15_2npaq"]
-[ext_resource type="PackedScene" uid="uid://mo3hkwq7pjdf" path="res://scenes/Player/player_phase1.tscn" id="16_tljbm"]
+[ext_resource type="PackedScene" uid="uid://basdg6biv03al" path="res://scenes/Player/player_phase2.tscn" id="17_ysw53"]
 [ext_resource type="PackedScene" uid="uid://cqn1xtwbw5n5l" path="res://scenes/Collectibles/food.tscn" id="18_whigq"]
 [ext_resource type="PackedScene" uid="uid://co4b1kiuq2dcm" path="res://scenes/Collectibles/collectible_key.tscn" id="19_nexeh"]
 [ext_resource type="PackedScene" uid="uid://4m0c4x6ggxmf" path="res://scenes/Collectibles/collectible_bomb.tscn" id="20_3lrop"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ysw53"]
+[sub_resource type="SystemFont" id="SystemFont_3xvx2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vksdc"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3xvx2"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ssd1q"]
 bg_color = Color(1, 0.321569, 0.364706, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wkg83"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_heptv"]
 distance = 122.738
@@ -36,9 +41,6 @@ distance = -581.0
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p57ef"]
 normal = Vector2(1, 0)
 distance = -1014.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xlmt5"]
-size = Vector2(659, 75)
 
 [node name="Ted Game2" type="Node2D"]
 
@@ -141,10 +143,11 @@ offset_left = 458.0
 offset_top = 157.0
 offset_right = 787.0
 offset_bottom = 205.0
-theme_override_styles/background = SubResource("StyleBoxFlat_ysw53")
-theme_override_styles/fill = SubResource("StyleBoxFlat_3xvx2")
+theme_override_fonts/font = SubResource("SystemFont_3xvx2")
+theme_override_font_sizes/font_size = 27
+theme_override_styles/background = SubResource("StyleBoxFlat_vksdc")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ssd1q")
 value = 50.0
-show_percentage = false
 script = ExtResource("11_x2w7c")
 
 [node name="Gen UI" type="TextureRect" parent="GUI"]
@@ -152,19 +155,20 @@ offset_right = 3206.4
 offset_bottom = 1803.6
 texture = ExtResource("7_ysw53")
 
-[node name="inv_ui" parent="GUI" instance=ExtResource("7_w82rq")]
-offset_left = 50.0
-offset_top = 300.0
-offset_right = 50.0
-offset_bottom = 300.0
-scale = Vector2(0.17, 0.17)
+[node name="PauseButton" type="Button" parent="GUI"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 78.0
+offset_top = 95.0
+offset_right = 348.0
+offset_bottom = 310.0
+script = ExtResource("8_3xvx2")
 
-[node name="Main Menu Button" type="TextureButton" parent="GUI"]
-offset_right = 1000.0
-offset_bottom = 1000.0
-scale = Vector2(0.2, 0.2)
-pivot_offset = Vector2(30, 30)
-tooltip_text = "Menu"
+[node name="inv_ui" parent="GUI" instance=ExtResource("7_w82rq")]
+offset_left = 100.0
+offset_top = 450.0
+offset_right = 100.0
+offset_bottom = 450.0
+scale = Vector2(0.17, 0.17)
 
 [node name="hunger bar" type="TextureProgressBar" parent="GUI"]
 visible = false
@@ -178,9 +182,10 @@ stretch_margin_top = 12
 stretch_margin_right = 12
 stretch_margin_bottom = 12
 texture_over = ExtResource("12_pktkd")
-texture_progress = ExtResource("10_t7lwq")
+texture_progress = SubResource("CompressedTexture2D_wkg83")
 
 [node name="hunger lower bar" type="NinePatchRect" parent="GUI"]
+visible = false
 offset_left = 230.0
 offset_top = 58.0
 offset_right = 230.0
@@ -190,29 +195,18 @@ region_rect = Rect2(0, 0, 790, 1000)
 
 [node name="merchant shop" parent="GUI" instance=ExtResource("14_dwpsk")]
 visible = false
-scale = Vector2(1.11, 1.11)
+scale = Vector2(1.67, 1.67)
+
+[node name="MerchantDialogue" parent="GUI" instance=ExtResource("12_ysw53")]
+visible = false
+scale = Vector2(1.67, 1.67)
 
 [node name="Pause Menu" parent="GUI" instance=ExtResource("15_2npaq")]
+process_mode = 1
 visible = false
+offset_right = 958.0
+offset_bottom = 546.0
 scale = Vector2(1.11, 1.11)
-
-[node name="Tadpole" parent="." instance=ExtResource("16_tljbm")]
-z_index = 5
-position = Vector2(-1080.36, 58.5956)
-scale = Vector2(0.5, 0.5)
-
-[node name="Camera2D" type="Camera2D" parent="Tadpole"]
-position = Vector2(-12, 1142)
-scale = Vector2(0.6, 0.6)
-offset = Vector2(0, -400)
-zoom = Vector2(1.13, 1.13)
-process_callback = 0
-limit_top = -180
-limit_bottom = 1200
-limit_smoothed = true
-position_smoothing_enabled = true
-editor_draw_limits = true
-editor_draw_drag_margin = true
 
 [node name="World Boundaries" type="Node2D" parent="."]
 position = Vector2(1, 68)
@@ -240,7 +234,6 @@ physics_material_override = SubResource("PhysicsMaterial_lbhrr")
 shape = SubResource("WorldBoundaryShape2D_p57ef")
 
 [node name="Food" type="Node2D" parent="."]
-visible = false
 metadata/_edit_lock_ = true
 
 [node name="food" parent="Food" instance=ExtResource("18_whigq")]
@@ -264,20 +257,35 @@ position = Vector2(648, 399)
 scale = Vector2(1.3, 1.3)
 
 [node name="Collectible Item" parent="." instance=ExtResource("19_nexeh")]
+visible = false
 position = Vector2(-29, 390)
 scale = Vector2(1.3, 1.3)
 
 [node name="Collectible Item2" parent="." instance=ExtResource("19_nexeh")]
+visible = false
 position = Vector2(54, 390)
 scale = Vector2(1.3, 1.3)
 
 [node name="Collectible Item3" parent="." instance=ExtResource("20_3lrop")]
+visible = false
 position = Vector2(-155, 390)
 scale = Vector2(1.3, 1.3)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="player" parent="." instance=ExtResource("17_ysw53")]
+z_index = 5
+position = Vector2(-1080.36, 58.5956)
+scale = Vector2(0.5, 0.5)
+collision_layer = 129
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(740, 525.5)
-shape = SubResource("RectangleShape2D_xlmt5")
-debug_color = Color(0.987983, 0.106434, 1.92523e-07, 0.42)
+[node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(-12, 1142)
+scale = Vector2(0.6, 0.6)
+offset = Vector2(0, -400)
+zoom = Vector2(1.13, 1.13)
+process_callback = 0
+limit_top = -180
+limit_bottom = 1200
+limit_smoothed = true
+position_smoothing_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true

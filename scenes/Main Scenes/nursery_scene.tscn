@@ -1,15 +1,16 @@
-[gd_scene load_steps=32 format=3 uid="uid://d0hqwpnv7oakw"]
+[gd_scene load_steps=34 format=3 uid="uid://d0hqwpnv7oakw"]
 
 [ext_resource type="Texture2D" uid="uid://cstcdjnw86nfs" path="res://assets/BG/Phase 1/1.png" id="1_36xgi"]
 [ext_resource type="Texture2D" uid="uid://c3xww2i2skpq1" path="res://assets/BG/Phase 1/2.png" id="2_is0ew"]
 [ext_resource type="Texture2D" uid="uid://ci5h6qat4a3lg" path="res://assets/BG/Phase 1/3.png" id="3_xlmt5"]
 [ext_resource type="Texture2D" uid="uid://btvfpva4ccs2p" path="res://assets/BG/Phase 1/4.png" id="4_heptv"]
 [ext_resource type="Texture2D" uid="uid://cx2obingrau0c" path="res://assets/BG/Phase 1/5.png" id="5_b40aj"]
-[ext_resource type="Texture2D" uid="uid://iwggw3st1ihx" path="res://assets/BG/Phase 1/6.png" id="6_y2ypf"]
+[ext_resource type="Texture2D" uid="uid://iwggw3st1ihx" path="res://assets/BG/Phase 1/6.PNG" id="6_y2ypf"]
 [ext_resource type="PackedScene" uid="uid://ds8i10qow8msb" path="res://scenes/inventory_things/inv_ui.tscn" id="7_neo3g"]
 [ext_resource type="PackedScene" uid="uid://bntvonb1a06nv" path="res://scenes/Characters/beetle.tscn" id="7_y2ypf"]
 [ext_resource type="PackedScene" uid="uid://bd1qu81rucmuf" path="res://scenes/Characters/merchant.tscn" id="8_nsaye"]
 [ext_resource type="PackedScene" uid="uid://xov1nahqgphe" path="res://scenes/Characters/worm.tscn" id="9_p0owv"]
+[ext_resource type="Script" uid="uid://0dthjh7hw83f" path="res://scripts/pause_button.gd" id="9_qfx3x"]
 [ext_resource type="Script" uid="uid://d22ltv5khw2fa" path="res://scripts/health_bar.gd" id="11_6rsge"]
 [ext_resource type="Texture2D" uid="uid://cpf5ahqnmuv2" path="res://assets/GUI/Game Screen UI/hunger.png" id="12_gfx3w"]
 [ext_resource type="Texture2D" uid="uid://usodpdet6r8k" path="res://assets/GUI/Game Screen UI/hunger under bar.png" id="13_5lbhe"]
@@ -24,6 +25,8 @@
 [ext_resource type="PackedScene" uid="uid://cmole1wjk2k70" path="res://scenes/UI/merchant_shop.tscn" id="22_odwuh"]
 [ext_resource type="PackedScene" uid="uid://bokyvhomjmfi4" path="res://scenes/Platforms/P1 Working Platforms/p1_left_plat.tscn" id="23_nsaye"]
 [ext_resource type="PackedScene" uid="uid://wtpm74wh30kh" path="res://scenes/Platforms/P1 Working Platforms/p1_right_plat.tscn" id="24_p0owv"]
+
+[sub_resource type="SystemFont" id="SystemFont_nsaye"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y2ypf"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -157,10 +160,11 @@ offset_left = 458.0
 offset_top = 157.0
 offset_right = 787.0
 offset_bottom = 205.0
+theme_override_fonts/font = SubResource("SystemFont_nsaye")
+theme_override_font_sizes/font_size = 27
 theme_override_styles/background = SubResource("StyleBoxFlat_y2ypf")
 theme_override_styles/fill = SubResource("StyleBoxFlat_nsaye")
 value = 50.0
-show_percentage = false
 script = ExtResource("11_6rsge")
 
 [node name="Gen UI" type="TextureRect" parent="GUI"]
@@ -168,7 +172,16 @@ offset_right = 3206.4
 offset_bottom = 1803.6
 texture = ExtResource("15_gbf57")
 
+[node name="PauseButton" type="Button" parent="GUI"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 78.0
+offset_top = 95.0
+offset_right = 348.0
+offset_bottom = 310.0
+script = ExtResource("9_qfx3x")
+
 [node name="inv_ui" parent="GUI" instance=ExtResource("7_neo3g")]
+visible = false
 offset_left = 100.0
 offset_top = 450.0
 offset_right = 100.0
@@ -190,6 +203,7 @@ texture_over = ExtResource("12_gfx3w")
 texture_progress = SubResource("CompressedTexture2D_nh5hk")
 
 [node name="hunger lower bar" type="NinePatchRect" parent="GUI"]
+visible = false
 offset_left = 230.0
 offset_top = 58.0
 offset_right = 230.0
@@ -304,19 +318,19 @@ scale = Vector2(0.15, 0.15)
 frame_progress = 0.959508
 
 [node name="Worm" parent="." instance=ExtResource("9_p0owv")]
-position = Vector2(1404, 553)
+position = Vector2(1448, 584)
 scale = Vector2(0.55, 0.55)
 
 [node name="Worm2" parent="." instance=ExtResource("9_p0owv")]
-position = Vector2(1624, 553)
+position = Vector2(1668, 584)
 scale = Vector2(0.55, 0.55)
 
 [node name="Worm3" parent="." instance=ExtResource("9_p0owv")]
-position = Vector2(1850, 553)
+position = Vector2(1894, 584)
 scale = Vector2(0.55, 0.55)
 
 [node name="Beetle" parent="." instance=ExtResource("7_y2ypf")]
-position = Vector2(216, 553)
+position = Vector2(633, 570)
 scale = Vector2(1.5, 1.5)
 
 [node name="StaticBody2D" parent="." instance=ExtResource("22_gbf57")]

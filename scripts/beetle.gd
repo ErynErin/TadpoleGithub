@@ -130,22 +130,32 @@ func _change_state(new_state) -> void:
 		State.STAND:
 			hurt_box.set_deferred("monitoring", false)
 			hit_box.set_deferred("monitoring", false)
+			hurt_box.set_deferred("monitorable", false)
+			hit_box.set_deferred("monitorable", false)
 			sprite_2d.play("stand")
 		State.CRAWL:
 			hurt_box.set_deferred("monitoring", false)
 			hit_box.set_deferred("monitoring", false)
+			hurt_box.set_deferred("monitorable", false)
+			hit_box.set_deferred("monitorable", false)
 			sprite_2d.play("crawl")
 		State.CHARGE:
 			hurt_box.set_deferred("monitoring", false)
 			hit_box.set_deferred("monitoring", false)
+			hurt_box.set_deferred("monitorable", false)
+			hit_box.set_deferred("monitorable", false)
 			sprite_2d.play("charge")
 		State.ATTACK:
 			hurt_box.set_deferred("monitoring", false)
 			hit_box.set_deferred("monitoring", true)
+			hurt_box.set_deferred("monitorable", false)
+			hit_box.set_deferred("monitorable", true)
 			sprite_2d.play("attack")
 		State.VULNERABLE:
 			hurt_box.set_deferred("monitoring", true)
 			hit_box.set_deferred("monitoring", false)
+			hurt_box.set_deferred("monitorable", true)
+			hit_box.set_deferred("monitorable", false)
 			sprite_2d.play("vulnerable")
 
 func _on_player_detector_body_entered(body: Node2D) -> void:

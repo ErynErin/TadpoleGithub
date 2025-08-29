@@ -39,7 +39,7 @@ func add_hunger():
 		print("hunger: ", hunger, "more than 5")
 
 func add_health():
-	max_health += 50
+	max_health += 20
 	print("health: ", max_health)
 	
 func add_strength():
