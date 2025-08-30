@@ -146,7 +146,7 @@ layer = 5
 scale = Vector2(0.6, 0.6)
 transform = Transform2D(0.6, 0, 0, 0.6, 0, 0)
 
-[node name="ProgressBar" type="ProgressBar" parent="GUI"]
+[node name="HealthBar" type="ProgressBar" parent="GUI"]
 offset_left = 458.0
 offset_top = 157.0
 offset_right = 787.0

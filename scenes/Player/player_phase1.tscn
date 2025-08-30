@@ -92,16 +92,12 @@
 [ext_resource type="Texture2D" uid="uid://oojga4s58xw0" path="res://assets/1st stage mc/1st walk/1st walk0011.png" id="89_pgdua"]
 [ext_resource type="Script" uid="uid://dktsel320mpw7" path="res://scripts/hurtbox.gd" id="91_onspj"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mv62"]
+radius = 48.0
+height = 228.0
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_v3hta"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_cbf1i")
-}],
-"loop": false,
-"name": &"attack",
-"speed": 11.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_4vfid")
@@ -401,7 +397,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/path = NodePath("Pivot/AnimatedSprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -413,10 +409,11 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_onspj"]
 resource_name = "hurt"
+length = 0.55
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/path = NodePath("Pivot/AnimatedSprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -432,24 +429,24 @@ _data = {
 &"hurt": SubResource("Animation_onspj")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mv62"]
-radius = 48.0
-height = 228.0
-
 [node name="player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 129
 script = ExtResource("1_m07t0")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(23, -2)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -25)
+shape = SubResource("CapsuleShape2D_0mv62")
+
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pivot"]
+position = Vector2(44, 0)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_v3hta")
 animation = &"death"
-frame = 25
-frame_progress = 1.0
 
 [node name="Sword" parent="." instance=ExtResource("7_fjrip")]
-position = Vector2(-3, 29)
+position = Vector2(16, 29)
 scale = Vector2(0.5, 0.5)
 
 [node name="HurtBox" type="Area2D" parent="."]
@@ -459,16 +456,12 @@ script = ExtResource("91_onspj")
 metadata/_custom_type_script = "uid://dktsel320mpw7"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(-19, -38)
+position = Vector2(-1, -40)
 shape = SubResource("CapsuleShape2D_onspj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_vy06v")
 }
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-20, -23)
-shape = SubResource("CapsuleShape2D_0mv62")
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
