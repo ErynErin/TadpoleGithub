@@ -1,0 +1,93 @@
+[gd_scene load_steps=2 format=3 uid="uid://qvgqap54c1b1"]
+
+[ext_resource type="Script" uid="uid://cqoc0b47mff0a" path="res://scripts/options.gd" id="1_u46ye"]
+
+[node name="Options" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u46ye")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.27451)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -255.5
+offset_top = -266.5
+offset_right = 255.5
+offset_bottom = 266.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.195545, 0.195545, 0.195545, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -185.0
+offset_top = -117.0
+offset_right = 185.0
+offset_bottom = 117.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="Music_Label" type="Label" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Music"
+
+[node name="Music_Slider" type="HSlider" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="SFX Label" type="Label" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Sound Effects"
+
+[node name="SFX_Slider" type="HSlider" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 200.5
+offset_top = 29.5
+offset_right = 314.5
+offset_bottom = 71.5
+theme_override_font_sizes/font_size = 30
+text = "Options"
+
+[node name="Exit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -802.0
+offset_top = 298.0
+offset_right = -742.0
+offset_bottom = 355.0
+grow_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 35
+text = "X"
+
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://0gwvr1mcfucc"]
+[gd_scene load_steps=27 format=3 uid="uid://0gwvr1mcfucc"]
 
 [ext_resource type="Texture2D" uid="uid://dfoeb3l3cxt1d" path="res://assets/BG/Phase 3/1.png" id="1_ff7f0"]
 [ext_resource type="Texture2D" uid="uid://nodetolgruhr" path="res://assets/BG/Phase 3/2.png" id="2_7fgw2"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cmole1wjk2k70" path="res://scenes/UI/merchant_shop.tscn" id="14_coq2n"]
 [ext_resource type="PackedScene" uid="uid://ctw57l6kowhya" path="res://scenes/UI/pause_menu.tscn" id="15_btcw1"]
 [ext_resource type="PackedScene" uid="uid://mo3hkwq7pjdf" path="res://scenes/Player/player_phase1.tscn" id="16_qani7"]
+[ext_resource type="PackedScene" uid="uid://qvgqap54c1b1" path="res://scenes/UI/options.tscn" id="16_yatwi"]
 [ext_resource type="PackedScene" uid="uid://mlspxc2wfne5" path="res://scenes/Player/player_phase3.tscn" id="18_7fgw2"]
 [ext_resource type="PackedScene" uid="uid://bd1qu81rucmuf" path="res://scenes/Characters/merchant.tscn" id="23_xty0j"]
 
@@ -207,6 +208,9 @@ scale = Vector2(1.11, 1.11)
 [node name="Pause Menu" parent="GUI" instance=ExtResource("15_btcw1")]
 visible = false
 scale = Vector2(1.11, 1.11)
+
+[node name="Options" parent="GUI" instance=ExtResource("16_yatwi")]
+visible = false
 
 [node name="Tadpole" parent="." instance=ExtResource("16_qani7")]
 visible = false

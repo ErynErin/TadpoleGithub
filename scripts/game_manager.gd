@@ -72,6 +72,16 @@ func hide_shop():
 	var merchant_shop = current_scene.get_node("GUI/merchant shop")
 	merchant_shop.visible = false
 
+func show_options():
+	var current_scene = get_tree().current_scene	
+	var options = current_scene.get_node("GUI/Options")
+	options.visible = true
+	
+func hide_options():
+	var current_scene = get_tree().current_scene
+	var options = current_scene.get_node("GUI/Options")
+	options.visible = false
+
 func take_damage(damage: float):
 	current_health -= damage
 	current_health = max(current_health, 0)  # Don't go below 0
