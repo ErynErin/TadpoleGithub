@@ -29,7 +29,6 @@ var has_jumped: bool = false # Add this flag
 var player_was_hit: bool = false # New variable to track if the player was hit
 
 func _ready() -> void:
-	print("Beetle spawned. Initial state: STAND")
 	_change_state(State.STAND)
 
 func _physics_process(delta: float) -> void:    
@@ -53,12 +52,9 @@ func _stand_state(delta: float) -> void:
 	velocity.x = 0 # Stop horizontal movement
 	state_timer += delta
 	if state_timer >= STANDING_DURATION:
-		print("STAND duration finished.")
 		if is_player_in_range:
-			print("Player still in range. Transitioning to CHARGE.")
 			_change_state(State.CHARGE)
 		else:
-			print("Player not in range. Transitioning to CRAWL.")
 			pivot.scale.x = -direction
 			_change_state(State.CRAWL)
 
@@ -68,7 +64,6 @@ func _crawl_state(delta: float) -> void:
 	distance_traveled += WALK_SPEED * delta
 
 	if distance_traveled >= WALK_DISTANCE:
-		print("CRAWL distance reached. Reversing direction and transitioning to STAND.")
 		distance_traveled = 0.0
 		direction *= -1
 		_change_state(State.STAND)
@@ -78,7 +73,6 @@ func _charge_state(delta: float) -> void:
 	velocity.x = 0 # Stop horizontal movement during charge
 	state_timer += delta
 	if state_timer >= CHARGE_DURATION:
-		print("CHARGE duration finished. Transitioning to ATTACK.")
 		_change_state(State.ATTACK)
 
 	if player:
@@ -92,32 +86,23 @@ func _attack_state(delta: float) -> void:
 	if is_on_floor() and not has_jumped:
 		velocity.y = JUMP_VELOCITY
 		has_jumped = true
-		print("ATTACK started. Jumping.")
 		
 	if state_timer >= ATTACK_DURATION:
-		print("ATTACK duration finished. Checking for player hit.")
 		if player_was_hit:
-			print("Player was hit.")
 			if is_player_in_range:
-				print("Player still in range. Looping to STAND & CHARGE.")
 				_change_state(State.STAND)
 			else:
-				print("Player out of range. Transitioning to CRAWL.")
 				_change_state(State.CRAWL)
 		else:
-			print("Player avoided the attack. Transitioning to VULNERABLE.")
 			_change_state(State.VULNERABLE)
 
 func _vulnerable_state(delta: float) -> void:
 	velocity.x = 0 # Stop horizontal movement
 	state_timer += delta
 	if state_timer >= VULNERABLE_DURATION:
-		print("VULNERABLE duration finished.")
 		if is_player_in_range:
-			print("Player still in range. Transitioning to CHARGE.")
 			_change_state(State.CHARGE)
 		else:
-			print("Player not in range. Transitioning to STAND.")
 			_change_state(State.STAND)
 
 func _change_state(new_state) -> void:
@@ -161,22 +146,17 @@ func _change_state(new_state) -> void:
 func _on_player_detector_body_entered(body: Node2D) -> void:
 	if body == player:
 		is_player_in_range = true
-		print("Player entered detection area.")
 		if current_state == State.STAND or current_state == State.CRAWL:
-			print("Player detected, not in a locked state. Transitioning to CHARGE.")
 			_change_state(State.CHARGE)
 
 func _on_player_detector_body_exited(body: Node2D) -> void:
 	if body == player:
 		is_player_in_range = false
-		print("Player exited detection area")
 
 func take_damage(damage: float) -> void:
 	enemy_health -= damage
 	animation_player.play("hurt")
-	print("Beetle Health: ", enemy_health)
 	if enemy_health <= 0:
-		print("Beetle defeated! Queueing free.")
 		queue_free()
 
 func _on_hit_box_area_entered(area) -> void:

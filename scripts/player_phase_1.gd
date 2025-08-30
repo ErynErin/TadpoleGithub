@@ -6,10 +6,15 @@ const JUMP_VELOCITY = -600.0
 @onready var sword: AnimatedSprite2D = $Sword
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+func _ready():
+	set_physics_process(true)
+	GameManager.player_died.connect(_on_player_died)
+
 func _physics_process(delta: float) -> void:
 	var SPEED = GameManager.speed
+	if GameManager.current_health <= 0:
+		return
 	
-# Get the input direction and handle the movement/deceleration.	
 	var direction := Input.get_axis("left", "right")
 	if direction:
 		velocity.x = direction * SPEED # go
@@ -57,3 +62,16 @@ func take_damage(damage: float):
 
 func _on_hurt_box_area_entered(_area) -> void:
 	animation_player.play("hurt")
+
+func _on_player_died():
+	print("Player is dead. Playing death animation and restarting.")
+	set_physics_process(false)
+	animated_sprite.play("death")
+	GameManager.player_died.disconnect(_on_player_died)
+	await animated_sprite.animation_finished
+	GameManager.hunger = 0
+	GameManager.max_health = 100.0
+	GameManager.current_health = 100.0
+	GameManager.strength = 10
+	GameManager.speed = 200
+	get_tree().reload_current_scene()
