@@ -25,8 +25,12 @@ var distance_traveled: float = 0.0
 var direction: float = 1.0
 var enemy_health = 20
 var is_player_in_range: bool = false
-var has_jumped: bool = false # Add this flag
-var player_was_hit: bool = false # New variable to track if the player was hit
+var has_jumped: bool = false
+var player_was_hit: bool = false
+
+# New variables for hit restrictions
+var total_hits_taken: int = 0  # Track total hits across lifespan
+var hit_this_vulnerable_cycle: bool = false  # Track if hit during current vulnerable state
 
 func _ready() -> void:
 	_change_state(State.STAND)
@@ -49,7 +53,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _stand_state(delta: float) -> void:
-	velocity.x = 0 # Stop horizontal movement
+	velocity.x = 0
 	state_timer += delta
 	if state_timer >= STANDING_DURATION:
 		if is_player_in_range:
@@ -68,9 +72,8 @@ func _crawl_state(delta: float) -> void:
 		direction *= -1
 		_change_state(State.STAND)
 
-# Handles the CHARGE state logic.
 func _charge_state(delta: float) -> void:
-	velocity.x = 0 # Stop horizontal movement during charge
+	velocity.x = 0
 	state_timer += delta
 	if state_timer >= CHARGE_DURATION:
 		_change_state(State.ATTACK)
@@ -78,7 +81,6 @@ func _charge_state(delta: float) -> void:
 	if player:
 		pivot.scale.x = -sign(player.global_position.x - global_position.x)
 
-# Handles the ATTACK state logic.
 func _attack_state(delta: float) -> void:
 	state_timer += delta
 	velocity.x = sign(player.global_position.x - global_position.x) * ATTACK_SPEED
@@ -97,7 +99,7 @@ func _attack_state(delta: float) -> void:
 			_change_state(State.VULNERABLE)
 
 func _vulnerable_state(delta: float) -> void:
-	velocity.x = 0 # Stop horizontal movement
+	velocity.x = 0
 	state_timer += delta
 	if state_timer >= VULNERABLE_DURATION:
 		if is_player_in_range:
@@ -108,8 +110,12 @@ func _vulnerable_state(delta: float) -> void:
 func _change_state(new_state) -> void:
 	current_state = new_state
 	state_timer = 0.0
-	has_jumped = false # Reset jump flag on state change
-	player_was_hit = false # Reset hit flag on state change
+	has_jumped = false
+	player_was_hit = false
+	
+	# Reset the hit flag when entering a new vulnerable state
+	if new_state == State.VULNERABLE:
+		hit_this_vulnerable_cycle = false
 
 	match current_state:
 		State.STAND:
@@ -153,11 +159,18 @@ func _on_player_detector_body_exited(body: Node2D) -> void:
 	if body == player:
 		is_player_in_range = false
 
-func take_damage(damage: float) -> void:
-	enemy_health -= damage
-	animation_player.play("hurt")
-	if enemy_health <= 0:
-		queue_free()
+func take_damage(_damage: float) -> void:
+	# Only allow damage if in vulnerable state and hasn't been hit this cycle
+	if current_state == State.VULNERABLE and not hit_this_vulnerable_cycle:
+		hit_this_vulnerable_cycle = true  # Mark as hit this cycle
+		total_hits_taken += 1  # Increment total hits
+		
+		animation_player.play("hurt")
+		
+		# Check if beetle should die (after 2 total hits)
+		if total_hits_taken >= 2:
+			queue_free()
+		# If still alive, continue vulnerable state until timer finishes naturally
 
 func _on_hit_box_area_entered(area) -> void:
 	if current_state == State.ATTACK:

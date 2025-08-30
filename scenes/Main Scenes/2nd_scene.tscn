@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cfv4f6bi46hrx"]
+[gd_scene load_steps=26 format=3 uid="uid://cfv4f6bi46hrx"]
 
 [ext_resource type="Texture2D" uid="uid://cc6aiqta7j02x" path="res://assets/BG/Phase 2/1.png" id="7_aqdem"]
 [ext_resource type="PackedScene" uid="uid://ds8i10qow8msb" path="res://scenes/inventory_things/inv_ui.tscn" id="7_w82rq"]
@@ -16,9 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://ctw57l6kowhya" path="res://scenes/UI/pause_menu.tscn" id="15_2npaq"]
 [ext_resource type="PackedScene" uid="uid://basdg6biv03al" path="res://scenes/Player/player_phase2.tscn" id="17_ysw53"]
 [ext_resource type="PackedScene" uid="uid://cqn1xtwbw5n5l" path="res://scenes/Collectibles/food.tscn" id="18_whigq"]
-[ext_resource type="PackedScene" uid="uid://co4b1kiuq2dcm" path="res://scenes/Collectibles/collectible_key.tscn" id="19_nexeh"]
 [ext_resource type="PackedScene" uid="uid://ca5h26hc7p7b0" path="res://scenes/Characters/boss_1.tscn" id="19_vksdc"]
-[ext_resource type="PackedScene" uid="uid://4m0c4x6ggxmf" path="res://scenes/Collectibles/collectible_bomb.tscn" id="20_3lrop"]
 
 [sub_resource type="SystemFont" id="SystemFont_3xvx2"]
 
@@ -30,16 +28,16 @@ bg_color = Color(1, 0.321569, 0.364706, 1)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wkg83"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_heptv"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vksdc"]
 distance = 122.738
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lbhrr"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ssd1q"]
 resource_local_to_scene = true
 distance = -581.0
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lbhrr"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wkg83"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p57ef"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_goyj0"]
 normal = Vector2(1, 0)
 distance = -1014.0
 
@@ -139,7 +137,7 @@ layer = 5
 scale = Vector2(0.6, 0.6)
 transform = Transform2D(0.6, 0, 0, 0.6, 0, 0)
 
-[node name="ProgressBar" type="ProgressBar" parent="GUI"]
+[node name="HealthBar" type="ProgressBar" parent="GUI"]
 offset_left = 458.0
 offset_top = 157.0
 offset_right = 787.0
@@ -165,6 +163,7 @@ offset_bottom = 310.0
 script = ExtResource("8_3xvx2")
 
 [node name="inv_ui" parent="GUI" instance=ExtResource("7_w82rq")]
+visible = false
 offset_left = 100.0
 offset_top = 450.0
 offset_right = 100.0
@@ -209,31 +208,6 @@ offset_right = 958.0
 offset_bottom = 546.0
 scale = Vector2(1.11, 1.11)
 
-[node name="World Boundaries" type="Node2D" parent="."]
-position = Vector2(1, 68)
-
-[node name="top" type="StaticBody2D" parent="World Boundaries"]
-position = Vector2(1, -786)
-rotation = 3.14159
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World Boundaries/top"]
-position = Vector2(-4.00001, -68)
-shape = SubResource("WorldBoundaryShape2D_heptv")
-
-[node name="bottom" type="StaticBody2D" parent="World Boundaries"]
-position = Vector2(1, 579)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World Boundaries/bottom"]
-position = Vector2(-2, -576)
-shape = SubResource("WorldBoundaryShape2D_lbhrr")
-
-[node name="left" type="StaticBody2D" parent="World Boundaries"]
-position = Vector2(-990, 0)
-physics_material_override = SubResource("PhysicsMaterial_lbhrr")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="World Boundaries/left"]
-shape = SubResource("WorldBoundaryShape2D_p57ef")
-
 [node name="Food" type="Node2D" parent="."]
 position = Vector2(0, 200)
 metadata/_edit_lock_ = true
@@ -258,21 +232,6 @@ scale = Vector2(1.3, 1.3)
 position = Vector2(648, 399)
 scale = Vector2(1.3, 1.3)
 
-[node name="Collectible Item" parent="." instance=ExtResource("19_nexeh")]
-visible = false
-position = Vector2(-29, 390)
-scale = Vector2(1.3, 1.3)
-
-[node name="Collectible Item2" parent="." instance=ExtResource("19_nexeh")]
-visible = false
-position = Vector2(54, 390)
-scale = Vector2(1.3, 1.3)
-
-[node name="Collectible Item3" parent="." instance=ExtResource("20_3lrop")]
-visible = false
-position = Vector2(-155, 390)
-scale = Vector2(1.3, 1.3)
-
 [node name="player" parent="." instance=ExtResource("17_ysw53")]
 z_index = 5
 position = Vector2(-1080.36, 58.5956)
@@ -293,5 +252,31 @@ editor_draw_limits = true
 editor_draw_drag_margin = true
 
 [node name="Kingstar" parent="." instance=ExtResource("19_vksdc")]
-position = Vector2(1151, 373)
-scale = Vector2(0.5, 0.5)
+position = Vector2(-186, 414)
+scale = Vector2(0.4, 0.4)
+
+[node name="World Boundaries" type="Node2D" parent="."]
+position = Vector2(1, 68)
+
+[node name="top" type="StaticBody2D" parent="World Boundaries"]
+position = Vector2(1, -842.492)
+rotation = 3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World Boundaries/top"]
+position = Vector2(-4.00001, -68)
+shape = SubResource("WorldBoundaryShape2D_vksdc")
+
+[node name="bottom" type="StaticBody2D" parent="World Boundaries"]
+position = Vector2(1, 579)
+collision_layer = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World Boundaries/bottom"]
+position = Vector2(-2, -576)
+shape = SubResource("WorldBoundaryShape2D_ssd1q")
+
+[node name="left" type="StaticBody2D" parent="World Boundaries"]
+position = Vector2(-990, 0)
+physics_material_override = SubResource("PhysicsMaterial_wkg83")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="World Boundaries/left"]
+shape = SubResource("WorldBoundaryShape2D_goyj0")

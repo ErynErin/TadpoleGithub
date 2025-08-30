@@ -1,6 +1,6 @@
-[gd_scene load_steps=66 format=3 uid="uid://mlspxc2wfne5"]
+[gd_scene load_steps=71 format=3 uid="uid://mlspxc2wfne5"]
 
-[ext_resource type="Script" uid="uid://dmn6tt0hggyqb" path="res://scripts/player.gd" id="1_kbckl"]
+[ext_resource type="Script" uid="uid://cfhj6lnqyanrd" path="res://scripts/player_phase_3.gd" id="1_j0qyw"]
 [ext_resource type="Texture2D" uid="uid://grcpw57j0fip" path="res://assets/3rd stage mc/3rd death/3rd death0000.png" id="3_mmtyl"]
 [ext_resource type="Texture2D" uid="uid://bbm6p850djhxs" path="res://assets/3rd stage mc/3rd death/3rd death0001.png" id="4_p5pjs"]
 [ext_resource type="Texture2D" uid="uid://b6y3y4wei3g45" path="res://assets/3rd stage mc/3rd death/3rd death0002.png" id="5_2uw21"]
@@ -63,17 +63,14 @@
 [ext_resource type="Texture2D" uid="uid://bsun8r13clyl7" path="res://assets/3rd stage mc/3rd walking/3rd walking0005.png" id="62_jjuvo"]
 [ext_resource type="Texture2D" uid="uid://du33fwqvweg6r" path="res://assets/3rd stage mc/3rd walking/3rd walking0006.png" id="63_7qlbm"]
 [ext_resource type="PackedScene" uid="uid://bb6ksj6c85ixy" path="res://scenes/Player/sword.tscn" id="63_r4pvy"]
+[ext_resource type="Script" uid="uid://dktsel320mpw7" path="res://scripts/hurtbox.gd" id="64_j0qyw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mv62"]
+radius = 42.0
+height = 174.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v3hta"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("57_kglp7")
-}],
-"loop": true,
-"name": &"attack",
-"speed": 11.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_mmtyl")
@@ -99,7 +96,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("10_m0ndh")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 11.0
 }, {
@@ -288,23 +285,78 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mv62"]
-radius = 42.0
-height = 174.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_il2wa"]
+radius = 62.0
+height = 268.0
+
+[sub_resource type="Animation" id="Animation_jtvlm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_onspj"]
+resource_name = "hurt"
+length = 0.55
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 0.2, 0.366667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vy06v"]
+_data = {
+&"RESET": SubResource("Animation_jtvlm"),
+&"hurt": SubResource("Animation_onspj")
+}
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
-script = ExtResource("1_kbckl")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(30, -25)
-scale = Vector2(0.6, 0.6)
-sprite_frames = SubResource("SpriteFrames_v3hta")
-animation = &"run"
+script = ExtResource("1_j0qyw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-21, -7)
 shape = SubResource("CapsuleShape2D_0mv62")
 
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
+position = Vector2(49, -20)
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_v3hta")
+animation = &"idle"
+
 [node name="Sword" parent="." instance=ExtResource("63_r4pvy")]
-visible = false
+position = Vector2(3, 4)
+scale = Vector2(0.6, 0.6)
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 16
+script = ExtResource("64_j0qyw")
+metadata/_custom_type_script = "uid://dktsel320mpw7"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-1, -40)
+shape = SubResource("CapsuleShape2D_il2wa")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vy06v")
+}

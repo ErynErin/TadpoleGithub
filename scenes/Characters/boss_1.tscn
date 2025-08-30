@@ -1,7 +1,7 @@
 [gd_scene load_steps=217 format=3 uid="uid://ca5h26hc7p7b0"]
 
 [ext_resource type="Texture2D" uid="uid://dglal1ggfmd5a" path="res://assets/Characters/Kingstar/ATTACKS/Attack100/Attack100_0000.png" id="1_qyqpj"]
-[ext_resource type="Script" uid="uid://o2uqwaj753v6" path="res://scripts/boss_1.gd" id="1_yksyv"]
+[ext_resource type="Script" uid="uid://ir21uqpbkx3x" path="res://scripts/boss_1.gd" id="1_wom53"]
 [ext_resource type="Texture2D" uid="uid://d2vyc2fnqtnxt" path="res://assets/Characters/Kingstar/ATTACKS/Attack100/Attack100_0001.png" id="2_gqvmc"]
 [ext_resource type="Texture2D" uid="uid://yc4l0fkfure5" path="res://assets/Characters/Kingstar/ATTACKS/Attack100/Attack100_0002.png" id="3_sb23d"]
 [ext_resource type="Texture2D" uid="uid://cf4cijypaq6wh" path="res://assets/Characters/Kingstar/ATTACKS/Attack100/Attack100_0003.png" id="4_yksyv"]
@@ -915,16 +915,12 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sb23d"]
-radius = 580.772
-height = 1605.3
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yksyv"]
-radius = 333.724
-height = 1920.0
+radius = 1200.0
+height = 3690.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_sb23d"]
-radius = 169.003
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wom53"]
+size = Vector2(490, 835)
 
 [sub_resource type="Animation" id="Animation_yksyv"]
 length = 0.001
@@ -955,14 +951,14 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitBox/CollisionShape2D:position")
+tracks/2/path = NodePath("AnimatedSprite2D:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-356, 89)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -1008,38 +1004,43 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitBox/CollisionShape2D:position")
+tracks/2/path = NodePath("HitBox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.9, 1.10015),
-"transitions": PackedFloat32Array(0.138696, 1),
-"update": 0,
-"values": [Vector2(-356, 89), Vector2(-444, -150)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("HitBox/CollisionShape2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.9, 0.916915, 1.1, 1.11429),
+"times": PackedFloat32Array(0.899347, 0.901927, 1.1, 1.10258),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [true, false, false, true]
+"values": [true, false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_wom53"]
+resource_name = "hurt"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.233333, 0.366667, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2pets"]
 _data = {
 &"RESET": SubResource("Animation_yksyv"),
-&"attack_100": SubResource("Animation_sb23d")
+&"attack_100": SubResource("Animation_sb23d"),
+&"hurt": SubResource("Animation_wom53")
 }
 
 [node name="Kingstar" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_yksyv")
+script = ExtResource("1_wom53")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-18, 109)
@@ -1054,31 +1055,25 @@ position = Vector2(44, -1)
 scale = Vector2(0.2, 0.2)
 collision_layer = 32
 collision_mask = 4
+monitoring = false
+monitorable = false
 script = ExtResource("203_sb23d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(-525, -795)
-rotation = 1.30027
-shape = SubResource("CapsuleShape2D_sb23d")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(-790, 1460)
-shape = SubResource("CapsuleShape2D_yksyv")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(355, 1585)
-rotation = -0.13439
+position = Vector2(-370, 535)
 shape = SubResource("CapsuleShape2D_yksyv")
 
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 8
+monitoring = false
+monitorable = false
 script = ExtResource("204_yksyv")
 metadata/_custom_type_script = "uid://cfdlbfbudy12s"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(-356, 89)
-shape = SubResource("CircleShape2D_sb23d")
+position = Vector2(-223, 142.5)
+shape = SubResource("RectangleShape2D_wom53")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -1086,3 +1081,15 @@ libraries = {
 }
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+offset_left = 467.0
+offset_top = 42.0
+offset_right = 1488.0
+offset_bottom = 176.0
+theme_override_font_sizes/font_size = 40
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
