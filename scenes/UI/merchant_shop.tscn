@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmole1wjk2k70"]
+[gd_scene load_steps=7 format=3 uid="uid://cmole1wjk2k70"]
 
 [ext_resource type="Script" uid="uid://bshybnqtmehsh" path="res://scripts/merchant_shop.gd" id="1_nhdr3"]
+[ext_resource type="Texture2D" uid="uid://dd46my82kxtbj" path="res://assets/ITEM ASSETS/P1_health.png" id="3_eq7wg"]
 [ext_resource type="Texture2D" uid="uid://dqur42p46m4dh" path="res://assets/GUI/Menu Assets/Merchant Shop.png" id="3_qyu7k"]
+[ext_resource type="Texture2D" uid="uid://bpqdfp3cgqi5a" path="res://assets/ITEM ASSETS/P1_speed.png" id="4_mknrg"]
+[ext_resource type="Texture2D" uid="uid://jlii0lklfwtb" path="res://assets/ITEM ASSETS/P1_strength.png" id="5_786rh"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_786rh"]
 texture = ExtResource("3_qyu7k")
@@ -47,6 +50,7 @@ theme_override_font_sizes/font_size = 80
 text = "X"
 
 [node name="Current Stats" type="VBoxContainer" parent="Shop Panel"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -76,41 +80,61 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Speed: 200"
 
-[node name="Buttons" type="HBoxContainer" parent="Shop Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -628.5
-offset_top = 110.0
-offset_right = 628.5
-offset_bottom = 210.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 50
-alignment = 1
-
-[node name="Health Button" type="Button" parent="Shop Panel/Buttons"]
+[node name="TextureRect" type="TextureRect" parent="Shop Panel"]
 layout_mode = 2
+offset_left = 642.0
+offset_top = 281.0
+offset_right = 820.0
+offset_bottom = 444.0
+texture = ExtResource("3_eq7wg")
+
+[node name="Health Button" type="Button" parent="Shop Panel"]
+layout_mode = 2
+offset_left = 824.0
+offset_top = 281.0
+offset_right = 1134.0
+offset_bottom = 444.0
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 40
 text = "Increase Health"
 
-[node name="Strength Button" type="Button" parent="Shop Panel/Buttons"]
+[node name="TextureRect2" type="TextureRect" parent="Shop Panel"]
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 40
-text = "Increase Strength"
+offset_left = 642.0
+offset_top = 474.0
+offset_right = 820.0
+offset_bottom = 637.0
+texture = ExtResource("4_mknrg")
 
-[node name="Speed Button" type="Button" parent="Shop Panel/Buttons"]
+[node name="Speed Button" type="Button" parent="Shop Panel"]
 layout_mode = 2
+offset_left = 824.0
+offset_top = 474.0
+offset_right = 1123.0
+offset_bottom = 637.0
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 40
 text = "Increase Speed"
 
+[node name="TextureRect3" type="TextureRect" parent="Shop Panel"]
+layout_mode = 2
+offset_left = 642.0
+offset_top = 667.0
+offset_right = 820.0
+offset_bottom = 830.0
+texture = ExtResource("5_786rh")
+
+[node name="Strength Button" type="Button" parent="Shop Panel"]
+layout_mode = 2
+offset_left = 824.0
+offset_top = 667.0
+offset_right = 1172.0
+offset_bottom = 830.0
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 40
+text = "Increase Strength"
+
 [connection signal="pressed" from="Shop Panel/Exit Shop" to="." method="_on_exit_shop_pressed"]
-[connection signal="pressed" from="Shop Panel/Buttons/Health Button" to="." method="_on_health_button_pressed"]
-[connection signal="pressed" from="Shop Panel/Buttons/Strength Button" to="." method="_on_strength_button_pressed"]
-[connection signal="pressed" from="Shop Panel/Buttons/Speed Button" to="." method="_on_speed_button_pressed"]
+[connection signal="pressed" from="Shop Panel/Health Button" to="." method="_on_health_button_pressed"]
+[connection signal="pressed" from="Shop Panel/Speed Button" to="." method="_on_speed_button_pressed"]
+[connection signal="pressed" from="Shop Panel/Strength Button" to="." method="_on_strength_button_pressed"]

@@ -10,8 +10,6 @@ var music_bus_index
 var sfx_bus_index
 
 func _ready():
-	#process_mode = Node.PROCESS_MODE_WHEN_PAUSED
-	
 	music_bus_index = AudioServer.get_bus_index(music_bus_name)
 	sfx_bus_index = AudioServer.get_bus_index(sfx_bus_name)
 

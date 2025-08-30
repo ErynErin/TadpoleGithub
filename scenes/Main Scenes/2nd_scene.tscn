@@ -1,7 +1,6 @@
-[gd_scene load_steps=27 format=3 uid="uid://cfv4f6bi46hrx"]
+[gd_scene load_steps=26 format=3 uid="uid://cfv4f6bi46hrx"]
 
 [ext_resource type="Texture2D" uid="uid://cc6aiqta7j02x" path="res://assets/BG/Phase 2/1.png" id="7_aqdem"]
-[ext_resource type="PackedScene" uid="uid://ds8i10qow8msb" path="res://scenes/inventory_things/inv_ui.tscn" id="7_w82rq"]
 [ext_resource type="Texture2D" uid="uid://5m0ipjw8b0j3" path="res://assets/GUI/Game Screen UI/P2_health.png" id="7_ysw53"]
 [ext_resource type="Script" uid="uid://0dthjh7hw83f" path="res://scripts/pause_button.gd" id="8_3xvx2"]
 [ext_resource type="Texture2D" uid="uid://darwte4arx7h6" path="res://assets/BG/Phase 2/2.png" id="8_w82rq"]
@@ -10,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://rxnciromwi5l" path="res://assets/BG/Phase 2/5.png" id="11_t7lwq"]
 [ext_resource type="Script" uid="uid://d22ltv5khw2fa" path="res://scripts/health_bar.gd" id="11_x2w7c"]
 [ext_resource type="Texture2D" uid="uid://cpf5ahqnmuv2" path="res://assets/GUI/Game Screen UI/hunger.png" id="12_pktkd"]
-[ext_resource type="PackedScene" uid="uid://3fegt1mkcao1" path="res://scenes/UI/merchant_dialogue.tscn" id="12_ysw53"]
+[ext_resource type="PackedScene" uid="uid://3fegt1mkcao1" path="res://scenes/UI/merchant_dialogue_ui.tscn" id="12_ysw53"]
 [ext_resource type="Texture2D" uid="uid://usodpdet6r8k" path="res://assets/GUI/Game Screen UI/hunger under bar.png" id="13_8hqba"]
 [ext_resource type="PackedScene" uid="uid://cmole1wjk2k70" path="res://scenes/UI/merchant_shop.tscn" id="14_dwpsk"]
 [ext_resource type="PackedScene" uid="uid://ctw57l6kowhya" path="res://scenes/UI/pause_menu.tscn" id="15_2npaq"]
@@ -162,14 +161,6 @@ offset_top = 95.0
 offset_right = 348.0
 offset_bottom = 310.0
 script = ExtResource("8_3xvx2")
-
-[node name="inv_ui" parent="GUI" instance=ExtResource("7_w82rq")]
-visible = false
-offset_left = 100.0
-offset_top = 450.0
-offset_right = 100.0
-offset_bottom = 450.0
-scale = Vector2(0.17, 0.17)
 
 [node name="hunger bar" type="TextureProgressBar" parent="GUI"]
 visible = false

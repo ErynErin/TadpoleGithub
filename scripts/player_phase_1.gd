@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const JUMP_VELOCITY = -600.0
 
-@onready var sword: AnimatedSprite2D = $Sword
+@onready var sword: Node2D = $Sword
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var pivot: Node2D = $Pivot
 @onready var animated_sprite: AnimatedSprite2D = $Pivot/AnimatedSprite2D
@@ -43,10 +43,10 @@ func _physics_process(delta: float) -> void:
 				
 	if direction < 0:
 		pivot.scale.x = direction
-		sword.flip_h = true
+		sword.scale.x = direction
 	elif direction > 0:
 		pivot.scale.x = direction
-		sword.flip_h = false
+		sword.scale.x = direction
 	
 	if is_on_floor():
 		if Input.is_action_just_pressed("attack"):

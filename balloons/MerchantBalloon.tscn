@@ -1,0 +1,114 @@
+[gd_scene load_steps=11 format=3 uid="uid://cxwlrp7o3atcl"]
+
+[ext_resource type="Script" uid="uid://bsuo5draq2jgd" path="res://balloons/balloon.gd" id="1_c072q"]
+[ext_resource type="Texture2D" uid="uid://busxgs1l0wt0d" path="res://assets/Characters/Merchant/Sol_Talk/Talk_1.png" id="2_b1mkc"]
+[ext_resource type="Texture2D" uid="uid://ob20pfnbbgh1" path="res://assets/GUI/Dialogue Boxes/Merchant_DialogueBox.png" id="3_4w1d8"]
+[ext_resource type="Texture2D" uid="uid://sv8iocxy344n" path="res://assets/Characters/Merchant/Sol_Talk/Talk_2.png" id="3_cw62w"]
+[ext_resource type="Texture2D" uid="uid://bwl0n4uxoome3" path="res://assets/Characters/Merchant/Sol_Talk/Talk_3.png" id="4_itnxe"]
+[ext_resource type="Theme" uid="uid://bxycdq0lkine8" path="res://balloonthemehuhu.tres" id="4_r8jyl"]
+[ext_resource type="FontFile" uid="uid://chvpvepqarnv6" path="res://assets/Fonts/Tedtadpole-Regular.ttf" id="5_8t0p8"]
+[ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="5_revss"]
+[ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="6_g5kr6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_403io"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_b1mkc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cw62w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_itnxe")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 5.0
+}]
+
+[node name="SystemBalloon" type="CanvasLayer"]
+layer = 100
+script = ExtResource("1_c072q")
+
+[node name="Merchant" type="AnimatedSprite2D" parent="."]
+position = Vector2(1779, 856)
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_403io")
+animation = &"talk"
+autoplay = "talk"
+flip_h = true
+
+[node name="Custom Balloon" type="TextureRect" parent="."]
+offset_top = 19.5
+offset_right = 1920.0
+offset_bottom = 1099.5
+texture = ExtResource("3_4w1d8")
+
+[node name="Balloon" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_r8jyl")
+
+[node name="CharacterLabel" type="RichTextLabel" parent="Balloon"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 2
+offset_left = 476.0
+offset_top = 720.0
+offset_right = 694.0
+offset_bottom = 780.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("5_8t0p8")
+theme_override_font_sizes/normal_font_size = 55
+bbcode_enabled = true
+text = "Merchant"
+fit_content = true
+scroll_active = false
+
+[node name="DialogueLabel" parent="Balloon" instance=ExtResource("5_revss")]
+unique_name_in_owner = true
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = 456.0
+offset_top = 818.0
+offset_right = 1457.0
+offset_bottom = 992.0
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "Dialogue..."
+
+[node name="ResponsesMenu" type="VBoxContainer" parent="Balloon" node_paths=PackedStringArray("response_template")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -290.5
+offset_top = -35.0
+offset_right = 290.5
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 2
+alignment = 1
+script = ExtResource("6_g5kr6")
+response_template = NodePath("ResponseExample")
+
+[node name="ResponseExample" type="Button" parent="Balloon/ResponsesMenu"]
+layout_mode = 2
+text = "Response example"
+
+[connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
+[connection signal="response_selected" from="Balloon/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

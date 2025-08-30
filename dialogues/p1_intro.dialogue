@@ -1,6 +1,6 @@
 ~ start
 : A new life form!
-: What’s your name? [wait=1] It can’t be John, Steve, or Ted [wait=1], right[speed=0.2]?
+: What’s your name? [wait=1] It can’t be John, Steve, or Ted[wait=1], right[speed=0.2]?
 - Ted
 Ted: My name’s Ted!
 : Oh- hi Ted! I didn’t expect your name to be one of those three…
