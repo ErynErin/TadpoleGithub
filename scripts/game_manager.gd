@@ -6,6 +6,8 @@ var current_health = 100.0
 var strength = 10
 var speed = 200
 @export var inv: Inv
+signal health_changed(current_health: float, max_health: float)
+signal player_died
 
 func add_hunger():
 	if hunger != 5:
@@ -70,30 +72,32 @@ func hide_shop():
 	var merchant_shop = current_scene.get_node("GUI/merchant shop")
 	merchant_shop.visible = false
 
-signal health_changed(current_health: float, max_health: float)
-
 func take_damage(damage: float):
 	current_health -= damage
 	current_health = max(current_health, 0)  # Don't go below 0
 	health_changed.emit(current_health, max_health)
 	print("Player Health Decreased by " + str(damage))
 	print("New Health " + str(current_health))
+	check_player_status()
 
 func heal(amount: float):
 	current_health += amount
-	current_health = min(current_health, max_health)  # Don't exceed max
+	current_health = min(current_health, max_health)
 	health_changed.emit(current_health, max_health)
+	check_player_status()
 
 func set_health(new_health: float):
 	current_health = clamp(new_health, 0, max_health) 
 	health_changed.emit(current_health, max_health)
 
+func check_player_status():
+	if current_health <= 0:
+		print("Player has died.")
+		player_died.emit()
+
 # Format for damage and heal
 #func _ready():
 	#pressed.connect(_on_pressed)
-#
-#func _on_pressed():
-	#GameManager.take_damage(10)
 
 func collect(item):
 	inv.insert(item)

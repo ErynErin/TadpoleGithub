@@ -181,7 +181,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("28_e8m1u")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 5.0
 }, {
@@ -444,7 +444,9 @@ script = ExtResource("1_m07t0")
 position = Vector2(23, -2)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_v3hta")
-animation = &"idle"
+animation = &"death"
+frame = 25
+frame_progress = 1.0
 
 [node name="Sword" parent="." instance=ExtResource("7_fjrip")]
 position = Vector2(-3, 29)

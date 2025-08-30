@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://cqtty7lrvbm0a"]
+[gd_scene load_steps=17 format=3 uid="uid://cqtty7lrvbm0a"]
 
 [ext_resource type="Script" uid="uid://chlwbioy2akg7" path="res://scripts/menu_ui.gd" id="1_tlx78"]
 [ext_resource type="Texture2D" uid="uid://3yhk5ufsn5ut" path="res://assets/BG/UI LAYOUTS.png" id="2_fkk5t"]
 [ext_resource type="Texture2D" uid="uid://cw7325mblfy3q" path="res://assets/GUI/Menu Assets/!Start_Menu.png" id="3_7vtdj"]
 [ext_resource type="Texture2D" uid="uid://ceqeac4udw3q7" path="res://assets/GUI/Menu Assets/!Options_Menu.png" id="4_almrq"]
 [ext_resource type="Texture2D" uid="uid://b2ls0ptekgaoi" path="res://assets/GUI/Menu Assets/!Quit_Menu.png" id="5_olqsj"]
+[ext_resource type="Texture2D" uid="uid://cfmpevqn0vaed" path="res://assets/GUI/099.png" id="6_fkk5t"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fcije"]
 texture = ExtResource("3_7vtdj")
@@ -60,14 +61,19 @@ texture = ExtResource("2_fkk5t")
 layout_mode = 0
 offset_right = 1917.0
 offset_bottom = 1082.0
-color = Color(0.238744, 0.238744, 0.238744, 0.34902)
+color = Color(0.113725, 0.113725, 0.113725, 0.505882)
 
 [node name="Start" type="Button" parent="."]
-layout_mode = 0
-offset_left = 1012.0
-offset_top = 33.0
-offset_right = 1403.5
-offset_bottom = 430.5
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 48.05
+anchor_bottom = 26.894
+offset_left = 756.0
+offset_top = 601.0
+offset_right = -774.5
+offset_bottom = -77.26
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_styles/focus = SubResource("StyleBoxTexture_fcije")
 theme_override_styles/hover = SubResource("StyleBoxTexture_2ux5y")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_fcije")
@@ -77,10 +83,10 @@ button_group = SubResource("ButtonGroup_2ux5y")
 
 [node name="Options" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1429.0
-offset_top = 306.0
-offset_right = 1820.5
-offset_bottom = 703.5
+offset_left = 1190.0
+offset_top = 640.0
+offset_right = 1516.25
+offset_bottom = 966.25
 theme_override_styles/focus = SubResource("StyleBoxTexture_7xew8")
 theme_override_styles/hover = SubResource("StyleBoxTexture_svote")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_7xew8")
@@ -90,16 +96,24 @@ button_group = SubResource("ButtonGroup_2ux5y")
 
 [node name="Quit" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1012.0
-offset_top = 606.0
-offset_right = 1403.5
-offset_bottom = 1003.5
+offset_left = 389.0
+offset_top = 650.0
+offset_right = 715.25
+offset_bottom = 981.25
 theme_override_styles/focus = SubResource("StyleBoxTexture_afy00")
 theme_override_styles/hover = SubResource("StyleBoxTexture_jlyh1")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_afy00")
 theme_override_styles/normal = SubResource("StyleBoxTexture_3wkid")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_2ux5y")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 161.0
+offset_top = 33.0
+offset_right = 1781.0
+offset_bottom = 778.0
+texture = ExtResource("6_fkk5t")
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

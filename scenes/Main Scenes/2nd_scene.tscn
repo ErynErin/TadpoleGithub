@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cfv4f6bi46hrx"]
+[gd_scene load_steps=28 format=3 uid="uid://cfv4f6bi46hrx"]
 
 [ext_resource type="Texture2D" uid="uid://cc6aiqta7j02x" path="res://assets/BG/Phase 2/1.png" id="7_aqdem"]
 [ext_resource type="PackedScene" uid="uid://ds8i10qow8msb" path="res://scenes/inventory_things/inv_ui.tscn" id="7_w82rq"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://basdg6biv03al" path="res://scenes/Player/player_phase2.tscn" id="17_ysw53"]
 [ext_resource type="PackedScene" uid="uid://cqn1xtwbw5n5l" path="res://scenes/Collectibles/food.tscn" id="18_whigq"]
 [ext_resource type="PackedScene" uid="uid://co4b1kiuq2dcm" path="res://scenes/Collectibles/collectible_key.tscn" id="19_nexeh"]
+[ext_resource type="PackedScene" uid="uid://ca5h26hc7p7b0" path="res://scenes/Characters/boss_1.tscn" id="19_vksdc"]
 [ext_resource type="PackedScene" uid="uid://4m0c4x6ggxmf" path="res://scenes/Collectibles/collectible_bomb.tscn" id="20_3lrop"]
 
 [sub_resource type="SystemFont" id="SystemFont_3xvx2"]
@@ -234,6 +235,7 @@ physics_material_override = SubResource("PhysicsMaterial_lbhrr")
 shape = SubResource("WorldBoundaryShape2D_p57ef")
 
 [node name="Food" type="Node2D" parent="."]
+position = Vector2(0, 200)
 metadata/_edit_lock_ = true
 
 [node name="food" parent="Food" instance=ExtResource("18_whigq")]
@@ -289,3 +291,7 @@ limit_smoothed = true
 position_smoothing_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
+
+[node name="Kingstar" parent="." instance=ExtResource("19_vksdc")]
+position = Vector2(1151, 373)
+scale = Vector2(0.5, 0.5)
