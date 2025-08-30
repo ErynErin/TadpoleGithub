@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3pojw8pu87ba"
-path="res://.godot/imported/P3_health.png-f864d59967889954054a69aab518d804.ctex"
+uid="uid://ccbmfeb3m1q3v"
+path="res://.godot/imported/P2_health.png-a38216c0b2078d4a464fd9006c1e1298.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ITEM ASSETS/P3_health.png"
-dest_files=["res://.godot/imported/P3_health.png-f864d59967889954054a69aab518d804.ctex"]
+source_file="res://assets/Merchant Items/P2_health.png"
+dest_files=["res://.godot/imported/P2_health.png-a38216c0b2078d4a464fd9006c1e1298.ctex"]
 
 [params]
 

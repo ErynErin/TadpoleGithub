@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpqdfp3cgqi5a"
-path="res://.godot/imported/P1_speed.png-06e69a11d4ccc9a0affaec5a12e90d63.ctex"
+uid="uid://cpvcnsy37jfk"
+path="res://.godot/imported/P2_strength.png-e4883f25476dd0f1b5ca8f579b8eba77.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ITEM ASSETS/P1_speed.png"
-dest_files=["res://.godot/imported/P1_speed.png-06e69a11d4ccc9a0affaec5a12e90d63.ctex"]
+source_file="res://assets/Merchant Items/P2_strength.png"
+dest_files=["res://.godot/imported/P2_strength.png-e4883f25476dd0f1b5ca8f579b8eba77.ctex"]
 
 [params]
 
