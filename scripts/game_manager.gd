@@ -5,9 +5,14 @@ var max_health = 100.0
 var current_health = 100.0
 var strength = 10
 var speed = 200
+var next_scene_path = ""
 @export var inv: Inv
 signal health_changed(current_health: float, max_health: float)
 signal player_died
+
+func load_to_scene(next_scene: String):
+	next_scene_path = next_scene
+	get_tree().change_scene_to_file("res://scenes/Main Scenes/loading_scene.tscn")
 
 func add_hunger():
 	if hunger != 5:

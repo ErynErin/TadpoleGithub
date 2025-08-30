@@ -1,8 +1,13 @@
 extends Control
 
-var next_scene = "res://scenes/Main Scenes/nursery_scene.tscn"
+var next_scene = GameManager.next_scene_path
 
 func _ready() -> void:
+	next_scene = GameManager.next_scene_path
+	
+	if next_scene.is_empty():
+		return
+	
 	ResourceLoader.load_threaded_request(next_scene)
 
 func _process(_delta: float) -> void:
