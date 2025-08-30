@@ -5,3 +5,6 @@ func _on_start_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+
+func _on_options_pressed() -> void:
+	GameManager.show_options()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://d0hqwpnv7oakw"]
+[gd_scene load_steps=35 format=3 uid="uid://d0hqwpnv7oakw"]
 
 [ext_resource type="Texture2D" uid="uid://cstcdjnw86nfs" path="res://assets/BG/Phase 1/1.png" id="1_36xgi"]
 [ext_resource type="Texture2D" uid="uid://c3xww2i2skpq1" path="res://assets/BG/Phase 1/2.png" id="2_is0ew"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://cvojlptff1xk5" path="res://assets/GUI/Game Screen UI/P1_health.png" id="15_gbf57"]
 [ext_resource type="PackedScene" uid="uid://3fegt1mkcao1" path="res://scenes/UI/merchant_dialogue.tscn" id="15_y2ypf"]
 [ext_resource type="PackedScene" uid="uid://cqn1xtwbw5n5l" path="res://scenes/Collectibles/food.tscn" id="16_c07hn"]
+[ext_resource type="PackedScene" uid="uid://qvgqap54c1b1" path="res://scenes/UI/options.tscn" id="16_qfx3x"]
 [ext_resource type="PackedScene" uid="uid://co4b1kiuq2dcm" path="res://scenes/Collectibles/collectible_key.tscn" id="17_khd5g"]
 [ext_resource type="PackedScene" uid="uid://4m0c4x6ggxmf" path="res://scenes/Collectibles/collectible_bomb.tscn" id="18_u2qq7"]
 [ext_resource type="PackedScene" uid="uid://bftc28p7dgwy6" path="res://scenes/Platforms/P1 Working Platforms/p1_center_plat.tscn" id="22_gbf57"]
@@ -225,6 +226,10 @@ visible = false
 offset_right = 958.0
 offset_bottom = 546.0
 scale = Vector2(1.11, 1.11)
+
+[node name="Options" parent="GUI" instance=ExtResource("16_qfx3x")]
+visible = false
+scale = Vector2(1.67, 1.67)
 
 [node name="player" parent="." instance=ExtResource("15_b0kx5")]
 z_index = 5

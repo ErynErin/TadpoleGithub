@@ -23,7 +23,7 @@ func _on_continue_pressed() -> void:
 	resume()
 
 func _on_options_pressed() -> void:
-	pass # Replace with function body.
+	GameManager.show_options()
 
 func _on_quit_pressed() -> void:
 	resume()
