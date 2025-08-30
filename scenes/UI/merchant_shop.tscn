@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://cmole1wjk2k70"]
 
 [ext_resource type="Script" uid="uid://bshybnqtmehsh" path="res://scripts/merchant_shop.gd" id="1_nhdr3"]
-[ext_resource type="Texture2D" uid="uid://dd46my82kxtbj" path="res://assets/ITEM ASSETS/P1_health.png" id="3_eq7wg"]
+[ext_resource type="Texture2D" uid="uid://dd46my82kxtbj" path="res://assets/Merchant Items/P1_health.png" id="3_eq7wg"]
 [ext_resource type="Texture2D" uid="uid://dqur42p46m4dh" path="res://assets/GUI/Menu Assets/Merchant Shop.png" id="3_qyu7k"]
-[ext_resource type="Texture2D" uid="uid://bpqdfp3cgqi5a" path="res://assets/ITEM ASSETS/P1_speed.png" id="4_mknrg"]
-[ext_resource type="Texture2D" uid="uid://jlii0lklfwtb" path="res://assets/ITEM ASSETS/P1_strength.png" id="5_786rh"]
+[ext_resource type="Texture2D" uid="uid://bpqdfp3cgqi5a" path="res://assets/Merchant Items/P1_speed.png" id="4_mknrg"]
+[ext_resource type="Texture2D" uid="uid://jlii0lklfwtb" path="res://assets/Merchant Items/P1_strength.png" id="5_786rh"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_786rh"]
 texture = ExtResource("3_qyu7k")
