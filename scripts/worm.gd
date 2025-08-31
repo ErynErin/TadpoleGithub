@@ -52,6 +52,7 @@ func take_damage(damage: float) -> void:
 	animation_player.play("hurt")
 	print("Remaining Worm Health: ", enemy_health)
 	if enemy_health <= 0:
+		$AudioStreamPlayer2.play()
 		queue_free()
 
 func _on_player_detector_body_entered(body: Node2D) -> void:
@@ -72,6 +73,7 @@ func _on_bite_box_area_entered(area) -> void:
 		player_in_bite_range = true
 		if !is_poisoned:
 			print("Player has been poisoned!")
+			$AudioStreamPlayer.play()
 			is_poisoned = true
 			poison_elapsed_time = 0.0 
 			poison_timer.start(POISON_TICK_RATE) 

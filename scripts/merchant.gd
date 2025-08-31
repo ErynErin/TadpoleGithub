@@ -6,11 +6,9 @@ var balloon_scene = preload("res://balloons/MerchantBalloon.tscn")  # Your custo
 
 var can_interact := false
 
-
 func _ready():
 	play("idle")
 	interaction_area.interact = Callable(self, "_on_interact")
-
 
 func _on_interact():
 	can_interact = false  # Disable re-interaction during the sequence
@@ -28,11 +26,11 @@ func _on_interact():
 
 	play("talk")
 
-
 func _on_dialogue_ended(_resource):
 	DialogueManager.dialogue_ended.disconnect(_on_dialogue_ended)
 
 	# Show the shop UI
+	$AudioStreamPlayer.play()
 	GameManager.show_shop()
 
 	# Connect to shop_closed to wait before showing afterbuy dialogue

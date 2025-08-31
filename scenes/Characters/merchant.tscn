@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bd1qu81rucmuf"]
+[gd_scene load_steps=18 format=3 uid="uid://bd1qu81rucmuf"]
 
 [ext_resource type="Script" uid="uid://c7uosxndqn2iv" path="res://scripts/merchant.gd" id="1_12ke4"]
 [ext_resource type="Texture2D" uid="uid://4bfnf0qvptgi" path="res://assets/Characters/Merchant/Sol_Idle/Sol_1.png" id="2_m0sul"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://busxgs1l0wt0d" path="res://assets/Characters/Merchant/Sol_Talk/Talk_1.png" id="11_hcxxr"]
 [ext_resource type="Texture2D" uid="uid://sv8iocxy344n" path="res://assets/Characters/Merchant/Sol_Talk/Talk_2.png" id="12_al4p4"]
 [ext_resource type="Texture2D" uid="uid://bwl0n4uxoome3" path="res://assets/Characters/Merchant/Sol_Talk/Talk_3.png" id="13_xf0xi"]
+[ext_resource type="AudioStream" uid="uid://dhpx3cf4a4jro" path="res://assets/Audios/merchant open.wav" id="15_02hce"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7uljk"]
 animations = [{
@@ -82,3 +83,7 @@ y_position = 150.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 position = Vector2(72.5, -8.5)
 shape = SubResource("RectangleShape2D_7rnkl")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_02hce")
+bus = &"SFX"

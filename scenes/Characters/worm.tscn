@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://xov1nahqgphe"]
+[gd_scene load_steps=18 format=3 uid="uid://xov1nahqgphe"]
 
 [ext_resource type="Script" uid="uid://ddpxxan7j4cmw" path="res://scripts/worm.gd" id="1_tiyqp"]
 [ext_resource type="Texture2D" uid="uid://ckbnsl8bihdn3" path="res://assets/Characters/Worm/Crawl/Crawl_1.png" id="2_tiyqp"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://blio1awdkqjrs" path="res://assets/Characters/Worm/Crawl/Crawl_4.png" id="5_xkhk3"]
 [ext_resource type="Texture2D" uid="uid://d4ivs71nmsg48" path="res://assets/Characters/Worm/Crawl/Crawl_5.png" id="6_wwk1g"]
 [ext_resource type="Texture2D" uid="uid://cgoy7ibc4bnfb" path="res://assets/Characters/Worm/Worm_Rest.png" id="7_okkck"]
+[ext_resource type="AudioStream" uid="uid://c5rs4prmkqtp" path="res://assets/Audios/enemies/worm poison.mp3" id="9_xk6nu"]
+[ext_resource type="AudioStream" uid="uid://ccmv0oriti0g2" path="res://assets/Audios/enemies/worm death.mp3" id="10_xkhk3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_46d1w"]
 animations = [{
@@ -130,6 +132,14 @@ script = ExtResource("3_tdamb")
 position = Vector2(-35, 205)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_qrnk6")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_xk6nu")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_xkhk3")
+bus = &"SFX"
 
 [connection signal="body_entered" from="Player Detector" to="." method="_on_player_detector_body_entered"]
 [connection signal="body_exited" from="Player Detector" to="." method="_on_player_detector_body_exited"]
