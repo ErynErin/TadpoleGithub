@@ -1,5 +1,6 @@
-[gd_scene load_steps=25 format=4 uid="uid://cfv4f6bi46hrx"]
+[gd_scene load_steps=29 format=4 uid="uid://cfv4f6bi46hrx"]
 
+[ext_resource type="Script" uid="uid://bht730yy73mmk" path="res://scenes/Main Scenes/2_nd_scene.gd" id="1_3xvx2"]
 [ext_resource type="Texture2D" uid="uid://cc6aiqta7j02x" path="res://assets/BG/Phase 2/1.png" id="7_aqdem"]
 [ext_resource type="Texture2D" uid="uid://5m0ipjw8b0j3" path="res://assets/GUI/Game Screen UI/P2_health.png" id="7_ysw53"]
 [ext_resource type="Script" uid="uid://0dthjh7hw83f" path="res://scripts/pause_button.gd" id="8_3xvx2"]
@@ -55,7 +56,9 @@ texture_region_size = Vector2i(600, 600)
 physics_layer_0/collision_layer = 15
 sources/1 = SubResource("TileSetAtlasSource_vksdc")
 
-[node name="Ted Game3" type="Node2D"]
+
+[node name="Ted Game2" type="Node2D"]
+script = ExtResource("1_3xvx2")
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
 physics_interpolation_mode = 0
@@ -264,6 +267,18 @@ scale = Vector2(0.165, 0.165)
 tile_map_data = PackedByteArray("AAAhAJ8AAQAAAAAAAAAzAJ8AAQABAAAAAABFAJ8AAQABAAEAAAAPAJ8AAQAAAAEAAABhAJUAAgAAAAAAAACGAJUAAgABAAEAAAA8AJUAAgAAAAEAAAB2ALkAAwAAAAEAAACZALkAAwABAAEAAAC7ALkAAwAAAAAAAADdALkAAwABAAAAAAABAbkAAwACAAAAAAA=")
 tile_set = SubResource("TileSet_goyj0")
 
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScreenFade" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
+
 [node name="ChangeScene" parent="." instance=ExtResource("18_3xvx2")]
 position = Vector2(963, 546)
 next_scene = "res://scenes/Main Scenes/3rd_scene.tscn"
+
