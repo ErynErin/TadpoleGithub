@@ -53,6 +53,7 @@ func take_damage(damage: float) -> void:
 	print("Remaining Worm Health: ", enemy_health)
 	if enemy_health <= 0:
 		$AudioStreamPlayer2.play()
+		await $AudioStreamPlayer2.finished
 		queue_free()
 
 func _on_player_detector_body_entered(body: Node2D) -> void:

@@ -381,7 +381,7 @@ _data = {
 }
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
-collision_layer = 2
+collision_layer = 129
 script = ExtResource("1_copfn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -394,7 +394,8 @@ shape = SubResource("CapsuleShape2D_0mv62")
 position = Vector2(79, -33)
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_v3hta")
-animation = &"run"
+animation = &"idle"
+autoplay = "idle"
 
 [node name="Sword" parent="." instance=ExtResource("90_1y3x4")]
 position = Vector2(3, 4)

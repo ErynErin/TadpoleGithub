@@ -14,7 +14,7 @@ signal shop_closed
 
 func load_to_scene(next_scene: String):
 	next_scene_path = next_scene
-	get_tree().change_scene_to_file("res://scenes/Main Scenes/loading_scene.tscn")
+	get_tree().change_scene_to_file.call_deferred("res://scenes/Main Scenes/loading_scene.tscn")
 
 func add_hunger():
 	if hunger != 5:
