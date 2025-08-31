@@ -1,6 +1,17 @@
-~ start 
-# use game state has met 
-: [[Good day|Merry greetings]], dear creature! 
+~ start
+: Ho! Ho! [wave amp=15 freq=3]Merry Fishmas! 
+: Oh-[wait=2] sorry, I didn’t notice something was here.
+: Good day, dear creature! 
+Merchant: I am Merchant, [wait=1][wave amp=15 freq=3]your water santa!
+- What is that?
+- Huh?
+Merchant: I appear when I have artifacts to sell. These can make you [shake rate=20 level=10]faster, [shake rate=20 level=10]stronger, [wave amp=15 freq=3]or even make your life span longer!
+Merchant:  And I tell you, these will greatly help in your journey.
+=> END
+
+
+~ othermeet 
+: Good day, dear creature! 
 Merchant: I am Merchant, [wait=1][wave amp=15 freq=3]your water santa!
 Merchant: Here are artifacts to help you with your journey!
 => END
