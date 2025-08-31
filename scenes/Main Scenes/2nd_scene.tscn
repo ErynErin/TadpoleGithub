@@ -9,8 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://dc86inuelf7ii" path="res://assets/BG/Phase 2/4.png" id="10_plhnw"]
 [ext_resource type="Texture2D" uid="uid://rxnciromwi5l" path="res://assets/BG/Phase 2/5.png" id="11_t7lwq"]
 [ext_resource type="Script" uid="uid://d22ltv5khw2fa" path="res://scripts/health_bar.gd" id="11_x2w7c"]
-[ext_resource type="Texture2D" uid="uid://cpf5ahqnmuv2" path="res://assets/GUI/Game Screen UI/hunger.png" id="12_pktkd"]
-[ext_resource type="Texture2D" uid="uid://usodpdet6r8k" path="res://assets/GUI/Game Screen UI/hunger under bar.png" id="13_8hqba"]
 [ext_resource type="PackedScene" uid="uid://cmole1wjk2k70" path="res://scenes/UI/merchant_shop.tscn" id="14_dwpsk"]
 [ext_resource type="PackedScene" uid="uid://ctw57l6kowhya" path="res://scenes/UI/pause_menu.tscn" id="15_2npaq"]
 [ext_resource type="PackedScene" uid="uid://qvgqap54c1b1" path="res://scenes/UI/options.tscn" id="15_3xvx2"]
@@ -26,8 +24,6 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ssd1q"]
 bg_color = Color(1, 0.321569, 0.364706, 1)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wkg83"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vksdc"]
 distance = 122.738
@@ -182,29 +178,6 @@ offset_top = 95.0
 offset_right = 348.0
 offset_bottom = 310.0
 script = ExtResource("8_3xvx2")
-
-[node name="hunger bar" type="TextureProgressBar" parent="GUI"]
-visible = false
-offset_left = 230.0
-offset_top = 50.0
-offset_right = 1230.0
-offset_bottom = 1050.0
-scale = Vector2(0.25, 0.25)
-tooltip_text = "Hunger"
-stretch_margin_top = 12
-stretch_margin_right = 12
-stretch_margin_bottom = 12
-texture_over = ExtResource("12_pktkd")
-texture_progress = SubResource("CompressedTexture2D_wkg83")
-
-[node name="hunger lower bar" type="NinePatchRect" parent="GUI"]
-visible = false
-offset_left = 230.0
-offset_top = 58.0
-offset_right = 230.0
-offset_bottom = 292.0
-texture = ExtResource("13_8hqba")
-region_rect = Rect2(0, 0, 790, 1000)
 
 [node name="merchant shop" parent="GUI" instance=ExtResource("14_dwpsk")]
 visible = false

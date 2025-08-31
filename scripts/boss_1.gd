@@ -9,7 +9,7 @@ const ATTACK_DURATION = 1.5  # Duration of single attack
 const REST_DURATION = 3.0
 const ATTACK_DISTANCE_THRESHOLD = 200.0  # Distance to trigger attack
 
-enum State { WALK, DASH, CHARGE, ATTACK, REST, DEATH }
+enum State { INACTIVE, WALK, DASH, CHARGE, ATTACK, REST, DEATH }
 
 @onready var player = get_parent().find_child("player")
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -17,22 +17,25 @@ enum State { WALK, DASH, CHARGE, ATTACK, REST, DEATH }
 @onready var hit_box: Area2D = $HitBox
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var timer: Timer = $Timer
-@onready var progress_bar: ProgressBar = $CanvasLayer/ProgressBar
+@onready var progress_bar: ProgressBar = $CanvasLayer/VBoxContainer/ProgressBar
+@onready var canvas_layer: CanvasLayer = $CanvasLayer
 
-var current_state = State.WALK
+var current_state = State.INACTIVE
 var boss_health = 100.0
 var max_boss_health = 100.0
 var state_timer = 0.0
+var player_entered = 1
 
 func _ready() -> void:
-	$AudioStreamPlayer.play()
+	canvas_layer.visible = false
 	progress_bar.max_value = max_boss_health
 	progress_bar.value = boss_health
-	timer.timeout.connect(_on_timer_timeout)
-	
-	_change_state(State.WALK)
+	current_state = State.INACTIVE
 
 func _physics_process(delta: float) -> void:
+	if current_state == State.DEATH or current_state == State.INACTIVE:
+		return
+		
 	if current_state == State.DEATH:
 		return
 		
@@ -261,3 +264,13 @@ func _on_timer_timeout() -> void:
 		State.REST:
 			print("Rest complete, switching to WALK")
 			_change_state(State.WALK)
+
+func _on_player_detector_body_entered(body: Node2D) -> void:
+	if body == player and player_entered == 1:
+		player_entered -= 1
+		$AudioStreamPlayer.play()
+		canvas_layer.visible = true
+		progress_bar.max_value = max_boss_health
+		progress_bar.value = boss_health
+		timer.timeout.connect(_on_timer_timeout)
+		_change_state(State.WALK)
