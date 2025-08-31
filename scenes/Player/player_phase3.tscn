@@ -1,14 +1,14 @@
 [gd_scene load_steps=73 format=3 uid="uid://mlspxc2wfne5"]
 
 [ext_resource type="Script" uid="uid://cfhj6lnqyanrd" path="res://scripts/player_phase_3.gd" id="1_j0qyw"]
-[ext_resource type="Texture2D" uid="uid://grcpw57j0fip" path="res://assets/3rd stage mc/3rd death/3rd death0000.png" id="3_mmtyl"]
-[ext_resource type="Texture2D" uid="uid://bbm6p850djhxs" path="res://assets/3rd stage mc/3rd death/3rd death0001.png" id="4_p5pjs"]
-[ext_resource type="Texture2D" uid="uid://b6y3y4wei3g45" path="res://assets/3rd stage mc/3rd death/3rd death0002.png" id="5_2uw21"]
-[ext_resource type="Texture2D" uid="uid://c4vqrfnm7jvs1" path="res://assets/3rd stage mc/3rd death/3rd death0003.png" id="6_0cvw7"]
-[ext_resource type="Texture2D" uid="uid://dwl7jrxeiwwk0" path="res://assets/3rd stage mc/3rd death/3rd death0004.png" id="7_nsel2"]
-[ext_resource type="Texture2D" uid="uid://bxaqs51u06ptm" path="res://assets/3rd stage mc/3rd death/3rd death0005.png" id="8_g4s68"]
-[ext_resource type="Texture2D" uid="uid://cqv6vet3vnyl0" path="res://assets/3rd stage mc/3rd death/3rd death0006.png" id="9_ppmmt"]
-[ext_resource type="Texture2D" uid="uid://cg82ucpdtph8g" path="res://assets/3rd stage mc/3rd death/3rd death0007.png" id="10_m0ndh"]
+[ext_resource type="Texture2D" uid="uid://cikj48jvmtk2w" path="res://assets/3rd stage mc/3rd death/1.png" id="2_sayad"]
+[ext_resource type="Texture2D" uid="uid://nx0pfl58igln" path="res://assets/3rd stage mc/3rd death/2.png" id="3_yd476"]
+[ext_resource type="Texture2D" uid="uid://61mpu4w6woyc" path="res://assets/3rd stage mc/3rd death/3.png" id="4_bpxp5"]
+[ext_resource type="Texture2D" uid="uid://c412qratogtc5" path="res://assets/3rd stage mc/3rd death/4.png" id="5_4o57y"]
+[ext_resource type="Texture2D" uid="uid://da35jq671y7ao" path="res://assets/3rd stage mc/3rd death/5.png" id="6_6bpjg"]
+[ext_resource type="Texture2D" uid="uid://cj8dpu62pfxgk" path="res://assets/3rd stage mc/3rd death/6.png" id="7_biubk"]
+[ext_resource type="Texture2D" uid="uid://cojxjby501kcy" path="res://assets/3rd stage mc/3rd death/7.png" id="8_g41i5"]
+[ext_resource type="Texture2D" uid="uid://cbs6bqdk4yeea" path="res://assets/3rd stage mc/3rd death/8.png" id="9_blj8k"]
 [ext_resource type="Texture2D" uid="uid://b5koopd244sci" path="res://assets/3rd stage mc/3rd eating/3rd eating0000.png" id="11_000hp"]
 [ext_resource type="Texture2D" uid="uid://cp388sdif85va" path="res://assets/3rd stage mc/3rd eating/3rd eating0001.png" id="12_33x7g"]
 [ext_resource type="Texture2D" uid="uid://dpak06ojjiook" path="res://assets/3rd stage mc/3rd eating/3rd eating0002.png" id="13_lrim6"]
@@ -75,28 +75,28 @@ height = 174.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_mmtyl")
+"texture": ExtResource("2_sayad")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_p5pjs")
+"texture": ExtResource("3_yd476")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_2uw21")
+"texture": ExtResource("4_bpxp5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_0cvw7")
+"texture": ExtResource("5_4o57y")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_nsel2")
+"texture": ExtResource("6_6bpjg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_g4s68")
+"texture": ExtResource("7_biubk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_ppmmt")
+"texture": ExtResource("8_g41i5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_m0ndh")
+"texture": ExtResource("9_blj8k")
 }],
 "loop": false,
 "name": &"death",
@@ -157,7 +157,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("28_xgkxj")
 }],
-"loop": true,
+"loop": false,
 "name": &"eat",
 "speed": 11.0
 }, {
@@ -215,7 +215,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("44_fvpjf")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump",
 "speed": 11.0
 }, {
@@ -342,7 +342,9 @@ shape = SubResource("CapsuleShape2D_0mv62")
 position = Vector2(49, -20)
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_v3hta")
-animation = &"idle"
+animation = &"death"
+frame = 7
+frame_progress = 1.0
 
 [node name="Sword" parent="." instance=ExtResource("63_r4pvy")]
 position = Vector2(3, 4)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://mo3hkwq7pjdf"]
+[gd_scene load_steps=104 format=3 uid="uid://mo3hkwq7pjdf"]
 
 [ext_resource type="Script" uid="uid://qdyt6iet83op" path="res://scripts/player_phase_1.gd" id="1_m07t0"]
 [ext_resource type="Texture2D" uid="uid://c6xehwxoftg4l" path="res://assets/1st stage mc/1st idle/1st idle0000.png" id="2_cbf1i"]
@@ -68,10 +68,16 @@
 [ext_resource type="Texture2D" uid="uid://bxlrjbv88roth" path="res://assets/1st stage mc/1st idle/1st idle0011.png" id="65_qywrh"]
 [ext_resource type="Texture2D" uid="uid://eajwd1t3mwa0" path="res://assets/1st stage mc/1st idle/1st idle0012.png" id="66_jopkk"]
 [ext_resource type="Texture2D" uid="uid://cj17v7d3a31tn" path="res://assets/1st stage mc/1st run/1st run/1st run0000.png" id="67_5l1xu"]
+[ext_resource type="Texture2D" uid="uid://cyij6jdpbowda" path="res://assets/1st stage mc/1st jump/1st jump0000.png" id="67_ylaql"]
+[ext_resource type="Texture2D" uid="uid://01jtjhfc07ta" path="res://assets/1st stage mc/1st jump/1st jump0001.png" id="68_57arx"]
 [ext_resource type="Texture2D" uid="uid://bsgnnmmtq8w6b" path="res://assets/1st stage mc/1st run/1st run/1st run0001.png" id="68_inwxp"]
+[ext_resource type="Texture2D" uid="uid://7nmlc4gmw70e" path="res://assets/1st stage mc/1st jump/1st jump0002.png" id="69_a3vm6"]
 [ext_resource type="Texture2D" uid="uid://dg0g0poerr2wq" path="res://assets/1st stage mc/1st run/1st run/1st run0002.png" id="69_eb62r"]
 [ext_resource type="Texture2D" uid="uid://6p0xugqs12mo" path="res://assets/1st stage mc/1st run/1st run/1st run0003.png" id="70_5tfe1"]
+[ext_resource type="Texture2D" uid="uid://c5eqs8xhayxtn" path="res://assets/1st stage mc/1st jump/1st jump0003.png" id="70_qshar"]
+[ext_resource type="Texture2D" uid="uid://y4jt8rk3h32f" path="res://assets/1st stage mc/1st jump/1st jump0004.png" id="71_36vc6"]
 [ext_resource type="Texture2D" uid="uid://c75fiqlx6uafm" path="res://assets/1st stage mc/1st run/1st run/1st run0004.png" id="71_tfrof"]
+[ext_resource type="Texture2D" uid="uid://cxwaxrtfmgefe" path="res://assets/1st stage mc/1st jump/1st jump0005.png" id="72_sb883"]
 [ext_resource type="Texture2D" uid="uid://dupjrcmbvd6ei" path="res://assets/1st stage mc/1st run/1st run/1st run0005.png" id="72_vsqmb"]
 [ext_resource type="Texture2D" uid="uid://dav3a1aksyt6j" path="res://assets/1st stage mc/1st run/1st run/1st run0006.png" id="73_8cesh"]
 [ext_resource type="Texture2D" uid="uid://b0sh2f82utlnu" path="res://assets/1st stage mc/1st run/1st run/1st run0007.png" id="74_uew4u"]
@@ -179,7 +185,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"death",
-"speed": 5.0
+"speed": 11.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -260,7 +266,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("54_fccsy")
 }],
-"loop": true,
+"loop": false,
 "name": &"eat",
 "speed": 11.0
 }, {
@@ -306,6 +312,29 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
+"speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("67_ylaql")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_57arx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_a3vm6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_qshar")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_36vc6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_sb883")
+}],
+"loop": false,
+"name": &"jump",
 "speed": 11.0
 }, {
 "frames": [{
@@ -443,7 +472,9 @@ shape = SubResource("CapsuleShape2D_0mv62")
 position = Vector2(44, 0)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_v3hta")
-animation = &"death"
+animation = &"jump"
+frame = 5
+frame_progress = 1.0
 
 [node name="Sword" parent="." instance=ExtResource("7_fjrip")]
 position = Vector2(7, 32)

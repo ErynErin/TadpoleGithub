@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6y3y4wei3g45"
-path="res://.godot/imported/3rd death0002.png-c6066d5cacefe8e0363438a6dbcdb02c.ctex"
+uid="uid://61mpu4w6woyc"
+path="res://.godot/imported/3.png-ba0f5a0aec95140c53bfb4044a0c0e08.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/3rd stage mc/3rd death/3rd death0002.png"
-dest_files=["res://.godot/imported/3rd death0002.png-c6066d5cacefe8e0363438a6dbcdb02c.ctex"]
+source_file="res://assets/3rd stage mc/3rd death/3.png"
+dest_files=["res://.godot/imported/3.png-ba0f5a0aec95140c53bfb4044a0c0e08.ctex"]
 
 [params]
 
