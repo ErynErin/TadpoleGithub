@@ -27,7 +27,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="SystemBalloon" type="CanvasLayer"]
+[node name="MerchantBalloon" type="CanvasLayer"]
 layer = 100
 script = ExtResource("1_c072q")
 
@@ -83,6 +83,7 @@ offset_right = 1457.0
 offset_bottom = 992.0
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("5_8t0p8")
 theme_override_font_sizes/normal_font_size = 40
 text = "Dialogue..."
 
@@ -94,10 +95,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -290.5
-offset_top = -35.0
-offset_right = 290.5
-offset_bottom = 35.0
+offset_left = -512.5
+offset_top = 339.0
+offset_right = 68.5
+offset_bottom = 409.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 8

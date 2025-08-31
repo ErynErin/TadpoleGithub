@@ -1,0 +1,10 @@
+~ start 
+# use game state has met 
+: [[Good day|Merry greetings]], dear creature! 
+Merchant: I am Merchant, [wait=1][wave amp=15 freq=3]your water santa!
+Merchant: Here are artifacts to help you with your journey!
+=> END
+
+~ afterbuy
+Merchant: Thank you dear creature! [wave amp=15 freq=3] Have a Merry Fishmas!
+=> END

@@ -9,6 +9,7 @@ var next_scene_path = ""
 @export var inv: Inv
 signal health_changed(current_health: float, max_health: float)
 signal player_died
+signal shop_closed
 
 func load_to_scene(next_scene: String):
 	next_scene_path = next_scene
@@ -57,15 +58,15 @@ func add_speed():
 	speed += 50
 	print("speed:", speed)
 
-func show_dialogue(dialogue_scene):
-	var current_scene = get_tree().current_scene
-	var dialogue = current_scene.get_node("GUI/" + dialogue_scene)
-	dialogue.visible = true
-	
-func hide_dialogue(dialogue_scene):
-	var current_scene = get_tree().current_scene
-	var dialogue = current_scene.get_node("GUI/" + dialogue_scene)
-	dialogue.visible = false
+#func show_dialogue(dialogue_scene):
+	#var current_scene = get_tree().current_scene
+	#var dialogue = current_scene.get_node("GUI/" + dialogue_scene)
+	#dialogue.visible = true
+	#
+#func hide_dialogue(dialogue_scene):
+	#var current_scene = get_tree().current_scene
+	#var dialogue = current_scene.get_node("GUI/" + dialogue_scene)
+	#dialogue.visible = false
 
 func show_shop():
 	var current_scene = get_tree().current_scene	
@@ -75,6 +76,7 @@ func show_shop():
 func hide_shop():
 	var current_scene = get_tree().current_scene
 	var merchant_shop = current_scene.get_node("GUI/merchant shop")
+	emit_signal("shop_closed")
 	merchant_shop.visible = false
 
 func show_options():
