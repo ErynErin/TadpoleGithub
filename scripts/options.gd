@@ -53,9 +53,3 @@ func _on_sfx_slider_value_changed(value: float):
 func _on_exit_pressed() -> void:
 	$AudioStreamPlayer.play()
 	GameManager.hide_options()
-
-func _on_music_slider_drag_ended(_value_changed: bool) -> void:
-	$AudioStreamPlayer2.play()
-
-func _on_sfx_slider_drag_ended(_value_changed: bool) -> void:
-	$AudioStreamPlayer2.play()

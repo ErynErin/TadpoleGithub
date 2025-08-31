@@ -18,4 +18,4 @@ func _process(_delta: float) -> void:
 	
 	if progress[0] == 1:
 		var packed_scene = ResourceLoader.load_threaded_get(next_scene)
-		get_tree().change_scene_to_packed(packed_scene)
+		get_tree().change_scene_to_packed.call_deferred(packed_scene)

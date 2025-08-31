@@ -172,6 +172,8 @@ func take_damage(_damage: float) -> void:
 		
 		# Check if beetle should die (after 2 total hits)
 		if total_hits_taken >= 2:
+			$AudioStreamPlayer3.play()
+			await $AudioStreamPlayer3.finished
 			queue_free()
 		# If still alive, continue vulnerable state until timer finishes naturally
 

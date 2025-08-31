@@ -107,6 +107,4 @@ bus = &"SFX"
 stream = ExtResource("3_m70mf")
 bus = &"SFX"
 
-[connection signal="drag_ended" from="ColorRect/VBoxContainer/Music_Slider" to="." method="_on_music_slider_drag_ended"]
-[connection signal="drag_ended" from="ColorRect/VBoxContainer/SFX_Slider" to="." method="_on_sfx_slider_drag_ended"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
