@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://0gwvr1mcfucc"]
+[gd_scene load_steps=23 format=3 uid="uid://0gwvr1mcfucc"]
 
 [ext_resource type="Texture2D" uid="uid://dfoeb3l3cxt1d" path="res://assets/BG/Phase 3/1.png" id="1_ff7f0"]
 [ext_resource type="Texture2D" uid="uid://nodetolgruhr" path="res://assets/BG/Phase 3/2.png" id="2_7fgw2"]
@@ -9,17 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://cm3ufwpggnhmh" path="res://assets/GUI/Game Screen UI/P3_health.png" id="8_ff7f0"]
 [ext_resource type="Script" uid="uid://0dthjh7hw83f" path="res://scripts/pause_button.gd" id="9_7fgw2"]
 [ext_resource type="Script" uid="uid://d22ltv5khw2fa" path="res://scripts/health_bar.gd" id="11_3xx46"]
-[ext_resource type="Texture2D" uid="uid://c3xww2i2skpq1" path="res://assets/BG/Phase 1/2.png" id="11_7fgw2"]
-[ext_resource type="Texture2D" uid="uid://cpf5ahqnmuv2" path="res://assets/GUI/Game Screen UI/hunger.png" id="12_yvpia"]
-[ext_resource type="Texture2D" uid="uid://usodpdet6r8k" path="res://assets/GUI/Game Screen UI/hunger under bar.png" id="13_jfjfb"]
-[ext_resource type="PackedScene" uid="uid://cmole1wjk2k70" path="res://scenes/UI/merchant_shop.tscn" id="14_coq2n"]
 [ext_resource type="PackedScene" uid="uid://ctw57l6kowhya" path="res://scenes/UI/pause_menu.tscn" id="15_btcw1"]
 [ext_resource type="PackedScene" uid="uid://mo3hkwq7pjdf" path="res://scenes/Player/player_phase1.tscn" id="16_qani7"]
 [ext_resource type="PackedScene" uid="uid://qvgqap54c1b1" path="res://scenes/UI/options.tscn" id="16_yatwi"]
 [ext_resource type="PackedScene" uid="uid://mlspxc2wfne5" path="res://scenes/Player/player_phase3.tscn" id="18_7fgw2"]
 [ext_resource type="PackedScene" uid="uid://cqn1xtwbw5n5l" path="res://scenes/Collectibles/food.tscn" id="20_fngbt"]
 [ext_resource type="AudioStream" uid="uid://d3l6d8tkmf3t2" path="res://assets/Audios/bgms/Dark Ambient Music BGM.mp3" id="20_t2n2u"]
-[ext_resource type="PackedScene" uid="uid://bd1qu81rucmuf" path="res://scenes/Characters/merchant.tscn" id="23_xty0j"]
+[ext_resource type="PackedScene" uid="uid://ca5h26hc7p7b0" path="res://scenes/Characters/boss_1.tscn" id="21_fngbt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yatwi"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -27,16 +23,16 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2n2u"]
 bg_color = Color(1, 0.321569, 0.364706, 1)
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_heptv"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_t2n2u"]
 distance = 122.738
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lbhrr"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fngbt"]
 resource_local_to_scene = true
 distance = -581.0
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lbhrr"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lfq3w"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p57ef"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_26pct"]
 normal = Vector2(1, 0)
 distance = -1014.0
 
@@ -169,74 +165,45 @@ offset_right = 348.0
 offset_bottom = 310.0
 script = ExtResource("9_7fgw2")
 
-[node name="hunger bar" type="TextureProgressBar" parent="GUI"]
-visible = false
-offset_left = 230.0
-offset_top = 50.0
-offset_right = 1230.0
-offset_bottom = 1050.0
-scale = Vector2(0.25, 0.25)
-tooltip_text = "Hunger"
-stretch_margin_top = 12
-stretch_margin_right = 12
-stretch_margin_bottom = 12
-texture_over = ExtResource("12_yvpia")
-texture_progress = ExtResource("11_7fgw2")
-
-[node name="hunger lower bar" type="NinePatchRect" parent="GUI"]
-offset_left = 230.0
-offset_top = 58.0
-offset_right = 230.0
-offset_bottom = 292.0
-texture = ExtResource("13_jfjfb")
-region_rect = Rect2(0, 0, 790, 1000)
-
-[node name="merchant shop" parent="GUI" instance=ExtResource("14_coq2n")]
-visible = false
-scale = Vector2(1.11, 1.11)
-
 [node name="Pause Menu" parent="GUI" instance=ExtResource("15_btcw1")]
 visible = false
-scale = Vector2(1.11, 1.11)
+scale = Vector2(1.67, 1.67)
 
 [node name="Options" parent="GUI" instance=ExtResource("16_yatwi")]
 visible = false
 scale = Vector2(1.67, 1.67)
+
+[node name="World Boundaries" type="Node2D" parent="."]
+position = Vector2(1, 68)
+
+[node name="top" type="StaticBody2D" parent="World Boundaries"]
+position = Vector2(1, -842.492)
+rotation = 3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World Boundaries/top"]
+position = Vector2(-4.00001, -68)
+shape = SubResource("WorldBoundaryShape2D_t2n2u")
+
+[node name="bottom" type="StaticBody2D" parent="World Boundaries"]
+position = Vector2(1, 579)
+collision_layer = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World Boundaries/bottom"]
+position = Vector2(-2, -576)
+shape = SubResource("WorldBoundaryShape2D_fngbt")
+
+[node name="left" type="StaticBody2D" parent="World Boundaries"]
+position = Vector2(-990, 0)
+physics_material_override = SubResource("PhysicsMaterial_lfq3w")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="World Boundaries/left"]
+shape = SubResource("WorldBoundaryShape2D_26pct")
 
 [node name="Tadpole" parent="." instance=ExtResource("16_qani7")]
 visible = false
 z_index = 5
 position = Vector2(-1080.36, 58.5956)
 scale = Vector2(0.5, 0.5)
-
-[node name="World Boundaries" type="Node2D" parent="."]
-position = Vector2(1, 68)
-
-[node name="top" type="StaticBody2D" parent="World Boundaries"]
-position = Vector2(1, -786)
-rotation = 3.14159
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World Boundaries/top"]
-position = Vector2(-4.00001, -68)
-shape = SubResource("WorldBoundaryShape2D_heptv")
-
-[node name="bottom" type="StaticBody2D" parent="World Boundaries"]
-position = Vector2(1, 579)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World Boundaries/bottom"]
-position = Vector2(-2, -576)
-shape = SubResource("WorldBoundaryShape2D_lbhrr")
-
-[node name="left" type="StaticBody2D" parent="World Boundaries"]
-position = Vector2(-990, 0)
-physics_material_override = SubResource("PhysicsMaterial_lbhrr")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="World Boundaries/left"]
-shape = SubResource("WorldBoundaryShape2D_p57ef")
-
-[node name="Merchant" parent="." instance=ExtResource("23_xty0j")]
-position = Vector2(-702, 545)
-scale = Vector2(0.15, 0.15)
 
 [node name="player" parent="." instance=ExtResource("18_7fgw2")]
 z_index = 3
@@ -258,6 +225,7 @@ editor_draw_drag_margin = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("20_t2n2u")
+volume_db = -10.0
 autoplay = true
 bus = &"Music"
 parameters/looping = true
@@ -285,3 +253,7 @@ scale = Vector2(1.3, 1.3)
 [node name="food5" parent="Food" instance=ExtResource("20_fngbt")]
 position = Vector2(648, 399)
 scale = Vector2(1.3, 1.3)
+
+[node name="Kingstar" parent="." instance=ExtResource("21_fngbt")]
+position = Vector2(72, 433)
+scale = Vector2(0.4, 0.4)

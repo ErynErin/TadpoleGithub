@@ -7,6 +7,7 @@ var strength = 10
 var speed = 200
 var next_scene_path = ""
 var phase_num = 1
+var merchant_access = 1
 @export var inv: Inv
 signal health_changed(current_health: float, max_health: float)
 signal player_died
@@ -72,6 +73,7 @@ func add_speed():
 func show_shop():
 	var current_scene = get_tree().current_scene	
 	var merchant_shop = current_scene.get_node("GUI/merchant shop")
+	merchant_access -= 1
 	merchant_shop.visible = true
 	
 func hide_shop():
