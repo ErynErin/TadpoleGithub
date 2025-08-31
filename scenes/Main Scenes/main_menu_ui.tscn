@@ -127,6 +127,7 @@ theme = ExtResource("8_sfva6")
 
 [node name="ButtonAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_olqsj")
+volume_db = -29.024
 bus = &"SFX"
 
 [node name="StartAudio" type="AudioStreamPlayer" parent="."]
