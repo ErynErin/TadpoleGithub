@@ -73,17 +73,16 @@ func _crawl_state(delta: float) -> void:
 		_change_state(State.STAND)
 
 func _charge_state(delta: float) -> void:
-	$AudioStreamPlayer.play()
 	velocity.x = 0
 	state_timer += delta
 	if state_timer >= CHARGE_DURATION:
+		$AudioStreamPlayer.play()
 		_change_state(State.ATTACK)
 
 	if player:
 		pivot.scale.x = -sign(player.global_position.x - global_position.x)
 
 func _attack_state(delta: float) -> void:
-	$AudioStreamPlayer2.play()
 	state_timer += delta
 	velocity.x = sign(player.global_position.x - global_position.x) * ATTACK_SPEED
 
@@ -92,6 +91,7 @@ func _attack_state(delta: float) -> void:
 		has_jumped = true
 		
 	if state_timer >= ATTACK_DURATION:
+		$AudioStreamPlayer2.play()
 		if player_was_hit:
 			if is_player_in_range:
 				_change_state(State.STAND)
@@ -101,7 +101,6 @@ func _attack_state(delta: float) -> void:
 			_change_state(State.VULNERABLE)
 
 func _vulnerable_state(delta: float) -> void:
-	$AudioStreamPlayer2.play()
 	velocity.x = 0
 	state_timer += delta
 	if state_timer >= VULNERABLE_DURATION:
@@ -169,6 +168,7 @@ func take_damage(_damage: float) -> void:
 		total_hits_taken += 1  # Increment total hits
 		
 		animation_player.play("hurt")
+		await animation_player.animation_finished
 		
 		# Check if beetle should die (after 2 total hits)
 		if total_hits_taken >= 2:

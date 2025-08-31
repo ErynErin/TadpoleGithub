@@ -38,7 +38,8 @@ shape = SubResource("CircleShape2D_370ap")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.665, 0.665)
 sprite_frames = SubResource("SpriteFrames_af40f")
-frame_progress = 0.533409
+autoplay = "default"
+frame_progress = 0.580614
 
 [node name="InteractionArea" parent="." instance=ExtResource("3_370ap")]
 collision_mask = 128

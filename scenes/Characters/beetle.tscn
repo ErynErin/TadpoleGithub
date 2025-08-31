@@ -23,7 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://qo0ghtjjb10g" path="res://assets/Characters/Water Beetle Tank/Idle/Beetle_6.png" id="14_stksv"]
 [ext_resource type="Texture2D" uid="uid://3rjop35mltqt" path="res://assets/Characters/Water Beetle Tank/Idle/Beetle_7.png" id="15_ans0d"]
 [ext_resource type="Script" uid="uid://cfdlbfbudy12s" path="res://scripts/hitbox.gd" id="23_mhe5e"]
-[ext_resource type="AudioStream" uid="uid://v3u0mnwyxhpy" path="res://assets/Audios/enemies/beetle charge.mp3" id="24_r2iln"]
+[ext_resource type="AudioStream" uid="uid://citc2cma8k7u4" path="res://assets/Audios/enemies/beetle charge.mp3" id="24_r2iln"]
 [ext_resource type="AudioStream" uid="uid://rinopi30m814" path="res://assets/Audios/enemies/beetle hit.mp3" id="25_emjoi"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_mhe5e"]

@@ -4,7 +4,6 @@ extends Node2D
 @onready var collision_shape_2d: CollisionShape2D = $HitBox/CollisionShape2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 var is_equipped = false
 
@@ -17,7 +16,8 @@ func _ready() -> void:
 	collision_shape_2d.set_deferred("monitorable", false)
 
 func sword_attack() -> void:
-	audio_stream_player.play()
+	if is_equipped:
+		$SwordAudio.play()
 	animation_player.play("attack")
 	await animation_player.animation_finished
 	animated_sprite_2d.play("idle")

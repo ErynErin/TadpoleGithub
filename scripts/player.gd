@@ -3,9 +3,6 @@ extends CharacterBody2D
 const JUMP_VELOCITY = -600.0
 const MAX_JUMPS = 2
 
-var is_walking = false
-var is_running = false
-
 @onready var sword: Node2D = $Sword
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var pivot: Node2D = $Pivot
@@ -48,7 +45,6 @@ func _physics_process(delta: float) -> void:
 
 	# Handle sprint
 	if Input.is_action_pressed("Sprint") and Input.get_axis("left", "right"):
-		$RunAudio.play()
 		velocity.x = move_toward(velocity.x, (velocity.x * 2), SPEED)
 
 	# Flip character and sword
@@ -63,27 +59,14 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		if Input.is_action_just_pressed("attack"):
 			sword.sword_attack()
-			stop_movement_audio()
-			is_walking = false
-			is_running = false
 		elif direction == 0:
 			animated_sprite.play("idle")
-			stop_movement_audio()
 		elif Input.is_action_pressed("Sprint"):
 			animated_sprite.play("run")
-			if not is_running:
-				$RunAudio.play()
-				is_running = true
-				is_walking = false
 		else:
 			animated_sprite.play("walk")
-			if not is_walking:
-				$WalkAudio.play()
-				is_walking = true
-				is_running = false
 	else:
 		animated_sprite.play("idle")
-		stop_movement_audio()
 		
 	move_and_slide()
 
@@ -100,11 +83,3 @@ func _on_player_died():
 	GameManager.player_died.disconnect(_on_player_died)
 	await animated_sprite.animation_finished
 	get_tree().reload_current_scene()
-
-func stop_movement_audio():
-	if $WalkAudio.playing:
-		$WalkAudio.stop()
-	if $RunAudio.playing:
-		$RunAudio.stop()
-	is_walking = false
-	is_running = false
