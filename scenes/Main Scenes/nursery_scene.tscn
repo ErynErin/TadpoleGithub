@@ -1,11 +1,12 @@
 [gd_scene load_steps=39 format=3 uid="uid://d0hqwpnv7oakw"]
 
 [ext_resource type="Texture2D" uid="uid://cstcdjnw86nfs" path="res://assets/BG/Phase 1/1.png" id="1_36xgi"]
+[ext_resource type="Script" uid="uid://bxd2bwy2cc7ww" path="res://scenes/Main Scenes/nursery_scene.gd" id="1_r8hxo"]
 [ext_resource type="Texture2D" uid="uid://c3xww2i2skpq1" path="res://assets/BG/Phase 1/2.png" id="2_is0ew"]
 [ext_resource type="Texture2D" uid="uid://ci5h6qat4a3lg" path="res://assets/BG/Phase 1/3.png" id="3_xlmt5"]
 [ext_resource type="Texture2D" uid="uid://btvfpva4ccs2p" path="res://assets/BG/Phase 1/4.png" id="4_heptv"]
 [ext_resource type="Texture2D" uid="uid://cx2obingrau0c" path="res://assets/BG/Phase 1/5.png" id="5_b40aj"]
-[ext_resource type="Texture2D" uid="uid://iwggw3st1ihx" path="res://assets/BG/Phase 1/6.PNG" id="6_y2ypf"]
+[ext_resource type="Texture2D" uid="uid://iwggw3st1ihx" path="res://assets/BG/Phase 1/6.png" id="6_y2ypf"]
 [ext_resource type="PackedScene" uid="uid://ds8i10qow8msb" path="res://scenes/inventory_things/inv_ui.tscn" id="7_neo3g"]
 [ext_resource type="PackedScene" uid="uid://bntvonb1a06nv" path="res://scenes/Characters/beetle.tscn" id="7_y2ypf"]
 [ext_resource type="PackedScene" uid="uid://bd1qu81rucmuf" path="res://scenes/Characters/merchant.tscn" id="8_nsaye"]
@@ -6677,10 +6678,13 @@ texture_region_size = Vector2i(600, 600)
 73:74/0 = 0
 74:74/0 = 0
 0:1/0 = 0
+0:1/0/texture_origin = Vector2i(100, 100)
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-249.679, -280.391, 294.312, -279.705, 293.973, 293.973, -249.507, 301.384)
 1:1/0 = 0
+1:1/0/texture_origin = Vector2i(100, 100)
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(296.761, -282.742, -47.1673, -282.742, -167.926, -214.382, -233.871, -130.431, -274.687, -75.9115, -295.736, 37.1627, -297.302, 124.254, -289.313, 176.748, -258.475, 220.314, -225.189, 260.942, -161.965, 292.407, 297.503, 295.186, 300.134, 194.311)
 1:0/0 = 0
+1:0/0/texture_origin = Vector2i(100, 100)
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-255.185, -288.651, 301.451, -296.825, 303.097, 296.773, -252.82, 295.771)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-251.821, -288.52, 300.818, -287.04, 303.243, 297.735, -250.934, 301.524)
@@ -6690,6 +6694,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_khq81")
 
 [node name="Ted Game" type="Node2D"]
+script = ExtResource("1_r8hxo")
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
 physics_interpolation_mode = 0
@@ -6912,7 +6917,6 @@ physics_material_override = SubResource("PhysicsMaterial_lbhrr")
 shape = SubResource("WorldBoundaryShape2D_p57ef")
 
 [node name="Food" type="Node2D" parent="."]
-visible = false
 metadata/_edit_lock_ = true
 
 [node name="food" parent="Food" instance=ExtResource("16_c07hn")]
@@ -6996,7 +7000,17 @@ bus = &"Music"
 parameters/looping = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-scale = Vector2(0.16, 0.16)
-tile_map_data = PackedByteArray(0, 0, 157, 0, 198, 0, 0, 0, 1, 0, 0, 0, 0, 0, 195, 0, 198, 0, 0, 0, 2, 0, 0, 0, 0, 0, 122, 0, 198, 0, 0, 0, 0, 0, 1, 0, 0, 0, 87, 0, 198, 0, 0, 0, 1, 0, 1, 0, 0, 0)
+scale = Vector2(0.165, 0.165)
+tile_map_data = PackedByteArray(0, 0, 192, 0, 198, 0, 0, 0, 2, 0, 0, 0, 0, 0, 87, 0, 198, 0, 0, 0, 1, 0, 1, 0, 0, 0, 120, 0, 198, 0, 0, 0, 0, 0, 1, 0, 0, 0, 155, 0, 198, 0, 0, 0, 1, 0, 0, 0, 0, 0)
 tile_set = SubResource("TileSet_45e12")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ScreenFade" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
