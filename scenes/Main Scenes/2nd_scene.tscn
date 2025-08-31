@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cfv4f6bi46hrx"]
+[gd_scene load_steps=28 format=4 uid="uid://cfv4f6bi46hrx"]
 
 [ext_resource type="Texture2D" uid="uid://cc6aiqta7j02x" path="res://assets/BG/Phase 2/1.png" id="7_aqdem"]
 [ext_resource type="Texture2D" uid="uid://5m0ipjw8b0j3" path="res://assets/GUI/Game Screen UI/P2_health.png" id="7_ysw53"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cmole1wjk2k70" path="res://scenes/UI/merchant_shop.tscn" id="14_dwpsk"]
 [ext_resource type="PackedScene" uid="uid://ctw57l6kowhya" path="res://scenes/UI/pause_menu.tscn" id="15_2npaq"]
 [ext_resource type="PackedScene" uid="uid://qvgqap54c1b1" path="res://scenes/UI/options.tscn" id="15_3xvx2"]
+[ext_resource type="Texture2D" uid="uid://7w1ynanueaxp" path="res://scenes/Platforms/P2_spritesheet.svg" id="17_3xvx2"]
 [ext_resource type="PackedScene" uid="uid://basdg6biv03al" path="res://scenes/Player/player_phase2.tscn" id="17_ysw53"]
 [ext_resource type="PackedScene" uid="uid://cqn1xtwbw5n5l" path="res://scenes/Collectibles/food.tscn" id="18_whigq"]
 [ext_resource type="PackedScene" uid="uid://ca5h26hc7p7b0" path="res://scenes/Characters/boss_1.tscn" id="19_vksdc"]
@@ -39,6 +40,24 @@ distance = -581.0
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_goyj0"]
 normal = Vector2(1, 0)
 distance = -1014.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vksdc"]
+texture = ExtResource("17_3xvx2")
+texture_region_size = Vector2i(600, 600)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-292.023, 304.125, -294.095, -288.541, 294.426, -282.324, 294.426, 308.269)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-297.466, -297.015, -16.6783, -291.112, 110.683, -257.756, 195.591, -188.01, 266.853, -87.9401, 292.628, 12.1296, 300.209, 125.845, 253.207, 238.045, 169.815, 298.693, -291.112, 298.693, -298.693, -186.494)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-300.691, -289.823, 293.446, -289.823, 297.068, 295.257, -298.88, 298.88)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-298.013, -292.621, 299.145, -292.621, 300.493, 304.537, -293.969, 305.885)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(297.258, -290.078, 7.18018, -295.822, -96.2141, -246.997, -170.888, -182.376, -239.817, -91.9059, -277.154, 4.30811, -284.334, 114.883, -257.05, 186.684, -185.248, 282.898, -73.2375, 297.258, 295.822, 300.13)
+
+[sub_resource type="TileSet" id="TileSet_goyj0"]
+physics_layer_0/collision_layer = 15
+sources/1 = SubResource("TileSetAtlasSource_vksdc")
 
 [node name="Ted Game2" type="Node2D"]
 
@@ -270,3 +289,8 @@ physics_material_override = SubResource("PhysicsMaterial_wkg83")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="World Boundaries/left"]
 shape = SubResource("WorldBoundaryShape2D_goyj0")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(0.165, 0.165)
+tile_map_data = PackedByteArray("AAAhAJ8AAQAAAAAAAAAzAJ8AAQABAAAAAABFAJ8AAQABAAEAAAAPAJ8AAQAAAAEAAABhAJUAAgAAAAAAAACGAJUAAgABAAEAAAA8AJUAAgAAAAEAAAB2ALkAAwAAAAEAAACZALkAAwABAAEAAAC7ALkAAwAAAAAAAADdALkAAwABAAAAAAABAbkAAwACAAAAAAA=")
+tile_set = SubResource("TileSet_goyj0")
