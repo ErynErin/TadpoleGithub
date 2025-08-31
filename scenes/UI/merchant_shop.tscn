@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmole1wjk2k70"]
+[gd_scene load_steps=8 format=3 uid="uid://cmole1wjk2k70"]
 
+[ext_resource type="Theme" uid="uid://bxycdq0lkine8" path="res://balloonthemehuhu.tres" id="1_eq7wg"]
 [ext_resource type="Script" uid="uid://bshybnqtmehsh" path="res://scripts/merchant_shop.gd" id="1_nhdr3"]
 [ext_resource type="Texture2D" uid="uid://dd46my82kxtbj" path="res://assets/Merchant Items/P1_health.png" id="3_eq7wg"]
 [ext_resource type="Texture2D" uid="uid://dqur42p46m4dh" path="res://assets/GUI/Menu Assets/Merchant Shop.png" id="3_qyu7k"]
@@ -16,6 +17,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_eq7wg")
 script = ExtResource("1_nhdr3")
 
 [node name="Shop Panel" type="Panel" parent="."]
@@ -91,9 +93,9 @@ texture = ExtResource("3_eq7wg")
 [node name="Health Button" type="Button" parent="Shop Panel"]
 layout_mode = 2
 offset_left = 824.0
-offset_top = 281.0
+offset_top = 326.466
 offset_right = 1134.0
-offset_bottom = 444.0
+offset_bottom = 419.466
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 40
 text = "Increase Health"
@@ -109,9 +111,9 @@ texture = ExtResource("4_mknrg")
 [node name="Speed Button" type="Button" parent="Shop Panel"]
 layout_mode = 2
 offset_left = 824.0
-offset_top = 474.0
+offset_top = 531.025
 offset_right = 1123.0
-offset_bottom = 637.0
+offset_bottom = 602.025
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 40
 text = "Increase Speed"
@@ -127,9 +129,9 @@ texture = ExtResource("5_786rh")
 [node name="Strength Button" type="Button" parent="Shop Panel"]
 layout_mode = 2
 offset_left = 824.0
-offset_top = 667.0
+offset_top = 707.842
 offset_right = 1172.0
-offset_bottom = 830.0
+offset_bottom = 784.842
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 40
 text = "Increase Strength"
