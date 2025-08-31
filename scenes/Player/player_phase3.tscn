@@ -1,6 +1,6 @@
-[gd_scene load_steps=75 format=3 uid="uid://mlspxc2wfne5"]
+[gd_scene load_steps=73 format=3 uid="uid://mlspxc2wfne5"]
 
-[ext_resource type="Script" uid="uid://cfhj6lnqyanrd" path="res://scripts/player_phase_3.gd" id="1_j0qyw"]
+[ext_resource type="Script" uid="uid://qdyt6iet83op" path="res://scripts/player.gd" id="1_4o57y"]
 [ext_resource type="Texture2D" uid="uid://cikj48jvmtk2w" path="res://assets/3rd stage mc/3rd death/1.png" id="2_sayad"]
 [ext_resource type="Texture2D" uid="uid://nx0pfl58igln" path="res://assets/3rd stage mc/3rd death/2.png" id="3_yd476"]
 [ext_resource type="Texture2D" uid="uid://61mpu4w6woyc" path="res://assets/3rd stage mc/3rd death/3.png" id="4_bpxp5"]
@@ -66,8 +66,6 @@
 [ext_resource type="Script" uid="uid://dktsel320mpw7" path="res://scripts/hurtbox.gd" id="64_j0qyw"]
 [ext_resource type="AudioStream" uid="uid://b4uuqdo1rp4ju" path="res://assets/Audios/player/death.mp3" id="65_bpxp5"]
 [ext_resource type="AudioStream" uid="uid://dic1gm6n83vqj" path="res://assets/Audios/player/jump.wav" id="65_sayad"]
-[ext_resource type="AudioStream" uid="uid://ctj7wgvhg62vi" path="res://assets/Audios/player/run.mp3" id="67_4o57y"]
-[ext_resource type="AudioStream" uid="uid://b1xcm6nr6t2ow" path="res://assets/Audios/player/walk.mp3" id="68_6bpjg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mv62"]
 radius = 42.0
@@ -332,7 +330,7 @@ _data = {
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
-script = ExtResource("1_j0qyw")
+script = ExtResource("1_4o57y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-21, -7)
@@ -373,12 +371,4 @@ bus = &"SFX"
 
 [node name="JumpAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("65_sayad")
-bus = &"SFX"
-
-[node name="RunAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("67_4o57y")
-bus = &"SFX"
-
-[node name="WalkAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("68_6bpjg")
 bus = &"SFX"
