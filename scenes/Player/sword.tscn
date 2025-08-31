@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c4but2nvvcprr" path="res://assets/3rd stage mc/weapon attack/weapon attack0004.png" id="5_1b8op"]
 [ext_resource type="Texture2D" uid="uid://bnqkbch22awn4" path="res://assets/3rd stage mc/weapon attack/weapon attack0005.png" id="6_8qxbg"]
 [ext_resource type="Texture2D" uid="uid://bkhgalx5c28f1" path="res://assets/3rd stage mc/weapon attack/weapon attack0006.png" id="7_m4hdf"]
-[ext_resource type="AudioStream" uid="uid://dum8gkomjph83" path="res://assets/Audios/sword.wav" id="10_mrmrw"]
+[ext_resource type="AudioStream" uid="uid://dum8gkomjph83" path="res://assets/Audios/player/sword.wav" id="10_mrmrw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7tb62"]
 animations = [{

@@ -25,7 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://cmole1wjk2k70" path="res://scenes/UI/merchant_shop.tscn" id="22_odwuh"]
 [ext_resource type="PackedScene" uid="uid://bokyvhomjmfi4" path="res://scenes/Platforms/P1 Working Platforms/p1_left_plat.tscn" id="23_nsaye"]
 [ext_resource type="PackedScene" uid="uid://wtpm74wh30kh" path="res://scenes/Platforms/P1 Working Platforms/p1_right_plat.tscn" id="24_p0owv"]
-[ext_resource type="AudioStream" uid="uid://088m4dy2feda" path="res://assets/Audios/Coming of Age Movie BGM.mp3" id="27_po7p3"]
+[ext_resource type="AudioStream" uid="uid://088m4dy2feda" path="res://assets/Audios/bgms/Coming of Age Movie BGM.mp3" id="27_po7p3"]
 
 [sub_resource type="SystemFont" id="SystemFont_nsaye"]
 

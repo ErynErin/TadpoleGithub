@@ -64,8 +64,8 @@
 [ext_resource type="Texture2D" uid="uid://du33fwqvweg6r" path="res://assets/3rd stage mc/3rd walking/3rd walking0006.png" id="63_7qlbm"]
 [ext_resource type="PackedScene" uid="uid://bb6ksj6c85ixy" path="res://scenes/Player/sword.tscn" id="63_r4pvy"]
 [ext_resource type="Script" uid="uid://dktsel320mpw7" path="res://scripts/hurtbox.gd" id="64_j0qyw"]
-[ext_resource type="AudioStream" uid="uid://dic1gm6n83vqj" path="res://assets/Audios/jump.wav" id="65_sayad"]
-[ext_resource type="AudioStream" uid="uid://cl45a520jbxvp" path="res://assets/Audios/sprint.mp3" id="66_yd476"]
+[ext_resource type="AudioStream" uid="uid://dic1gm6n83vqj" path="res://assets/Audios/player/jump.wav" id="65_sayad"]
+[ext_resource type="AudioStream" uid="uid://cl45a520jbxvp" path="res://assets/Audios/player/sprint.mp3" id="66_yd476"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mv62"]
 radius = 42.0
