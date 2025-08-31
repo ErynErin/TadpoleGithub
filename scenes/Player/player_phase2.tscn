@@ -174,7 +174,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("30_vsosx")
 }],
-"loop": true,
+"loop": false,
 "name": &"eat",
 "speed": 11.0
 }, {
@@ -392,7 +392,7 @@ shape = SubResource("CapsuleShape2D_0mv62")
 position = Vector2(79, -33)
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_v3hta")
-animation = &"death"
+animation = &"eat"
 
 [node name="Sword" parent="." instance=ExtResource("90_1y3x4")]
 position = Vector2(3, 4)
