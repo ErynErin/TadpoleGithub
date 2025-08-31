@@ -98,7 +98,7 @@ layer = 100
 script = ExtResource("1_b1mkc")
 
 [node name="Merchant" type="AnimatedSprite2D" parent="."]
-position = Vector2(1779, 856)
+position = Vector2(1660.41, 676.064)
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_403io")
 animation = &"talk"
@@ -106,7 +106,7 @@ autoplay = "talk"
 flip_h = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(414.803, 913.403)
+position = Vector2(431.71, 774.244)
 scale = Vector2(1.64191, 1.73021)
 sprite_frames = SubResource("SpriteFrames_cks8t")
 autoplay = "default"
@@ -168,10 +168,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -594.976
-offset_top = -133.229
-offset_right = 161.024
-offset_bottom = -63.2289
+offset_left = -510.0
+offset_top = 2.0
+offset_right = 191.0
+offset_bottom = 72.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 8
