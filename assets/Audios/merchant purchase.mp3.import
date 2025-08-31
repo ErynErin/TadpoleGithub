@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cp323mhr1ylgy"
+path="res://.godot/imported/merchant purchase.mp3-f534d3e24cace3770516a08b82781e9a.mp3str"
+
+[deps]
+
+source_file="res://assets/Audios/merchant purchase.mp3"
+dest_files=["res://.godot/imported/merchant purchase.mp3-f534d3e24cace3770516a08b82781e9a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

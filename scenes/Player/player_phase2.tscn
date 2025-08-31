@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://basdg6biv03al"]
+[gd_scene load_steps=88 format=3 uid="uid://basdg6biv03al"]
 
 [ext_resource type="Script" uid="uid://dbhnec6s7au3t" path="res://scripts/player_phase_2.gd" id="1_lstng"]
 [ext_resource type="Texture2D" uid="uid://doljgsdei1mie" path="res://assets/2nd stage mc/2nd idle/2nd idle0000.png" id="2_7ix7b"]
@@ -76,6 +76,10 @@
 [ext_resource type="Texture2D" uid="uid://ctdrsdr438kad" path="res://assets/2nd stage mc/2nd walk/2nd walk0012.png" id="74_mwm4v"]
 [ext_resource type="Texture2D" uid="uid://df544hp1cmcx7" path="res://assets/2nd stage mc/2nd walk/2nd walk0013.png" id="75_kdhuw"]
 [ext_resource type="Script" uid="uid://dktsel320mpw7" path="res://scripts/hurtbox.gd" id="77_nbw0f"]
+[ext_resource type="AudioStream" uid="uid://b4uuqdo1rp4ju" path="res://assets/Audios/player/death.mp3" id="78_gwi1w"]
+[ext_resource type="AudioStream" uid="uid://dic1gm6n83vqj" path="res://assets/Audios/player/jump.wav" id="79_copfn"]
+[ext_resource type="AudioStream" uid="uid://ctj7wgvhg62vi" path="res://assets/Audios/player/run.mp3" id="80_6m8tf"]
+[ext_resource type="AudioStream" uid="uid://b1xcm6nr6t2ow" path="res://assets/Audios/player/walk.mp3" id="81_fw7m3"]
 [ext_resource type="PackedScene" uid="uid://bb6ksj6c85ixy" path="res://scenes/Player/sword.tscn" id="90_1y3x4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mv62"]
@@ -244,7 +248,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("49_sc5es")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump",
 "speed": 11.0
 }, {
@@ -392,7 +396,7 @@ shape = SubResource("CapsuleShape2D_0mv62")
 position = Vector2(79, -33)
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_v3hta")
-animation = &"eat"
+animation = &"run"
 
 [node name="Sword" parent="." instance=ExtResource("90_1y3x4")]
 position = Vector2(3, 4)
@@ -412,5 +416,21 @@ shape = SubResource("CapsuleShape2D_jd4uv")
 libraries = {
 &"": SubResource("AnimationLibrary_vy06v")
 }
+
+[node name="DeathAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("78_gwi1w")
+bus = &"SFX"
+
+[node name="JumpAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("79_copfn")
+bus = &"SFX"
+
+[node name="RunAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("80_6m8tf")
+bus = &"SFX"
+
+[node name="WalkAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("81_fw7m3")
+bus = &"SFX"
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

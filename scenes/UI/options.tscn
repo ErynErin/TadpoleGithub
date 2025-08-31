@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://qvgqap54c1b1"]
+[gd_scene load_steps=4 format=3 uid="uid://qvgqap54c1b1"]
 
 [ext_resource type="Script" uid="uid://cqoc0b47mff0a" path="res://scripts/options.gd" id="1_u46ye"]
+[ext_resource type="AudioStream" uid="uid://dt2b5784r6j06" path="res://assets/Audios/button.wav" id="2_xgdkv"]
+[ext_resource type="AudioStream" uid="uid://c6eelof6nh0xx" path="res://assets/Audios/menu_start.wav" id="3_m70mf"]
 
 [node name="Options" type="Control"]
 process_mode = 3
@@ -91,5 +93,13 @@ grow_horizontal = 0
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 35
 text = "X"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_xgdkv")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_m70mf")
+bus = &"SFX"
 
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

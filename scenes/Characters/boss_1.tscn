@@ -1,4 +1,4 @@
-[gd_scene load_steps=217 format=3 uid="uid://ca5h26hc7p7b0"]
+[gd_scene load_steps=219 format=3 uid="uid://ca5h26hc7p7b0"]
 
 [ext_resource type="Texture2D" uid="uid://dglal1ggfmd5a" path="res://assets/Characters/Kingstar/ATTACKS/Attack100/Attack100_0000.png" id="1_qyqpj"]
 [ext_resource type="Script" uid="uid://ir21uqpbkx3x" path="res://scripts/boss_1.gd" id="1_wom53"]
@@ -208,6 +208,8 @@
 [ext_resource type="Texture2D" uid="uid://7vmxp5as11vk" path="res://assets/Characters/Kingstar/WALKS/walk75/walk75_0015.png" id="202_x14g0"]
 [ext_resource type="Script" uid="uid://dktsel320mpw7" path="res://scripts/hurtbox.gd" id="203_sb23d"]
 [ext_resource type="Script" uid="uid://cfdlbfbudy12s" path="res://scripts/hitbox.gd" id="204_yksyv"]
+[ext_resource type="AudioStream" uid="uid://cfxappkesjowb" path="res://assets/Audios/enemies/boss roar.mp3" id="209_ijpti"]
+[ext_resource type="AudioStream" uid="uid://biylr2yomysax" path="res://assets/Audios/enemies/boss huff.mp3" id="210_kmcfq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qyqpj"]
 size = Vector2(578, 816)
@@ -1090,6 +1092,14 @@ offset_top = 42.0
 offset_right = 1488.0
 offset_bottom = 176.0
 theme_override_font_sizes/font_size = 40
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("209_ijpti")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("210_kmcfq")
+bus = &"SFX"
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

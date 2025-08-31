@@ -25,9 +25,9 @@ var max_boss_health = 100.0
 var state_timer = 0.0
 
 func _ready() -> void:
+	$AudioStreamPlayer.play()
 	progress_bar.max_value = max_boss_health
 	progress_bar.value = boss_health
-	#animation_player.animation_finished.connect(_on_animation_finished)
 	timer.timeout.connect(_on_timer_timeout)
 	
 	_change_state(State.WALK)
@@ -105,6 +105,7 @@ func _dash_state(_delta: float) -> void:
 		_change_state(State.WALK)
 
 func _charge_state(_delta: float) -> void:
+	$AudioStreamPlayer2.play()
 	velocity.x = 0  # Stop movement during charge
 	
 	# Face the player during charge
@@ -121,11 +122,13 @@ func _charge_state(_delta: float) -> void:
 		_change_state(State.DASH)
 
 func _attack_state(_delta: float) -> void:
+	$AudioStreamPlayer2.play()
 	velocity.x = 0
 	if state_timer >= ATTACK_DURATION:
 		_change_state(State.REST)
 
 func _rest_state(_delta: float) -> void:
+	$AudioStreamPlayer2.play()
 	velocity.x = 0  # Stop movement during rest
 	
 	if state_timer >= REST_DURATION:

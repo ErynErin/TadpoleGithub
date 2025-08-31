@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cfxappkesjowb"
+path="res://.godot/imported/boss roar.mp3-d3e5ea4823fb967a53765217aed4177b.mp3str"
+
+[deps]
+
+source_file="res://assets/Audios/enemies/boss roar.mp3"
+dest_files=["res://.godot/imported/boss roar.mp3-d3e5ea4823fb967a53765217aed4177b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

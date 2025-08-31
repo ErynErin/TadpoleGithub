@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://rinopi30m814"
+path="res://.godot/imported/beetle hit.mp3-8aa5f3a1cb62edda5e3a247dc64971a6.mp3str"
+
+[deps]
+
+source_file="res://assets/Audios/enemies/beetle hit.mp3"
+dest_files=["res://.godot/imported/beetle hit.mp3-8aa5f3a1cb62edda5e3a247dc64971a6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

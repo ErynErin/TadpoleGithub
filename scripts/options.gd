@@ -46,9 +46,12 @@ func _ready():
 
 func _on_music_slider_value_changed(value: float):
 	AudioServer.set_bus_volume_db(music_bus_index, convert_slider_value_to_db(value))
+	$AudioStreamPlayer2.play()
 	
 func _on_sfx_slider_value_changed(value: float):
 	AudioServer.set_bus_volume_db(sfx_bus_index, convert_slider_value_to_db(value))
+	$AudioStreamPlayer2.play()
 
 func _on_exit_pressed() -> void:
+	$AudioStreamPlayer.play()
 	GameManager.hide_options()

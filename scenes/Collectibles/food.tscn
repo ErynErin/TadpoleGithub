@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqn1xtwbw5n5l"]
+[gd_scene load_steps=9 format=3 uid="uid://cqn1xtwbw5n5l"]
 
 [ext_resource type="Script" uid="uid://cfmc4tyu8426k" path="res://scripts/food.gd" id="1_af40f"]
 [ext_resource type="Texture2D" uid="uid://kasu56fypftq" path="res://assets/Sprites/Food/Food_1.png" id="2_l7sva"]
 [ext_resource type="PackedScene" uid="uid://w308ey44b88k" path="res://scenes/InteractionArea.tscn" id="3_370ap"]
 [ext_resource type="Texture2D" uid="uid://upqibdalcf1c" path="res://assets/Sprites/Food/Food_2.png" id="3_lyfrf"]
 [ext_resource type="Texture2D" uid="uid://c88it006jhxh5" path="res://assets/Sprites/Food/Food_3.png" id="4_fdfvv"]
+[ext_resource type="AudioStream" uid="uid://rpvx66rw8w1x" path="res://assets/Audios/eat.mp3" id="6_lyfrf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_370ap"]
 radius = 15.1327
@@ -49,5 +50,9 @@ y_position = 55.0
 position = Vector2(0, -2)
 scale = Vector2(1.5, 1.5)
 shape = SubResource("CircleShape2D_370ap")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_lyfrf")
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -73,6 +73,7 @@ func _crawl_state(delta: float) -> void:
 		_change_state(State.STAND)
 
 func _charge_state(delta: float) -> void:
+	$AudioStreamPlayer.play()
 	velocity.x = 0
 	state_timer += delta
 	if state_timer >= CHARGE_DURATION:
@@ -82,6 +83,7 @@ func _charge_state(delta: float) -> void:
 		pivot.scale.x = -sign(player.global_position.x - global_position.x)
 
 func _attack_state(delta: float) -> void:
+	$AudioStreamPlayer2.play()
 	state_timer += delta
 	velocity.x = sign(player.global_position.x - global_position.x) * ATTACK_SPEED
 
@@ -99,6 +101,7 @@ func _attack_state(delta: float) -> void:
 			_change_state(State.VULNERABLE)
 
 func _vulnerable_state(delta: float) -> void:
+	$AudioStreamPlayer2.play()
 	velocity.x = 0
 	state_timer += delta
 	if state_timer >= VULNERABLE_DURATION:

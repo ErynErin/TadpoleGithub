@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://mo3hkwq7pjdf"]
+[gd_scene load_steps=108 format=3 uid="uid://mo3hkwq7pjdf"]
 
 [ext_resource type="Script" uid="uid://qdyt6iet83op" path="res://scripts/player_phase_1.gd" id="1_m07t0"]
 [ext_resource type="Texture2D" uid="uid://c6xehwxoftg4l" path="res://assets/1st stage mc/1st idle/1st idle0000.png" id="2_cbf1i"]
@@ -97,6 +97,10 @@
 [ext_resource type="Texture2D" uid="uid://dhfrh34o85o5f" path="res://assets/1st stage mc/1st walk/1st walk0010.png" id="88_1pym2"]
 [ext_resource type="Texture2D" uid="uid://oojga4s58xw0" path="res://assets/1st stage mc/1st walk/1st walk0011.png" id="89_pgdua"]
 [ext_resource type="Script" uid="uid://dktsel320mpw7" path="res://scripts/hurtbox.gd" id="91_onspj"]
+[ext_resource type="AudioStream" uid="uid://b4uuqdo1rp4ju" path="res://assets/Audios/player/death.mp3" id="98_sb883"]
+[ext_resource type="AudioStream" uid="uid://dic1gm6n83vqj" path="res://assets/Audios/player/jump.wav" id="99_u6pnn"]
+[ext_resource type="AudioStream" uid="uid://ctj7wgvhg62vi" path="res://assets/Audios/player/run.mp3" id="100_02ywa"]
+[ext_resource type="AudioStream" uid="uid://b1xcm6nr6t2ow" path="res://assets/Audios/player/walk.mp3" id="102_fbv4b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mv62"]
 radius = 48.0
@@ -494,5 +498,21 @@ shape = SubResource("CapsuleShape2D_onspj")
 libraries = {
 &"": SubResource("AnimationLibrary_vy06v")
 }
+
+[node name="DeathAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("98_sb883")
+bus = &"SFX"
+
+[node name="JumpAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("99_u6pnn")
+bus = &"SFX"
+
+[node name="RunAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("100_02ywa")
+bus = &"SFX"
+
+[node name="WalkAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("102_fbv4b")
+bus = &"SFX"
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
