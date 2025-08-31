@@ -1,7 +1,13 @@
 ~ start
 System: A new life form!
 System: What’s your name? [wait=1] It can’t be John, Steve, or Ted[wait=1], right[speed=0.2]?
-Ted: My name is [speed=0.2]... [wait=3][wave amp=15 freq=3]Ted!
+# Ted: My name is [speed=0.2]... [wait=3][wave amp=15 freq=3]Ted!
 System: Oh- hi Ted! I didn’t expect your name to be one of those three…
 System: [wave amp=15 freq=3]Welcome to the pond!
+System: This is where you’ll eat, sleep, and live for a while…
+System: To move, press the left and right arrows, or A and D. 
+System: To jump, press W or the spacebar. 
+System: To sprint, hold shift. 
+System: Pretty cool right?
+
 => END
