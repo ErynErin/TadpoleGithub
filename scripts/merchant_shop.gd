@@ -7,11 +7,20 @@ extends Control
 @onready var strength_label: Label = $"Shop Panel/Current Stats/Strength Label"
 @onready var speed_label: Label = $"Shop Panel/Current Stats/Speed Label"
 
+@onready var health_icon: TextureRect = $"Shop Panel/Health Icon"
+@onready var speed_icon: TextureRect = $"Shop Panel/Speed Icon"
+@onready var strength_icon: TextureRect = $"Shop Panel/Strength Icon"
+
+func _ready() -> void:
+	health_icon.texture = load("res://assets/Merchant Items/P" + str(GameManager.phase_num) + "_health.png")
+	speed_icon.texture = load("res://assets/Merchant Items/P" + str(GameManager.phase_num) + "_speed.png")
+	strength_icon.texture = load("res://assets/Merchant Items/P" + str(GameManager.phase_num) + "_strength.png")
+
 func _on_exit_shop_pressed():
 	GameManager.hide_shop()
 
 func _on_health_button_pressed():
-	GameManager.add_health()
+	GameManager.heal(40)
 	health_label.text = "Health: " + str(GameManager.max_health)
 	GameManager.hide_shop()
 	

@@ -27,12 +27,14 @@ grow_vertical = 2
 script = ExtResource("1_akoac")
 
 [node name="BG" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 720.0
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_yu65x")
 
 [node name="Overlay" type="ColorRect" parent="."]
+layout_mode = 0
 offset_right = 1917.0
 offset_bottom = 1082.0
 color = Color(0.113725, 0.113725, 0.113725, 0.505882)
@@ -66,7 +68,7 @@ anchor_bottom = 0.5
 offset_left = -327.0
 offset_top = 337.0
 offset_right = 327.0
-offset_bottom = 431.0
+offset_bottom = 395.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_yu65x")

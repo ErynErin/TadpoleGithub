@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://mlspxc2wfne5"]
+[gd_scene load_steps=73 format=3 uid="uid://mlspxc2wfne5"]
 
 [ext_resource type="Script" uid="uid://cfhj6lnqyanrd" path="res://scripts/player_phase_3.gd" id="1_j0qyw"]
 [ext_resource type="Texture2D" uid="uid://grcpw57j0fip" path="res://assets/3rd stage mc/3rd death/3rd death0000.png" id="3_mmtyl"]
@@ -64,6 +64,8 @@
 [ext_resource type="Texture2D" uid="uid://du33fwqvweg6r" path="res://assets/3rd stage mc/3rd walking/3rd walking0006.png" id="63_7qlbm"]
 [ext_resource type="PackedScene" uid="uid://bb6ksj6c85ixy" path="res://scenes/Player/sword.tscn" id="63_r4pvy"]
 [ext_resource type="Script" uid="uid://dktsel320mpw7" path="res://scripts/hurtbox.gd" id="64_j0qyw"]
+[ext_resource type="AudioStream" uid="uid://dic1gm6n83vqj" path="res://assets/Audios/player/jump.wav" id="65_sayad"]
+[ext_resource type="AudioStream" uid="uid://cl45a520jbxvp" path="res://assets/Audios/player/sprint.mp3" id="66_yd476"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mv62"]
 radius = 42.0
@@ -360,3 +362,11 @@ shape = SubResource("CapsuleShape2D_il2wa")
 libraries = {
 &"": SubResource("AnimationLibrary_vy06v")
 }
+
+[node name="JumpAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("65_sayad")
+bus = &"SFX"
+
+[node name="SprintAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("66_yd476")
+bus = &"SFX"

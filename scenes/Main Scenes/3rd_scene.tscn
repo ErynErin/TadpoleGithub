@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://0gwvr1mcfucc"]
+[gd_scene load_steps=28 format=3 uid="uid://0gwvr1mcfucc"]
 
 [ext_resource type="Texture2D" uid="uid://dfoeb3l3cxt1d" path="res://assets/BG/Phase 3/1.png" id="1_ff7f0"]
 [ext_resource type="Texture2D" uid="uid://nodetolgruhr" path="res://assets/BG/Phase 3/2.png" id="2_7fgw2"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://mo3hkwq7pjdf" path="res://scenes/Player/player_phase1.tscn" id="16_qani7"]
 [ext_resource type="PackedScene" uid="uid://qvgqap54c1b1" path="res://scenes/UI/options.tscn" id="16_yatwi"]
 [ext_resource type="PackedScene" uid="uid://mlspxc2wfne5" path="res://scenes/Player/player_phase3.tscn" id="18_7fgw2"]
+[ext_resource type="AudioStream" uid="uid://d3l6d8tkmf3t2" path="res://assets/Audios/bgms/Dark Ambient Music BGM.mp3" id="20_t2n2u"]
 [ext_resource type="PackedScene" uid="uid://bd1qu81rucmuf" path="res://scenes/Characters/merchant.tscn" id="23_xty0j"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yatwi"]
@@ -271,3 +272,9 @@ limit_smoothed = true
 position_smoothing_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_t2n2u")
+autoplay = true
+bus = &"Music"
+parameters/looping = true
