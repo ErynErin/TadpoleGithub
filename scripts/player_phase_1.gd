@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 const JUMP_VELOCITY = -600.0
+const MAX_JUMPS = 2
 
 var is_walking = false
 var is_running = false
@@ -9,6 +10,8 @@ var is_running = false
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var pivot: Node2D = $Pivot
 @onready var animated_sprite: AnimatedSprite2D = $Pivot/AnimatedSprite2D
+
+var jumps_left: int = MAX_JUMPS
 
 func _ready():
 	set_physics_process(true)
@@ -26,33 +29,37 @@ func _physics_process(delta: float) -> void:
 	
 	var direction := Input.get_axis("left", "right")
 	if direction:
-		velocity.x = direction * SPEED # go
+		velocity.x = direction * SPEED
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED) # stop
-	
-	# Add the gravity.
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+
+	# Add gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-		if Input.is_action_just_pressed("jump"):    # fix to do double jump only :D
-			velocity.y = JUMP_VELOCITY
-			
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	else:
+		# On floor: reset jumps
+		jumps_left = MAX_JUMPS
+
+	# Handle jump (double jump support)
+	if Input.is_action_just_pressed("jump") and jumps_left > 0:
 		$JumpAudio.play()
 		velocity.y = JUMP_VELOCITY
+		jumps_left -= 1
 
-	# Handle sprint.
+	# Handle sprint
 	if Input.is_action_pressed("Sprint") and Input.get_axis("left", "right"):
 		$RunAudio.play()
 		velocity.x = move_toward(velocity.x, (velocity.x * 2), SPEED)
-				
+
+	# Flip character and sword
 	if direction < 0:
 		pivot.scale.x = direction
 		sword.scale.x = direction
 	elif direction > 0:
 		pivot.scale.x = direction
 		sword.scale.x = direction
-	
+
+	# Animation
 	if is_on_floor():
 		if Input.is_action_just_pressed("attack"):
 			sword.sword_attack()
