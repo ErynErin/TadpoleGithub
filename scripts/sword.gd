@@ -4,10 +4,12 @@ extends Node2D
 @onready var collision_shape_2d: CollisionShape2D = $HitBox/CollisionShape2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 var is_equipped = false
 
 func _ready() -> void:
+	animated_sprite_2d.play("idle")
 	is_equipped = false
 	self.visible = false
 	collision_shape_2d.set_deferred("disabled", true)
@@ -15,8 +17,10 @@ func _ready() -> void:
 	collision_shape_2d.set_deferred("monitorable", false)
 
 func sword_attack() -> void:
+	audio_stream_player.play()
 	animation_player.play("attack")
-	animated_sprite_2d.play("attack")
+	await animation_player.animation_finished
+	animated_sprite_2d.play("idle")
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("weapon_equip"):

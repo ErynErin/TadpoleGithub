@@ -82,7 +82,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Speed: 200"
 
-[node name="TextureRect" type="TextureRect" parent="Shop Panel"]
+[node name="Health Icon" type="TextureRect" parent="Shop Panel"]
 layout_mode = 2
 offset_left = 642.0
 offset_top = 281.0
@@ -100,7 +100,7 @@ size_flags_vertical = 3
 theme_override_font_sizes/font_size = 40
 text = "Increase Health"
 
-[node name="TextureRect2" type="TextureRect" parent="Shop Panel"]
+[node name="Speed Icon" type="TextureRect" parent="Shop Panel"]
 layout_mode = 2
 offset_left = 642.0
 offset_top = 474.0
@@ -118,7 +118,7 @@ size_flags_vertical = 3
 theme_override_font_sizes/font_size = 40
 text = "Increase Speed"
 
-[node name="TextureRect3" type="TextureRect" parent="Shop Panel"]
+[node name="Strength Icon" type="TextureRect" parent="Shop Panel"]
 layout_mode = 2
 offset_left = 642.0
 offset_top = 667.0

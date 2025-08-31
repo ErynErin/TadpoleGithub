@@ -1,11 +1,11 @@
-[gd_scene load_steps=37 format=3 uid="uid://d0hqwpnv7oakw"]
+[gd_scene load_steps=35 format=3 uid="uid://d0hqwpnv7oakw"]
 
 [ext_resource type="Texture2D" uid="uid://cstcdjnw86nfs" path="res://assets/BG/Phase 1/1.png" id="1_36xgi"]
 [ext_resource type="Texture2D" uid="uid://c3xww2i2skpq1" path="res://assets/BG/Phase 1/2.png" id="2_is0ew"]
 [ext_resource type="Texture2D" uid="uid://ci5h6qat4a3lg" path="res://assets/BG/Phase 1/3.png" id="3_xlmt5"]
 [ext_resource type="Texture2D" uid="uid://btvfpva4ccs2p" path="res://assets/BG/Phase 1/4.png" id="4_heptv"]
 [ext_resource type="Texture2D" uid="uid://cx2obingrau0c" path="res://assets/BG/Phase 1/5.png" id="5_b40aj"]
-[ext_resource type="Texture2D" uid="uid://iwggw3st1ihx" path="res://assets/BG/Phase 1/6.png" id="6_y2ypf"]
+[ext_resource type="Texture2D" uid="uid://iwggw3st1ihx" path="res://assets/BG/Phase 1/6.PNG" id="6_y2ypf"]
 [ext_resource type="PackedScene" uid="uid://ds8i10qow8msb" path="res://scenes/inventory_things/inv_ui.tscn" id="7_neo3g"]
 [ext_resource type="PackedScene" uid="uid://bntvonb1a06nv" path="res://scenes/Characters/beetle.tscn" id="7_y2ypf"]
 [ext_resource type="PackedScene" uid="uid://bd1qu81rucmuf" path="res://scenes/Characters/merchant.tscn" id="8_nsaye"]
@@ -15,10 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://cpf5ahqnmuv2" path="res://assets/GUI/Game Screen UI/hunger.png" id="12_gfx3w"]
 [ext_resource type="Texture2D" uid="uid://usodpdet6r8k" path="res://assets/GUI/Game Screen UI/hunger under bar.png" id="13_5lbhe"]
 [ext_resource type="PackedScene" uid="uid://ctw57l6kowhya" path="res://scenes/UI/pause_menu.tscn" id="14_iud5h"]
-[ext_resource type="Theme" uid="uid://bxycdq0lkine8" path="res://balloonthemehuhu.tres" id="14_r8hxo"]
 [ext_resource type="PackedScene" uid="uid://mo3hkwq7pjdf" path="res://scenes/Player/player_phase1.tscn" id="15_b0kx5"]
 [ext_resource type="Texture2D" uid="uid://cvojlptff1xk5" path="res://assets/GUI/Game Screen UI/P1_health.png" id="15_gbf57"]
-[ext_resource type="PackedScene" uid="uid://3fegt1mkcao1" path="res://scenes/UI/merchant_dialogue_ui.tscn" id="15_y2ypf"]
 [ext_resource type="PackedScene" uid="uid://cqn1xtwbw5n5l" path="res://scenes/Collectibles/food.tscn" id="16_c07hn"]
 [ext_resource type="PackedScene" uid="uid://qvgqap54c1b1" path="res://scenes/UI/options.tscn" id="16_qfx3x"]
 [ext_resource type="PackedScene" uid="uid://co4b1kiuq2dcm" path="res://scenes/Collectibles/collectible_key.tscn" id="17_khd5g"]
@@ -215,10 +213,6 @@ texture = ExtResource("13_5lbhe")
 region_rect = Rect2(0, 0, 790, 1000)
 
 [node name="merchant shop" parent="GUI" instance=ExtResource("22_odwuh")]
-scale = Vector2(1.67, 1.67)
-theme = ExtResource("14_r8hxo")
-
-[node name="MerchantDialogue" parent="GUI" instance=ExtResource("15_y2ypf")]
 visible = false
 scale = Vector2(1.67, 1.67)
 
@@ -355,3 +349,4 @@ stream = ExtResource("27_po7p3")
 volume_db = -20.0
 autoplay = true
 bus = &"Music"
+parameters/looping = true

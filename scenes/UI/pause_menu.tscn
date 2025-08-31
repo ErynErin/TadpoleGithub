@@ -1,9 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://ctw57l6kowhya"]
+[gd_scene load_steps=17 format=3 uid="uid://ctw57l6kowhya"]
 
 [ext_resource type="Script" uid="uid://c0t2fkbp051yy" path="res://scripts/pause_menu.gd" id="1_myx47"]
 [ext_resource type="Texture2D" uid="uid://ck0c0yhdgvau2" path="res://assets/GUI/Menu Assets/Continue_Paused.png" id="2_bl585"]
 [ext_resource type="Texture2D" uid="uid://3pk5f2j3qj5b" path="res://assets/GUI/Menu Assets/Options_Paused.png" id="3_feath"]
 [ext_resource type="Texture2D" uid="uid://dyd07n6pu7ylr" path="res://assets/GUI/Menu Assets/QuitToMenu_Paused.png" id="4_w67w4"]
+[ext_resource type="AudioStream" uid="uid://dt2b5784r6j06" path="res://assets/Audios/button.wav" id="5_w67w4"]
+[ext_resource type="AudioStream" uid="uid://cpdlcdboj3l4l" path="res://assets/Audios/pause.wav" id="6_sipkl"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mko1u"]
 texture = ExtResource("2_bl585")
@@ -126,6 +128,14 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_feba6")
 theme_override_styles/normal = SubResource("StyleBoxTexture_m20o5")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_feath")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_w67w4")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_sipkl")
+bus = &"SFX"
 
 [connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
