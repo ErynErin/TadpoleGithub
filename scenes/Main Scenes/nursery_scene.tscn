@@ -377,7 +377,6 @@ tile_map_data = PackedByteArray("AABhAJUAAgAAAAAAAACGAJUAAgABAAEAAAA8AJUAAgAAAAE
 tile_set = SubResource("TileSet_45e12")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="ScreenFade" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15

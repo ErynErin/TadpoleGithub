@@ -1,6 +1,7 @@
 [gd_scene load_steps=27 format=3 uid="uid://0gwvr1mcfucc"]
 
 [ext_resource type="Texture2D" uid="uid://dfoeb3l3cxt1d" path="res://assets/BG/Phase 3/1.png" id="1_ff7f0"]
+[ext_resource type="Script" uid="uid://c3n8hb0oj65hp" path="res://scenes/Main Scenes/3_rd_scene.gd" id="1_fngbt"]
 [ext_resource type="Texture2D" uid="uid://nodetolgruhr" path="res://assets/BG/Phase 3/2.png" id="2_7fgw2"]
 [ext_resource type="Texture2D" uid="uid://c7btkbl0jprob" path="res://assets/BG/Phase 3/3.png" id="3_yatwi"]
 [ext_resource type="Texture2D" uid="uid://iilg0bqiaysk" path="res://assets/BG/Phase 3/4.png" id="4_t2n2u"]
@@ -41,6 +42,7 @@ normal = Vector2(1, 0)
 distance = -1014.0
 
 [node name="Ted Game" type="Node2D"]
+script = ExtResource("1_fngbt")
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
 physics_interpolation_mode = 0
@@ -197,6 +199,8 @@ scale = Vector2(1.11, 1.11)
 
 [node name="Pause Menu" parent="GUI" instance=ExtResource("15_btcw1")]
 visible = false
+offset_right = 963.0
+offset_bottom = 542.0
 scale = Vector2(1.11, 1.11)
 
 [node name="Options" parent="GUI" instance=ExtResource("16_yatwi")]
@@ -262,6 +266,17 @@ autoplay = true
 bus = &"Music"
 parameters/looping = true
 
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScreenFade" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
+
 [node name="Food" type="Node2D" parent="."]
 position = Vector2(-800, 200)
 metadata/_edit_lock_ = true
@@ -285,3 +300,4 @@ scale = Vector2(1.3, 1.3)
 [node name="food5" parent="Food" instance=ExtResource("20_fngbt")]
 position = Vector2(648, 399)
 scale = Vector2(1.3, 1.3)
+
