@@ -1,0 +1,7 @@
+~ start
+Tutorial: [[Hi|Hello|Howdy]], this is some dialogue.
+Nathan: Here are some choices.
+- Start again => start
+- End the conversation => END
+Nathan: For more information see the online documentation.
+=> END

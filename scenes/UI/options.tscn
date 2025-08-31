@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://qvgqap54c1b1"]
+[gd_scene load_steps=4 format=3 uid="uid://qvgqap54c1b1"]
 
 [ext_resource type="Script" uid="uid://cqoc0b47mff0a" path="res://scripts/options.gd" id="1_u46ye"]
+[ext_resource type="Theme" uid="uid://bxycdq0lkine8" path="res://balloonthemehuhu.tres" id="2_xgdkv"]
+
+[sub_resource type="Theme" id="Theme_m70mf"]
 
 [node name="Options" type="Control"]
 process_mode = 3
@@ -10,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_m70mf")
 script = ExtResource("1_u46ye")
 
 [node name="ColorRect2" type="ColorRect" parent="."]
@@ -75,6 +79,7 @@ offset_left = 200.5
 offset_top = 29.5
 offset_right = 314.5
 offset_bottom = 71.5
+theme = ExtResource("2_xgdkv")
 theme_override_font_sizes/font_size = 30
 text = "Options"
 

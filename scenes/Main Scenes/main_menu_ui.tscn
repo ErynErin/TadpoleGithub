@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cqtty7lrvbm0a"]
+[gd_scene load_steps=21 format=3 uid="uid://cqtty7lrvbm0a"]
 
 [ext_resource type="Script" uid="uid://chlwbioy2akg7" path="res://scripts/menu_ui.gd" id="1_tlx78"]
 [ext_resource type="Texture2D" uid="uid://3yhk5ufsn5ut" path="res://assets/BG/UI LAYOUTS.png" id="2_fkk5t"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cfmpevqn0vaed" path="res://assets/GUI/099.png" id="6_fkk5t"]
 [ext_resource type="PackedScene" uid="uid://qvgqap54c1b1" path="res://scenes/UI/options.tscn" id="7_7vtdj"]
 [ext_resource type="AudioStream" uid="uid://dt2b5784r6j06" path="res://assets/Audios/button.wav" id="8_olqsj"]
+[ext_resource type="Theme" uid="uid://bxycdq0lkine8" path="res://balloonthemehuhu.tres" id="8_sfva6"]
 [ext_resource type="AudioStream" uid="uid://c6eelof6nh0xx" path="res://assets/Audios/menu_start.wav" id="9_sfva6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fcije"]
@@ -122,6 +123,7 @@ button_group = SubResource("ButtonGroup_2ux5y")
 
 [node name="Options" parent="GUI" instance=ExtResource("7_7vtdj")]
 visible = false
+theme = ExtResource("8_sfva6")
 
 [node name="ButtonAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_olqsj")
