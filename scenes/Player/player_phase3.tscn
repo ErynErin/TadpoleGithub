@@ -1,6 +1,6 @@
-[gd_scene load_steps=75 format=3 uid="uid://mlspxc2wfne5"]
+[gd_scene load_steps=72 format=3 uid="uid://mlspxc2wfne5"]
 
-[ext_resource type="Script" uid="uid://cfhj6lnqyanrd" path="res://scripts/player_phase_3.gd" id="1_j0qyw"]
+[ext_resource type="Script" uid="uid://qdyt6iet83op" path="res://scripts/player.gd" id="1_4o57y"]
 [ext_resource type="Texture2D" uid="uid://cikj48jvmtk2w" path="res://assets/3rd stage mc/3rd death/1.png" id="2_sayad"]
 [ext_resource type="Texture2D" uid="uid://nx0pfl58igln" path="res://assets/3rd stage mc/3rd death/2.png" id="3_yd476"]
 [ext_resource type="Texture2D" uid="uid://61mpu4w6woyc" path="res://assets/3rd stage mc/3rd death/3.png" id="4_bpxp5"]
@@ -66,12 +66,10 @@
 [ext_resource type="Script" uid="uid://dktsel320mpw7" path="res://scripts/hurtbox.gd" id="64_j0qyw"]
 [ext_resource type="AudioStream" uid="uid://b4uuqdo1rp4ju" path="res://assets/Audios/player/death.mp3" id="65_bpxp5"]
 [ext_resource type="AudioStream" uid="uid://dic1gm6n83vqj" path="res://assets/Audios/player/jump.wav" id="65_sayad"]
-[ext_resource type="AudioStream" uid="uid://ctj7wgvhg62vi" path="res://assets/Audios/player/run.mp3" id="67_4o57y"]
-[ext_resource type="AudioStream" uid="uid://b1xcm6nr6t2ow" path="res://assets/Audios/player/walk.mp3" id="68_6bpjg"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mv62"]
-radius = 42.0
-height = 174.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_il2wa"]
+radius = 62.0
+height = 268.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v3hta"]
 animations = [{
@@ -289,10 +287,6 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_il2wa"]
-radius = 62.0
-height = 268.0
-
 [sub_resource type="Animation" id="Animation_jtvlm"]
 length = 0.001
 tracks/0/type = "value"
@@ -331,12 +325,12 @@ _data = {
 }
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
-collision_layer = 2
-script = ExtResource("1_j0qyw")
+collision_layer = 129
+script = ExtResource("1_4o57y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-21, -7)
-shape = SubResource("CapsuleShape2D_0mv62")
+position = Vector2(-1, -40)
+shape = SubResource("CapsuleShape2D_il2wa")
 
 [node name="Pivot" type="Node2D" parent="."]
 
@@ -344,9 +338,8 @@ shape = SubResource("CapsuleShape2D_0mv62")
 position = Vector2(49, -20)
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_v3hta")
-animation = &"death"
-frame = 7
-frame_progress = 1.0
+animation = &"idle"
+autoplay = "idle"
 
 [node name="Sword" parent="." instance=ExtResource("63_r4pvy")]
 position = Vector2(3, 4)
@@ -375,10 +368,4 @@ bus = &"SFX"
 stream = ExtResource("65_sayad")
 bus = &"SFX"
 
-[node name="RunAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("67_4o57y")
-bus = &"SFX"
-
-[node name="WalkAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("68_6bpjg")
-bus = &"SFX"
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bntvonb1a06nv"]
+[gd_scene load_steps=35 format=3 uid="uid://bntvonb1a06nv"]
 
 [ext_resource type="Script" uid="uid://dln17eeeowjef" path="res://scripts/beetle.gd" id="1_k76xx"]
 [ext_resource type="Texture2D" uid="uid://crwataw8s03l8" path="res://assets/Characters/Water Beetle Tank/Walk/BeetleW_0010.png" id="2_j2l52"]
@@ -23,8 +23,9 @@
 [ext_resource type="Texture2D" uid="uid://qo0ghtjjb10g" path="res://assets/Characters/Water Beetle Tank/Idle/Beetle_6.png" id="14_stksv"]
 [ext_resource type="Texture2D" uid="uid://3rjop35mltqt" path="res://assets/Characters/Water Beetle Tank/Idle/Beetle_7.png" id="15_ans0d"]
 [ext_resource type="Script" uid="uid://cfdlbfbudy12s" path="res://scripts/hitbox.gd" id="23_mhe5e"]
-[ext_resource type="AudioStream" uid="uid://v3u0mnwyxhpy" path="res://assets/Audios/enemies/beetle charge.mp3" id="24_r2iln"]
+[ext_resource type="AudioStream" uid="uid://citc2cma8k7u4" path="res://assets/Audios/enemies/beetle charge.mp3" id="24_r2iln"]
 [ext_resource type="AudioStream" uid="uid://rinopi30m814" path="res://assets/Audios/enemies/beetle hit.mp3" id="25_emjoi"]
+[ext_resource type="AudioStream" uid="uid://b4uuqdo1rp4ju" path="res://assets/Audios/player/death.mp3" id="26_emjoi"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_mhe5e"]
 a = Vector2(8, 55)
@@ -229,6 +230,10 @@ bus = &"SFX"
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("25_emjoi")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_emjoi")
 bus = &"SFX"
 
 [connection signal="body_entered" from="Player Detector" to="." method="_on_player_detector_body_entered"]

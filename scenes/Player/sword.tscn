@@ -34,6 +34,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("7_m4hdf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_8fp6h")
 }],
 "loop": false,
 "name": &"attack",
@@ -214,7 +217,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_k5whp")
 }
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="SwordAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_mrmrw")
 bus = &"SFX"
 
