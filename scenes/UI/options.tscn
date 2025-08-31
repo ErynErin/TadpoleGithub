@@ -58,6 +58,7 @@ text = "Music"
 
 [node name="Music_Slider" type="HSlider" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
+value = 50.0
 
 [node name="SFX Label" type="Label" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
@@ -66,6 +67,7 @@ text = "Sound Effects"
 
 [node name="SFX_Slider" type="HSlider" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
+value = 50.0
 
 [node name="Title" type="Label" parent="ColorRect"]
 layout_mode = 0

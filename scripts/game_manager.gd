@@ -6,6 +6,7 @@ var current_health = 100.0
 var strength = 10
 var speed = 200
 var next_scene_path = ""
+var phase_num = 1
 @export var inv: Inv
 signal health_changed(current_health: float, max_health: float)
 signal player_died
