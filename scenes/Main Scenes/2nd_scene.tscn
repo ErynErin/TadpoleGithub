@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://cfv4f6bi46hrx"]
+[gd_scene load_steps=30 format=4 uid="uid://cfv4f6bi46hrx"]
 
 [ext_resource type="Script" uid="uid://bht730yy73mmk" path="res://scenes/Main Scenes/2_nd_scene.gd" id="1_3xvx2"]
 [ext_resource type="Texture2D" uid="uid://cc6aiqta7j02x" path="res://assets/BG/Phase 2/1.png" id="7_aqdem"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://qvgqap54c1b1" path="res://scenes/UI/options.tscn" id="15_3xvx2"]
 [ext_resource type="Texture2D" uid="uid://7w1ynanueaxp" path="res://scenes/Platforms/P2_spritesheet.svg" id="17_3xvx2"]
 [ext_resource type="PackedScene" uid="uid://basdg6biv03al" path="res://scenes/Player/player_phase2.tscn" id="17_ysw53"]
+
+[ext_resource type="PackedScene" uid="uid://bd1qu81rucmuf" path="res://scenes/Characters/merchant.tscn" id="18_vksdc"]
 [ext_resource type="PackedScene" uid="uid://b7v31n5kjltlr" path="res://scenes/change_scene_area.tscn" id="18_3xvx2"]
 [ext_resource type="PackedScene" uid="uid://cqn1xtwbw5n5l" path="res://scenes/Collectibles/food.tscn" id="18_whigq"]
 
@@ -262,6 +264,10 @@ physics_material_override = SubResource("PhysicsMaterial_wkg83")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="World Boundaries/left"]
 shape = SubResource("WorldBoundaryShape2D_goyj0")
 
+[node name="Merchant" parent="." instance=ExtResource("18_vksdc")]
+position = Vector2(-920, 528)
+scale = Vector2(0.15, 0.15)
+
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(0.165, 0.165)
 tile_map_data = PackedByteArray("AAAhAJ8AAQAAAAAAAAAzAJ8AAQABAAAAAABFAJ8AAQABAAEAAAAPAJ8AAQAAAAEAAABhAJUAAgAAAAAAAACGAJUAAgABAAEAAAA8AJUAAgAAAAEAAAB2ALkAAwAAAAEAAACZALkAAwABAAEAAAC7ALkAAwAAAAAAAADdALkAAwABAAAAAAABAbkAAwACAAAAAAA=")
@@ -269,6 +275,7 @@ tile_set = SubResource("TileSet_goyj0")
 
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ScreenFade" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15

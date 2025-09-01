@@ -1,0 +1,9 @@
+~ start
+: *huff*[wait=1]*puff*
+: [shake rate=20 level=10]Who dares go near my soil!!!
+: Ah, [wait=2]it’s a mere tadpole. 
+: You’re brave enough to go near a mighty king? 
+Curien: To I, [wait=1] Curien, [wait=1]the raging guardian of this pond 
+Curien: Well then I accept your challenge peasant. But[speed=0.2]...
+Curien: [shake rate=20 level=10]EXPECT TO DIE!!! 
+=> END

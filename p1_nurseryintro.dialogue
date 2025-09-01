@@ -1,5 +1,7 @@
 ~ start
-Tutorial: [[Hi|Hello|Howdy]], this is some dialogue.
+Tutorial: Ahh~ it's so peaceful here.
+Tutorial: Oh look! Some kelp! Go towards it and eat it to regain health.
+
 Nathan: Here are some choices.
 - Start again => start
 - End the conversation => END

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ddp1vq2yrvvvn"]
+[gd_scene load_steps=9 format=3 uid="uid://ddp1vq2yrvvvn"]
 
 [ext_resource type="Script" uid="uid://bsuo5draq2jgd" path="res://balloons/balloon.gd" id="1_oemax"]
 [ext_resource type="Texture2D" uid="uid://chwsplawy4aqd" path="res://assets/GUI/Dialogue Boxes/Boss_DialogueBox.png" id="2_i5blm"]
@@ -7,8 +7,9 @@
 [ext_resource type="Theme" uid="uid://bxycdq0lkine8" path="res://balloonthemehuhu.tres" id="4_v2dg5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="5_1eerx"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="6_qfuop"]
+[ext_resource type="Theme" uid="uid://c72lgfdpdpscu" path="res://teddialoguebutton.tres" id="7_pkxff"]
 
-[node name="SystemBalloon" type="CanvasLayer"]
+[node name="BossBalloon" type="CanvasLayer"]
 layer = 100
 script = ExtResource("1_oemax")
 
@@ -75,13 +76,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -290.5
-offset_top = -35.0
-offset_right = 290.5
-offset_bottom = 35.0
+offset_left = -515.009
+offset_top = 353.721
+offset_right = 65.9912
+offset_bottom = 423.721
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 8
+theme = ExtResource("7_pkxff")
 theme_override_constants/separation = 2
 alignment = 1
 script = ExtResource("6_qfuop")

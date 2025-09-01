@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://c72lgfdpdpscu"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://c72lgfdpdpscu"]
 
 [ext_resource type="FontFile" uid="uid://chvpvepqarnv6" path="res://assets/Fonts/Tedtadpole-Regular.ttf" id="1_rr231"]
 
@@ -14,43 +14,60 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rr231"]
+bg_color = Color(0.580392, 0.854902, 0.556863, 0.564706)
+expand_margin_top = 8.0
+expand_margin_bottom = 8.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0potv"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-bg_color = Color(0.87451, 0.929412, 0.666667, 0.615686)
+bg_color = Color(0.580392, 0.854902, 0.556863, 0.65098)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
+expand_margin_top = 8.0
+expand_margin_bottom = 8.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yvvfs"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-bg_color = Color(0.87451, 0.933333, 0.666667, 1)
-border_color = Color(0.00184107, 0.00184107, 0.00184107, 1)
-border_blend = true
+bg_color = Color(0.580392, 0.854902, 0.556863, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.0677815, 0.301732, 0.189576, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
+expand_margin_top = 8.0
+expand_margin_bottom = 8.0
+shadow_color = Color(1, 1, 1, 1)
+shadow_size = 9
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y0y4w"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-bg_color = Color(0, 0, 0, 0.6)
+bg_color = Color(0.580392, 0.854902, 0.556863, 0.384314)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
+expand_margin_top = 8.0
+expand_margin_bottom = 8.0
 
 [resource]
 Button/colors/font_color = Color(0.163117, 0.415511, 0.234171, 1)
@@ -69,9 +86,10 @@ Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
 Button/constants/align_to_largest_stylebox = 0
 Button/constants/h_separation = 4
 Button/constants/icon_max_width = 0
-Button/font_sizes/font_size = 13
+Button/font_sizes/font_size = 40
 Button/fonts/font = ExtResource("1_rr231")
 Button/styles/disabled = SubResource("StyleBoxFlat_740yd")
+Button/styles/focus = SubResource("StyleBoxFlat_rr231")
 Button/styles/hover = SubResource("StyleBoxFlat_0potv")
 Button/styles/normal = SubResource("StyleBoxFlat_yvvfs")
 Button/styles/pressed = SubResource("StyleBoxFlat_y0y4w")

@@ -112,7 +112,7 @@ weapon_equip={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialogues/p1_intro.dialogue", "res://dialogues/p1_merchant.dialogue", "res://p1_nurseryintro.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogues/p1_intro.dialogue", "res://dialogues/p1_merchant.dialogue", "res://p1_nurseryintro.dialogue", "res://p3_boss.dialogue")
 
 [layer_names]
 
