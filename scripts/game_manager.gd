@@ -2,7 +2,7 @@ extends Node
 
 var hunger = 0
 var max_health = 100.0
-var current_health = 100.0
+var current_health = 95.0
 var strength = 10
 var speed = 200
 var next_scene_path = ""
