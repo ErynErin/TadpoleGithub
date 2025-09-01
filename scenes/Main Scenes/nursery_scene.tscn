@@ -1,7 +1,7 @@
 [gd_scene load_steps=33 format=4 uid="uid://d0hqwpnv7oakw"]
 
 [ext_resource type="Texture2D" uid="uid://cstcdjnw86nfs" path="res://assets/BG/Phase 1/1.png" id="1_36xgi"]
-[ext_resource type="Script" path="res://scenes/Main Scenes/nursery_scene.gd" id="1_r8hxo"]
+[ext_resource type="Script" uid="uid://bxd2bwy2cc7ww" path="res://scenes/Main Scenes/nursery_scene.gd" id="1_r8hxo"]
 [ext_resource type="Texture2D" uid="uid://c3xww2i2skpq1" path="res://assets/BG/Phase 1/2.png" id="2_is0ew"]
 [ext_resource type="Texture2D" uid="uid://ci5h6qat4a3lg" path="res://assets/BG/Phase 1/3.png" id="3_xlmt5"]
 [ext_resource type="Texture2D" uid="uid://btvfpva4ccs2p" path="res://assets/BG/Phase 1/4.png" id="4_heptv"]

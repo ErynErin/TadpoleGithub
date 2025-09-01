@@ -8,7 +8,7 @@ func _ready() -> void:
 	get_tree().connect("scene_changed", _on_scene_changed)
 
 
-func _on_scene_changed(new_scene: Node) -> void:
+func _on_scene_changed(_new_scene: Node) -> void:
 	update_visibility()
 
 

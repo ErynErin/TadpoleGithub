@@ -4,14 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://3yhk5ufsn5ut" path="res://assets/BG/UI LAYOUTS.png" id="2_yu65x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yu65x"]
-bg_color = Color(0, 0, 0, 0.454902)
+bg_color = Color(0.666569, 0.666569, 0.666569, 0.454902)
 corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sbjgy"]
-bg_color = Color(0.109804, 0.109804, 0.109804, 1)
+bg_color = Color(1, 1, 1, 0.858824)
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
