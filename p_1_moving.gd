@@ -14,6 +14,6 @@ func _ready():
 		set_process(false)
 		
 		
-func _process(delta):
+func _process(_delta):
 	path.progress += speed
 		

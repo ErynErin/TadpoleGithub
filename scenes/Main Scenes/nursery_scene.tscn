@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://d0hqwpnv7oakw"]
+[gd_scene load_steps=43 format=4 uid="uid://d0hqwpnv7oakw"]
 
 [ext_resource type="Texture2D" uid="uid://cstcdjnw86nfs" path="res://assets/BG/Phase 1/1.png" id="1_36xgi"]
 [ext_resource type="Script" uid="uid://bxd2bwy2cc7ww" path="res://scenes/Main Scenes/nursery_scene.gd" id="1_r8hxo"]
