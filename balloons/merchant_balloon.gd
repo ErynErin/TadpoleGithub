@@ -31,7 +31,8 @@ var dialogue_line: DialogueLine:
 			dialogue_line = value
 			apply_dialogue_line()
 		else:
-			# The dialogue has finished so close the balloon
+			# Dialogue finished: hide sprites and close balloon
+			hide_all_phase_sprites()
 			queue_free()
 	get:
 		return dialogue_line
@@ -51,6 +52,11 @@ var mutation_cooldown: Timer = Timer.new()
 ## The menu of responses
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
 
+## The Phase sprites - adjust these paths if your sprites are located elsewhere
+@onready var phase1_sprite := get_tree().current_scene.get_node_or_null("Phase1")
+@onready var phase2_sprite := get_tree().current_scene.get_node_or_null("Phase2")
+@onready var phase3_sprite := get_tree().current_scene.get_node_or_null("Phase3")
+
 
 func _ready() -> void:
 	balloon.hide()
@@ -62,6 +68,48 @@ func _ready() -> void:
 
 	mutation_cooldown.timeout.connect(_on_mutation_cooldown_timeout)
 	add_child(mutation_cooldown)
+
+	update_phase_sprites_visibility()
+
+	# Correct Godot 4 signal connection syntax:
+	get_tree().connect("scene_changed", Callable(self, "_on_scene_changed"))
+
+
+func _on_scene_changed(_new_scene: Node) -> void:
+	update_phase_sprites_visibility()
+
+
+func update_phase_sprites_visibility() -> void:
+	var current_scene = get_tree().current_scene
+	if not current_scene:
+		hide_all_phase_sprites()
+		return
+
+	var scene_name = current_scene.name
+	# Update references to sprites each time scene changes
+	phase1_sprite = current_scene.get_node_or_null("Phase1")
+	phase2_sprite = current_scene.get_node_or_null("Phase2")
+	phase3_sprite = current_scene.get_node_or_null("Phase3")
+
+	# Hide all first
+	hide_all_phase_sprites()
+
+	# Then show depending on the scene name
+	if scene_name == "nursery_scene" and phase1_sprite:
+		phase1_sprite.visible = true
+	elif scene_name == "2nd_scene" and phase2_sprite:
+		phase2_sprite.visible = true
+	elif scene_name == "3rd_scene" and phase3_sprite:
+		phase3_sprite.visible = true
+
+
+func hide_all_phase_sprites() -> void:
+	if phase1_sprite:
+		phase1_sprite.visible = false
+	if phase2_sprite:
+		phase2_sprite.visible = false
+	if phase3_sprite:
+		phase3_sprite.visible = false
 
 
 func _unhandled_input(_event: InputEvent) -> void:

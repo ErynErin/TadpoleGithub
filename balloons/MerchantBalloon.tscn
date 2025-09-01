@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cxwlrp7o3atcl"]
+[gd_scene load_steps=50 format=3 uid="uid://cxwlrp7o3atcl"]
 
 [ext_resource type="Script" uid="uid://bpq145hxbn4sr" path="res://balloons/merchant_balloon.gd" id="1_b1mkc"]
 [ext_resource type="Texture2D" uid="uid://busxgs1l0wt0d" path="res://assets/Characters/Merchant/Sol_Talk/Talk_1.png" id="2_b1mkc"]
@@ -22,7 +22,30 @@
 [ext_resource type="Texture2D" uid="uid://3puuq75avp83" path="res://assets/1st stage mc/1st idle/1st idle0010.png" id="15_bt7pg"]
 [ext_resource type="Texture2D" uid="uid://bxlrjbv88roth" path="res://assets/1st stage mc/1st idle/1st idle0011.png" id="16_ksgnq"]
 [ext_resource type="Texture2D" uid="uid://eajwd1t3mwa0" path="res://assets/1st stage mc/1st idle/1st idle0012.png" id="17_ijnwb"]
+[ext_resource type="Texture2D" uid="uid://doljgsdei1mie" path="res://assets/2nd stage mc/2nd idle/2nd idle0000.png" id="18_mpa8r"]
+[ext_resource type="Texture2D" uid="uid://bw3qoq1auhuoq" path="res://assets/2nd stage mc/2nd idle/2nd idle0001.png" id="19_yp50q"]
+[ext_resource type="Texture2D" uid="uid://dka351tqbaxis" path="res://assets/2nd stage mc/2nd idle/2nd idle0002.png" id="20_xqctl"]
+[ext_resource type="Texture2D" uid="uid://byeby5tej3l08" path="res://assets/2nd stage mc/2nd idle/2nd idle0003.png" id="21_svtve"]
+[ext_resource type="Texture2D" uid="uid://d2btjnlv1brq8" path="res://assets/2nd stage mc/2nd idle/2nd idle0004.png" id="22_rayas"]
+[ext_resource type="Texture2D" uid="uid://b7s50b5l2l3x7" path="res://assets/2nd stage mc/2nd idle/2nd idle0005.png" id="23_3c1bb"]
 [ext_resource type="Theme" uid="uid://c72lgfdpdpscu" path="res://teddialoguebutton.tres" id="23_dx8a7"]
+[ext_resource type="Texture2D" uid="uid://cp1ggltjgd3ln" path="res://assets/2nd stage mc/2nd idle/2nd idle0006.png" id="24_2j8ev"]
+[ext_resource type="Texture2D" uid="uid://b8jtdnw0y1nkm" path="res://assets/2nd stage mc/2nd idle/2nd idle0007.png" id="25_nbuk4"]
+[ext_resource type="Texture2D" uid="uid://cu3h1euipi0r" path="res://assets/2nd stage mc/2nd idle/2nd idle0008.png" id="26_gure7"]
+[ext_resource type="Texture2D" uid="uid://dwc78j8w4uir4" path="res://assets/2nd stage mc/2nd idle/2nd idle0009.png" id="27_5njaj"]
+[ext_resource type="Texture2D" uid="uid://cmhqywgv1b22i" path="res://assets/2nd stage mc/2nd idle/2nd idle0010.png" id="28_who7e"]
+[ext_resource type="Texture2D" uid="uid://b85s7ddpju0en" path="res://assets/2nd stage mc/2nd idle/2nd idle0011.png" id="29_uy8wy"]
+[ext_resource type="Texture2D" uid="uid://bucdfyfhipr3t" path="res://assets/3rd stage mc/3rd idle/3rd idle0000.png" id="30_q7oj1"]
+[ext_resource type="Texture2D" uid="uid://c503ssoychdre" path="res://assets/3rd stage mc/3rd idle/3rd idle0001.png" id="31_bky8q"]
+[ext_resource type="Texture2D" uid="uid://bomlyeal5mt42" path="res://assets/3rd stage mc/3rd idle/3rd idle0002.png" id="32_p3oyq"]
+[ext_resource type="Texture2D" uid="uid://bfwvnlul3dy6o" path="res://assets/3rd stage mc/3rd idle/3rd idle0003.png" id="33_4lml6"]
+[ext_resource type="Texture2D" uid="uid://b76fh6uq17efy" path="res://assets/3rd stage mc/3rd idle/3rd idle0004.png" id="34_ati40"]
+[ext_resource type="Texture2D" uid="uid://b8dng3168pxln" path="res://assets/3rd stage mc/3rd idle/3rd idle0005.png" id="35_ictal"]
+[ext_resource type="Texture2D" uid="uid://k64ytvmksxqs" path="res://assets/3rd stage mc/3rd idle/3rd idle0006.png" id="36_e78vx"]
+[ext_resource type="Texture2D" uid="uid://u4fp5gt7n5xk" path="res://assets/3rd stage mc/3rd idle/3rd idle0007.png" id="37_vb2yi"]
+[ext_resource type="Script" uid="uid://c82ioop5ehbt" path="res://balloons/phase_1.gd" id="38_xqctl"]
+[ext_resource type="Script" uid="uid://byuwq4o2ugiyg" path="res://balloons/phase_2.gd" id="39_svtve"]
+[ext_resource type="Script" uid="uid://fy8gfut4pbn5" path="res://balloons/phase_3.gd" id="40_svtve"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_403io"]
 animations = [{
@@ -84,14 +107,81 @@ animations = [{
 "texture": ExtResource("17_ijnwb")
 }],
 "loop": true,
-"name": &"default",
+"name": &"phase1",
 "speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_mpa8r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_yp50q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_xqctl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_svtve")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_rayas")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_3c1bb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_2j8ev")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_nbuk4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_gure7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_5njaj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_who7e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_uy8wy")
+}],
+"loop": true,
+"name": &"phase2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("30_q7oj1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_bky8q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_p3oyq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_4lml6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_ati40")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_ictal")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_e78vx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_vb2yi")
+}],
+"loop": true,
+"name": &"phase3",
+"speed": 5.0
 }]
 
 [sub_resource type="Theme" id="Theme_dka4g"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fnxyh"]
-bg_color = Color(0.894118, 0.866667, 0.631373, 0.627451)
 
 [node name="MerchantBalloon" type="CanvasLayer"]
 layer = 100
@@ -105,12 +195,31 @@ animation = &"talk"
 autoplay = "talk"
 flip_h = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Phase1" type="AnimatedSprite2D" parent="."]
 position = Vector2(431.71, 774.244)
 scale = Vector2(1.64191, 1.73021)
 sprite_frames = SubResource("SpriteFrames_cks8t")
-autoplay = "default"
-frame_progress = 0.362702
+animation = &"phase1"
+autoplay = "phase1"
+frame_progress = 0.133865
+script = ExtResource("38_xqctl")
+
+[node name="Phase2" type="AnimatedSprite2D" parent="."]
+position = Vector2(431.71, 774.244)
+scale = Vector2(1.64191, 1.73021)
+sprite_frames = SubResource("SpriteFrames_cks8t")
+animation = &"phase2"
+autoplay = "phase2"
+frame_progress = 0.863527
+script = ExtResource("39_svtve")
+
+[node name="Phase3" type="AnimatedSprite2D" parent="."]
+position = Vector2(431.71, 774.244)
+scale = Vector2(1.64191, 1.73021)
+sprite_frames = SubResource("SpriteFrames_cks8t")
+animation = &"phase3"
+autoplay = "phase3"
+script = ExtResource("40_svtve")
 
 [node name="Custom Balloon" type="TextureRect" parent="."]
 offset_top = 19.5
@@ -168,15 +277,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -510.0
-offset_top = 2.0
-offset_right = 191.0
-offset_bottom = 72.0
+offset_left = -505.0
+offset_top = 336.0
+offset_right = 49.0
+offset_bottom = 406.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 8
 theme = SubResource("Theme_dka4g")
-theme_override_constants/separation = 2
+theme_override_constants/separation = 20
 alignment = 1
 script = ExtResource("6_g5kr6")
 response_template = NodePath("ResponseExample")
@@ -184,8 +293,6 @@ response_template = NodePath("ResponseExample")
 [node name="ResponseExample" type="Button" parent="Balloon/ResponsesMenu"]
 layout_mode = 2
 theme = ExtResource("23_dx8a7")
-theme_override_font_sizes/font_size = 45
-theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_fnxyh")
 text = "Response example"
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]

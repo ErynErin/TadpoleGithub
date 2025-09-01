@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cax5ouhn2ppt4"]
+[gd_scene load_steps=10 format=3 uid="uid://cax5ouhn2ppt4"]
 
 [ext_resource type="Script" uid="uid://bsuo5draq2jgd" path="res://balloons/balloon.gd" id="1_tdca1"]
 [ext_resource type="FontFile" uid="uid://chvpvepqarnv6" path="res://assets/Fonts/Tedtadpole-Regular.ttf" id="3_tdca1"]
 [ext_resource type="Theme" uid="uid://bxycdq0lkine8" path="res://balloonthemehuhu.tres" id="3_vjafi"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="4_2gnwh"]
+[ext_resource type="Theme" uid="uid://c72lgfdpdpscu" path="res://teddialoguebutton.tres" id="5_fxel7"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="5_sjlvg"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bklyl"]
@@ -92,13 +93,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -290.5
-offset_top = -35.0
-offset_right = 290.5
-offset_bottom = 35.0
+offset_left = -288.125
+offset_top = 102.25
+offset_right = 292.875
+offset_bottom = 172.25
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 8
+theme = ExtResource("5_fxel7")
 theme_override_constants/separation = 2
 alignment = 1
 script = ExtResource("5_sjlvg")
