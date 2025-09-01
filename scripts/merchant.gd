@@ -22,7 +22,18 @@ func _on_interact():
 		DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 
 	# Start the pre-shop dialogue
-	balloon_instance.start(dialogue_resource, "start")
+	var current_scene = get_tree().current_scene
+	var scene_name = current_scene.name
+	print(scene_name)
+	if scene_name == "Ted Game":
+		balloon_instance.start(dialogue_resource, "start")
+	elif scene_name == "Ted Game 2":
+		balloon_instance.start(dialogue_resource, "meet_again")
+	elif scene_name == "Ted Game 3":
+		balloon_instance.start(dialogue_resource, "meet_again")
+	else:
+		balloon_instance.start(dialogue_resource, "afterbuy")
+	
 
 	play("talk")
 
@@ -59,3 +70,4 @@ func _on_final_dialogue_ended(_resource):
 	DialogueManager.dialogue_ended.disconnect(_on_final_dialogue_ended)
 	play("idle")
 	can_interact = true  # Re-enable interaction if needed
+	

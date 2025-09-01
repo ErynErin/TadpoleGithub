@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://0gwvr1mcfucc"]
+[gd_scene load_steps=24 format=3 uid="uid://0gwvr1mcfucc"]
 
 [ext_resource type="Texture2D" uid="uid://dfoeb3l3cxt1d" path="res://assets/BG/Phase 3/1.png" id="1_ff7f0"]
 [ext_resource type="Script" uid="uid://c3n8hb0oj65hp" path="res://scenes/Main Scenes/3_rd_scene.gd" id="1_fngbt"]
@@ -37,7 +37,7 @@ distance = -581.0
 normal = Vector2(1, 0)
 distance = -1014.0
 
-[node name="Ted Game" type="Node2D"]
+[node name="Ted Game 3" type="Node2D"]
 script = ExtResource("1_fngbt")
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
@@ -231,7 +231,6 @@ volume_db = -10.0
 autoplay = true
 bus = &"Music"
 parameters/looping = true
-
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var video_player = $VideoStreamPlayer
 @onready var intro_dialogue = preload("res://dialogues/p1_intro.dialogue")
-@onready var system_balloon_scene = preload("res://balloons/SystemBalloon.tscn")
+@onready var system_balloon_scene = preload("res://balloons/TutorialBalloon.tscn")
 
 @onready var player = $player
 @onready var screen_fade = $CanvasLayer/ScreenFade
