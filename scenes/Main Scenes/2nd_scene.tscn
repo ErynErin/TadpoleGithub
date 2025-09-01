@@ -9,16 +9,15 @@
 [ext_resource type="Texture2D" uid="uid://dc86inuelf7ii" path="res://assets/BG/Phase 2/4.png" id="10_plhnw"]
 [ext_resource type="Texture2D" uid="uid://rxnciromwi5l" path="res://assets/BG/Phase 2/5.png" id="11_t7lwq"]
 [ext_resource type="Script" uid="uid://d22ltv5khw2fa" path="res://scripts/health_bar.gd" id="11_x2w7c"]
-[ext_resource type="Texture2D" uid="uid://cpf5ahqnmuv2" path="res://assets/GUI/Game Screen UI/hunger.png" id="12_pktkd"]
-[ext_resource type="Texture2D" uid="uid://usodpdet6r8k" path="res://assets/GUI/Game Screen UI/hunger under bar.png" id="13_8hqba"]
 [ext_resource type="PackedScene" uid="uid://cmole1wjk2k70" path="res://scenes/UI/merchant_shop.tscn" id="14_dwpsk"]
 [ext_resource type="PackedScene" uid="uid://ctw57l6kowhya" path="res://scenes/UI/pause_menu.tscn" id="15_2npaq"]
 [ext_resource type="PackedScene" uid="uid://qvgqap54c1b1" path="res://scenes/UI/options.tscn" id="15_3xvx2"]
 [ext_resource type="Texture2D" uid="uid://7w1ynanueaxp" path="res://scenes/Platforms/P2_spritesheet.svg" id="17_3xvx2"]
 [ext_resource type="PackedScene" uid="uid://basdg6biv03al" path="res://scenes/Player/player_phase2.tscn" id="17_ysw53"]
+
 [ext_resource type="PackedScene" uid="uid://bd1qu81rucmuf" path="res://scenes/Characters/merchant.tscn" id="18_vksdc"]
+[ext_resource type="PackedScene" uid="uid://b7v31n5kjltlr" path="res://scenes/change_scene_area.tscn" id="18_3xvx2"]
 [ext_resource type="PackedScene" uid="uid://cqn1xtwbw5n5l" path="res://scenes/Collectibles/food.tscn" id="18_whigq"]
-[ext_resource type="PackedScene" uid="uid://ca5h26hc7p7b0" path="res://scenes/Characters/boss_1.tscn" id="19_vksdc"]
 
 [sub_resource type="SystemFont" id="SystemFont_3xvx2"]
 
@@ -27,8 +26,6 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ssd1q"]
 bg_color = Color(1, 0.321569, 0.364706, 1)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wkg83"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vksdc"]
 distance = 122.738
@@ -60,6 +57,7 @@ texture_region_size = Vector2i(600, 600)
 [sub_resource type="TileSet" id="TileSet_goyj0"]
 physics_layer_0/collision_layer = 15
 sources/1 = SubResource("TileSetAtlasSource_vksdc")
+
 
 [node name="Ted Game2" type="Node2D"]
 script = ExtResource("1_3xvx2")
@@ -183,29 +181,6 @@ offset_right = 348.0
 offset_bottom = 310.0
 script = ExtResource("8_3xvx2")
 
-[node name="hunger bar" type="TextureProgressBar" parent="GUI"]
-visible = false
-offset_left = 230.0
-offset_top = 50.0
-offset_right = 1230.0
-offset_bottom = 1050.0
-scale = Vector2(0.25, 0.25)
-tooltip_text = "Hunger"
-stretch_margin_top = 12
-stretch_margin_right = 12
-stretch_margin_bottom = 12
-texture_over = ExtResource("12_pktkd")
-texture_progress = SubResource("CompressedTexture2D_wkg83")
-
-[node name="hunger lower bar" type="NinePatchRect" parent="GUI"]
-visible = false
-offset_left = 230.0
-offset_top = 58.0
-offset_right = 230.0
-offset_bottom = 292.0
-texture = ExtResource("13_8hqba")
-region_rect = Rect2(0, 0, 790, 1000)
-
 [node name="merchant shop" parent="GUI" instance=ExtResource("14_dwpsk")]
 visible = false
 scale = Vector2(1.67, 1.67)
@@ -219,6 +194,7 @@ scale = Vector2(1.11, 1.11)
 
 [node name="Options" parent="GUI" instance=ExtResource("15_3xvx2")]
 visible = false
+scale = Vector2(1.67, 1.67)
 
 [node name="Food" type="Node2D" parent="."]
 position = Vector2(0, 200)
@@ -248,7 +224,6 @@ scale = Vector2(1.3, 1.3)
 z_index = 5
 position = Vector2(-1080.36, 58.5956)
 scale = Vector2(0.5, 0.5)
-collision_layer = 129
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(-12, 1142)
@@ -262,10 +237,6 @@ limit_smoothed = true
 position_smoothing_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
-
-[node name="Kingstar" parent="." instance=ExtResource("19_vksdc")]
-position = Vector2(-186, 414)
-scale = Vector2(0.4, 0.4)
 
 [node name="World Boundaries" type="Node2D" parent="."]
 position = Vector2(1, 68)
@@ -302,6 +273,7 @@ scale = Vector2(0.165, 0.165)
 tile_map_data = PackedByteArray("AAAhAJ8AAQAAAAAAAAAzAJ8AAQABAAAAAABFAJ8AAQABAAEAAAAPAJ8AAQAAAAEAAABhAJUAAgAAAAAAAACGAJUAAgABAAEAAAA8AJUAAgAAAAEAAAB2ALkAAwAAAAEAAACZALkAAwABAAEAAAC7ALkAAwAAAAAAAADdALkAAwABAAAAAAABAbkAAwACAAAAAAA=")
 tile_set = SubResource("TileSet_goyj0")
 
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
 
@@ -312,3 +284,8 @@ anchor_bottom = 1.0
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0, 0, 0, 1)
+
+[node name="ChangeScene" parent="." instance=ExtResource("18_3xvx2")]
+position = Vector2(963, 546)
+next_scene = "res://scenes/Main Scenes/3rd_scene.tscn"
+

@@ -7,6 +7,7 @@ var strength = 10
 var speed = 200
 var next_scene_path = ""
 var phase_num = 1
+var merchant_access = 1
 @export var inv: Inv
 signal health_changed(current_health: float, max_health: float)
 signal player_died
@@ -14,7 +15,7 @@ signal shop_closed
 
 func load_to_scene(next_scene: String):
 	next_scene_path = next_scene
-	get_tree().change_scene_to_file("res://scenes/Main Scenes/loading_scene.tscn")
+	get_tree().change_scene_to_file.call_deferred("res://scenes/Main Scenes/loading_scene.tscn")
 
 func add_hunger():
 	if hunger != 5:
@@ -72,6 +73,7 @@ func add_speed():
 func show_shop():
 	var current_scene = get_tree().current_scene	
 	var merchant_shop = current_scene.get_node("GUI/merchant shop")
+	merchant_access -= 1
 	merchant_shop.visible = true
 	
 func hide_shop():

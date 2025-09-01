@@ -1,4 +1,4 @@
-[gd_scene load_steps=219 format=3 uid="uid://ca5h26hc7p7b0"]
+[gd_scene load_steps=223 format=3 uid="uid://ca5h26hc7p7b0"]
 
 [ext_resource type="Texture2D" uid="uid://dglal1ggfmd5a" path="res://assets/Characters/Kingstar/ATTACKS/Attack100/Attack100_0000.png" id="1_qyqpj"]
 [ext_resource type="Script" uid="uid://ir21uqpbkx3x" path="res://scripts/boss_1.gd" id="1_wom53"]
@@ -209,6 +209,7 @@
 [ext_resource type="Script" uid="uid://dktsel320mpw7" path="res://scripts/hurtbox.gd" id="203_sb23d"]
 [ext_resource type="Script" uid="uid://cfdlbfbudy12s" path="res://scripts/hitbox.gd" id="204_yksyv"]
 [ext_resource type="AudioStream" uid="uid://cfxappkesjowb" path="res://assets/Audios/enemies/boss roar.mp3" id="209_ijpti"]
+[ext_resource type="FontFile" uid="uid://chvpvepqarnv6" path="res://assets/Fonts/Tedtadpole-Regular.ttf" id="209_kmcfq"]
 [ext_resource type="AudioStream" uid="uid://biylr2yomysax" path="res://assets/Audios/enemies/boss huff.mp3" id="210_kmcfq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qyqpj"]
@@ -1039,6 +1040,23 @@ _data = {
 &"hurt": SubResource("Animation_wom53")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kmcfq"]
+bg_color = Color(0.870588, 0.870588, 0.870588, 0.65098)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yo1hq"]
+bg_color = Color(0.572549, 0.054902, 0, 0.623529)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kmcfq"]
+size = Vector2(1962, 1112)
+
 [node name="Kingstar" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
@@ -1085,21 +1103,48 @@ libraries = {
 [node name="Timer" type="Timer" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
-offset_left = 467.0
-offset_top = 42.0
-offset_right = 1488.0
-offset_bottom = 176.0
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -500.0
+offset_top = 50.0
+offset_right = 500.0
+offset_bottom = 182.0
+grow_horizontal = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("209_kmcfq")
+theme_override_font_sizes/font_size = 60
+text = "Remaining Boss Health"
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 40
+theme_override_styles/background = SubResource("StyleBoxFlat_kmcfq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_yo1hq")
+value = 50.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("209_ijpti")
+volume_db = -10.0
 bus = &"SFX"
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("210_kmcfq")
 bus = &"SFX"
 
+[node name="PlayerDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+position = Vector2(4, 98)
+shape = SubResource("RectangleShape2D_kmcfq")
+
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]

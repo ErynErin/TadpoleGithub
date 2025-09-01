@@ -1,20 +1,17 @@
-[gd_scene load_steps=36 format=4 uid="uid://d0hqwpnv7oakw"]
+[gd_scene load_steps=33 format=4 uid="uid://d0hqwpnv7oakw"]
 
 [ext_resource type="Texture2D" uid="uid://cstcdjnw86nfs" path="res://assets/BG/Phase 1/1.png" id="1_36xgi"]
-[ext_resource type="Script" uid="uid://bxd2bwy2cc7ww" path="res://scenes/Main Scenes/nursery_scene.gd" id="1_r8hxo"]
+[ext_resource type="Script" path="res://scenes/Main Scenes/nursery_scene.gd" id="1_r8hxo"]
 [ext_resource type="Texture2D" uid="uid://c3xww2i2skpq1" path="res://assets/BG/Phase 1/2.png" id="2_is0ew"]
 [ext_resource type="Texture2D" uid="uid://ci5h6qat4a3lg" path="res://assets/BG/Phase 1/3.png" id="3_xlmt5"]
 [ext_resource type="Texture2D" uid="uid://btvfpva4ccs2p" path="res://assets/BG/Phase 1/4.png" id="4_heptv"]
 [ext_resource type="Texture2D" uid="uid://cx2obingrau0c" path="res://assets/BG/Phase 1/5.png" id="5_b40aj"]
-[ext_resource type="Texture2D" uid="uid://iwggw3st1ihx" path="res://assets/BG/Phase 1/6.png" id="6_y2ypf"]
-[ext_resource type="PackedScene" uid="uid://ds8i10qow8msb" path="res://scenes/inventory_things/inv_ui.tscn" id="7_neo3g"]
+[ext_resource type="Texture2D" uid="uid://iwggw3st1ihx" path="res://assets/BG/Phase 1/6.PNG" id="6_y2ypf"]
 [ext_resource type="PackedScene" uid="uid://bntvonb1a06nv" path="res://scenes/Characters/beetle.tscn" id="7_y2ypf"]
 [ext_resource type="PackedScene" uid="uid://bd1qu81rucmuf" path="res://scenes/Characters/merchant.tscn" id="8_nsaye"]
 [ext_resource type="PackedScene" uid="uid://xov1nahqgphe" path="res://scenes/Characters/worm.tscn" id="9_p0owv"]
 [ext_resource type="Script" uid="uid://0dthjh7hw83f" path="res://scripts/pause_button.gd" id="9_qfx3x"]
 [ext_resource type="Script" uid="uid://d22ltv5khw2fa" path="res://scripts/health_bar.gd" id="11_6rsge"]
-[ext_resource type="Texture2D" uid="uid://cpf5ahqnmuv2" path="res://assets/GUI/Game Screen UI/hunger.png" id="12_gfx3w"]
-[ext_resource type="Texture2D" uid="uid://usodpdet6r8k" path="res://assets/GUI/Game Screen UI/hunger under bar.png" id="13_5lbhe"]
 [ext_resource type="PackedScene" uid="uid://ctw57l6kowhya" path="res://scenes/UI/pause_menu.tscn" id="14_iud5h"]
 [ext_resource type="PackedScene" uid="uid://mo3hkwq7pjdf" path="res://scenes/Player/player_phase1.tscn" id="15_b0kx5"]
 [ext_resource type="Texture2D" uid="uid://cvojlptff1xk5" path="res://assets/GUI/Game Screen UI/P1_health.png" id="15_gbf57"]
@@ -23,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://co4b1kiuq2dcm" path="res://scenes/Collectibles/collectible_key.tscn" id="17_khd5g"]
 [ext_resource type="PackedScene" uid="uid://4m0c4x6ggxmf" path="res://scenes/Collectibles/collectible_bomb.tscn" id="18_u2qq7"]
 [ext_resource type="PackedScene" uid="uid://cmole1wjk2k70" path="res://scenes/UI/merchant_shop.tscn" id="22_odwuh"]
+[ext_resource type="PackedScene" uid="uid://b7v31n5kjltlr" path="res://scenes/change_scene_area.tscn" id="23_y2ypf"]
 [ext_resource type="AudioStream" uid="uid://088m4dy2feda" path="res://assets/Audios/bgms/Coming of Age Movie BGM.mp3" id="27_po7p3"]
 [ext_resource type="Texture2D" uid="uid://bccbf8jv77bue" path="res://scenes/Platforms/p1_spritesheetss.svg" id="28_khq81"]
 
@@ -33,8 +31,6 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nsaye"]
 bg_color = Color(1, 0.321569, 0.364706, 1)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nh5hk"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_heptv"]
 distance = 122.738
@@ -200,37 +196,6 @@ offset_right = 348.0
 offset_bottom = 310.0
 script = ExtResource("9_qfx3x")
 
-[node name="inv_ui" parent="GUI" instance=ExtResource("7_neo3g")]
-visible = false
-offset_left = 100.0
-offset_top = 450.0
-offset_right = 100.0
-offset_bottom = 450.0
-scale = Vector2(0.17, 0.17)
-
-[node name="hunger bar" type="TextureProgressBar" parent="GUI"]
-visible = false
-offset_left = 230.0
-offset_top = 50.0
-offset_right = 1230.0
-offset_bottom = 1050.0
-scale = Vector2(0.25, 0.25)
-tooltip_text = "Hunger"
-stretch_margin_top = 12
-stretch_margin_right = 12
-stretch_margin_bottom = 12
-texture_over = ExtResource("12_gfx3w")
-texture_progress = SubResource("CompressedTexture2D_nh5hk")
-
-[node name="hunger lower bar" type="NinePatchRect" parent="GUI"]
-visible = false
-offset_left = 230.0
-offset_top = 58.0
-offset_right = 230.0
-offset_bottom = 292.0
-texture = ExtResource("13_5lbhe")
-region_rect = Rect2(0, 0, 790, 1000)
-
 [node name="merchant shop" parent="GUI" instance=ExtResource("22_odwuh")]
 visible = false
 scale = Vector2(1.67, 1.67)
@@ -386,3 +351,6 @@ anchor_bottom = 1.0
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0, 0, 0, 1)
+
+[node name="ChangeScene" parent="." instance=ExtResource("23_y2ypf")]
+position = Vector2(4472, 37)
