@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=3 uid="uid://mo3hkwq7pjdf"]
+[gd_scene load_steps=106 format=3 uid="uid://mo3hkwq7pjdf"]
 
 [ext_resource type="Script" uid="uid://qdyt6iet83op" path="res://scripts/player.gd" id="1_m07t0"]
 [ext_resource type="Texture2D" uid="uid://c6xehwxoftg4l" path="res://assets/1st stage mc/1st idle/1st idle0000.png" id="2_cbf1i"]
@@ -96,6 +96,7 @@
 [ext_resource type="Texture2D" uid="uid://dhfrh34o85o5f" path="res://assets/1st stage mc/1st walk/1st walk0010.png" id="88_1pym2"]
 [ext_resource type="Texture2D" uid="uid://oojga4s58xw0" path="res://assets/1st stage mc/1st walk/1st walk0011.png" id="89_pgdua"]
 [ext_resource type="Script" uid="uid://dktsel320mpw7" path="res://scripts/hurtbox.gd" id="91_onspj"]
+[ext_resource type="PackedScene" uid="uid://bb6ksj6c85ixy" path="res://scenes/Player/sword.tscn" id="96_a3vm6"]
 [ext_resource type="AudioStream" uid="uid://b4uuqdo1rp4ju" path="res://assets/Audios/player/death.mp3" id="98_sb883"]
 [ext_resource type="AudioStream" uid="uid://dic1gm6n83vqj" path="res://assets/Audios/player/jump.wav" id="99_u6pnn"]
 
@@ -475,6 +476,10 @@ scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_v3hta")
 animation = &"idle"
 autoplay = "idle"
+
+[node name="Sword" parent="." instance=ExtResource("96_a3vm6")]
+position = Vector2(3, 4)
+scale = Vector2(0.6, 0.6)
 
 [node name="HurtBox" type="Area2D" parent="."]
 collision_layer = 8
