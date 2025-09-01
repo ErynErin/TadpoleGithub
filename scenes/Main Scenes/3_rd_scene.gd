@@ -1,8 +1,8 @@
 extends Node2D
 
 @onready var screen_fade = $CanvasLayer/ScreenFade
-@onready var dialogue_resource: DialogueResource = preload("res://dialogues/p3_boss.dialogue")
-var balloon_scene = preload("res://balloons/BossBalloon.tscn")  # Your custom balloon scene
+@onready var dialogue_resource: DialogueResource = preload("res://dialogues/p3_intro.dialogue")
+var balloon_scene = preload("res://balloons/SystemBalloon.tscn")  # Your custom balloon scene
 
 func _ready():
 	screen_fade.color.a = 1.0
@@ -16,7 +16,6 @@ func _ready():
 	if not DialogueManager.dialogue_ended.is_connected(_on_dialogue_ended):
 		DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 
-	# Start the pre-shop dialogue
 	balloon_instance.start(dialogue_resource, "start")
 
 func _on_dialogue_ended(_resource):
