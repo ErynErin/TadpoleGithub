@@ -1,0 +1,14 @@
+~ start
+: You changed!
+- I did...?
+: So did the pond...
+: There could be enemies around, so stay sharp!
+Tutorial: Press Q to equip your weapon. Press it again to unequip.
+Tutorial: Use left-click to swing it.
+: [shake rate=20 level=10]Ack![/shake] I just saw a worm and a water beetle! 
+Tutorial: Water beetles are enemies which will attack you if it sees you.
+Tutorial: Worms chase and attack you as well.
+: Quick grab your weapon and attack!
+: Don't forget to eat and heal up!
+: Stay safe out there...
+=> END

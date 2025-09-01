@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bellb7dsx5xl4"]
+[gd_scene load_steps=10 format=3 uid="uid://cax5ouhn2ppt4"]
 
 [ext_resource type="Script" uid="uid://bsuo5draq2jgd" path="res://balloons/balloon.gd" id="1_6dsu4"]
 [ext_resource type="Theme" uid="uid://bxycdq0lkine8" path="res://balloonthemehuhu.tres" id="2_2ycy5"]
@@ -19,11 +19,9 @@ layer = 100
 script = ExtResource("1_6dsu4")
 
 [node name="Custom Balloon" type="TextureRect" parent="."]
-offset_left = 104.0
-offset_top = -476.5
-offset_right = 2024.0
-offset_bottom = 603.5
-scale = Vector2(0.89, 0.89)
+offset_top = 19.5
+offset_right = 1920.0
+offset_bottom = 1099.5
 texture = SubResource("CompressedTexture2D_bklyl")
 
 [node name="Balloon" type="Control" parent="."]
@@ -32,8 +30,6 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -584.0
-offset_bottom = -584.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_2ycy5")
@@ -44,10 +40,10 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 464.0
-offset_top = -293.0
-offset_right = -456.0
-offset_bottom = -93.0
+offset_left = 424.0
+offset_top = -285.0
+offset_right = -405.0
+offset_bottom = -66.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/margin_left = 0
@@ -68,6 +64,7 @@ layout_mode = 2
 
 [node name="CharacterLabel" type="RichTextLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+visible = false
 modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 2
 mouse_filter = 1
@@ -89,7 +86,6 @@ theme_override_fonts/normal_font = ExtResource("3_310f3")
 theme_override_font_sizes/normal_font_size = 40
 text = "Dialogue..."
 horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="ResponsesMenu" type="VBoxContainer" parent="Balloon" node_paths=PackedStringArray("response_template")]
 unique_name_in_owner = true
@@ -99,10 +95,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -304.125
-offset_top = 540.0
-offset_right = 276.875
-offset_bottom = 610.0
+offset_left = -288.125
+offset_top = 102.25
+offset_right = 292.875
+offset_bottom = 172.25
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 8

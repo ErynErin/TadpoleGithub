@@ -1,7 +1,7 @@
 ~ start
 : A new life form!
 : What’s your name? [wait=1] It can’t be John, Steve, or Ted[wait=1], right[speed=0.2]?
-# Ted: My name is [speed=0.2]... [wait=3][wave amp=15 freq=3]Ted!
+- My name is [speed=0.2]... [wait=3][wave amp=15 freq=3]Ted!
 : Oh- hi Ted! I didn’t expect your name to be one of those three…
 : [wave amp=15 freq=3]Welcome to the pond!
 : This is where you’ll eat, sleep, and live for a while…

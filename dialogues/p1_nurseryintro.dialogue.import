@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://qlhv60cttdr4"
+path="res://.godot/imported/p1_nurseryintro.dialogue-9153c07287001471a035e46ac172c139.tres"
+
+[deps]
+
+source_file="res://dialogues/p1_nurseryintro.dialogue"
+dest_files=["res://.godot/imported/p1_nurseryintro.dialogue-9153c07287001471a035e46ac172c139.tres"]
+
+[params]
+
+defaults=true
