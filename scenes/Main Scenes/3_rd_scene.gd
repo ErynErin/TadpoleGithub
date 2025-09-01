@@ -18,10 +18,8 @@ func _ready():
 
 	balloon_instance.start(dialogue_resource, "start")
 
-
 func _on_dialogue_ended(_resource):
 	DialogueManager.dialogue_ended.disconnect(_on_dialogue_ended)
-	
 	
 func fade_in_screen():
 	var tween = create_tween()
@@ -32,3 +30,6 @@ func fade_out_screen():
 	var tween = create_tween()
 	tween.tween_property(screen_fade, "color:a", 0.0, 1.5)
 	await tween.finished
+
+func _on_kingstar_boss_died() -> void:
+	get_tree().change_scene_to_file.call_deferred("res://scenes/Main Scenes/ending.tscn")

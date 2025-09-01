@@ -26,6 +26,8 @@ var max_boss_health = 100.0
 var state_timer = 0.0
 var player_entered = 1
 
+signal boss_died
+
 func _ready() -> void:
 	canvas_layer.visible = false
 	progress_bar.max_value = max_boss_health
@@ -152,7 +154,7 @@ func _change_state(new_state: State) -> void:
 	
 	match current_state:
 		State.WALK:
-			_set_hitboxes(false, false)
+			_set_hitboxes(true, false)
 			_play_animation_for_health_state("walk")
 			
 		State.DASH:
@@ -175,6 +177,9 @@ func _change_state(new_state: State) -> void:
 			_set_hitboxes(false, false)
 			animated_sprite.play("death")
 			print("=== BOSS DIED ===")
+			# Emit the signal to notify other nodes of the boss's death
+			await animated_sprite.animation_finished
+			emit_signal("boss_died")
 
 func _set_hitboxes(is_hurtbox_enabled: bool, is_hitbox_enabled: bool) -> void:
 	hurt_box.set_deferred("monitoring", is_hurtbox_enabled)
@@ -231,8 +236,10 @@ func _on_hit_box_area_entered(area) -> void:
 		await get_tree().create_timer(0.9).timeout
 		
 		# Check if the player's area is still overlapping with our hitbox
+		_set_hitboxes(true, true)
 		var overlapping_areas = hit_box.get_overlapping_areas()
 		var player_still_in_hitbox = false
+		_set_hitboxes(false, false)
 		
 		for overlapping_area in overlapping_areas:
 			if overlapping_area.owner.is_in_group("player"):

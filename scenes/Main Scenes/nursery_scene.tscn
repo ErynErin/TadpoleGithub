@@ -6,10 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://ci5h6qat4a3lg" path="res://assets/BG/Phase 1/3.png" id="3_xlmt5"]
 [ext_resource type="Texture2D" uid="uid://btvfpva4ccs2p" path="res://assets/BG/Phase 1/4.png" id="4_heptv"]
 [ext_resource type="Texture2D" uid="uid://cx2obingrau0c" path="res://assets/BG/Phase 1/5.png" id="5_b40aj"]
-[ext_resource type="Texture2D" uid="uid://iwggw3st1ihx" path="res://assets/BG/Phase 1/6.png" id="6_y2ypf"]
-[ext_resource type="PackedScene" uid="uid://bntvonb1a06nv" path="res://scenes/Characters/beetle.tscn" id="7_y2ypf"]
+[ext_resource type="Texture2D" uid="uid://iwggw3st1ihx" path="res://assets/BG/Phase 1/6.PNG" id="6_y2ypf"]
 [ext_resource type="PackedScene" uid="uid://bd1qu81rucmuf" path="res://scenes/Characters/merchant.tscn" id="8_nsaye"]
-[ext_resource type="PackedScene" uid="uid://xov1nahqgphe" path="res://scenes/Characters/worm.tscn" id="9_p0owv"]
 [ext_resource type="Script" uid="uid://0dthjh7hw83f" path="res://scripts/pause_button.gd" id="9_qfx3x"]
 [ext_resource type="Script" uid="uid://d22ltv5khw2fa" path="res://scripts/health_bar.gd" id="11_6rsge"]
 [ext_resource type="PackedScene" uid="uid://ctw57l6kowhya" path="res://scenes/UI/pause_menu.tscn" id="14_iud5h"]
@@ -340,7 +338,7 @@ shape = SubResource("WorldBoundaryShape2D_p57ef")
 [node name="Food" type="Node2D" parent="."]
 
 [node name="food" parent="Food" instance=ExtResource("16_c07hn")]
-position = Vector2(-818, 627)
+position = Vector2(-818, 600)
 scale = Vector2(1.3, 1.3)
 
 [node name="food2" parent="Food" instance=ExtResource("16_c07hn")]
@@ -381,26 +379,6 @@ position = Vector2(10033, -178)
 scale = Vector2(0.15, 0.15)
 frame_progress = 0.959508
 
-[node name="Worm" parent="." instance=ExtResource("9_p0owv")]
-visible = false
-position = Vector2(1448, 584)
-scale = Vector2(0.55, 0.55)
-
-[node name="Worm2" parent="." instance=ExtResource("9_p0owv")]
-visible = false
-position = Vector2(1668, 584)
-scale = Vector2(0.55, 0.55)
-
-[node name="Worm3" parent="." instance=ExtResource("9_p0owv")]
-visible = false
-position = Vector2(1894, 584)
-scale = Vector2(0.55, 0.55)
-
-[node name="Beetle" parent="." instance=ExtResource("7_y2ypf")]
-visible = false
-position = Vector2(633, 570)
-scale = Vector2(1.5, 1.5)
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("27_po7p3")
@@ -416,7 +394,6 @@ tile_map_data = PackedByteArray("AABhAJUAAgAAAAAAAACGAJUAAgABAAEAAAB2ALkAAwAAAAE
 tile_set = SubResource("TileSet_45e12")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="ScreenFade" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
