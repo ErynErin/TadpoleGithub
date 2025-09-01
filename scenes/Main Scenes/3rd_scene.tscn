@@ -11,17 +11,18 @@
 [ext_resource type="Script" uid="uid://0dthjh7hw83f" path="res://scripts/pause_button.gd" id="9_7fgw2"]
 [ext_resource type="Script" uid="uid://d22ltv5khw2fa" path="res://scripts/health_bar.gd" id="11_3xx46"]
 [ext_resource type="PackedScene" uid="uid://ctw57l6kowhya" path="res://scenes/UI/pause_menu.tscn" id="15_btcw1"]
-[ext_resource type="PackedScene" uid="uid://mo3hkwq7pjdf" path="res://scenes/Player/player_phase1.tscn" id="16_qani7"]
 [ext_resource type="PackedScene" uid="uid://qvgqap54c1b1" path="res://scenes/UI/options.tscn" id="16_yatwi"]
 [ext_resource type="PackedScene" uid="uid://mlspxc2wfne5" path="res://scenes/Player/player_phase3.tscn" id="18_7fgw2"]
 [ext_resource type="PackedScene" uid="uid://cqn1xtwbw5n5l" path="res://scenes/Collectibles/food.tscn" id="20_fngbt"]
 [ext_resource type="AudioStream" uid="uid://d3l6d8tkmf3t2" path="res://assets/Audios/bgms/Dark Ambient Music BGM.mp3" id="20_t2n2u"]
 [ext_resource type="PackedScene" uid="uid://ca5h26hc7p7b0" path="res://scenes/Characters/boss_1.tscn" id="21_fngbt"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yatwi"]
+[sub_resource type="SystemFont" id="SystemFont_e0iyr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ff7f0"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2n2u"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7fgw2"]
 bg_color = Color(1, 0.321569, 0.364706, 1)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_t2n2u"]
@@ -148,10 +149,11 @@ offset_left = 458.0
 offset_top = 157.0
 offset_right = 787.0
 offset_bottom = 205.0
-theme_override_styles/background = SubResource("StyleBoxFlat_yatwi")
-theme_override_styles/fill = SubResource("StyleBoxFlat_t2n2u")
+theme_override_fonts/font = SubResource("SystemFont_e0iyr")
+theme_override_font_sizes/font_size = 27
+theme_override_styles/background = SubResource("StyleBoxFlat_ff7f0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7fgw2")
 value = 50.0
-show_percentage = false
 script = ExtResource("11_3xx46")
 
 [node name="Gen UI" type="TextureRect" parent="GUI"]
@@ -200,12 +202,6 @@ physics_material_override = SubResource("PhysicsMaterial_lfq3w")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="World Boundaries/left"]
 shape = SubResource("WorldBoundaryShape2D_26pct")
-
-[node name="Tadpole" parent="." instance=ExtResource("16_qani7")]
-visible = false
-z_index = 5
-position = Vector2(-1080.36, 58.5956)
-scale = Vector2(0.5, 0.5)
 
 [node name="player" parent="." instance=ExtResource("18_7fgw2")]
 z_index = 3
@@ -270,3 +266,5 @@ scale = Vector2(1.3, 1.3)
 [node name="Kingstar" parent="." instance=ExtResource("21_fngbt")]
 position = Vector2(4088, 408)
 scale = Vector2(0.4, 0.4)
+
+[connection signal="boss_died" from="Kingstar" to="." method="_on_kingstar_boss_died"]
