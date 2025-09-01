@@ -233,6 +233,7 @@ bus = &"Music"
 parameters/looping = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ScreenFade" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
@@ -267,5 +268,5 @@ position = Vector2(648, 399)
 scale = Vector2(1.3, 1.3)
 
 [node name="Kingstar" parent="." instance=ExtResource("21_fngbt")]
-position = Vector2(72, 433)
+position = Vector2(4088, 408)
 scale = Vector2(0.4, 0.4)
