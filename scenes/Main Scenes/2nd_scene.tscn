@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://cfv4f6bi46hrx"]
+[gd_scene load_steps=30 format=4 uid="uid://cfv4f6bi46hrx"]
 
 [ext_resource type="Script" uid="uid://bht730yy73mmk" path="res://scenes/Main Scenes/2_nd_scene.gd" id="1_3xvx2"]
 [ext_resource type="Texture2D" uid="uid://cc6aiqta7j02x" path="res://assets/BG/Phase 2/1.png" id="7_aqdem"]
@@ -15,8 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://7w1ynanueaxp" path="res://scenes/Platforms/P2_spritesheet.svg" id="17_3xvx2"]
 [ext_resource type="PackedScene" uid="uid://basdg6biv03al" path="res://scenes/Player/player_phase2.tscn" id="17_ysw53"]
 [ext_resource type="PackedScene" uid="uid://b7v31n5kjltlr" path="res://scenes/change_scene_area.tscn" id="18_3xvx2"]
+[ext_resource type="PackedScene" uid="uid://bntvonb1a06nv" path="res://scenes/Characters/beetle.tscn" id="18_ssd1q"]
 [ext_resource type="PackedScene" uid="uid://bd1qu81rucmuf" path="res://scenes/Characters/merchant.tscn" id="18_vksdc"]
 [ext_resource type="PackedScene" uid="uid://cqn1xtwbw5n5l" path="res://scenes/Collectibles/food.tscn" id="18_whigq"]
+[ext_resource type="PackedScene" uid="uid://xov1nahqgphe" path="res://scenes/Characters/worm.tscn" id="19_wkg83"]
+[ext_resource type="AudioStream" uid="uid://d3l6d8tkmf3t2" path="res://assets/Audios/bgms/Dark Ambient Music BGM.mp3" id="20_ssd1q"]
 
 [sub_resource type="SystemFont" id="SystemFont_3xvx2"]
 
@@ -199,23 +202,23 @@ position = Vector2(0, 200)
 metadata/_edit_lock_ = true
 
 [node name="food" parent="Food" instance=ExtResource("18_whigq")]
-position = Vector2(438, 399)
+position = Vector2(-1451, 355)
 scale = Vector2(1.3, 1.3)
 
 [node name="food2" parent="Food" instance=ExtResource("18_whigq")]
-position = Vector2(368, 399)
+position = Vector2(-1521, 355)
 scale = Vector2(1.3, 1.3)
 
 [node name="food3" parent="Food" instance=ExtResource("18_whigq")]
-position = Vector2(508, 399)
+position = Vector2(-1381, 355)
 scale = Vector2(1.3, 1.3)
 
 [node name="food4" parent="Food" instance=ExtResource("18_whigq")]
-position = Vector2(578, 399)
+position = Vector2(-1311, 355)
 scale = Vector2(1.3, 1.3)
 
 [node name="food5" parent="Food" instance=ExtResource("18_whigq")]
-position = Vector2(648, 399)
+position = Vector2(-1241, 355)
 scale = Vector2(1.3, 1.3)
 
 [node name="player" parent="." instance=ExtResource("17_ysw53")]
@@ -270,7 +273,7 @@ physics_material_override = SubResource("PhysicsMaterial_wkg83")
 shape = SubResource("WorldBoundaryShape2D_goyj0")
 
 [node name="Merchant" parent="." instance=ExtResource("18_vksdc")]
-position = Vector2(-920, 528)
+position = Vector2(1490, 496)
 scale = Vector2(0.15, 0.15)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -279,6 +282,7 @@ tile_map_data = PackedByteArray("AAAhAJ8AAQAAAAAAAAAzAJ8AAQABAAAAAABFAJ8AAQABAAE
 tile_set = SubResource("TileSet_goyj0")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ScreenFade" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
@@ -289,5 +293,29 @@ offset_bottom = 40.0
 color = Color(0, 0, 0, 1)
 
 [node name="ChangeScene" parent="." instance=ExtResource("18_3xvx2")]
-position = Vector2(963, 546)
+position = Vector2(1738, 104)
+scale = Vector2(1, 10)
 next_scene = "res://scenes/Main Scenes/3rd_scene.tscn"
+
+[node name="Beetle" parent="." instance=ExtResource("18_ssd1q")]
+position = Vector2(-145, 552)
+scale = Vector2(1.5, 1.5)
+
+[node name="Worm" parent="." instance=ExtResource("19_wkg83")]
+position = Vector2(706, 560)
+scale = Vector2(0.5, 0.5)
+
+[node name="Worm2" parent="." instance=ExtResource("19_wkg83")]
+position = Vector2(923, 560)
+scale = Vector2(0.5, 0.5)
+
+[node name="Worm3" parent="." instance=ExtResource("19_wkg83")]
+position = Vector2(1140, 560)
+scale = Vector2(0.5, 0.5)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_ssd1q")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
+parameters/looping = true

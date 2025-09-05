@@ -17,11 +17,15 @@ func _ready():
 	player.visible = false
 	player.set_physics_process(false)
 
-	# Connect and play video
-	video_player.finished.connect(_on_video_finished)
+	# Play video
 	video_player.play()
 
-func _on_video_finished():
+func _on_skip_button_pressed() -> void:
+	video_player.stop()
+	_on_video_stream_player_finished()
+	$CanvasLayer/SkipButton.hide()
+
+func _on_video_stream_player_finished():
 	print("Video finished!")
 	screen_fade.color.a = 1.0
 	screen_fade.set_z_index(1000)

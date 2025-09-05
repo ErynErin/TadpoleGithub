@@ -80,7 +80,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tiyqp"]
-size = Vector2(1811, 1129)
+size = Vector2(1306, 1129)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tiyqp"]
 radius = 89.0
@@ -108,7 +108,7 @@ libraries = {
 position = Vector2(-4, 5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player Detector"]
-position = Vector2(13, -14)
+position = Vector2(-4, -14)
 shape = SubResource("RectangleShape2D_tiyqp")
 
 [node name="Timer" type="Timer" parent="."]

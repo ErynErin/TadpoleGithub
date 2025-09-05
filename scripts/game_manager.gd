@@ -115,9 +115,5 @@ func check_player_status():
 		print("Player has died.")
 		player_died.emit()
 
-# Format for damage and heal
-#func _ready():
-	#pressed.connect(_on_pressed)
-
 func collect(item):
 	inv.insert(item)

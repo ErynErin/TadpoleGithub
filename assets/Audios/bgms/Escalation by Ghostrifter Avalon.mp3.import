@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://co863n64uai7t"
+path="res://.godot/imported/Escalation by Ghostrifter Avalon.mp3-422928d92e7fcea95d3b5a10a60e1cf3.mp3str"
+
+[deps]
+
+source_file="res://assets/Audios/bgms/Escalation by Ghostrifter Avalon.mp3"
+dest_files=["res://.godot/imported/Escalation by Ghostrifter Avalon.mp3-422928d92e7fcea95d3b5a10a60e1cf3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

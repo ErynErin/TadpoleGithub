@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfj2h3a86oaxn"]
+[gd_scene load_steps=3 format=3 uid="uid://cfj2h3a86oaxn"]
 
 [ext_resource type="VideoStream" uid="uid://c0xipb6dtioa7" path="res://assets/Videos/new ending anim.ogv" id="1_3red3"]
+[ext_resource type="Script" uid="uid://ckcjk8fgc0y52" path="res://scripts/ending.gd" id="1_vl68m"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_vl68m")
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
 layout_mode = 0
@@ -17,3 +19,5 @@ offset_bottom = 1080.0
 stream = ExtResource("1_3red3")
 autoplay = true
 expand = true
+
+[connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
