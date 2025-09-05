@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://ddp1vq2yrvvvn"]
+[gd_scene load_steps=35 format=3 uid="uid://ddp1vq2yrvvvn"]
 
 [ext_resource type="Script" uid="uid://bsuo5draq2jgd" path="res://balloons/balloon.gd" id="1_oemax"]
 [ext_resource type="Texture2D" uid="uid://chwsplawy4aqd" path="res://assets/GUI/Dialogue Boxes/Boss_DialogueBox.png" id="2_i5blm"]
@@ -33,40 +33,6 @@
 [ext_resource type="Texture2D" uid="uid://butorgs40s3ub" path="res://assets/Characters/Kingstar/IDLES/idle100/kin_0023.png" id="25_3srfn"]
 [ext_resource type="Texture2D" uid="uid://cxvcg4mrrtb2" path="res://assets/Characters/Kingstar/IDLES/idle100/kin_0024.png" id="26_3f5vv"]
 [ext_resource type="Texture2D" uid="uid://vmbk7257pja3" path="res://assets/Characters/Kingstar/IDLES/idle100/kin_0025.png" id="27_1ixeh"]
-[ext_resource type="Texture2D" uid="uid://c6xehwxoftg4l" path="res://assets/1st stage mc/1st idle/1st idle0000.png" id="28_6sqel"]
-[ext_resource type="Texture2D" uid="uid://cqhawppiqxfx3" path="res://assets/1st stage mc/1st idle/1st idle0001.png" id="29_1uhun"]
-[ext_resource type="Texture2D" uid="uid://cevx8l8s2j1w8" path="res://assets/1st stage mc/1st idle/1st idle0002.png" id="30_s6f22"]
-[ext_resource type="Texture2D" uid="uid://d2xacoyhh5x2s" path="res://assets/1st stage mc/1st idle/1st idle0004.png" id="31_abnoi"]
-[ext_resource type="Texture2D" uid="uid://2or850b37sy3" path="res://assets/1st stage mc/1st idle/1st idle0005.png" id="32_qxno3"]
-[ext_resource type="Texture2D" uid="uid://do3p66flepo6h" path="res://assets/1st stage mc/1st idle/1st idle0003.png" id="33_0omx1"]
-[ext_resource type="Texture2D" uid="uid://cxspjusdswhfi" path="res://assets/1st stage mc/1st idle/1st idle0006.png" id="34_oedmq"]
-[ext_resource type="Texture2D" uid="uid://5yb3q30qggj3" path="res://assets/1st stage mc/1st idle/1st idle0007.png" id="35_lg648"]
-[ext_resource type="Texture2D" uid="uid://tyicw40khi7j" path="res://assets/1st stage mc/1st idle/1st idle0008.png" id="36_lewe4"]
-[ext_resource type="Texture2D" uid="uid://u765bo455wgg" path="res://assets/1st stage mc/1st idle/1st idle0009.png" id="37_lksl5"]
-[ext_resource type="Texture2D" uid="uid://3puuq75avp83" path="res://assets/1st stage mc/1st idle/1st idle0010.png" id="38_u65no"]
-[ext_resource type="Texture2D" uid="uid://bxlrjbv88roth" path="res://assets/1st stage mc/1st idle/1st idle0011.png" id="39_4vmhb"]
-[ext_resource type="Texture2D" uid="uid://eajwd1t3mwa0" path="res://assets/1st stage mc/1st idle/1st idle0012.png" id="40_pmchv"]
-[ext_resource type="Texture2D" uid="uid://doljgsdei1mie" path="res://assets/2nd stage mc/2nd idle/2nd idle0000.png" id="41_yovdf"]
-[ext_resource type="Texture2D" uid="uid://bw3qoq1auhuoq" path="res://assets/2nd stage mc/2nd idle/2nd idle0001.png" id="42_ssp86"]
-[ext_resource type="Texture2D" uid="uid://dka351tqbaxis" path="res://assets/2nd stage mc/2nd idle/2nd idle0002.png" id="43_emsbe"]
-[ext_resource type="Texture2D" uid="uid://byeby5tej3l08" path="res://assets/2nd stage mc/2nd idle/2nd idle0003.png" id="44_qhfli"]
-[ext_resource type="Texture2D" uid="uid://d2btjnlv1brq8" path="res://assets/2nd stage mc/2nd idle/2nd idle0004.png" id="45_ypnwt"]
-[ext_resource type="Texture2D" uid="uid://b7s50b5l2l3x7" path="res://assets/2nd stage mc/2nd idle/2nd idle0005.png" id="46_wxcxh"]
-[ext_resource type="Texture2D" uid="uid://cp1ggltjgd3ln" path="res://assets/2nd stage mc/2nd idle/2nd idle0006.png" id="47_wpru7"]
-[ext_resource type="Texture2D" uid="uid://b8jtdnw0y1nkm" path="res://assets/2nd stage mc/2nd idle/2nd idle0007.png" id="48_qsjor"]
-[ext_resource type="Texture2D" uid="uid://cu3h1euipi0r" path="res://assets/2nd stage mc/2nd idle/2nd idle0008.png" id="49_juxcw"]
-[ext_resource type="Texture2D" uid="uid://dwc78j8w4uir4" path="res://assets/2nd stage mc/2nd idle/2nd idle0009.png" id="50_ayvhh"]
-[ext_resource type="Texture2D" uid="uid://cmhqywgv1b22i" path="res://assets/2nd stage mc/2nd idle/2nd idle0010.png" id="51_6clfq"]
-[ext_resource type="Texture2D" uid="uid://b85s7ddpju0en" path="res://assets/2nd stage mc/2nd idle/2nd idle0011.png" id="52_ajb76"]
-[ext_resource type="Texture2D" uid="uid://bucdfyfhipr3t" path="res://assets/3rd stage mc/3rd idle/3rd idle0000.png" id="53_db0as"]
-[ext_resource type="Texture2D" uid="uid://c503ssoychdre" path="res://assets/3rd stage mc/3rd idle/3rd idle0001.png" id="54_urf72"]
-[ext_resource type="Texture2D" uid="uid://bomlyeal5mt42" path="res://assets/3rd stage mc/3rd idle/3rd idle0002.png" id="55_lpf1s"]
-[ext_resource type="Texture2D" uid="uid://bfwvnlul3dy6o" path="res://assets/3rd stage mc/3rd idle/3rd idle0003.png" id="56_yoh6w"]
-[ext_resource type="Texture2D" uid="uid://b76fh6uq17efy" path="res://assets/3rd stage mc/3rd idle/3rd idle0004.png" id="57_m40e3"]
-[ext_resource type="Texture2D" uid="uid://b8dng3168pxln" path="res://assets/3rd stage mc/3rd idle/3rd idle0005.png" id="58_syly2"]
-[ext_resource type="Texture2D" uid="uid://k64ytvmksxqs" path="res://assets/3rd stage mc/3rd idle/3rd idle0006.png" id="59_h4ukr"]
-[ext_resource type="Texture2D" uid="uid://u4fp5gt7n5xk" path="res://assets/3rd stage mc/3rd idle/3rd idle0007.png" id="60_a70ao"]
-[ext_resource type="Script" uid="uid://fy8gfut4pbn5" path="res://balloons/phase_3.gd" id="61_57w0a"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mxw73"]
 animations = [{
@@ -154,123 +120,6 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_vrqx3"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("28_6sqel")
-}, {
-"duration": 1.0,
-"texture": ExtResource("29_1uhun")
-}, {
-"duration": 1.0,
-"texture": ExtResource("30_s6f22")
-}, {
-"duration": 1.0,
-"texture": ExtResource("31_abnoi")
-}, {
-"duration": 1.0,
-"texture": ExtResource("32_qxno3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("33_0omx1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("34_oedmq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("35_lg648")
-}, {
-"duration": 1.0,
-"texture": ExtResource("36_lewe4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("37_lksl5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("38_u65no")
-}, {
-"duration": 1.0,
-"texture": ExtResource("39_4vmhb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("40_pmchv")
-}],
-"loop": true,
-"name": &"phase1",
-"speed": 4.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("41_yovdf")
-}, {
-"duration": 1.0,
-"texture": ExtResource("42_ssp86")
-}, {
-"duration": 1.0,
-"texture": ExtResource("43_emsbe")
-}, {
-"duration": 1.0,
-"texture": ExtResource("44_qhfli")
-}, {
-"duration": 1.0,
-"texture": ExtResource("45_ypnwt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("46_wxcxh")
-}, {
-"duration": 1.0,
-"texture": ExtResource("47_wpru7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("48_qsjor")
-}, {
-"duration": 1.0,
-"texture": ExtResource("49_juxcw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("50_ayvhh")
-}, {
-"duration": 1.0,
-"texture": ExtResource("51_6clfq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("52_ajb76")
-}],
-"loop": true,
-"name": &"phase2",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("53_db0as")
-}, {
-"duration": 1.0,
-"texture": ExtResource("54_urf72")
-}, {
-"duration": 1.0,
-"texture": ExtResource("55_lpf1s")
-}, {
-"duration": 1.0,
-"texture": ExtResource("56_yoh6w")
-}, {
-"duration": 1.0,
-"texture": ExtResource("57_m40e3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("58_syly2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("59_h4ukr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("60_a70ao")
-}],
-"loop": true,
-"name": &"phase3",
-"speed": 5.0
-}]
-
 [node name="BossBalloon" type="CanvasLayer"]
 layer = 100
 script = ExtResource("1_oemax")
@@ -290,14 +139,6 @@ offset_top = -337.0
 offset_right = 2776.0
 offset_bottom = 1711.0
 texture = ExtResource("2_oemax")
-
-[node name="Phase3" type="AnimatedSprite2D" parent="."]
-position = Vector2(424.757, 823.583)
-scale = Vector2(1.5, 1.58)
-sprite_frames = SubResource("SpriteFrames_vrqx3")
-animation = &"phase3"
-autoplay = "phase3"
-script = ExtResource("61_57w0a")
 
 [node name="Custom Balloon" type="TextureRect" parent="."]
 offset_top = 19.5
