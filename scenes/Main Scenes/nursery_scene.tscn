@@ -382,7 +382,6 @@ process_mode = 3
 stream = ExtResource("27_po7p3")
 volume_db = -20.0
 autoplay = true
-bus = &"Music"
 parameters/looping = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

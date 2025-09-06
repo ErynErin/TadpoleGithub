@@ -4,14 +4,15 @@ extends AnimatedSprite2D
 @onready var dialogue_resource: DialogueResource = preload("res://dialogues/p1_merchant.dialogue")
 var balloon_scene = preload("res://balloons/MerchantBalloon.tscn")  # Your custom balloon scene
 
-var can_interact := false
-
 func _ready():
 	play("idle")
 	interaction_area.interact = Callable(self, "_on_interact")
 
 func _on_interact():
-	can_interact = false  # Disable re-interaction during the sequence
+	if GameManager.merchant_access <= 0:
+		return
+	GameManager.merchant_access -= 1
+	GameManager.set_player_movable(false)
 
 	# Create and show the balloon
 	var balloon_instance = balloon_scene.instantiate()
@@ -34,7 +35,7 @@ func _on_interact():
 	else:
 		balloon_instance.start(dialogue_resource, "afterbuy")
 	
-
+	GameManager.set_player_movable(true)
 	play("talk")
 
 func _on_dialogue_ended(_resource):
@@ -69,5 +70,4 @@ func _on_shop_closed():
 func _on_final_dialogue_ended(_resource):
 	DialogueManager.dialogue_ended.disconnect(_on_final_dialogue_ended)
 	play("idle")
-	can_interact = true  # Re-enable interaction if needed
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://0gwvr1mcfucc"]
+[gd_scene load_steps=25 format=3 uid="uid://0gwvr1mcfucc"]
 
 [ext_resource type="Texture2D" uid="uid://dfoeb3l3cxt1d" path="res://assets/BG/Phase 3/1.png" id="1_ff7f0"]
 [ext_resource type="Script" uid="uid://c3n8hb0oj65hp" path="res://scenes/Main Scenes/3_rd_scene.gd" id="1_fngbt"]
@@ -37,6 +37,9 @@ distance = -581.0
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_26pct"]
 normal = Vector2(1, 0)
 distance = -1014.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0iyr"]
+size = Vector2(115, 458)
 
 [node name="Ted Game 3" type="Node2D"]
 script = ExtResource("1_fngbt")
@@ -225,7 +228,6 @@ editor_draw_drag_margin = true
 stream = ExtResource("14_e0iyr")
 volume_db = -10.0
 autoplay = true
-bus = &"Music"
 parameters/looping = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -244,27 +246,34 @@ position = Vector2(-800, 200)
 metadata/_edit_lock_ = true
 
 [node name="food" parent="Food" instance=ExtResource("20_fngbt")]
-position = Vector2(4201, 409)
+position = Vector2(3504, 403)
 scale = Vector2(1.3, 1.3)
 
 [node name="food2" parent="Food" instance=ExtResource("20_fngbt")]
-position = Vector2(4131, 409)
+position = Vector2(3434, 403)
 scale = Vector2(1.3, 1.3)
 
 [node name="food3" parent="Food" instance=ExtResource("20_fngbt")]
-position = Vector2(4271, 409)
+position = Vector2(3574, 403)
 scale = Vector2(1.3, 1.3)
 
 [node name="food4" parent="Food" instance=ExtResource("20_fngbt")]
-position = Vector2(4341, 409)
+position = Vector2(3644, 403)
 scale = Vector2(1.3, 1.3)
 
 [node name="food5" parent="Food" instance=ExtResource("20_fngbt")]
-position = Vector2(4411, 409)
+position = Vector2(3714, 403)
 scale = Vector2(1.3, 1.3)
 
 [node name="Kingstar" parent="." instance=ExtResource("21_fngbt")]
-position = Vector2(4088, 408)
+position = Vector2(3495, 408)
 scale = Vector2(0.4, 0.4)
 
+[node name="Boss Dialogue Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boss Dialogue Area"]
+position = Vector2(3036, 448)
+shape = SubResource("RectangleShape2D_e0iyr")
+
 [connection signal="boss_died" from="Kingstar" to="." method="_on_kingstar_boss_died"]
+[connection signal="body_entered" from="Boss Dialogue Area" to="." method="_on_boss_dialogue_area_body_entered"]

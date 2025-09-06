@@ -3,7 +3,7 @@ extends Control
 @onready var music_slider = $ColorRect/VBoxContainer/Music_Slider
 @onready var sfx_slider = $ColorRect/VBoxContainer/SFX_Slider
 
-@export var music_bus_name: String = "Music"
+@export var music_bus_name: String = "Background Music"
 @export var sfx_bus_name: String = "SFX"
 
 var music_bus_index

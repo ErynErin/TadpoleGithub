@@ -2,9 +2,13 @@ extends Node2D
 
 @onready var screen_fade = $CanvasLayer/ScreenFade
 @onready var dialogue_resource: DialogueResource = preload("res://dialogues/p3_intro.dialogue")
-var balloon_scene = preload("res://balloons/SystemBalloon.tscn")  # Your custom balloon scene
+var balloon_scene = preload("res://balloons/SystemBalloon.tscn")
+@onready var boss_dialogue_resource: DialogueResource = preload("res://dialogues/p3_boss.dialogue")
+var boss_balloon_scene = preload("res://balloons/BossBalloon.tscn")
 
 func _ready():
+	GameManager.current_scene_path = "res://scenes/Main Scenes/3rd_scene.tscn"
+	
 	screen_fade.color.a = 1.0
 	screen_fade.set_z_index(1000)
 	await fade_out_screen()
@@ -19,8 +23,22 @@ func _ready():
 	balloon_instance.start(dialogue_resource, "start")
 
 func _on_dialogue_ended(_resource):
+	GameManager.set_player_movable(true)
 	DialogueManager.dialogue_ended.disconnect(_on_dialogue_ended)
-	
+
+func _on_boss_dialogue_area_body_entered(body) -> void:
+	if body.is_in_group("player"):
+		GameManager.set_player_movable(false)
+		var balloon_instance = boss_balloon_scene.instantiate()
+		get_tree().current_scene.add_child(balloon_instance)
+
+		# Connect dialogue finished signal
+		if not DialogueManager.dialogue_ended.is_connected(_on_dialogue_ended):
+			DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
+
+		balloon_instance.start(boss_dialogue_resource, "start")
+		$"Boss Dialogue Area/CollisionShape2D".disabled = true
+
 func fade_in_screen():
 	var tween = create_tween()
 	tween.tween_property(screen_fade, "color:a", 1.0, 1.5)

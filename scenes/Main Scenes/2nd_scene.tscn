@@ -21,12 +21,12 @@
 [ext_resource type="PackedScene" uid="uid://xov1nahqgphe" path="res://scenes/Characters/worm.tscn" id="19_wkg83"]
 [ext_resource type="AudioStream" uid="uid://d3l6d8tkmf3t2" path="res://assets/Audios/bgms/Dark Ambient Music BGM.mp3" id="20_ssd1q"]
 
-[sub_resource type="SystemFont" id="SystemFont_3xvx2"]
+[sub_resource type="SystemFont" id="SystemFont_ssd1q"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vksdc"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wkg83"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ssd1q"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_goyj0"]
 bg_color = Color(1, 0.321569, 0.364706, 1)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vksdc"]
@@ -162,10 +162,10 @@ offset_left = 458.0
 offset_top = 157.0
 offset_right = 787.0
 offset_bottom = 205.0
-theme_override_fonts/font = SubResource("SystemFont_3xvx2")
+theme_override_fonts/font = SubResource("SystemFont_ssd1q")
 theme_override_font_sizes/font_size = 27
-theme_override_styles/background = SubResource("StyleBoxFlat_vksdc")
-theme_override_styles/fill = SubResource("StyleBoxFlat_ssd1q")
+theme_override_styles/background = SubResource("StyleBoxFlat_wkg83")
+theme_override_styles/fill = SubResource("StyleBoxFlat_goyj0")
 value = 50.0
 script = ExtResource("11_x2w7c")
 
@@ -316,5 +316,4 @@ scale = Vector2(0.5, 0.5)
 stream = ExtResource("20_ssd1q")
 volume_db = -10.0
 autoplay = true
-bus = &"Music"
 parameters/looping = true

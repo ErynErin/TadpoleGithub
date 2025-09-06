@@ -64,10 +64,6 @@ func _ready() -> void:
 	mutation_cooldown.timeout.connect(_on_mutation_cooldown_timeout)
 	add_child(mutation_cooldown)
 
-	# Correct Godot 4 signal connection syntax:
-	get_tree().connect("scene_changed", Callable(self, "_on_scene_changed"))
-
-
 
 func _unhandled_input(_event: InputEvent) -> void:
 	# Only the balloon is allowed to handle input while it's showing
