@@ -13,6 +13,9 @@ signal health_changed(current_health: float, max_health: float)
 signal player_died
 signal shop_closed
 
+func _ready():
+	health_changed.emit(current_health, max_health)
+
 func load_to_scene(next_scene: String):
 	next_scene_path = next_scene
 	get_tree().change_scene_to_file.call_deferred("res://scenes/Main Scenes/loading_scene.tscn")
@@ -59,16 +62,6 @@ func add_strength():
 func add_speed():
 	speed += 50
 	print("speed:", speed)
-
-#func show_dialogue(dialogue_scene):
-	#var current_scene = get_tree().current_scene
-	#var dialogue = current_scene.get_node("GUI/" + dialogue_scene)
-	#dialogue.visible = true
-	#
-#func hide_dialogue(dialogue_scene):
-	#var current_scene = get_tree().current_scene
-	#var dialogue = current_scene.get_node("GUI/" + dialogue_scene)
-	#dialogue.visible = false
 
 func show_shop():
 	var current_scene = get_tree().current_scene	
