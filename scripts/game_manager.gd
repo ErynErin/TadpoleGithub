@@ -6,8 +6,11 @@ var current_health = 95.0
 var strength = 10
 var speed = 200
 var next_scene_path = ""
+var current_scene_path = "res://scenes/intro_scene.tscn"
 var phase_num = 1
 var merchant_access = 1
+var can_move: bool = true
+var coins = 0
 @export var inv: Inv
 signal health_changed(current_health: float, max_health: float)
 signal player_died
@@ -110,3 +113,6 @@ func check_player_status():
 
 func collect(item):
 	inv.insert(item)
+
+func set_player_movable(is_movable: bool):
+	can_move = is_movable

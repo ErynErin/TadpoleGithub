@@ -8,6 +8,8 @@ extends Node2D
 @onready var screen_fade = $CanvasLayer/ScreenFade
 
 func _ready():
+	GameManager.current_scene_path = "res://scenes/intro_scene.tscn"
+	
 	# Don't start with black screen — screen_fade is transparent at first
 	screen_fade.color.a = 0.0
 	screen_fade.set_z_index(1000)
@@ -29,6 +31,8 @@ func _on_video_stream_player_finished():
 	print("Video finished!")
 	screen_fade.color.a = 1.0
 	screen_fade.set_z_index(1000)
+	$AudioStreamPlayer.play()
+	
 	#Fade to black AFTER video ends
 	await fade_in_screen()
 
@@ -49,7 +53,7 @@ func _on_video_stream_player_finished():
 
 	# Start dialogue
 	system_balloon_scene.instantiate()
-	get_tree().current_scene.add_child(balloon_instance)
+	#get_tree().current_scene.add_child(balloon_instance)
 
 	if not DialogueManager.dialogue_ended.is_connected(_on_dialogue_ended):
 		DialogueManager.dialogue_ended.connect(_on_dialogue_ended)

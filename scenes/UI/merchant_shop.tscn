@@ -121,7 +121,7 @@ theme_override_constants/separation = 25
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_8sbd5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8sbd5")
 theme_override_styles/normal = SubResource("StyleBoxFlat_b1vcl")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Shop Panel/Buttons/Health Button"]

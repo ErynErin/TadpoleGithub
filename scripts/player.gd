@@ -21,7 +21,7 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	var SPEED = GameManager.speed
-	if GameManager.current_health <= 0:
+	if GameManager.current_health <= 0 or not GameManager.can_move:
 		return
 	
 	var direction := Input.get_axis("left", "right")

@@ -5,6 +5,8 @@ extends Node2D
 var balloon_scene = preload("res://balloons/SystemBalloon.tscn")  # Your custom balloon scene
 
 func _ready():
+	GameManager.current_scene_path = "res://scenes/Main Scenes/2nd_scene.tscn"
+	
 	screen_fade.color.a = 1.0
 	screen_fade.set_z_index(1000)
 	await fade_out_screen()

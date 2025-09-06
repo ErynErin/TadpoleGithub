@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b8qdfv53o03ir"]
+[gd_scene load_steps=14 format=3 uid="uid://b8qdfv53o03ir"]
 
 [ext_resource type="Script" uid="uid://d2f5fb00lu1hp" path="res://scenes/intro_scene.gd" id="1_gsw8x"]
 [ext_resource type="Texture2D" uid="uid://3yhk5ufsn5ut" path="res://assets/BG/UI LAYOUTS.png" id="2_jkhwn"]
@@ -6,6 +6,7 @@
 [ext_resource type="VideoStream" uid="uid://clp313uw6jsw" path="res://assets/Videos/new intro anim.ogv" id="5_8wqor"]
 [ext_resource type="PackedScene" uid="uid://mo3hkwq7pjdf" path="res://scenes/Player/player_phase1.tscn" id="5_tij55"]
 [ext_resource type="FontFile" uid="uid://chvpvepqarnv6" path="res://assets/Fonts/Tedtadpole-Regular.ttf" id="6_8wqor"]
+[ext_resource type="AudioStream" uid="uid://urr01ivqlgp5" path="res://assets/Audios/bgms/underwater-ambience-6201.mp3" id="7_0f06d"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tij55"]
 distance = 122.738
@@ -119,8 +120,8 @@ expand = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 40.0
-offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="SkipButton" type="Button" parent="CanvasLayer"]
@@ -137,7 +138,11 @@ text = "Skip"
 [node name="Walls" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
-polygon = PackedVector2Array(1961, 1, 1961, 772, 2026, 772, 2026, -67, -71, -67, -71, 760, -2, 760, -2, 0)
+polygon = PackedVector2Array(1921, 5, 1921, 772, 2026, 772, 2026, -67, -71, -67, -71, 760, -2, 760, -2, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_0f06d")
+parameters/looping = true
 
 [connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
 [connection signal="pressed" from="CanvasLayer/SkipButton" to="." method="_on_skip_button_pressed"]

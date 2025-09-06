@@ -60,7 +60,7 @@ theme_override_constants/separation = 40
 [node name="Music_Label" type="Label" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "Music"
+text = "Backgound Music"
 
 [node name="Music_Slider" type="HSlider" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
