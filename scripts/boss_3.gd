@@ -12,7 +12,7 @@ const LIGHTS_OFF_DURATION = 15.0
 const ATTACK_DURATION = 1.0
 
 # Attack and detection ranges
-const ATTACK_RANGE = 250.0
+const ATTACK_RANGE = 200.0
 
 # Node references
 @onready var animated_sprite = $SpriteNode/AnimatedSprite2D
@@ -463,7 +463,7 @@ func set_player_hidden(h: bool):
 # BOSS FIGHT TRIGGER
 # ============================================================
 func _on_light_detection_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player") and not player_entered:
+	if body.is_in_group("player") and not player_entered and not player_is_hidden:
 		player_entered = true
 		print("Player entered")
 		canvas_layer.visible = true 

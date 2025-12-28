@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b8qdfv53o03ir"]
+[gd_scene load_steps=26 format=3 uid="uid://b8qdfv53o03ir"]
 
 [ext_resource type="Script" uid="uid://d2f5fb00lu1hp" path="res://scenes/intro_scene.gd" id="1_gsw8x"]
 [ext_resource type="Texture2D" uid="uid://cstcdjnw86nfs" path="res://assets/BG/Phase 1/1.png" id="2_e4n3y"]
@@ -13,6 +13,8 @@
 [ext_resource type="AudioStream" uid="uid://urr01ivqlgp5" path="res://assets/Audios/bgms/underwater-ambience-6201.mp3" id="7_0f06d"]
 [ext_resource type="VideoStream" uid="uid://b7qyf0vgu23wv" path="res://assets/Videos/introogv.ogv" id="7_ifne3"]
 [ext_resource type="Texture2D" uid="uid://c4k3x21vyy384" path="res://assets/BG/Phase 1/6 (1).png" id="7_t4q8n"]
+[ext_resource type="Texture2D" uid="uid://iwggw3st1ihx" path="res://assets/BG/Phase 1/6.png" id="10_gl4ak"]
+[ext_resource type="Texture2D" uid="uid://cdn86immannjs" path="res://assets/BG/Phase 1/7.png" id="12_3vmyl"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_qt0h2"]
 noise_type = 2
@@ -146,7 +148,7 @@ region_rect = Rect2(0, 709.673, 1287.6813, 13.5998535)
 texture_repeat = 2
 position = Vector2(8154, -66)
 scale = Vector2(2.5, 2.5)
-texture = ExtResource("7_t4q8n")
+texture = ExtResource("10_gl4ak")
 region_enabled = true
 region_rect = Rect2(0, 0, 10000, 720)
 
@@ -187,6 +189,14 @@ offset = Vector2(0, 850)
 modulate = Color(0.9471994, 0.9471994, 0.9471994, 1)
 position = Vector2(1002.07, 492.033)
 shadow_path = NodePath("../Shadow")
+
+[node name="BG Sprite3" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(8154, -66)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("12_3vmyl")
+region_enabled = true
+region_rect = Rect2(0, 0, 10000, 720)
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
 clip_contents = true

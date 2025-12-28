@@ -1,0 +1,147 @@
+[gd_scene load_steps=15 format=3 uid="uid://bwyloyflgwp20"]
+
+[ext_resource type="Texture2D" uid="uid://rl2qgrbt6u6m" path="res://assets/BG/Minigame/1 - mg.png" id="1_e1msk"]
+[ext_resource type="Texture2D" uid="uid://ccj261lhjwqjr" path="res://assets/BG/Minigame/2 - mg.png" id="2_c6030"]
+[ext_resource type="Texture2D" uid="uid://w60unerq1djn" path="res://assets/BG/Minigame/3 - mg.png" id="3_ngp01"]
+[ext_resource type="Texture2D" uid="uid://lte42cbklwyr" path="res://assets/BG/Minigame/4 - mg.png" id="4_0n7qy"]
+[ext_resource type="Texture2D" uid="uid://d2airtxk1km5" path="res://assets/BG/Minigame/5 - mg.png" id="5_25bhu"]
+[ext_resource type="Texture2D" uid="uid://blf3nihunbbep" path="res://assets/BG/Minigame/6 - mg.png" id="6_djvji"]
+[ext_resource type="Texture2D" uid="uid://cm2c2wnp6eoku" path="res://assets/BG/Minigame/8 - mg.png" id="7_v6pgt"]
+[ext_resource type="Texture2D" uid="uid://dwlrwp06gq2rf" path="res://assets/blurred circle.png" id="8_ngp01"]
+[ext_resource type="PackedScene" uid="uid://basdg6biv03al" path="res://scenes/Player/player_phase2.tscn" id="9_0n7qy"]
+[ext_resource type="Script" uid="uid://0as3vq8fukqd" path="res://scenes/Main Scenes/dropping_items.gd" id="10_0n7qy"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_25bhu"]
+resource_local_to_scene = true
+distance = -452.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_djvji"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_v6pgt"]
+normal = Vector2(1, 0)
+distance = -128.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0n7qy"]
+normal = Vector2(1, 0)
+
+[node name="Minigame" type="Node2D"]
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Parallax2D"]
+offset = Vector2(200, 0)
+scale = Vector2(0.775, 0.775)
+transform = Transform2D(0.775, 0, 0, 0.775, 200, 0)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Parallax2D/ParallaxBackground"]
+color = Color(0.716296, 0.716296, 0.716296, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground"]
+scale = Vector2(2.905, 2.905)
+texture = ExtResource("1_e1msk")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer"]
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("2_c6030")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer2"]
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("3_ngp01")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer3"]
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("4_0n7qy")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer4"]
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("5_25bhu")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer5"]
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("6_djvji")
+
+[node name="Floor" type="Sprite2D" parent="."]
+position = Vector2(-11, 0)
+scale = Vector2(1.185, 1.185)
+texture = ExtResource("7_v6pgt")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.3137255)
+position = Vector2(-1102, 607.125)
+scale = Vector2(0.2, 0.05249998)
+texture = ExtResource("8_ngp01")
+offset = Vector2(0, 900)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.885, 0.885)
+process_callback = 0
+limit_left = -1100
+limit_top = -650
+limit_right = 1100
+limit_bottom = 650
+limit_smoothed = true
+position_smoothing_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="player" parent="." instance=ExtResource("9_0n7qy")]
+z_index = 5
+scale = Vector2(0.43, 0.43)
+shadow_path = NodePath("../Shadow")
+
+[node name="Items" type="Node2D" parent="."]
+script = ExtResource("10_0n7qy")
+
+[node name="World Boundaries" type="Node2D" parent="."]
+position = Vector2(1, 68)
+
+[node name="bottom" type="StaticBody2D" parent="World Boundaries"]
+position = Vector2(1, 579)
+collision_layer = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World Boundaries/bottom"]
+position = Vector2(-2, -576)
+shape = SubResource("WorldBoundaryShape2D_25bhu")
+
+[node name="left" type="StaticBody2D" parent="World Boundaries"]
+position = Vector2(-990, 0)
+physics_material_override = SubResource("PhysicsMaterial_djvji")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="World Boundaries/left"]
+shape = SubResource("WorldBoundaryShape2D_v6pgt")
+
+[node name="right" type="StaticBody2D" parent="World Boundaries"]
+position = Vector2(1, -842.492)
+rotation = 3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World Boundaries/right"]
+position = Vector2(-1109.9982, -751.4948)
+shape = SubResource("WorldBoundaryShape2D_0n7qy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -99.5
+offset_top = 38.0
+offset_right = 99.5
+offset_bottom = 175.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 100
+text = "2:00"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

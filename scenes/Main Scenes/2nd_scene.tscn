@@ -1,6 +1,6 @@
 [gd_scene load_steps=60 format=4 uid="uid://cfv4f6bi46hrx"]
 
-[ext_resource type="Script" uid="uid://bht730yy73mmk" path="res://scenes/Main Scenes/2_nd_scene.gd" id="1_3xvx2"]
+[ext_resource type="Script" uid="uid://bht730yy73mmk" path="res://scenes/Main Scenes/2nd_scene.gd" id="1_3xvx2"]
 [ext_resource type="Shader" uid="uid://bwnej1yl2rc5h" path="res://watershader.gdshader" id="6_42ul7"]
 [ext_resource type="Texture2D" uid="uid://cdbvoy6qxhbpt" path="res://assets/BG/Phase 2/6.png" id="6_lny5s"]
 [ext_resource type="Texture2D" uid="uid://cc6aiqta7j02x" path="res://assets/BG/Phase 2/1.png" id="7_aqdem"]
@@ -100,11 +100,11 @@ texture_region_size = Vector2i(600, 600)
 physics_layer_0/collision_layer = 15
 sources/1 = SubResource("TileSetAtlasSource_6u0xl")
 
-[sub_resource type="Gradient" id="Gradient_bf605"]
+[sub_resource type="Gradient" id="Gradient_88inl"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_lny5s"]
-gradient = SubResource("Gradient_bf605")
+gradient = SubResource("Gradient_88inl")
 fill = 1
 fill_from = Vector2(0.469512, 0.490854)
 fill_to = Vector2(0.765244, 0.756098)
@@ -309,19 +309,18 @@ script = ExtResource("14_c37bx")
 anchors_preset = -1
 scale = Vector2(1.67, 1.67)
 
+[node name="merchant shop" parent="GUI" instance=ExtResource("14_dwpsk")]
+visible = false
+scale = Vector2(1.67, 1.67)
+
 [node name="Pause Menu" parent="GUI" instance=ExtResource("15_2npaq")]
 process_mode = 1
 visible = false
-z_index = 10
 offset_right = 958.0
 offset_bottom = 546.0
 scale = Vector2(1.11, 1.11)
 
 [node name="Options" parent="GUI" instance=ExtResource("15_3xvx2")]
-visible = false
-scale = Vector2(1.67, 1.67)
-
-[node name="merchant shop" parent="GUI" instance=ExtResource("14_dwpsk")]
 visible = false
 scale = Vector2(1.67, 1.67)
 
@@ -506,6 +505,44 @@ scale = Vector2(0.8, 0.8)
 position = Vector2(3472, -416)
 scale = Vector2(0.8, 0.8)
 
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(360, 104)
+scale = Vector2(0.13, 0.13)
+tile_map_data = PackedByteArray("AACGAJUAAgABAAEAAACZALkAAwABAAEAAAC7ALkAAwAAAAAAAADdALkAAwABAAAAAAABAbkAAwACAAAAAABrAdD/AQAAAAEAAACQAdD/AQABAAEAAAC1AdD/AQABAAAAAADaAdD/AQACAAAAAACjBUr/AQAAAAEAAADIBUr/AQABAAEAAADtBUr/AQABAAAAAAASBkr/AQACAAAAAAC4Bkn/AQAAAAEAAADdBkn/AQABAAEAAAACB0n/AQACAAEAAAAnB0n/AQACAAEAAABMB0n/AQACAAEAAABxB0n/AQABAAEAAACWB0n/AQACAAEAAAC7B0n/AQABAAAAAADgB0n/AQACAAAAAACnCIL/AQAAAAEAAADMCIL/AQABAAEAAADxCIL/AQACAAEAAAAWCYL/AQACAAEAAAA7CYL/AQACAAEAAABgCYL/AQABAAEAAACFCYL/AQACAAEAAACqCYL/AQABAAAAAADPCYL/AQACAAAAAAA=")
+tile_set = SubResource("TileSet_goyj0")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.3137255)
+position = Vector2(-1102, 607.125)
+scale = Vector2(0.2, 0.05249998)
+texture = ExtResource("36_mh7sn")
+offset = Vector2(0, 900)
+
+[node name="player" parent="." instance=ExtResource("17_ysw53")]
+z_index = 5
+position = Vector2(12597.999, 40.999992)
+scale = Vector2(0.43, 0.43)
+shadow_path = NodePath("../Shadow")
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(-43.9999, 742)
+scale = Vector2(0.3, 0.3)
+offset = Vector2(0, -400)
+process_callback = 0
+limit_top = -200
+limit_bottom = 1200
+limit_smoothed = true
+position_smoothing_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="PointLight2D" type="PointLight2D" parent="player/Camera2D"]
+position = Vector2(133.333, -2713.33)
+scale = Vector2(30.4583, 33.3333)
+energy = 0.3
+texture = SubResource("GradientTexture2D_lny5s")
+texture_scale = 0.68
+
 [node name="Bomber Fish" parent="." instance=ExtResource("25_yxl4q")]
 position = Vector2(6592, -400)
 scale = Vector2(0.7, 0.7)
@@ -558,44 +595,6 @@ stream = ExtResource("20_ssd1q")
 volume_db = -10.0
 autoplay = true
 parameters/looping = true
-
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-position = Vector2(360, 104)
-scale = Vector2(0.13, 0.13)
-tile_map_data = PackedByteArray("AACGAJUAAgABAAEAAACZALkAAwABAAEAAAC7ALkAAwAAAAAAAADdALkAAwABAAAAAAABAbkAAwACAAAAAABrAdD/AQAAAAEAAACQAdD/AQABAAEAAAC1AdD/AQABAAAAAADaAdD/AQACAAAAAACjBUr/AQAAAAEAAADIBUr/AQABAAEAAADtBUr/AQABAAAAAAASBkr/AQACAAAAAAC4Bkn/AQAAAAEAAADdBkn/AQABAAEAAAACB0n/AQACAAEAAAAnB0n/AQACAAEAAABMB0n/AQACAAEAAABxB0n/AQABAAEAAACWB0n/AQACAAEAAAC7B0n/AQABAAAAAADgB0n/AQACAAAAAACnCIL/AQAAAAEAAADMCIL/AQABAAEAAADxCIL/AQACAAEAAAAWCYL/AQACAAEAAAA7CYL/AQACAAEAAABgCYL/AQABAAEAAACFCYL/AQACAAEAAACqCYL/AQABAAAAAADPCYL/AQACAAAAAAA=")
-tile_set = SubResource("TileSet_goyj0")
-
-[node name="Shadow" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.3137255)
-position = Vector2(-1102, 607.125)
-scale = Vector2(0.2, 0.05249998)
-texture = ExtResource("36_mh7sn")
-offset = Vector2(0, 900)
-
-[node name="player" parent="." instance=ExtResource("17_ysw53")]
-z_index = 5
-position = Vector2(12597.999, 40.999992)
-scale = Vector2(0.43, 0.43)
-shadow_path = NodePath("../Shadow")
-
-[node name="Camera2D2" type="Camera2D" parent="player"]
-position = Vector2(-43.9999, 742)
-scale = Vector2(0.3, 0.3)
-offset = Vector2(0, -400)
-process_callback = 0
-limit_top = -200
-limit_bottom = 1200
-limit_smoothed = true
-position_smoothing_enabled = true
-editor_draw_limits = true
-editor_draw_drag_margin = true
-
-[node name="PointLight2D" type="PointLight2D" parent="player/Camera2D2"]
-position = Vector2(133.333, -2713.33)
-scale = Vector2(30.4583, 33.3333)
-energy = 0.3
-texture = SubResource("GradientTexture2D_lny5s")
-texture_scale = 0.68
 
 [node name="Path2D2" parent="." instance=ExtResource("31_ce7ql")]
 position = Vector2(1920, 512)

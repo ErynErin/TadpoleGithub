@@ -11,7 +11,7 @@ const MAX_JUMPS = 2
 @export var shadow_path: NodePath
 @onready var shadow: Sprite2D = get_node(shadow_path)
 const SHADOW_SCALE_SPEED := 15.0
-const SHADOW_MIN_FACTOR := 0.6
+const SHADOW_MIN_FACTOR := 0.0
 @onready var SHADOW_BASE_SCALE := shadow.scale
 var shadow_ground_y := 0.0
 

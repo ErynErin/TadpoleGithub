@@ -1,7 +1,7 @@
 [gd_scene load_steps=64 format=4 uid="uid://0gwvr1mcfucc"]
 
 [ext_resource type="Texture2D" uid="uid://dfoeb3l3cxt1d" path="res://assets/BG/Phase 3/1.png" id="1_ff7f0"]
-[ext_resource type="Script" uid="uid://c3n8hb0oj65hp" path="res://scenes/Main Scenes/3_rd_scene.gd" id="1_fngbt"]
+[ext_resource type="Script" uid="uid://c3n8hb0oj65hp" path="res://scenes/Main Scenes/3rd_scene.gd" id="1_fngbt"]
 [ext_resource type="Texture2D" uid="uid://nodetolgruhr" path="res://assets/BG/Phase 3/2.png" id="2_7fgw2"]
 [ext_resource type="Texture2D" uid="uid://c7btkbl0jprob" path="res://assets/BG/Phase 3/3.png" id="3_yatwi"]
 [ext_resource type="Texture2D" uid="uid://iilg0bqiaysk" path="res://assets/BG/Phase 3/4.png" id="4_t2n2u"]
@@ -59,7 +59,7 @@ seamless_blend_skirt = 0.61
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fjoto"]
 shader = ExtResource("7_odawd")
 shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/brightness = 0.50000002375
+shader_parameter/brightness = 0.3370000160075
 shader_parameter/fast_noise = SubResource("NoiseTexture2D_2r6tj")
 shader_parameter/speed = Vector2(0.07, 0.07)
 shader_parameter/wave_strength = 2.0
@@ -231,7 +231,7 @@ position = Vector2(2048, 0)
 scale = Vector2(1.6, 1.6)
 texture = ExtResource("5_fngbt")
 
-[node name="Shader2" type="Sprite2D" parent="."]
+[node name="Shader" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_fjoto")
 position = Vector2(8249.911, -155.86148)
 rotation = 0.025025252
@@ -301,6 +301,10 @@ script = ExtResource("14_yatwi")
 [node name="Objectives" parent="GUI" instance=ExtResource("14_m0dlc")]
 scale = Vector2(1.67, 1.67)
 
+[node name="merchant shop" parent="GUI" instance=ExtResource("19_vwp2c")]
+visible = false
+scale = Vector2(1.67, 1.67)
+
 [node name="Pause Menu" parent="GUI" instance=ExtResource("15_btcw1")]
 process_mode = 1
 visible = false
@@ -309,11 +313,6 @@ offset_bottom = 546.0
 scale = Vector2(1.11, 1.11)
 
 [node name="Options" parent="GUI" instance=ExtResource("16_yatwi")]
-visible = false
-z_index = 9
-scale = Vector2(1.67, 1.67)
-
-[node name="merchant shop" parent="GUI" instance=ExtResource("19_vwp2c")]
 visible = false
 scale = Vector2(1.67, 1.67)
 

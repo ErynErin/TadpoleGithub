@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://3nn0ehofi3pv"]
+[gd_scene load_steps=14 format=3 uid="uid://3nn0ehofi3pv"]
 
 [ext_resource type="PackedScene" uid="uid://mo3hkwq7pjdf" path="res://scenes/Player/player_phase1.tscn" id="1_oupth"]
+[ext_resource type="Texture2D" uid="uid://dwlrwp06gq2rf" path="res://assets/blurred circle.png" id="1_tk6ho"]
 [ext_resource type="PackedScene" uid="uid://d1gkxm4es8jd4" path="res://scenes/Characters/boss_3.tscn" id="2_jiud7"]
 [ext_resource type="Script" uid="uid://d22ltv5khw2fa" path="res://scripts/health_bar.gd" id="3_8qsir"]
 [ext_resource type="Texture2D" uid="uid://cvojlptff1xk5" path="res://assets/GUI/Game Screen UI/P1_health.png" id="4_of1b3"]
@@ -22,10 +23,18 @@ bg_color = Color(1, 0.321569, 0.364706, 1)
 
 [node name="Node2D" type="Node2D"]
 
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.3137255)
+position = Vector2(-1931, 585.5625)
+scale = Vector2(0.1, 0.02624999)
+texture = ExtResource("1_tk6ho")
+offset = Vector2(0, 900)
+
 [node name="player" parent="." instance=ExtResource("1_oupth")]
 z_index = 5
 position = Vector2(-1380, 282)
 scale = Vector2(0.5, 0.5)
+shadow_path = NodePath("../Shadow")
 
 [node name="Camera2D2" type="Camera2D" parent="player"]
 position = Vector2(-43.9999, 742)

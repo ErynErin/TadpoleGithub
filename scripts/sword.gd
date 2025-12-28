@@ -16,13 +16,17 @@ func _ready() -> void:
 	collision_shape_2d.set_deferred("monitorable", false)
 
 func sword_attack() -> void:
+	if animation_player.is_playing() and animation_player.current_animation == "attack":
+		return
+		
 	if is_equipped:
+		$SwordAudio.pitch_scale = randf_range(0.8, 1.2)
 		$SwordAudio.play()
 		collision_shape_2d.set_deferred("disabled", false)
 		collision_shape_2d.set_deferred("monitoring", true)
 		collision_shape_2d.set_deferred("monitorable", true)
 	animation_player.play("attack")
-	await animation_player.animation_finished
+	await animated_sprite_2d.animation_finished
 	await $SwordAudio.finished
 	animated_sprite_2d.play("idle")
 	collision_shape_2d.set_deferred("disabled", true)

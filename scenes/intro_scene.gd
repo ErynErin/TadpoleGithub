@@ -73,7 +73,7 @@ func _on_dialogue_ended(_resource):
 		DialogueManager.dialogue_ended.disconnect(_on_dialogue_ended)
 
 	await fade_in_screen()
-	get_tree().change_scene_to_file("res://scenes/Main Scenes/nursery_scene.tscn")
+	get_tree().change_scene_to_file("res://scenes/Main Scenes/1st_scene.tscn")
 
 func fade_in_screen():
 	var tween = create_tween()
