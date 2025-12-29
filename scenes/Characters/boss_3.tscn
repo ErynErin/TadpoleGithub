@@ -315,7 +315,84 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 15.0
+"speed": 21.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("35_2oej0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_pvn70")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_mjfjn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_4x7s1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_kpwl3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_ydolp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_ga4lh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_eno00")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_lljaa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_0t215")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_fdq7p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_ma7cd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_k8hit")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_ogj1o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_ux3hl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_86vwi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_ek37k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_rrsmw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_eocqs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_4045x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_rjvhu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_1tk8i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_m80dh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_ugcg6")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_67864"]
@@ -366,8 +443,9 @@ shape = SubResource("RectangleShape2D_vbujc")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteNode"]
 position = Vector2(-200, 0)
 sprite_frames = SubResource("SpriteFrames_7ojik")
-animation = &"idle"
+animation = &"walk"
 autoplay = "idle"
+frame_progress = 0.5371242
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-13, -52)

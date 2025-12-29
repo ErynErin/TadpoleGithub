@@ -1,5 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://bwyloyflgwp20"]
+[gd_scene load_steps=55 format=3 uid="uid://bwyloyflgwp20"]
 
+[ext_resource type="Script" uid="uid://cqhhy44wyl7qw" path="res://scenes/Main Scenes/minigame.gd" id="1_25bhu"]
 [ext_resource type="Texture2D" uid="uid://rl2qgrbt6u6m" path="res://assets/BG/Minigame/1 - mg.png" id="1_e1msk"]
 [ext_resource type="Texture2D" uid="uid://ccj261lhjwqjr" path="res://assets/BG/Minigame/2 - mg.png" id="2_c6030"]
 [ext_resource type="Texture2D" uid="uid://w60unerq1djn" path="res://assets/BG/Minigame/3 - mg.png" id="3_ngp01"]
@@ -9,7 +10,19 @@
 [ext_resource type="Texture2D" uid="uid://cm2c2wnp6eoku" path="res://assets/BG/Minigame/8 - mg.png" id="7_v6pgt"]
 [ext_resource type="Texture2D" uid="uid://dwlrwp06gq2rf" path="res://assets/blurred circle.png" id="8_ngp01"]
 [ext_resource type="PackedScene" uid="uid://basdg6biv03al" path="res://scenes/Player/player_phase2.tscn" id="9_0n7qy"]
-[ext_resource type="Script" uid="uid://0as3vq8fukqd" path="res://scenes/Main Scenes/dropping_items.gd" id="10_0n7qy"]
+[ext_resource type="Script" uid="uid://d22ltv5khw2fa" path="res://scripts/health_bar.gd" id="10_p6guq"]
+[ext_resource type="Texture2D" uid="uid://cvojlptff1xk5" path="res://assets/GUI/Game Screen UI/P1_health.png" id="11_fplv2"]
+[ext_resource type="Texture2D" uid="uid://yv345m7ql5bt" path="res://assets/BG/Minigame/dropping assets/crayon.png" id="11_nly5v"]
+[ext_resource type="Script" uid="uid://0dthjh7hw83f" path="res://scripts/pause_button.gd" id="12_nnul5"]
+[ext_resource type="Texture2D" uid="uid://gyh2suyg7ca3" path="res://assets/BG/Minigame/dropping assets/knife.png" id="12_pbbfa"]
+[ext_resource type="Texture2D" uid="uid://b2yjvfsjhotff" path="res://assets/BG/Minigame/dropping assets/needle.png" id="13_b8nse"]
+[ext_resource type="Texture2D" uid="uid://gaews8kcbv0k" path="res://assets/Sprites/Coin/cap icon.png" id="13_gi0f7"]
+[ext_resource type="Texture2D" uid="uid://b7341hnpi0i5p" path="res://assets/BG/Minigame/dropping assets/pencil.png" id="14_5m17a"]
+[ext_resource type="FontFile" uid="uid://chvpvepqarnv6" path="res://assets/Fonts/Tedtadpole-Regular.ttf" id="14_j3bb6"]
+[ext_resource type="Script" uid="uid://d1swm186udos5" path="res://scripts/coins.gd" id="15_8eshi"]
+[ext_resource type="Texture2D" uid="uid://c15kixymdacf4" path="res://assets/BG/Minigame/dropping assets/thorn.png" id="15_32u7v"]
+[ext_resource type="PackedScene" uid="uid://ctw57l6kowhya" path="res://scenes/UI/pause_menu.tscn" id="16_7kgh0"]
+[ext_resource type="PackedScene" uid="uid://qvgqap54c1b1" path="res://scenes/UI/options.tscn" id="17_74a2e"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_25bhu"]
 resource_local_to_scene = true
@@ -23,6 +36,415 @@ distance = -128.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0n7qy"]
 normal = Vector2(1, 0)
+
+[sub_resource type="SystemFont" id="SystemFont_cjlkf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krafm"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oewsy"]
+bg_color = Color(1, 0.321569, 0.364706, 1)
+
+[sub_resource type="Animation" id="Animation_5m17a"]
+resource_name = "fall"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.5, 2),
+"transitions": PackedFloat32Array(0.5, 1, 1, 0.1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -200), Vector2(0, -200), Vector2(0, 2200)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FallingItem:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.5, 2),
+"transitions": PackedFloat32Array(0.5, 1, 1, 0.1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -10), Vector2(0, -10), Vector2(0, 10)]
+}
+
+[sub_resource type="Animation" id="Animation_32u7v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FallingItem:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gi0f7"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(0, -550), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8ohom"]
+_data = {
+&"RESET": SubResource("Animation_32u7v"),
+&"appear": SubResource("Animation_gi0f7"),
+&"fall": SubResource("Animation_5m17a")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nly5v"]
+radius = 31.21019
+height = 440.76428
+
+[sub_resource type="Animation" id="Animation_nly5v"]
+resource_name = "fall"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FallingObjects/Knife:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.5, 2),
+"transitions": PackedFloat32Array(0.5, 1, 1, 0.1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -200), Vector2(0, -200), Vector2(0, 2200)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FallingObjects/Knife/FallingItem:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.5, 2),
+"transitions": PackedFloat32Array(0.5, 1, 1, 0.1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -10), Vector2(0, -10), Vector2(0, 10)]
+}
+
+[sub_resource type="Animation" id="Animation_pbbfa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FallingObjects/Knife:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FallingObjects/Knife/FallingItem:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 10)]
+}
+
+[sub_resource type="Animation" id="Animation_b8nse"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FallingObjects/Knife:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(0, -550), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pbbfa"]
+_data = {
+&"RESET": SubResource("Animation_pbbfa"),
+&"appear": SubResource("Animation_b8nse"),
+&"fall": SubResource("Animation_nly5v")
+}
+
+[sub_resource type="Animation" id="Animation_8ohom"]
+resource_name = "fall"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.5, 2),
+"transitions": PackedFloat32Array(0.5, 1, 1, 0.1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -200), Vector2(0, -200), Vector2(0, 2200)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FallingItem:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.5, 2),
+"transitions": PackedFloat32Array(0.5, 1, 1, 0.1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -10), Vector2(0, -10), Vector2(0, 10)]
+}
+
+[sub_resource type="Animation" id="Animation_3mr2u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FallingItem:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 10)]
+}
+
+[sub_resource type="Animation" id="Animation_j3bb6"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(0, -550), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8eflg"]
+_data = {
+&"RESET": SubResource("Animation_3mr2u"),
+&"appear": SubResource("Animation_j3bb6"),
+&"fall": SubResource("Animation_8ohom")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5m17a"]
+radius = 31.21019
+height = 360.50943
+
+[sub_resource type="Animation" id="Animation_8eflg"]
+resource_name = "fall"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.5, 2),
+"transitions": PackedFloat32Array(0.5, 1, 1, 0.1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -200), Vector2(0, -200), Vector2(0, 2200)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FallingItem:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.5, 2),
+"transitions": PackedFloat32Array(0.5, 1, 1, 0.1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -10), Vector2(0, -10), Vector2(0, 10)]
+}
+
+[sub_resource type="Animation" id="Animation_p6guq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FallingItem:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 10)]
+}
+
+[sub_resource type="Animation" id="Animation_8eshi"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(0, -550), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fplv2"]
+_data = {
+&"RESET": SubResource("Animation_p6guq"),
+&"appear": SubResource("Animation_8eshi"),
+&"fall": SubResource("Animation_8eflg")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b8nse"]
+radius = 31.21019
+height = 717.1974
+
+[sub_resource type="Animation" id="Animation_fplv2"]
+resource_name = "fall"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.5, 2),
+"transitions": PackedFloat32Array(0.5, 1, 1, 0.1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -200), Vector2(0, -200), Vector2(0, 2200)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FallingItem:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.5, 2),
+"transitions": PackedFloat32Array(0.5, 1, 1, 0.1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -10), Vector2(0, -10), Vector2(0, 10)]
+}
+
+[sub_resource type="Animation" id="Animation_nnul5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FallingItem:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7kgh0"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(0, -550), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gi0f7"]
+_data = {
+&"RESET": SubResource("Animation_nnul5"),
+&"appear": SubResource("Animation_7kgh0"),
+&"fall": SubResource("Animation_fplv2")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pbbfa"]
+radius = 91.71974
+height = 540.1273
 
 [node name="Minigame" type="Node2D"]
 
@@ -75,8 +497,6 @@ position = Vector2(-11, 0)
 scale = Vector2(1.185, 1.185)
 texture = ExtResource("7_v6pgt")
 
-[node name="Timer" type="Timer" parent="."]
-
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.3137255)
 position = Vector2(-1102, 607.125)
@@ -100,9 +520,6 @@ editor_draw_drag_margin = true
 z_index = 5
 scale = Vector2(0.43, 0.43)
 shadow_path = NodePath("../Shadow")
-
-[node name="Items" type="Node2D" parent="."]
-script = ExtResource("10_0n7qy")
 
 [node name="World Boundaries" type="Node2D" parent="."]
 position = Vector2(1, 68)
@@ -131,17 +548,169 @@ position = Vector2(-1109.9982, -751.4948)
 shape = SubResource("WorldBoundaryShape2D_0n7qy")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+scale = Vector2(0.6, 0.6)
+transform = Transform2D(0.6, 0, 0, 0.6, 0, 0)
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -99.5
-offset_top = 38.0
-offset_right = 99.5
-offset_bottom = 175.0
+offset_left = 540.0
+offset_top = 100.0
+offset_right = 739.0
+offset_bottom = 237.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 100
 text = "2:00"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer"]
+offset_left = 458.0
+offset_top = 157.0
+offset_right = 787.0
+offset_bottom = 205.0
+theme_override_fonts/font = SubResource("SystemFont_cjlkf")
+theme_override_font_sizes/font_size = 27
+theme_override_styles/background = SubResource("StyleBoxFlat_krafm")
+theme_override_styles/fill = SubResource("StyleBoxFlat_oewsy")
+value = 50.0
+script = ExtResource("10_p6guq")
+
+[node name="Gen UI" type="TextureRect" parent="CanvasLayer"]
+offset_right = 3206.4
+offset_bottom = 1803.6
+texture = ExtResource("11_fplv2")
+
+[node name="PauseButton" type="Button" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 78.0
+offset_top = 95.0
+offset_right = 348.0
+offset_bottom = 310.0
+script = ExtResource("12_nnul5")
+
+[node name="Coin Icon" type="TextureRect" parent="CanvasLayer"]
+offset_left = 400.0
+offset_top = 251.667
+offset_right = 445.0
+offset_bottom = 298.667
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("13_gi0f7")
+
+[node name="Coins" type="Label" parent="CanvasLayer"]
+offset_left = 476.667
+offset_top = 246.667
+offset_right = 578.667
+offset_bottom = 313.667
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("14_j3bb6")
+theme_override_font_sizes/font_size = 50
+text = "00"
+script = ExtResource("15_8eshi")
+
+[node name="Pause Menu" parent="CanvasLayer" instance=ExtResource("16_7kgh0")]
+process_mode = 1
+visible = false
+offset_right = 958.0
+offset_bottom = 546.0
+scale = Vector2(1.11, 1.11)
+
+[node name="Options" parent="CanvasLayer" instance=ExtResource("17_74a2e")]
+visible = false
+scale = Vector2(1.67, 1.67)
+
+[node name="FallingObjects" type="Node2D" parent="."]
+script = ExtResource("1_25bhu")
+
+[node name="Crayon" type="Sprite2D" parent="FallingObjects"]
+scale = Vector2(1.57, 1.57)
+texture = ExtResource("11_nly5v")
+offset = Vector2(300, -600)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FallingObjects/Crayon"]
+libraries = {
+&"": SubResource("AnimationLibrary_8ohom")
+}
+
+[node name="FallingItem" type="Area2D" parent="FallingObjects/Crayon"]
+collision_layer = 16
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingObjects/Crayon/FallingItem"]
+position = Vector2(-118.47134, -349.04456)
+shape = SubResource("CapsuleShape2D_nly5v")
+
+[node name="Knife" type="Sprite2D" parent="FallingObjects"]
+scale = Vector2(1.57, 1.57)
+texture = ExtResource("12_pbbfa")
+offset = Vector2(200, -500)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FallingObjects/Knife"]
+root_node = NodePath("../../..")
+libraries = {
+&"": SubResource("AnimationLibrary_pbbfa")
+}
+
+[node name="FallingItem" type="Area2D" parent="FallingObjects/Knife"]
+position = Vector2(0, 10)
+collision_layer = 16
+collision_mask = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FallingObjects/Knife/FallingItem"]
+polygon = PackedVector2Array(325.4777, -609.99994, 331.8471, -441.21014, 355.41397, -319.5541, 381.52863, -231.65604, 442.03818, -107.452225, 435.0318, -618.9172, 436.3057, -819.5541, 410.19104, -870.50946, 370.06366, -843.121, 385.35028, -624.64966)
+
+[node name="Needle" type="Sprite2D" parent="FallingObjects"]
+scale = Vector2(1.57, 1.57)
+texture = ExtResource("13_b8nse")
+offset = Vector2(300, -600)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FallingObjects/Needle"]
+libraries = {
+&"": SubResource("AnimationLibrary_8eflg")
+}
+
+[node name="FallingItem" type="Area2D" parent="FallingObjects/Needle"]
+position = Vector2(0, 10)
+collision_layer = 16
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingObjects/Needle/FallingItem"]
+position = Vector2(20.382166, -387.26114)
+shape = SubResource("CapsuleShape2D_5m17a")
+
+[node name="Pencil" type="Sprite2D" parent="FallingObjects"]
+scale = Vector2(1.57, 1.57)
+texture = ExtResource("14_5m17a")
+offset = Vector2(300, -600)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FallingObjects/Pencil"]
+libraries = {
+&"": SubResource("AnimationLibrary_fplv2")
+}
+
+[node name="FallingItem" type="Area2D" parent="FallingObjects/Pencil"]
+position = Vector2(0, 10)
+collision_layer = 16
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingObjects/Pencil/FallingItem"]
+position = Vector2(-288.53503, -445.66876)
+shape = SubResource("CapsuleShape2D_b8nse")
+
+[node name="Thorn" type="Sprite2D" parent="FallingObjects"]
+scale = Vector2(1.57, 1.57)
+texture = ExtResource("15_32u7v")
+offset = Vector2(300, -600)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FallingObjects/Thorn"]
+libraries = {
+&"": SubResource("AnimationLibrary_gi0f7")
+}
+
+[node name="FallingItem" type="Area2D" parent="FallingObjects/Thorn"]
+collision_layer = 16
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingObjects/Thorn/FallingItem"]
+position = Vector2(192.35667, -477.51593)
+shape = SubResource("CapsuleShape2D_pbbfa")

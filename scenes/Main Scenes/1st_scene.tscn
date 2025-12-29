@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=4 uid="uid://d0hqwpnv7oakw"]
+[gd_scene load_steps=78 format=4 uid="uid://d0hqwpnv7oakw"]
 
 [ext_resource type="Script" uid="uid://bxd2bwy2cc7ww" path="res://scenes/Main Scenes/1st_scene.gd" id="1_gx4ae"]
 [ext_resource type="Texture2D" uid="uid://cstcdjnw86nfs" path="res://assets/BG/Phase 1/1.png" id="2_k6wof"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://xov1nahqgphe" path="res://scenes/Characters/worm.tscn" id="25_dq36l"]
 [ext_resource type="PackedScene" uid="uid://b8u3ukm3isipo" path="res://scenes/Characters/ted_siblings.tscn" id="26_fjmqc"]
 [ext_resource type="Script" uid="uid://c7b6yy075t0a2" path="res://scenes/Colliders/p_1_moving.gd" id="27_2mgft"]
+[ext_resource type="PackedScene" uid="uid://cg4hf3ye5wijf" path="res://scenes/InteractableObjects/checkpoint_flower.tscn" id="28_k6wof"]
 [ext_resource type="Texture2D" uid="uid://biwg361wkgfx4" path="res://scenes/Platforms/p1-moving-asset.svg" id="28_omctb"]
 [ext_resource type="PackedScene" uid="uid://1xrdny8bdyyc" path="res://scenes/Colliders/p1-moving.tscn" id="29_wwhd0"]
 [ext_resource type="PackedScene" uid="uid://coan84jcrei0f" path="res://scenes/Colliders/noncolliderP1_1.tscn" id="30_mwdef"]
@@ -622,6 +623,10 @@ position = Vector2(991, 46)
 scale = Vector2(0.13, 0.13)
 tile_map_data = PackedByteArray("AABhAJUAAgAAAAAAAACGAJUAAgABAAEAAAB2ALkAAwAAAAEAAACZALkAAwABAAEAAAC7ALkAAwAAAAAAAADdALkAAwABAAAAAAABAbkAAwACAAAAAADaD1f/AQAAAAEAAAD/D1f/AQABAAEAAAAkEFf/AQACAAEAAABBEFf/AQABAAAAAABmEFf/AQACAAAAAAAbB73/AQAAAAEAAABAB73/AQABAAEAAABlB73/AQACAAEAAACKB73/AQABAAAAAACvB73/AQABAAEAAADUB73/AQACAAEAAAD5B73/AQABAAAAAAAeCL3/AQABAAEAAABDCL3/AQACAAEAAABoCL3/AQABAAAAAACNCL3/AQABAAEAAACyCL3/AQACAAEAAADXCL3/AQABAAAAAAD8CL3/AQABAAEAAAAhCb3/AQACAAEAAABGCb3/AQACAAAAAAD3CWH/AQAAAAEAAAD3CWL/AQAAAAEAAAAcCmH/AQABAAEAAAAcCmL/AQABAAEAAAA8CmH/AQACAAAAAAA8CmL/AQACAAAAAACWDMn/AQAAAAEAAAC7DMn/AQABAAEAAADgDMn/AQACAAEAAAAFDcn/AQACAAEAAAAqDcn/AQABAAAAAABPDcn/AQACAAAAAAALDnT/AQAAAAEAAAALDnX/AQAAAAEAAAAwDnT/AQABAAEAAAAwDnX/AQABAAEAAABQDnT/AQACAAAAAABQDnX/AQACAAAAAAD4Euz/AQAAAAEAAAAdE+z/AQABAAEAAABCE+z/AQACAAEAAABnE+z/AQACAAEAAACME+z/AQABAAAAAACxE+z/AQACAAAAAABtFJf/AQAAAAEAAABtFJj/AQAAAAEAAACSFJf/AQABAAEAAACSFJj/AQABAAEAAACyFJf/AQACAAAAAACyFJj/AQACAAAAAAA/FZT/AQAAAAEAAAA/FZX/AQAAAAEAAABkFZT/AQABAAEAAABkFZX/AQABAAEAAACEFZT/AQACAAAAAACEFZX/AQACAAAAAACjGcX/AQAAAAEAAADIGcX/AQABAAEAAADtGcX/AQACAAEAAAAKGsX/AQABAAAAAAAvGsX/AQACAAAAAAA=")
 tile_set = SubResource("TileSet_45e12")
+
+[node name="CheckpointFlower" parent="." instance=ExtResource("28_k6wof")]
+position = Vector2(-1365, 566)
+scale = Vector2(0.795, 0.795)
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.3137255)

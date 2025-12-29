@@ -2,9 +2,8 @@ extends Node2D
 
 @export var fish_scenes: Array[PackedScene]
 @onready var spawn_timer: Timer = $SpawnTimer
-var spawn_from_right: bool 
+var spawn_from_right: bool
 var current_stage: int
-var blur_shader = preload("res://scenes/Moving BG NPCs/blur.gdshader")
 
 @export var screen_width: float = 27000.0
 @export var screen_height: float = 2162.0
@@ -15,7 +14,7 @@ func _ready() -> void:
 	if not spawn_timer.timeout.is_connected(_on_spawn_timer_timeout):
 		spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 		
-	randomize() 
+	randomize()
 	if not fish_scenes.is_empty():
 		current_fish_index = randi() % fish_scenes.size()
 		
@@ -34,6 +33,11 @@ func _on_spawn_timer_timeout() -> void:
 	var fish_index = current_fish_index
 	current_fish_index = (current_fish_index + 1) % fish_scenes.size()
 	var fish_instance = fish_scenes[fish_index].instantiate()
+	
+	var mat: ShaderMaterial = ShaderMaterial.new()
+	mat.shader = preload("res://scenes/Moving BG NPCs/blur.gdshader")
+	fish_instance.material = mat
+
 	
 	if fish_instance is AnimatedSprite2D:
 		var fish_name: String = ""
@@ -63,33 +67,34 @@ func _on_spawn_timer_timeout() -> void:
 	var spawn_y: float = randf_range(100, screen_height - 100)
 	fish_instance.position = Vector2(spawn_x, spawn_y)
 
-	# Create a unique material for this fish
-	var mat = ShaderMaterial.new()
-	mat.shader = blur_shader
-	fish_instance.material = mat
-	
 	# Scaling logic
-	var base_scale: float = randf_range(1.2, 2.7)
+	var base_scale: float = 0.0
+	if fish_index == 2:
+		base_scale = randf_range(1.5, 2.6) # Big fish
+	else:
+		base_scale = randf_range(1.2, 2.5) # Small fish
+	
 	if fish_index == 0:
 		fish_instance.scale = Vector2(base_scale * -direction_multiplier, base_scale)
 	else:
 		fish_instance.scale = Vector2(base_scale * direction_multiplier, base_scale)
 
-	#var blur_val = remap(base_scale, 1.2, 2.7, 4.0, 0.0)
-	#mat.set_shader_parameter("blur_amount", blur_val)
-#
-	## Make farther fish slightly darker
-	#var brightness = remap(base_scale, 1.2, 2.7, 0.6, 1.0)
-	#fish_instance.modulate = Color(brightness, brightness, brightness, 1.0)
-	
-	# TEMPORARY TEST in your script:
-	mat.set_shader_parameter("blur_amount", 4.0) # Force max blur
-	fish_instance.modulate = Color(0.2, 0.2, 0.2, 1.0) # Force very dark
-	
+	# Depth-based blur
+	var min_scale: float = 1.2
+	var max_scale: float = 2.6
+
+	var normalized_depth: float = inverse_lerp(max_scale, min_scale, base_scale)
+	var blur_strength: float = lerp(0.0, 4.5, normalized_depth)
+
+	var shader_mat: ShaderMaterial = fish_instance.material as ShaderMaterial
+	shader_mat.set_shader_parameter("blur_strength", blur_strength)
+
+	fish_instance.modulate.a = lerp(1.0, 0.55, normalized_depth)
+
 	# Slow Movement Logic
 	add_child(fish_instance)
 	var tween = create_tween()
-	var duration: float = randf_range(90, 110) 
+	var duration: float = randf_range(70, 100)
 	
 	spawn_from_right = !spawn_from_right # alternate spawning sides
 	

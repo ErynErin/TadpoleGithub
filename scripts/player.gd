@@ -103,7 +103,7 @@ func _on_hurt_box_area_entered(area) -> void:
 		if area.owner.name == "Beetle":
 			if area.owner.has_method("notify_player_hit"):
 				area.owner.notify_player_hit()
-			take_damage(10.0)
+			take_damage(10)
 		elif "trash_type" in area.owner:
 			take_damage(5)
 		elif "ball_projectile" in area.owner:
@@ -116,6 +116,8 @@ func _on_hurt_box_area_entered(area) -> void:
 			take_damage(10)
 		elif "AnglerFish" in area.owner:
 			take_damage(10)
+		elif "Minigame" == area.owner.name:
+			take_damage(5)
 
 func _on_player_died():
 	$DeathAudio.play()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=4 uid="uid://0gwvr1mcfucc"]
+[gd_scene load_steps=65 format=4 uid="uid://0gwvr1mcfucc"]
 
 [ext_resource type="Texture2D" uid="uid://dfoeb3l3cxt1d" path="res://assets/BG/Phase 3/1.png" id="1_ff7f0"]
 [ext_resource type="Script" uid="uid://c3n8hb0oj65hp" path="res://scenes/Main Scenes/3rd_scene.gd" id="1_fngbt"]
@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://barjrf2nutqfi" path="res://scenes/Colliders/colliderP3_4.tscn" id="23_oioei"]
 [ext_resource type="Texture2D" uid="uid://b23iinwyc72um" path="res://assets/Platforms/p3_plat.svg" id="28_4e2m0"]
 [ext_resource type="PackedScene" uid="uid://by155wu4m8ch1" path="res://scenes/Colliders/p3-moving.tscn" id="29_6cg0m"]
+[ext_resource type="PackedScene" uid="uid://cg4hf3ye5wijf" path="res://scenes/InteractableObjects/checkpoint_flower.tscn" id="31_01ji2"]
 [ext_resource type="Texture2D" uid="uid://dwlrwp06gq2rf" path="res://assets/blurred circle.png" id="32_fjoto"]
 [ext_resource type="Texture2D" uid="uid://b68ffovqd8qxo" path="res://assets/Sprites/Trash Items/Candy.png" id="33_btcw1"]
 [ext_resource type="Texture2D" uid="uid://b10blpp1bdjjo" path="res://assets/Sprites/Trash Items/Cigarette Butt.png" id="34_qani7"]
@@ -489,16 +490,20 @@ loop = false
 speed = 0.2
 speed_scale = 0.6
 
+[node name="CheckpointFlower" parent="." instance=ExtResource("31_01ji2")]
+position = Vector2(-1234, 566)
+scale = Vector2(0.795, 0.795)
+
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.3137255)
-position = Vector2(12449, 315.5625)
-scale = Vector2(0.1, 0.02624999)
+position = Vector2(-1049, 0)
+scale = Vector2(0.182, 0.047)
 texture = ExtResource("32_fjoto")
-offset = Vector2(0, 900)
+offset = Vector2(0, 1000)
 
 [node name="player" parent="." instance=ExtResource("18_7fgw2")]
 z_index = 3
-position = Vector2(13000, 12)
+position = Vector2(-1050, 12)
 scale = Vector2(0.5, 0.5)
 shadow_path = NodePath("../Shadow")
 

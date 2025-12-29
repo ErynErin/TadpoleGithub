@@ -3,11 +3,11 @@ extends CharacterBody2D
 enum State { INACTIVE, PATROL, ATTACK_BALL, ATTACK_INK, VULNERABLE, DEATH }
 
 # Constants
-const PATROL_SPEED = 150.0
+const PATROL_SPEED = 400.0
 const INK_MOVE_SPEED = 250.0
-const VULNERABLE_MOVE_SPEED = 200.0
-const BALL_ATTACK_INTERVAL = 3.0
-const VULNERABLE_DURATION = 5.0
+const VULNERABLE_MOVE_SPEED = 300.0
+const BALL_ATTACK_INTERVAL = 2.0
+const VULNERABLE_DURATION = 3.0
 const INK_HOVER_TIME = 2.0
 
 # Node references
@@ -299,6 +299,7 @@ func _enter_death_state():
 	await squid_body.animation_finished
 		
 	canvas_layer.queue_free()
+	get_tree().change_scene("res://scenes/Main Scenes/ending.tscn")
 	emit_signal("boss_died")
 
 # ===== WALL MANAGEMENT =====

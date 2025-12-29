@@ -1,5 +1,6 @@
-[gd_scene load_steps=100 format=3 uid="uid://crkd6q3pebrrc"]
+[gd_scene load_steps=102 format=3 uid="uid://crkd6q3pebrrc"]
 
+[ext_resource type="Shader" uid="uid://bf1cwsybxhvey" path="res://scenes/Moving BG NPCs/blur.gdshader" id="1_qcjxe"]
 [ext_resource type="Texture2D" uid="uid://dj8ffsh844ml2" path="res://assets/Moving Bg NPCs/1st phase/1st phase fish 3/fish 30000.png" id="1_yykq4"]
 [ext_resource type="Texture2D" uid="uid://cbxvxm0pv83vk" path="res://assets/Moving Bg NPCs/1st phase/1st phase fish 3/fish 30001.png" id="2_qcjxe"]
 [ext_resource type="Texture2D" uid="uid://c523oyl15vhvs" path="res://assets/Moving Bg NPCs/1st phase/1st phase fish 3/fish 30002.png" id="3_yccdf"]
@@ -98,6 +99,10 @@
 [ext_resource type="Texture2D" uid="uid://bn2oym3xv3ijj" path="res://assets/Moving Bg NPCs/2nd phase/2nd phase fish 3/fish 30046.png" id="96_7xcgq"]
 [ext_resource type="Texture2D" uid="uid://ddj2xb7lbbmwu" path="res://assets/Moving Bg NPCs/2nd phase/2nd phase fish 3/fish 30047.png" id="97_hjkgg"]
 [ext_resource type="Texture2D" uid="uid://brp4qnv7lmn8c" path="res://assets/Moving Bg NPCs/2nd phase/2nd phase fish 3/fish 30048.png" id="98_jv4o2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yccdf"]
+shader = ExtResource("1_qcjxe")
+shader_parameter/blur_strength = 0.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1jbt7"]
 animations = [{
@@ -407,5 +412,6 @@ animations = [{
 }]
 
 [node name="Fish" type="AnimatedSprite2D"]
+material = SubResource("ShaderMaterial_yccdf")
 sprite_frames = SubResource("SpriteFrames_1jbt7")
 animation = &"1_fish"

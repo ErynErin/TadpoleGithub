@@ -280,8 +280,8 @@ script = ExtResource("1_tiyqp")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.3137255)
-position = Vector2(31, 161)
-scale = Vector2(0.85125, 0.24375)
+position = Vector2(3.249998, 164)
+scale = Vector2(0.781875, 0.17500001)
 texture = ExtResource("2_3kqeg")
 
 [node name="Pivot" type="Node2D" parent="."]

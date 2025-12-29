@@ -13,7 +13,7 @@
 : Don't forget to eat and heal up![wait=1] Be careful.
 
 ~ trash_flood
-: Trash_flood!
+: Trash flood!
 => END
 
 ~ boss_opening
