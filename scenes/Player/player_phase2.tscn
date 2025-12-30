@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://basdg6biv03al"]
+[gd_scene load_steps=87 format=3 uid="uid://basdg6biv03al"]
 
 [ext_resource type="Script" uid="uid://qdyt6iet83op" path="res://scripts/player.gd" id="1_copfn"]
 [ext_resource type="Texture2D" uid="uid://doljgsdei1mie" path="res://assets/2nd stage mc/2nd idle/2nd idle0000.png" id="2_7ix7b"]
@@ -78,6 +78,7 @@
 [ext_resource type="Script" uid="uid://dktsel320mpw7" path="res://scripts/hurtbox.gd" id="77_nbw0f"]
 [ext_resource type="AudioStream" uid="uid://b4uuqdo1rp4ju" path="res://assets/Audios/player/death.mp3" id="78_gwi1w"]
 [ext_resource type="AudioStream" uid="uid://dic1gm6n83vqj" path="res://assets/Audios/player/jump.wav" id="79_copfn"]
+[ext_resource type="AudioStream" uid="uid://r4cxduub5cui" path="res://assets/Audios/player/electronic-element-burn-spark-1-248606.mp3" id="80_vb6el"]
 [ext_resource type="PackedScene" uid="uid://bb6ksj6c85ixy" path="res://scenes/Player/sword.tscn" id="90_1y3x4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mv62"]
@@ -422,6 +423,12 @@ bus = &"SFX"
 
 [node name="JumpAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("79_copfn")
+bus = &"SFX"
+
+[node name="HurtAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("80_vb6el")
+volume_db = -17.0
+pitch_scale = 1.2
 bus = &"SFX"
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

@@ -7,7 +7,7 @@ const PATROL_SPEED = 400.0
 const INK_MOVE_SPEED = 250.0
 const VULNERABLE_MOVE_SPEED = 300.0
 const BALL_ATTACK_INTERVAL = 2.0
-const VULNERABLE_DURATION = 3.0
+const VULNERABLE_DURATION = 4.5
 const INK_HOVER_TIME = 2.0
 
 # Node references
@@ -25,6 +25,14 @@ const INK_HOVER_TIME = 2.0
 @onready var ray_cast_down: RayCast2D = $RayCastDown
 @onready var debug_label: Label = $DebugLabel
 
+# Audio
+@onready var screech: AudioStreamPlayer = $Screech
+@onready var ball: AudioStreamPlayer = $Ball
+@onready var ink: AudioStreamPlayer = $Ink
+@onready var hurt: AudioStreamPlayer = $Hurt
+@onready var bgm: AudioStreamPlayer = $BGM
+
+# Dialogue
 @onready var boss_dialogue_resource: DialogueResource = preload("res://dialogues/boss.dialogue")
 var boss_balloon_scene = preload("res://balloons/Boss3Balloon.tscn")
 
@@ -36,8 +44,8 @@ signal boss_died
 # State variables
 var current_state = State.INACTIVE
 var player_entered = false
-var health = 3
-var max_health = 3
+var health = 4
+var max_health = 4
 var state_timer = 0.0
 
 # Attack cycle tracking
@@ -207,7 +215,6 @@ func _handle_attack_ink_state(_delta):
 		_fire_ink_projectile()
 		change_state(State.PATROL)
 
-
 func _enter_vulnerable_state():
 	velocity = Vector2.ZERO
 	hit_this_vulnerable_cycle = false
@@ -259,13 +266,14 @@ func take_damage(_damage_amount):
 			print("Health 0 → DEATH")
 			change_state(State.DEATH)
 		else:
+			hurt.play()
 			print("Hit animation")
 			animation_player.stop()
 			squid_body.play("hit")
 			await squid_body.animation_finished
 
-
 func _spawn_ball_projectiles():	
+	ball.play()
 	for i in projectiles_per_round:
 		var projectile = ball_projectile_scene.instantiate()
 		get_parent().add_child(projectile)
@@ -279,6 +287,7 @@ func _spawn_ball_projectiles():
 			projectile.setup_projectile(direction)
 
 func _fire_ink_projectile():	
+	ink.play()
 	if ink_projectile_scene:
 		var projectile = ink_projectile_scene.instantiate()
 		get_parent().add_child(projectile)
@@ -293,14 +302,35 @@ func _enter_death_state():
 	velocity = Vector2.ZERO
 	_disable_walls()
 	hurt_box.queue_free()
+	canvas_layer.queue_free()
 	animation_player.stop()
 	squid_body.play("death")
+	
 	print("=== BOSS DIED ===")
-	await squid_body.animation_finished
-		
-	canvas_layer.queue_free()
-	get_tree().change_scene("res://scenes/Main Scenes/ending.tscn")
+	
+	# --- Dialogue --
+	var balloon_instance = boss_balloon_scene.instantiate()
+	get_tree().current_scene.add_child(balloon_instance)
+	
+	# Connect dialogue signal
+	if not DialogueManager.dialogue_ended.is_connected(_on_dialogue_ended):
+		DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
+
+	balloon_instance.start(boss_dialogue_resource, "p3_end")
+	
+	await get_tree().create_timer(5).timeout
+	
+	await $"../..".fade_in_screen()
+	get_tree().change_scene_to_file.call_deferred("res://scenes/Main Scenes/ending.tscn")
 	emit_signal("boss_died")
+
+func fade_out(audio: AudioStreamPlayer, duration = 1.0):
+	if not audio.playing:
+		return
+	
+	var tween = create_tween()
+	tween.tween_property(audio, "volume_db", -40, duration)
+	tween.tween_callback(audio.stop)
 
 # ===== WALL MANAGEMENT =====
 
@@ -320,15 +350,17 @@ func _on_dialogue_ended(_resource):
 	GameManager.set_player_movable(true)
 	DialogueManager.dialogue_ended.disconnect(_on_dialogue_ended)
 	
-	player_entered = true
-	canvas_layer.visible = true
-	progress_bar.max_value = max_health
-	progress_bar.value = health
-	
-	_enable_walls()
-	change_state(State.PATROL)
-	
-	print("Boss fight started!")
+	if health != 0:
+		player_entered = true
+		canvas_layer.visible = true
+		progress_bar.max_value = max_health
+		progress_bar.value = health
+		
+		screech.play()
+		_enable_walls()
+		change_state(State.PATROL)
+		
+		print("Boss fight started!")
 
 func _on_player_detector_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and not player_entered:
@@ -337,11 +369,14 @@ func _on_player_detector_body_entered(body: Node2D) -> void:
 		var balloon_instance = boss_balloon_scene.instantiate()
 		get_tree().current_scene.add_child(balloon_instance)
 
-		# Connect dialogue finished signal once
+		# Connect dialogue signal once
 		if not DialogueManager.dialogue_ended.is_connected(_on_dialogue_ended):
 			DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 
 		balloon_instance.start(boss_dialogue_resource, "p3_start")
+		screech.play()
+		fade_out($"../../AudioStreamPlayer", 1.5) # Stop the parent's parent's bgm
+		bgm.play()
 		$PlayerDetector.queue_free()
 
 func _on_hurt_box_area_entered(area: Area2D) -> void:

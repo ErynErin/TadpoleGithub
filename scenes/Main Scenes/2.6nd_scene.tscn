@@ -1,0 +1,523 @@
+[gd_scene load_steps=52 format=4 uid="uid://nynhh6si2p2m"]
+
+[ext_resource type="Texture2D" uid="uid://cc6aiqta7j02x" path="res://assets/BG/Phase 2/1.png" id="1_f3nk3"]
+[ext_resource type="Script" uid="uid://c8o7ib1lncvqs" path="res://scenes/Main Scenes/2.6nd_scene.gd" id="1_jymai"]
+[ext_resource type="Texture2D" uid="uid://darwte4arx7h6" path="res://assets/BG/Phase 2/2.png" id="2_pjge1"]
+[ext_resource type="Texture2D" uid="uid://bxbt6hevkcww1" path="res://assets/BG/Phase 2/3.png" id="3_rgvmy"]
+[ext_resource type="Texture2D" uid="uid://dc86inuelf7ii" path="res://assets/BG/Phase 2/4.png" id="4_bw38j"]
+[ext_resource type="Texture2D" uid="uid://rxnciromwi5l" path="res://assets/BG/Phase 2/5.png" id="5_adncd"]
+[ext_resource type="PackedScene" uid="uid://djqedsba3fd0v" path="res://scenes/Moving BG NPCs/moving_bg_npcs.tscn" id="6_6kmjw"]
+[ext_resource type="Texture2D" uid="uid://cdbvoy6qxhbpt" path="res://assets/BG/Phase 2/6.png" id="7_ov5mm"]
+[ext_resource type="Shader" uid="uid://bwnej1yl2rc5h" path="res://watershader.gdshader" id="8_nqckb"]
+[ext_resource type="Texture2D" uid="uid://djskedj43sp1p" path="res://assets/Colliders/P1/scale.png" id="9_7qicq"]
+[ext_resource type="Script" uid="uid://d22ltv5khw2fa" path="res://scripts/health_bar.gd" id="10_s068w"]
+[ext_resource type="Texture2D" uid="uid://5m0ipjw8b0j3" path="res://assets/GUI/Game Screen UI/P2_health.png" id="11_vfg15"]
+[ext_resource type="Script" uid="uid://0dthjh7hw83f" path="res://scripts/pause_button.gd" id="12_hw4he"]
+[ext_resource type="Texture2D" uid="uid://gaews8kcbv0k" path="res://assets/Sprites/Coin/cap icon.png" id="13_qv8mg"]
+[ext_resource type="FontFile" uid="uid://chvpvepqarnv6" path="res://assets/Fonts/Tedtadpole-Regular.ttf" id="14_e0r2f"]
+[ext_resource type="Script" uid="uid://d1swm186udos5" path="res://scripts/coins.gd" id="15_4yd2s"]
+[ext_resource type="PackedScene" uid="uid://ctw57l6kowhya" path="res://scenes/UI/pause_menu.tscn" id="17_y2tyn"]
+[ext_resource type="PackedScene" uid="uid://qvgqap54c1b1" path="res://scenes/UI/options.tscn" id="18_t2l4o"]
+[ext_resource type="PackedScene" uid="uid://cqn1xtwbw5n5l" path="res://scenes/Collectibles/food.tscn" id="19_jqhad"]
+[ext_resource type="Texture2D" uid="uid://c532f0y4g6dxb" path="res://assets/BG/Phase 2/7.png" id="20_vpbmp"]
+[ext_resource type="Texture2D" uid="uid://7w1ynanueaxp" path="res://scenes/Platforms/P2_spritesheet.svg" id="21_lxt8f"]
+[ext_resource type="Texture2D" uid="uid://dwlrwp06gq2rf" path="res://assets/blurred circle.png" id="23_dp5rm"]
+[ext_resource type="PackedScene" uid="uid://basdg6biv03al" path="res://scenes/Player/player_phase2.tscn" id="24_i5ql1"]
+[ext_resource type="PackedScene" uid="uid://blvil0vgakf4g" path="res://scenes/Colliders/colliderP2_1.tscn" id="26_3limq"]
+[ext_resource type="AudioStream" uid="uid://b0r6ar55wagwo" path="res://assets/Audios/sfx for bosses/fish/😟 Tense & Orchestral (Free Music) - _REFUSING THE ULTIMATUM_ by Arthur Vyncke 🇧🇪 4.mp3" id="26_pjge1"]
+[ext_resource type="PackedScene" uid="uid://d0non4l3cian2" path="res://scenes/Colliders/colliderP2_2.tscn" id="27_npl7i"]
+[ext_resource type="PackedScene" uid="uid://8cmfe7p7qtwt" path="res://scenes/Colliders/p2-moving.tscn" id="29_litm3"]
+[ext_resource type="PackedScene" uid="uid://cihb7614jbfds" path="res://scenes/InteractableObjects/apple_juice.tscn" id="29_pjge1"]
+[ext_resource type="PackedScene" uid="uid://2rakys27h5aw" path="res://scenes/InteractableObjects/apple_juice_hiding_spot.tscn" id="30_rgvmy"]
+[ext_resource type="PackedScene" uid="uid://kweimgvo4x1j" path="res://scenes/InteractableObjects/orange_juice.tscn" id="31_bw38j"]
+[ext_resource type="PackedScene" uid="uid://d1gkxm4es8jd4" path="res://scenes/Characters/boss_3.tscn" id="31_iiyq0"]
+[ext_resource type="PackedScene" uid="uid://b5hxfvmqmpxsf" path="res://scenes/InteractableObjects/orange_juice_hiding_spot.tscn" id="32_adncd"]
+[ext_resource type="AudioStream" uid="uid://dtwjnfcyxxe17" path="res://assets/Audios/sfx for bosses/fish/Skinwalker sounds 4.mp3" id="33_rgvmy"]
+[ext_resource type="AudioStream" uid="uid://bgigcliw584je" path="res://assets/Audios/sfx for bosses/fish/Scary Laugh Sound.mp3" id="34_bw38j"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lny5s"]
+noise_type = 2
+frequency = 0.0029
+fractal_type = 2
+fractal_gain = 0.6
+fractal_weighted_strength = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_42ul7"]
+noise = SubResource("FastNoiseLite_lny5s")
+seamless = true
+seamless_blend_skirt = 0.61
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5l5e4"]
+shader = ExtResource("8_nqckb")
+shader_parameter/color = Color(0.4, 0.521569, 0.282353, 0.121569)
+shader_parameter/brightness = -0.34399996883999995
+shader_parameter/fast_noise = SubResource("NoiseTexture2D_42ul7")
+shader_parameter/speed = Vector2(0.07, 0.07)
+shader_parameter/wave_strength = 2.0
+
+[sub_resource type="SystemFont" id="SystemFont_ssd1q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wkg83"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_goyj0"]
+bg_color = Color(1, 0.321569, 0.364706, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vksdc"]
+distance = 122.738
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ssd1q"]
+resource_local_to_scene = true
+distance = -581.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wkg83"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_goyj0"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jymai"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6u0xl"]
+texture = ExtResource("21_lxt8f")
+texture_region_size = Vector2i(600, 600)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-292.023, 304.125, -294.095, -288.541, 294.426, -282.324, 294.426, 308.269)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-297.466, -297.015, -16.6783, -291.112, 110.683, -257.756, 195.591, -188.01, 266.853, -87.9401, 292.628, 12.1296, 300.209, 125.845, 253.207, 238.045, 169.815, 298.693, -291.112, 298.693, -298.693, -186.494)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-300.691, -289.823, 293.446, -289.823, 297.068, 295.257, -298.88, 298.88)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-298.013, -292.621, 299.145, -292.621, 300.493, 304.537, -293.969, 305.885)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(297.258, -290.078, 7.18018, -295.822, -96.2141, -246.997, -170.888, -182.376, -239.817, -91.9059, -277.154, 4.30811, -284.334, 114.883, -257.05, 186.684, -185.248, 282.898, -73.2375, 297.258, 295.822, 300.13)
+
+[sub_resource type="TileSet" id="TileSet_goyj0"]
+physics_layer_0/collision_layer = 15
+sources/1 = SubResource("TileSetAtlasSource_6u0xl")
+
+[sub_resource type="Gradient" id="Gradient_88inl"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lny5s"]
+gradient = SubResource("Gradient_88inl")
+fill = 1
+fill_from = Vector2(0.469512, 0.490854)
+fill_to = Vector2(0.765244, 0.756098)
+
+[sub_resource type="Curve2D" id="Curve2D_42ul7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -16, 0, 0, 0, 0, 0, -24, -360)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jymai"]
+size = Vector2(101, 1760)
+
+[node name="Ted Game 2" type="Node2D"]
+script = ExtResource("1_jymai")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+physics_interpolation_mode = 0
+
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="Parallax2D"]
+scale = Vector2(1.5, 1.5)
+transform = Transform2D(1.5, 0, 0, 1.5, 0, 0)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground2"]
+motion_scale = Vector2(0.1, 1)
+motion_mirroring = Vector2(4096, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground2/ParallaxLayer"]
+position = Vector2(0, -42.666626)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("1_f3nk3")
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground2"]
+motion_scale = Vector2(0.1, 1)
+motion_mirroring = Vector2(4096, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground2/ParallaxLayer6"]
+position = Vector2(2048, -42.666626)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("1_f3nk3")
+flip_h = true
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground2"]
+motion_scale = Vector2(0.3, 1)
+motion_mirroring = Vector2(4096, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground2/ParallaxLayer2"]
+position = Vector2(0, -42.666626)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("2_pjge1")
+
+[node name="ParallaxLayer8" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground2"]
+motion_scale = Vector2(0.3, 1)
+motion_mirroring = Vector2(4096, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground2/ParallaxLayer8"]
+position = Vector2(2048, -42.666626)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("2_pjge1")
+flip_h = true
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground2"]
+motion_scale = Vector2(0.4, 1)
+motion_mirroring = Vector2(4096, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground2/ParallaxLayer3"]
+position = Vector2(133.333, -42.666626)
+scale = Vector2(1.80833, 1.6)
+texture = ExtResource("3_rgvmy")
+
+[node name="ParallaxLayer9" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground2"]
+motion_scale = Vector2(0.4, 1)
+motion_mirroring = Vector2(4096, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground2/ParallaxLayer9"]
+position = Vector2(2048, -42.667)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("3_rgvmy")
+flip_h = true
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground2"]
+motion_scale = Vector2(0.6, 1)
+motion_mirroring = Vector2(4096, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground2/ParallaxLayer4"]
+position = Vector2(0, 70)
+scale = Vector2(2.1, 2.1)
+texture = ExtResource("4_bw38j")
+
+[node name="ParallaxLayer10" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground2"]
+motion_scale = Vector2(0.6, 1)
+motion_mirroring = Vector2(4096, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground2/ParallaxLayer10"]
+position = Vector2(2500, 70)
+scale = Vector2(2.1, 2.1)
+texture = ExtResource("4_bw38j")
+flip_h = true
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground2"]
+motion_scale = Vector2(0.8, 1)
+motion_mirroring = Vector2(4096, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground2/ParallaxLayer5"]
+position = Vector2(0, -42.666626)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("5_adncd")
+
+[node name="ParallaxLayer11" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground2"]
+motion_scale = Vector2(0.8, 1)
+motion_mirroring = Vector2(4096, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground2/ParallaxLayer11"]
+position = Vector2(2048, -42.666626)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("5_adncd")
+flip_h = true
+
+[node name="Moving BG NPCs" parent="." instance=ExtResource("6_6kmjw")]
+position = Vector2(-4840, -1182)
+scale = Vector2(0.845, 0.845)
+
+[node name="Shader" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_5l5e4")
+position = Vector2(1572.93, -103.272)
+rotation = 0.015708
+scale = Vector2(2.82573, 1.84137)
+texture = ExtResource("9_7qicq")
+region_enabled = true
+region_rect = Rect2(0, 0, 10000, 1000)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
+scale = Vector2(2.4, 2.4)
+texture = ExtResource("7_ov5mm")
+region_enabled = true
+region_rect = Rect2(0, 0, 15000, 720)
+
+[node name="GUI" type="CanvasLayer" parent="."]
+layer = 10
+scale = Vector2(0.6, 0.6)
+transform = Transform2D(0.6, 0, 0, 0.6, 0, 0)
+
+[node name="HealthBar" type="ProgressBar" parent="GUI"]
+offset_left = 458.0
+offset_top = 157.0
+offset_right = 787.0
+offset_bottom = 205.0
+theme_override_fonts/font = SubResource("SystemFont_ssd1q")
+theme_override_font_sizes/font_size = 27
+theme_override_styles/background = SubResource("StyleBoxFlat_wkg83")
+theme_override_styles/fill = SubResource("StyleBoxFlat_goyj0")
+value = 50.0
+script = ExtResource("10_s068w")
+
+[node name="Gen UI" type="TextureRect" parent="GUI"]
+offset_right = 3206.4
+offset_bottom = 1803.6
+texture = ExtResource("11_vfg15")
+
+[node name="PauseButton" type="Button" parent="GUI"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 78.0
+offset_top = 95.0
+offset_right = 348.0
+offset_bottom = 310.0
+script = ExtResource("12_hw4he")
+
+[node name="Coin Icon" type="TextureRect" parent="GUI"]
+offset_left = 400.0
+offset_top = 251.667
+offset_right = 445.0
+offset_bottom = 298.667
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("13_qv8mg")
+
+[node name="Coins" type="Label" parent="GUI"]
+offset_left = 476.667
+offset_top = 246.667
+offset_right = 578.667
+offset_bottom = 313.667
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("14_e0r2f")
+theme_override_font_sizes/font_size = 50
+text = "00"
+script = ExtResource("15_4yd2s")
+
+[node name="ScreenFade" type="ColorRect" parent="GUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.67, 1.67)
+color = Color(0, 0, 0, 1)
+
+[node name="Pause Menu" parent="GUI" instance=ExtResource("17_y2tyn")]
+process_mode = 1
+visible = false
+offset_right = 958.0
+offset_bottom = 546.0
+scale = Vector2(1.11, 1.11)
+
+[node name="Options" parent="GUI" instance=ExtResource("18_t2l4o")]
+visible = false
+scale = Vector2(1.67, 1.67)
+
+[node name="Food" type="Node2D" parent="."]
+position = Vector2(0, 200)
+metadata/_edit_lock_ = true
+
+[node name="food" parent="Food" instance=ExtResource("19_jqhad")]
+position = Vector2(-844, 93)
+scale = Vector2(1.3, 1.3)
+
+[node name="food2" parent="Food" instance=ExtResource("19_jqhad")]
+position = Vector2(4829.0005, 183)
+scale = Vector2(1.3, 1.3)
+
+[node name="food3" parent="Food" instance=ExtResource("19_jqhad")]
+position = Vector2(2176, -574)
+scale = Vector2(1.3, 1.3)
+
+[node name="food4" parent="Food" instance=ExtResource("19_jqhad")]
+position = Vector2(1594, -306)
+scale = Vector2(1.3, 1.3)
+
+[node name="food5" parent="Food" instance=ExtResource("19_jqhad")]
+position = Vector2(2734.0002, -375)
+scale = Vector2(1.3, 1.3)
+
+[node name="Parallax2D2" type="Parallax2D" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Parallax2D2"]
+layer = 0
+
+[node name="ParallaxLayer7" type="ParallaxLayer" parent="Parallax2D2/ParallaxBackground"]
+z_index = 6
+motion_scale = Vector2(1.1, 1)
+motion_mirroring = Vector2(4096, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D2/ParallaxBackground/ParallaxLayer7"]
+z_index = 6
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("20_vpbmp")
+offset = Vector2(0, 100)
+
+[node name="ParallaxLayer12" type="ParallaxLayer" parent="Parallax2D2/ParallaxBackground"]
+z_index = 6
+motion_scale = Vector2(1.1, 1)
+motion_mirroring = Vector2(4096, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D2/ParallaxBackground/ParallaxLayer12"]
+z_index = 6
+position = Vector2(2048, 0)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("20_vpbmp")
+offset = Vector2(0, 100)
+flip_h = true
+
+[node name="Lighting" type="CanvasModulate" parent="Parallax2D2/ParallaxBackground"]
+light_mask = 0
+visibility_layer = 0
+color = Color(0.4817897, 0.4817894, 0.48178947, 1)
+
+[node name="World Boundaries" type="Node2D" parent="."]
+position = Vector2(1, 68)
+
+[node name="top" type="StaticBody2D" parent="World Boundaries"]
+position = Vector2(7, -940)
+rotation = 3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World Boundaries/top"]
+position = Vector2(-4.00001, -68)
+shape = SubResource("WorldBoundaryShape2D_vksdc")
+
+[node name="bottom" type="StaticBody2D" parent="World Boundaries"]
+position = Vector2(-1, 618)
+collision_layer = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World Boundaries/bottom"]
+position = Vector2(-2, -623)
+shape = SubResource("WorldBoundaryShape2D_ssd1q")
+
+[node name="left" type="StaticBody2D" parent="World Boundaries"]
+position = Vector2(-990, 0)
+physics_material_override = SubResource("PhysicsMaterial_wkg83")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="World Boundaries/left"]
+shape = SubResource("WorldBoundaryShape2D_goyj0")
+
+[node name="right" type="StaticBody2D" parent="World Boundaries"]
+position = Vector2(5000, 0)
+physics_material_override = SubResource("PhysicsMaterial_wkg83")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="World Boundaries/right"]
+shape = SubResource("WorldBoundaryShape2D_jymai")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(360, 104)
+scale = Vector2(0.13, 0.13)
+tile_map_data = PackedByteArray("AACGAJUAAgABAAEAAACZALkAAwABAAEAAAC7ALkAAwAAAAAAAADdALkAAwABAAAAAAABAbkAAwACAAAAAAAYAgsAAQAAAAEAAAA9AgsAAQABAAEAAABiAgsAAQABAAAAAACHAgsAAQACAAAAAAA7BAkAAQAAAAEAAABgBAkAAQABAAEAAACFBAkAAQABAAAAAACqBAkAAQACAAAAAAA=")
+tile_set = SubResource("TileSet_goyj0")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.3137255)
+position = Vector2(-1102, 607.125)
+scale = Vector2(0.2, 0.05249998)
+texture = ExtResource("23_dp5rm")
+offset = Vector2(0, 900)
+
+[node name="player" parent="." instance=ExtResource("24_i5ql1")]
+z_index = 5
+position = Vector2(1150.975, 400)
+scale = Vector2(0.43, 0.43)
+shadow_path = NodePath("../Shadow")
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(-43.9999, 742)
+scale = Vector2(0.3, 0.3)
+offset = Vector2(0, -400)
+process_callback = 0
+limit_top = -200
+limit_bottom = 1200
+limit_smoothed = true
+position_smoothing_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="PointLight2D" type="PointLight2D" parent="player/Camera2D"]
+position = Vector2(133.333, -2713.33)
+scale = Vector2(30.4583, 33.3333)
+energy = 0.3
+texture = SubResource("GradientTexture2D_lny5s")
+texture_scale = 0.68
+
+[node name="Colliders" type="Node2D" parent="."]
+
+[node name="StaticBody2DR" parent="Colliders" instance=ExtResource("27_npl7i")]
+position = Vector2(-700, 496)
+
+[node name="StaticBody2DR2" parent="Colliders" instance=ExtResource("27_npl7i")]
+position = Vector2(5001, 496)
+
+[node name="StaticBody2D5" parent="Colliders" instance=ExtResource("26_3limq")]
+position = Vector2(2186, 480)
+scale = Vector2(0.7, 0.7)
+collision_layer = 0
+collision_mask = 0
+
+[node name="Path2D4" parent="." instance=ExtResource("29_litm3")]
+position = Vector2(2200, 104)
+curve = SubResource("Curve2D_42ul7")
+loop = false
+speed = 1.0
+speed_scale = 0.6
+
+[node name="AnglerFish" parent="." instance=ExtResource("31_iiyq0")]
+position = Vector2(3694, 422)
+scale = Vector2(0.5, 0.5)
+
+[node name="Lighting" type="CanvasModulate" parent="."]
+light_mask = 0
+visibility_layer = 0
+position = Vector2(14367, 235)
+scale = Vector2(0.5, 0.5)
+color = Color(0.58431375, 0.58431375, 0.58431375, 1)
+
+[node name="AppleJuiceBox" parent="." instance=ExtResource("29_pjge1")]
+position = Vector2(3273.0005, 437)
+scale = Vector2(0.7, 0.7)
+
+[node name="AppleJuiceBoxHideSpot" parent="." instance=ExtResource("30_rgvmy")]
+position = Vector2(1594, 6)
+scale = Vector2(0.71, 0.71)
+
+[node name="OrangeJuiceBox" parent="." instance=ExtResource("31_bw38j")]
+position = Vector2(988, 462.99997)
+scale = Vector2(0.77, 0.77)
+
+[node name="OrangeJuiceBoxHideSpot" parent="." instance=ExtResource("32_adncd")]
+position = Vector2(2734, -33)
+scale = Vector2(0.78, 0.78)
+
+[node name="AppleJuiceBoxHideSpot2" parent="." instance=ExtResource("30_rgvmy")]
+position = Vector2(209, 554)
+scale = Vector2(0.71, 0.71)
+
+[node name="OrangeJuiceBoxHideSpot2" parent="." instance=ExtResource("32_adncd")]
+position = Vector2(4000, 515)
+scale = Vector2(0.78, 0.78)
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_pjge1")
+volume_db = -10.0
+autoplay = true
+bus = &"Background Music"
+parameters/looping = true
+
+[node name="BGM2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("33_rgvmy")
+volume_db = -18.0
+autoplay = true
+bus = &"Background Music"
+parameters/looping = true
+
+[node name="BGM3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("34_bw38j")
+bus = &"Background Music"
+
+[node name="Boss Dialogue Area" type="Area2D" parent="."]
+position = Vector2(3879, 422)
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boss Dialogue Area"]
+position = Vector2(-5312, -510)
+shape = SubResource("RectangleShape2D_jymai")
+
+[connection signal="body_entered" from="Boss Dialogue Area" to="." method="_on_boss_dialogue_area_body_entered"]

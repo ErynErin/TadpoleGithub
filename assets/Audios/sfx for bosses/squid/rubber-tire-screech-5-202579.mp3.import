@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cjdt113gcder6"
+path="res://.godot/imported/rubber-tire-screech-5-202579.mp3-974389cdb4de93d5662c684974d946ac.mp3str"
+
+[deps]
+
+source_file="res://assets/Audios/sfx for bosses/squid/rubber-tire-screech-5-202579.mp3"
+dest_files=["res://.godot/imported/rubber-tire-screech-5-202579.mp3-974389cdb4de93d5662c684974d946ac.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

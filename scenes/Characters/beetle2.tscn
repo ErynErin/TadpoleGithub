@@ -1,0 +1,229 @@
+[gd_scene load_steps=34 format=3 uid="uid://chcn74wm8jp6g"]
+
+[ext_resource type="Script" uid="uid://bkme6n1jt0rd5" path="res://scenes/Characters/beetle_2.gd" id="1_0xqi3"]
+[ext_resource type="Texture2D" uid="uid://diqmbxga4jjmw" path="res://assets/Characters/Water Beetle Tank/Attack/Lunge_5.png" id="2_psl6f"]
+[ext_resource type="Texture2D" uid="uid://dghbom71t0q6i" path="res://assets/Characters/Water Beetle Tank/Attack/Lunge_1.png" id="3_beva8"]
+[ext_resource type="Texture2D" uid="uid://c1ykx3imhqyyu" path="res://assets/Characters/Water Beetle Tank/Attack/Lunge_2.png" id="4_p8moq"]
+[ext_resource type="Texture2D" uid="uid://bpmwi6ovfyswp" path="res://assets/Characters/Water Beetle Tank/Attack/Lunge_3.png" id="5_ws8p4"]
+[ext_resource type="Texture2D" uid="uid://bwtml8clt4j7b" path="res://assets/Characters/Water Beetle Tank/Attack/Lunge_4.png" id="6_btre2"]
+[ext_resource type="Texture2D" uid="uid://crwataw8s03l8" path="res://assets/Characters/Water Beetle Tank/Walk/BeetleW_0010.png" id="7_omuu7"]
+[ext_resource type="Texture2D" uid="uid://bvcqkyu0qqvnx" path="res://assets/Characters/Water Beetle Tank/Walk/BeetleW_0020.png" id="8_g18ac"]
+[ext_resource type="Texture2D" uid="uid://b44s1anbxv0fa" path="res://assets/Characters/Water Beetle Tank/Walk/BeetleW_0030.png" id="9_fv0s1"]
+[ext_resource type="Texture2D" uid="uid://bwcf4k17uddwb" path="res://assets/Characters/Water Beetle Tank/Walk/BeetleW_0040.png" id="10_uo5i8"]
+[ext_resource type="Texture2D" uid="uid://c0u0xv62k7cjb" path="res://assets/Characters/Water Beetle Tank/Walk/BeetleW_0050.png" id="11_akkoh"]
+[ext_resource type="Texture2D" uid="uid://4pv8qw02hbrf" path="res://assets/Characters/Water Beetle Tank/Walk/BeetleW_0060.png" id="12_23ujw"]
+[ext_resource type="Texture2D" uid="uid://dv1yf85kb2dqw" path="res://assets/Characters/Water Beetle Tank/Walk/BeetleW_0070.png" id="13_jjuue"]
+[ext_resource type="Texture2D" uid="uid://baew70obuy0ft" path="res://assets/Characters/Water Beetle Tank/Idle/Beetle_1.png" id="14_8f7ce"]
+[ext_resource type="Texture2D" uid="uid://bjjyaf3dc3r58" path="res://assets/Characters/Water Beetle Tank/Idle/Beetle_2.png" id="15_uq016"]
+[ext_resource type="Texture2D" uid="uid://cf0uacje6i3qm" path="res://assets/Characters/Water Beetle Tank/Idle/Beetle_3.png" id="16_d6tol"]
+[ext_resource type="Texture2D" uid="uid://clpnih26tql23" path="res://assets/Characters/Water Beetle Tank/Idle/Beetle_4.png" id="17_xjped"]
+[ext_resource type="Texture2D" uid="uid://c2ndwkwk3uq15" path="res://assets/Characters/Water Beetle Tank/Idle/Beetle_5.png" id="18_5pi0q"]
+[ext_resource type="Texture2D" uid="uid://qo0ghtjjb10g" path="res://assets/Characters/Water Beetle Tank/Idle/Beetle_6.png" id="19_pxvhi"]
+[ext_resource type="Texture2D" uid="uid://3rjop35mltqt" path="res://assets/Characters/Water Beetle Tank/Idle/Beetle_7.png" id="20_6gwp7"]
+[ext_resource type="Texture2D" uid="uid://bxij8eqqw5410" path="res://assets/Characters/Water Beetle Tank/Attack/Lunge_6.png" id="21_timso"]
+[ext_resource type="Script" uid="uid://dktsel320mpw7" path="res://scripts/hurtbox.gd" id="22_o35um"]
+[ext_resource type="Script" uid="uid://cfdlbfbudy12s" path="res://scripts/hitbox.gd" id="23_qfulr"]
+[ext_resource type="AudioStream" uid="uid://citc2cma8k7u4" path="res://assets/Audios/enemies/beetle charge.mp3" id="24_fdvyb"]
+[ext_resource type="AudioStream" uid="uid://rinopi30m814" path="res://assets/Audios/enemies/beetle hit.mp3" id="25_c7a0b"]
+[ext_resource type="AudioStream" uid="uid://b4uuqdo1rp4ju" path="res://assets/Audios/player/death.mp3" id="26_v34g4"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_mhe5e"]
+a = Vector2(8, 55)
+b = Vector2(-9, 55)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_46d1w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_psl6f")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_beva8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_p8moq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ws8p4")
+}, {
+"duration": 3.0,
+"texture": ExtResource("6_btre2")
+}],
+"loop": false,
+"name": &"charge",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_omuu7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_g18ac")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_fv0s1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_uo5i8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_akkoh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_23ujw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_jjuue")
+}],
+"loop": true,
+"name": &"crawl",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_8f7ce")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_uq016")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_d6tol")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_xjped")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_5pi0q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_pxvhi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_6gwp7")
+}],
+"loop": true,
+"name": &"stand",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_timso")
+}],
+"loop": true,
+"name": &"vulnerable",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_6wt1p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qrnk6"]
+resource_name = "hurt"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.233333, 0.366667, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2ng8k"]
+_data = {
+&"RESET": SubResource("Animation_6wt1p"),
+&"hurt": SubResource("Animation_qrnk6")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qrnk6"]
+radius = 185.0
+height = 610.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5gsta"]
+radius = 30.0
+height = 106.0
+
+[node name="Beetle" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_0xqi3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -7)
+shape = SubResource("SegmentShape2D_mhe5e")
+one_way_collision = true
+
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Pivot"]
+position = Vector2(44, -1)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_46d1w")
+animation = &"vulnerable"
+autoplay = "stand"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_2ng8k")
+}
+
+[node name="HurtBox" type="Area2D" parent="."]
+position = Vector2(44, -1)
+scale = Vector2(0.2, 0.2)
+collision_layer = 32
+collision_mask = 4
+monitoring = false
+monitorable = false
+script = ExtResource("22_o35um")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-225, -30)
+shape = SubResource("CapsuleShape2D_qrnk6")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 8
+monitoring = false
+monitorable = false
+script = ExtResource("23_qfulr")
+metadata/_custom_type_script = "uid://cfdlbfbudy12s"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(-10, 22)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_5gsta")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_fdvyb")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("25_c7a0b")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_v34g4")
+bus = &"SFX"
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

@@ -8,7 +8,7 @@ var strength = 10
 var speed = 200
 var next_scene_path = ""
 var current_scene_path = "res://scenes/Main Scenes/intro_scene.tscn"
-var phase_num: int
+var phase_num
 var merchant_access = 1
 var can_move: bool = true
 var coins = 0

@@ -1,84 +1,61 @@
 extends Node2D
 
-@export var game_duration := 90
-@export var max_simultaneous_falls := 3
-@onready var timer_label = $"../CanvasLayer/Label"
+@onready var screen_fade = $CanvasLayer/ScreenFade
+@onready var dialogue_resource: DialogueResource = preload("res://dialogues/p2_tutorial.dialogue")
 
-@onready var items := [$Crayon, $Knife, $Needle, $Pencil, $Thorn]
+var balloon_scene = preload("res://balloons/TutorialBalloon.tscn")  
+var dialogue_resource_title: String = ""
 
-var time_left := game_duration
-var rng := RandomNumberGenerator.new()
-var active_items := {} # Tracks currently falling items
+func _init() -> void:
+	GameManager.phase_num = 2.3
 
-func _ready() -> void:
-	rng.randomize()
-	start_timer()
-	start_falling_loop()
+func _ready():
+	GameManager.starting_health = GameManager.current_health
+	GameManager.current_scene_path = "res://scenes/Main Scenes/minigame.tscn"
+	
+	screen_fade.color.a = 1.0
+	screen_fade.set_z_index(1000)
+	await fade_out_screen()
+	
+	var balloon_instance = balloon_scene.instantiate()
+	get_tree().current_scene.add_child(balloon_instance)
 
-# ----------------------------
-# TIMER
-# ----------------------------
-func start_timer() -> void:
-	timer_label.text = format_time(time_left)
+	# Connect dialogue finished signal
+	if not DialogueManager.dialogue_ended.is_connected(_on_dialogue_ended):
+		DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 
-	var t := Timer.new()
-	t.wait_time = 1.0
-	t.one_shot = false
-	add_child(t)
-	t.timeout.connect(_on_second_passed)
-	t.start()
+	# Start the dialogue
+	balloon_instance.start(dialogue_resource, "minigame_start")
 
-func _on_second_passed() -> void:
-	time_left -= 1
-	timer_label.text = format_time(time_left)
+func _on_dialogue_ended(_resource):
+	DialogueManager.dialogue_ended.disconnect(_on_dialogue_ended)
+	
+	$FallingObjects.start_timer()
+	$FallingObjects.start_falling_loop()
 
-	if time_left <= 0:
-		get_tree().change_scene("res://scenes/Main Scenes/2nd_scene.tscn")
+func fade_in_screen():
+	var tween = create_tween()
+	tween.tween_property(screen_fade, "color:a", 1.0, 1.5)
+	await tween.finished
 
-func format_time(seconds: int) -> String:
-	return "%02d:%02d" % [seconds / 60, seconds % 60]
+func fade_out_screen():
+	var tween = create_tween()
+	tween.tween_property(screen_fade, "color:a", 0.0, 1.5)
+	await tween.finished
 
-# ----------------------------
-# FALL LOOP
-# ----------------------------
-func start_falling_loop() -> void:
-	while time_left > 0:
-		play_multiple_falls()
-		await get_tree().create_timer(get_fall_delay()).timeout
+func start_dialogue(title: String, make_player_movable: bool, balloon):
+	GameManager.set_player_movable(make_player_movable)
 
-func get_fall_delay() -> float:
-	if time_left > 30:
-		return rng.randf_range(3.0, 4.0)
-	else:
-		return rng.randf_range(2.0, 3.0)
+	var balloon_instance = balloon.instantiate()
+	get_tree().current_scene.add_child(balloon_instance)
 
-# ----------------------------
-# MULTI FALL LOGIC
-# ----------------------------
-func play_multiple_falls() -> void:
-	var available_items := []
+	# Connect dialogue finished signal once
+	if not DialogueManager.dialogue_ended.is_connected(_on_dialogue_ended):
+		DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 
-	for item in items:
-		if not active_items.has(item):
-			available_items.append(item)
+	dialogue_resource_title = title
+	balloon_instance.start(dialogue_resource, dialogue_resource_title)
 
-	if available_items.is_empty():
-		return
-
-	var fall_count := rng.randi_range(2, min(max_simultaneous_falls, available_items.size()))
-
-	for i in fall_count:
-		var item = available_items.pick_random()
-		available_items.erase(item)
-		start_item_fall(item)
-
-func start_item_fall(item: Node2D) -> void:
-	active_items[item] = true
-	var anim: AnimationPlayer = item.get_node("AnimationPlayer")
-
-	anim.play("fall")
-	await anim.animation_finished
-	anim.play("appear")
-	await anim.animation_finished
-
-	active_items.erase(item)
+func _on_trash_flood_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		start_dialogue("trash_flood", true, balloon_scene)

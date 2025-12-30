@@ -1,6 +1,6 @@
-[gd_scene load_steps=55 format=3 uid="uid://bwyloyflgwp20"]
+[gd_scene load_steps=59 format=3 uid="uid://bwyloyflgwp20"]
 
-[ext_resource type="Script" uid="uid://cqhhy44wyl7qw" path="res://scenes/Main Scenes/minigame.gd" id="1_25bhu"]
+[ext_resource type="Script" uid="uid://bt041ui5tooff" path="res://scenes/Main Scenes/minigame.gd" id="1_25bhu"]
 [ext_resource type="Texture2D" uid="uid://rl2qgrbt6u6m" path="res://assets/BG/Minigame/1 - mg.png" id="1_e1msk"]
 [ext_resource type="Texture2D" uid="uid://ccj261lhjwqjr" path="res://assets/BG/Minigame/2 - mg.png" id="2_c6030"]
 [ext_resource type="Texture2D" uid="uid://w60unerq1djn" path="res://assets/BG/Minigame/3 - mg.png" id="3_ngp01"]
@@ -23,6 +23,10 @@
 [ext_resource type="Texture2D" uid="uid://c15kixymdacf4" path="res://assets/BG/Minigame/dropping assets/thorn.png" id="15_32u7v"]
 [ext_resource type="PackedScene" uid="uid://ctw57l6kowhya" path="res://scenes/UI/pause_menu.tscn" id="16_7kgh0"]
 [ext_resource type="PackedScene" uid="uid://qvgqap54c1b1" path="res://scenes/UI/options.tscn" id="17_74a2e"]
+[ext_resource type="Script" uid="uid://cqhhy44wyl7qw" path="res://scenes/Main Scenes/falling_objects.gd" id="19_fplv2"]
+[ext_resource type="AudioStream" uid="uid://0sbtfnvxhkyq" path="res://assets/Audios/digging.mp3" id="25_gi0f7"]
+[ext_resource type="AudioStream" uid="uid://dokrx4mcbl6vg" path="res://assets/Audios/bgms/shadow-king-temple-22641.mp3" id="25_nnul5"]
+[ext_resource type="AudioStream" uid="uid://chdiqtyvl7upe" path="res://assets/Audios/poof-80161.mp3" id="26_j3bb6"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_25bhu"]
 resource_local_to_scene = true
@@ -44,34 +48,6 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oewsy"]
 bg_color = Color(1, 0.321569, 0.364706, 1)
-
-[sub_resource type="Animation" id="Animation_5m17a"]
-resource_name = "fall"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 1.5, 2),
-"transitions": PackedFloat32Array(0.5, 1, 1, 0.1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -200), Vector2(0, -200), Vector2(0, 2200)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FallingItem:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 1.5, 2),
-"transitions": PackedFloat32Array(0.5, 1, 1, 0.1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -10), Vector2(0, -10), Vector2(0, 10)]
-}
 
 [sub_resource type="Animation" id="Animation_32u7v"]
 length = 0.001
@@ -115,24 +91,13 @@ tracks/0/keys = {
 "values": [Vector2(0, -550), Vector2(0, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_8ohom"]
-_data = {
-&"RESET": SubResource("Animation_32u7v"),
-&"appear": SubResource("Animation_gi0f7"),
-&"fall": SubResource("Animation_5m17a")
-}
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nly5v"]
-radius = 31.21019
-height = 440.76428
-
-[sub_resource type="Animation" id="Animation_nly5v"]
+[sub_resource type="Animation" id="Animation_5m17a"]
 resource_name = "fall"
 length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FallingObjects/Knife:position")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -144,7 +109,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FallingObjects/Knife/FallingItem:position")
+tracks/1/path = NodePath("FallingItem:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -153,6 +118,17 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, -10), Vector2(0, -10), Vector2(0, 10)]
 }
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8ohom"]
+_data = {
+&"RESET": SubResource("Animation_32u7v"),
+&"appear": SubResource("Animation_gi0f7"),
+&"fall": SubResource("Animation_5m17a")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nly5v"]
+radius = 31.21019
+height = 440.76428
 
 [sub_resource type="Animation" id="Animation_pbbfa"]
 length = 0.001
@@ -196,20 +172,13 @@ tracks/0/keys = {
 "values": [Vector2(0, -550), Vector2(0, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_pbbfa"]
-_data = {
-&"RESET": SubResource("Animation_pbbfa"),
-&"appear": SubResource("Animation_b8nse"),
-&"fall": SubResource("Animation_nly5v")
-}
-
-[sub_resource type="Animation" id="Animation_8ohom"]
+[sub_resource type="Animation" id="Animation_nly5v"]
 resource_name = "fall"
 length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("FallingObjects/Knife:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -221,7 +190,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FallingItem:position")
+tracks/1/path = NodePath("FallingObjects/Knife/FallingItem:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -229,6 +198,13 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(0.5, 1, 1, 0.1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, -10), Vector2(0, -10), Vector2(0, 10)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pbbfa"]
+_data = {
+&"RESET": SubResource("Animation_pbbfa"),
+&"appear": SubResource("Animation_b8nse"),
+&"fall": SubResource("Animation_nly5v")
 }
 
 [sub_resource type="Animation" id="Animation_3mr2u"]
@@ -273,18 +249,7 @@ tracks/0/keys = {
 "values": [Vector2(0, -550), Vector2(0, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_8eflg"]
-_data = {
-&"RESET": SubResource("Animation_3mr2u"),
-&"appear": SubResource("Animation_j3bb6"),
-&"fall": SubResource("Animation_8ohom")
-}
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5m17a"]
-radius = 31.21019
-height = 360.50943
-
-[sub_resource type="Animation" id="Animation_8eflg"]
+[sub_resource type="Animation" id="Animation_8ohom"]
 resource_name = "fall"
 length = 2.0
 tracks/0/type = "value"
@@ -311,6 +276,17 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, -10), Vector2(0, -10), Vector2(0, 10)]
 }
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8eflg"]
+_data = {
+&"RESET": SubResource("Animation_3mr2u"),
+&"appear": SubResource("Animation_j3bb6"),
+&"fall": SubResource("Animation_8ohom")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5m17a"]
+radius = 31.21019
+height = 360.50943
 
 [sub_resource type="Animation" id="Animation_p6guq"]
 length = 0.001
@@ -354,18 +330,7 @@ tracks/0/keys = {
 "values": [Vector2(0, -550), Vector2(0, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_fplv2"]
-_data = {
-&"RESET": SubResource("Animation_p6guq"),
-&"appear": SubResource("Animation_8eshi"),
-&"fall": SubResource("Animation_8eflg")
-}
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b8nse"]
-radius = 31.21019
-height = 717.1974
-
-[sub_resource type="Animation" id="Animation_fplv2"]
+[sub_resource type="Animation" id="Animation_8eflg"]
 resource_name = "fall"
 length = 2.0
 tracks/0/type = "value"
@@ -392,6 +357,17 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, -10), Vector2(0, -10), Vector2(0, 10)]
 }
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fplv2"]
+_data = {
+&"RESET": SubResource("Animation_p6guq"),
+&"appear": SubResource("Animation_8eshi"),
+&"fall": SubResource("Animation_8eflg")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b8nse"]
+radius = 31.21019
+height = 717.1974
 
 [sub_resource type="Animation" id="Animation_nnul5"]
 length = 0.001
@@ -435,6 +411,34 @@ tracks/0/keys = {
 "values": [Vector2(0, -550), Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_fplv2"]
+resource_name = "fall"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.5, 2),
+"transitions": PackedFloat32Array(0.5, 1, 1, 0.1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -200), Vector2(0, -200), Vector2(0, 2200)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FallingItem:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.5, 2),
+"transitions": PackedFloat32Array(0.5, 1, 1, 0.1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -10), Vector2(0, -10), Vector2(0, 10)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gi0f7"]
 _data = {
 &"RESET": SubResource("Animation_nnul5"),
@@ -447,6 +451,7 @@ radius = 91.71974
 height = 540.1273
 
 [node name="Minigame" type="Node2D"]
+script = ExtResource("1_25bhu")
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
 
@@ -459,37 +464,43 @@ transform = Transform2D(0.775, 0, 0, 0.775, 200, 0)
 color = Color(0.716296, 0.716296, 0.716296, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground"]
-scale = Vector2(2.905, 2.905)
+position = Vector2(411.6129, 356.12906)
+scale = Vector2(2, 2)
 texture = ExtResource("1_e1msk")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer"]
-scale = Vector2(1.6, 1.6)
+position = Vector2(0, 200)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_c6030")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer2"]
-scale = Vector2(1.6, 1.6)
+position = Vector2(0, 200)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_ngp01")
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer3"]
-scale = Vector2(1.6, 1.6)
+position = Vector2(0, 200)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_0n7qy")
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer4"]
-scale = Vector2(1.6, 1.6)
+position = Vector2(0, 200)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("5_25bhu")
 
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground"]
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground/ParallaxLayer5"]
-scale = Vector2(1.6, 1.6)
+position = Vector2(0, 200)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("6_djvji")
 
 [node name="Floor" type="Sprite2D" parent="."]
@@ -551,6 +562,11 @@ shape = SubResource("WorldBoundaryShape2D_0n7qy")
 scale = Vector2(0.6, 0.6)
 transform = Transform2D(0.6, 0, 0, 0.6, 0, 0)
 
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 3318.3333
+offset_bottom = 1871.6666
+color = Color(0.09411765, 0.09411765, 0.09411765, 0.19607843)
+
 [node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = 5
 anchor_left = 0.5
@@ -561,7 +577,7 @@ offset_right = 739.0
 offset_bottom = 237.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 100
-text = "2:00"
+text = "1:30"
 
 [node name="HealthBar" type="ProgressBar" parent="CanvasLayer"]
 offset_left = 458.0
@@ -608,6 +624,15 @@ theme_override_font_sizes/font_size = 50
 text = "00"
 script = ExtResource("15_8eshi")
 
+[node name="ScreenFade" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.67, 1.67)
+color = Color(0, 0, 0, 1)
+
 [node name="Pause Menu" parent="CanvasLayer" instance=ExtResource("16_7kgh0")]
 process_mode = 1
 visible = false
@@ -620,12 +645,13 @@ visible = false
 scale = Vector2(1.67, 1.67)
 
 [node name="FallingObjects" type="Node2D" parent="."]
-script = ExtResource("1_25bhu")
+z_index = 2
+script = ExtResource("19_fplv2")
 
 [node name="Crayon" type="Sprite2D" parent="FallingObjects"]
 scale = Vector2(1.57, 1.57)
 texture = ExtResource("11_nly5v")
-offset = Vector2(300, -600)
+offset = Vector2(200, -600)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FallingObjects/Crayon"]
 libraries = {
@@ -637,13 +663,13 @@ collision_layer = 16
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallingObjects/Crayon/FallingItem"]
-position = Vector2(-118.47134, -349.04456)
+position = Vector2(-220.38216, -349.04456)
 shape = SubResource("CapsuleShape2D_nly5v")
 
 [node name="Knife" type="Sprite2D" parent="FallingObjects"]
 scale = Vector2(1.57, 1.57)
 texture = ExtResource("12_pbbfa")
-offset = Vector2(200, -500)
+offset = Vector2(300, -500)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FallingObjects/Knife"]
 root_node = NodePath("../../..")
@@ -657,6 +683,7 @@ collision_layer = 16
 collision_mask = 8
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FallingObjects/Knife/FallingItem"]
+position = Vector2(103.82165, 0)
 polygon = PackedVector2Array(325.4777, -609.99994, 331.8471, -441.21014, 355.41397, -319.5541, 381.52863, -231.65604, 442.03818, -107.452225, 435.0318, -618.9172, 436.3057, -819.5541, 410.19104, -870.50946, 370.06366, -843.121, 385.35028, -624.64966)
 
 [node name="Needle" type="Sprite2D" parent="FallingObjects"]
@@ -681,7 +708,7 @@ shape = SubResource("CapsuleShape2D_5m17a")
 [node name="Pencil" type="Sprite2D" parent="FallingObjects"]
 scale = Vector2(1.57, 1.57)
 texture = ExtResource("14_5m17a")
-offset = Vector2(300, -600)
+offset = Vector2(100, -600)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FallingObjects/Pencil"]
 libraries = {
@@ -694,13 +721,13 @@ collision_layer = 16
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallingObjects/Pencil/FallingItem"]
-position = Vector2(-288.53503, -445.66876)
+position = Vector2(-484.71335, -445.66876)
 shape = SubResource("CapsuleShape2D_b8nse")
 
 [node name="Thorn" type="Sprite2D" parent="FallingObjects"]
 scale = Vector2(1.57, 1.57)
 texture = ExtResource("15_32u7v")
-offset = Vector2(300, -600)
+offset = Vector2(400, -600)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FallingObjects/Thorn"]
 libraries = {
@@ -712,5 +739,23 @@ collision_layer = 16
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallingObjects/Thorn/FallingItem"]
-position = Vector2(192.35667, -477.51593)
+position = Vector2(264.33118, -477.51593)
 shape = SubResource("CapsuleShape2D_pbbfa")
+
+[node name="Digging" type="AudioStreamPlayer" parent="FallingObjects"]
+stream = ExtResource("25_gi0f7")
+volume_db = -10.0
+pitch_scale = 0.8
+bus = &"SFX"
+
+[node name="Poof" type="AudioStreamPlayer" parent="FallingObjects"]
+stream = ExtResource("26_j3bb6")
+volume_db = 3.0
+bus = &"SFX"
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("25_nnul5")
+volume_db = -8.0
+autoplay = true
+bus = &"Background Music"
+parameters/looping = true

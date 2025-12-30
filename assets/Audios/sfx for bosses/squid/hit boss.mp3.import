@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b13ltc8wyd4s3"
+path="res://.godot/imported/hit boss.mp3-0330475df76773a8608fc622fb65e00c.mp3str"
+
+[deps]
+
+source_file="res://assets/Audios/sfx for bosses/squid/hit boss.mp3"
+dest_files=["res://.godot/imported/hit boss.mp3-0330475df76773a8608fc622fb65e00c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

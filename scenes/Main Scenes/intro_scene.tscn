@@ -31,7 +31,7 @@ seamless_blend_skirt = 0.61
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lgy7k"]
 shader = ExtResource("4_f164h")
 shader_parameter/color = Color(0.458824, 0.509804, 0.109804, 1)
-shader_parameter/brightness = 1.0
+shader_parameter/brightness = 4.7499999933364734e-08
 shader_parameter/fast_noise = SubResource("NoiseTexture2D_u46sv")
 shader_parameter/speed = Vector2(0.07, 0.07)
 shader_parameter/wave_strength = 2.0
@@ -69,15 +69,15 @@ corner_radius_bottom_left = 20
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_gsw8x")
 
-[node name="Overlay" type="ColorRect" parent="."]
+[node name="Parallax2D" type="Parallax2D" parent="."]
+physics_interpolation_mode = 0
+
+[node name="Overlay" type="ColorRect" parent="Parallax2D"]
 offset_left = -2.0
 offset_top = -1056.0
 offset_right = 4226.0
 offset_bottom = 1091.0
-color = Color(0.16565639, 0.16565642, 0.16565639, 0.80784315)
-
-[node name="Parallax2D" type="Parallax2D" parent="."]
-physics_interpolation_mode = 0
+color = Color(0.06469653, 0.06469653, 0.06469653, 0.80784315)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Parallax2D"]
 offset = Vector2(0, -40)
@@ -146,7 +146,7 @@ region_rect = Rect2(0, 709.673, 1287.6813, 13.5998535)
 
 [node name="BG Sprite" type="Sprite2D" parent="."]
 texture_repeat = 2
-position = Vector2(8154, -66)
+position = Vector2(7000, -66)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("10_gl4ak")
 region_enabled = true
@@ -192,7 +192,7 @@ shadow_path = NodePath("../Shadow")
 
 [node name="BG Sprite3" type="Sprite2D" parent="."]
 texture_repeat = 2
-position = Vector2(8154, -66)
+position = Vector2(7000, -66)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("12_3vmyl")
 region_enabled = true
@@ -235,11 +235,12 @@ text = "Skip"
 polygon = PackedVector2Array(1921, 5, 1921, 772, 2026, 772, 2026, -67, -71, -67, -71, 760, -2, 760, -2, 0)
 
 [node name="Overlay2" type="ColorRect" parent="."]
+z_index = 6
 offset_left = -2.0
 offset_top = -1007.0
 offset_right = 4969.0
 offset_bottom = 1091.0
-color = Color(0, 0, 0, 0.32549)
+color = Color(0, 0, 0, 0.38039216)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_0f06d")

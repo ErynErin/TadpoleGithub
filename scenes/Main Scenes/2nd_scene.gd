@@ -5,7 +5,7 @@ extends Node2D
 @onready var trash_flood: Node2D = $"Trash Flood"
 @onready var wall: StaticBody2D = $Wall
 
-var balloon_scene = preload("res://balloons/SystemBalloon.tscn")  # Your custom balloon scene
+var balloon_scene = preload("res://balloons/SystemBalloon.tscn")
 var dialogue_resource_title: String = ""
 
 func _init() -> void:

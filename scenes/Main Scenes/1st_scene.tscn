@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=4 uid="uid://d0hqwpnv7oakw"]
+[gd_scene load_steps=79 format=4 uid="uid://d0hqwpnv7oakw"]
 
 [ext_resource type="Script" uid="uid://bxd2bwy2cc7ww" path="res://scenes/Main Scenes/1st_scene.gd" id="1_gx4ae"]
 [ext_resource type="Texture2D" uid="uid://cstcdjnw86nfs" path="res://assets/BG/Phase 1/1.png" id="2_k6wof"]
@@ -23,7 +23,6 @@
 [ext_resource type="PackedScene" uid="uid://qvgqap54c1b1" path="res://scenes/UI/options.tscn" id="21_ukhwd"]
 [ext_resource type="PackedScene" uid="uid://cqn1xtwbw5n5l" path="res://scenes/Collectibles/food.tscn" id="22_24e1v"]
 [ext_resource type="PackedScene" uid="uid://ndj7mg5x2uqd" path="res://scenes/Collectibles/coin.tscn" id="23_fnkf7"]
-[ext_resource type="PackedScene" uid="uid://b7v31n5kjltlr" path="res://scenes/change_scene_area.tscn" id="24_j42h7"]
 [ext_resource type="PackedScene" uid="uid://xov1nahqgphe" path="res://scenes/Characters/worm.tscn" id="25_dq36l"]
 [ext_resource type="PackedScene" uid="uid://b8u3ukm3isipo" path="res://scenes/Characters/ted_siblings.tscn" id="26_fjmqc"]
 [ext_resource type="Script" uid="uid://c7b6yy075t0a2" path="res://scenes/Colliders/p_1_moving.gd" id="27_2mgft"]
@@ -84,9 +83,12 @@ distance = -581.0
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lbhrr"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p57ef"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gx4ae"]
 normal = Vector2(1, 0)
-distance = -1014.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p57ef"]
+normal = Vector2(-1, 0)
+distance = -103.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_imych"]
 polygon = PackedVector2Array(298, 298, 300, -302, -30, -301, -88, -274, -138, -243, -182, -206, -229, -153, -268, -102, -294, -30, -298, 147, -284, 191, -246, 245, -212, 275, -163, 298)
@@ -132,6 +134,9 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, -637)
 }
 point_count = 2
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gx4ae"]
+polygon = PackedVector2Array(-27436, 359.99988, -27014, 355.99988, -26974, 367.99988, -26950, 399.99988, -26938, 433.99988, -26948, 477.99988, -26972, 503.99988, -27470, 507.99988, -27492, 491.99988, -27504, 451.99988, -27494, 405.99988, -27470, 377.99988)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ab58e"]
 radius = 40.0
@@ -204,12 +209,12 @@ size = Vector2(85.5, 1527)
 
 [sub_resource type="Curve2D" id="Curve2D_po7p3"]
 _data = {
-"points": PackedVector2Array(2.08862, -275.698, -2.08862, 275.698, -328, 295, 0, 0, 0, 0, -211, 596, -246.458, 29.2407, 246.458, -29.2407, 211, 656, -112.786, 89.8109, 112.786, -89.8109, 497, 554, 0, 0, 0, 0, 449, 101, 231.837, 41.7725, -231.837, -41.7725, 64, -3, 0, 0, 0, 0, -328, 295)
+"points": PackedVector2Array(2.08862, -275.698, -2.08862, 275.698, -328, 295, 0, 0, 0, 0, -211, 596, -246.458, 29.2407, 246.458, -29.2407, 211, 656, -112.786, 89.8109, 112.786, -89.8109, 497, 554, 0, 0, 0, 0, 449, 101, 231.837, 41.7725, -231.837, -41.7725, 93, 41, 0, 0, 0, 0, -328, 295)
 }
 point_count = 7
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hesmo"]
-size = Vector2(115, 458)
+size = Vector2(115, 1192)
 
 [node name="Ted Game" type="Node2D"]
 script = ExtResource("1_gx4ae")
@@ -432,6 +437,15 @@ scale = Vector2(1.67, 1.67)
 visible = false
 scale = Vector2(1.67, 1.67)
 
+[node name="ScreenFade" type="ColorRect" parent="GUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.67, 1.67)
+color = Color(0, 0, 0, 1)
+
 [node name="Pause Menu" parent="GUI" instance=ExtResource("20_rtbla")]
 process_mode = 1
 visible = false
@@ -442,16 +456,6 @@ scale = Vector2(1.11, 1.11)
 [node name="Options" parent="GUI" instance=ExtResource("21_ukhwd")]
 visible = false
 scale = Vector2(1.67, 1.67)
-
-[node name="ScreenFade" type="ColorRect" parent="GUI"]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.67, 1.67)
-color = Color(0, 0, 0, 1)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(0.9677092, -0.2520693)
@@ -488,6 +492,15 @@ position = Vector2(-990, 0)
 physics_material_override = SubResource("PhysicsMaterial_lbhrr")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="World Boundaries/left"]
+position = Vector2(-1100, 0)
+shape = SubResource("WorldBoundaryShape2D_gx4ae")
+
+[node name="right" type="StaticBody2D" parent="World Boundaries"]
+position = Vector2(-990, 0)
+physics_material_override = SubResource("PhysicsMaterial_lbhrr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="World Boundaries/right"]
+position = Vector2(21000, 0)
 shape = SubResource("WorldBoundaryShape2D_p57ef")
 
 [node name="Food" type="Node2D" parent="."]
@@ -528,6 +541,14 @@ scale = Vector2(1.3, 1.3)
 position = Vector2(3000, 597)
 scale = Vector2(1.3, 1.3)
 
+[node name="food10" parent="Food" instance=ExtResource("22_24e1v")]
+position = Vector2(19494, -108)
+scale = Vector2(1.3, 1.3)
+
+[node name="food11" parent="Food" instance=ExtResource("22_24e1v")]
+position = Vector2(19993.002, -108)
+scale = Vector2(1.3, 1.3)
+
 [node name="Coins" type="Node2D" parent="."]
 
 [node name="coin1" parent="Coins" instance=ExtResource("23_fnkf7")]
@@ -558,11 +579,13 @@ scale = Vector2(0.8, 0.8)
 position = Vector2(4390, 422)
 scale = Vector2(0.8, 0.8)
 
-[node name="ChangeScene" parent="." instance=ExtResource("24_j42h7")]
-position = Vector2(19458.002, 9.982374)
-rotation = 1.5708
-scale = Vector2(15, 12.795)
-skew = 1.54658
+[node name="coin8" parent="Coins" instance=ExtResource("23_fnkf7")]
+position = Vector2(18393, -491.99997)
+scale = Vector2(0.8, 0.8)
+
+[node name="coin9" parent="Coins" instance=ExtResource("23_fnkf7")]
+position = Vector2(18674, -632.99994)
+scale = Vector2(0.8, 0.8)
 
 [node name="Worm" parent="." instance=ExtResource("25_dq36l")]
 position = Vector2(2532, 554)
@@ -609,7 +632,7 @@ position = Vector2(14834, 542)
 scale = Vector2(0.5, 0.5)
 
 [node name="Worm5" parent="." instance=ExtResource("25_dq36l")]
-position = Vector2(6586, 569)
+position = Vector2(6343, 569)
 scale = Vector2(0.5, 0.5)
 
 [node name="Ted Siblings" parent="." instance=ExtResource("26_fjmqc")]
@@ -621,7 +644,7 @@ scale = Vector2(0.24, 0.24)
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(991, 46)
 scale = Vector2(0.13, 0.13)
-tile_map_data = PackedByteArray("AABhAJUAAgAAAAAAAACGAJUAAgABAAEAAAB2ALkAAwAAAAEAAACZALkAAwABAAEAAAC7ALkAAwAAAAAAAADdALkAAwABAAAAAAABAbkAAwACAAAAAADaD1f/AQAAAAEAAAD/D1f/AQABAAEAAAAkEFf/AQACAAEAAABBEFf/AQABAAAAAABmEFf/AQACAAAAAAAbB73/AQAAAAEAAABAB73/AQABAAEAAABlB73/AQACAAEAAACKB73/AQABAAAAAACvB73/AQABAAEAAADUB73/AQACAAEAAAD5B73/AQABAAAAAAAeCL3/AQABAAEAAABDCL3/AQACAAEAAABoCL3/AQABAAAAAACNCL3/AQABAAEAAACyCL3/AQACAAEAAADXCL3/AQABAAAAAAD8CL3/AQABAAEAAAAhCb3/AQACAAEAAABGCb3/AQACAAAAAAD3CWH/AQAAAAEAAAD3CWL/AQAAAAEAAAAcCmH/AQABAAEAAAAcCmL/AQABAAEAAAA8CmH/AQACAAAAAAA8CmL/AQACAAAAAACWDMn/AQAAAAEAAAC7DMn/AQABAAEAAADgDMn/AQACAAEAAAAFDcn/AQACAAEAAAAqDcn/AQABAAAAAABPDcn/AQACAAAAAAALDnT/AQAAAAEAAAALDnX/AQAAAAEAAAAwDnT/AQABAAEAAAAwDnX/AQABAAEAAABQDnT/AQACAAAAAABQDnX/AQACAAAAAAD4Euz/AQAAAAEAAAAdE+z/AQABAAEAAABCE+z/AQACAAEAAABnE+z/AQACAAEAAACME+z/AQABAAAAAACxE+z/AQACAAAAAABtFJf/AQAAAAEAAABtFJj/AQAAAAEAAACSFJf/AQABAAEAAACSFJj/AQABAAEAAACyFJf/AQACAAAAAACyFJj/AQACAAAAAAA/FZT/AQAAAAEAAAA/FZX/AQAAAAEAAABkFZT/AQABAAEAAABkFZX/AQABAAEAAACEFZT/AQACAAAAAACEFZX/AQACAAAAAACjGcX/AQAAAAEAAADIGcX/AQABAAEAAADtGcX/AQACAAEAAAAKGsX/AQABAAAAAAAvGsX/AQACAAAAAAA=")
+tile_map_data = PackedByteArray("AABhAJUAAgAAAAAAAACGAJUAAgABAAEAAAB2ALkAAwAAAAEAAACZALkAAwABAAEAAAC7ALkAAwAAAAAAAADdALkAAwABAAAAAAABAbkAAwACAAAAAADaD1f/AQAAAAEAAAD/D1f/AQABAAEAAAAkEFf/AQACAAEAAABBEFf/AQABAAAAAABmEFf/AQACAAAAAAAbB73/AQAAAAEAAABAB73/AQABAAEAAABlB73/AQACAAEAAACKB73/AQABAAAAAACvB73/AQABAAEAAADUB73/AQACAAEAAAD5B73/AQABAAAAAAAeCL3/AQABAAEAAABDCL3/AQACAAEAAABoCL3/AQABAAAAAACNCL3/AQABAAEAAACyCL3/AQACAAEAAADXCL3/AQABAAAAAAD8CL3/AQABAAEAAAAhCb3/AQACAAEAAABGCb3/AQACAAAAAAD3CWH/AQAAAAEAAAD3CWL/AQAAAAEAAAAcCmH/AQABAAEAAAAcCmL/AQABAAEAAAA8CmH/AQACAAAAAAA8CmL/AQACAAAAAACWDMn/AQAAAAEAAAC7DMn/AQABAAEAAADgDMn/AQACAAEAAAAFDcn/AQACAAEAAAAqDcn/AQABAAAAAABPDcn/AQACAAAAAAALDnT/AQAAAAEAAAALDnX/AQAAAAEAAAAwDnT/AQABAAEAAAAwDnX/AQABAAEAAABQDnT/AQACAAAAAABQDnX/AQACAAAAAAD4Euz/AQAAAAEAAAAdE+z/AQABAAEAAABCE+z/AQACAAEAAABnE+z/AQACAAEAAACME+z/AQABAAAAAACxE+z/AQACAAAAAABtFJf/AQAAAAEAAABtFJj/AQAAAAEAAACSFJf/AQABAAEAAACSFJj/AQABAAEAAACyFJf/AQACAAAAAACyFJj/AQACAAAAAAA/FZT/AQAAAAEAAAA/FZX/AQAAAAEAAABkFZT/AQABAAEAAABkFZX/AQABAAEAAACEFZT/AQACAAAAAACEFZX/AQACAAAAAACjGcX/AQAAAAEAAADIGcX/AQABAAEAAADtGcX/AQACAAEAAAAKGsX/AQABAAAAAAAvGsX/AQACAAAAAACOI+n/AQAAAAEAAACOI+r/AQAAAAEAAACzI+n/AQABAAEAAACzI+r/AQABAAEAAADTI+n/AQACAAAAAADTI+r/AQACAAAAAACbIuv/AQAAAAEAAACbIuz/AQAAAAEAAADAIuv/AQABAAEAAADAIuz/AQABAAEAAADgIuv/AQACAAAAAADgIuz/AQACAAAAAAA=")
 tile_set = SubResource("TileSet_45e12")
 
 [node name="CheckpointFlower" parent="." instance=ExtResource("28_k6wof")]
@@ -637,7 +660,7 @@ offset = Vector2(0, 900)
 
 [node name="player" parent="." instance=ExtResource("39_bg6m8")]
 z_index = 5
-position = Vector2(-1380, 282)
+position = Vector2(-1400, 282)
 scale = Vector2(0.5, 0.5)
 shadow_path = NodePath("../Shadow")
 
@@ -653,56 +676,65 @@ position_smoothing_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
-[node name="Path2D" type="Path2D" parent="."]
-position = Vector2(4390, 490)
+[node name="Paths1" type="Node2D" parent="."]
+position = Vector2(6742, -294)
+
+[node name="Path2D" type="Path2D" parent="Paths1"]
+position = Vector2(-2242, 784)
 curve = SubResource("Curve2D_nsaye")
 script = ExtResource("27_2mgft")
 loop = false
 speed = 0.2
 speed_scale = 0.6
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Paths1/Path2D"]
 position = Vector2(0, 7)
 rotation = -0.009646
 rotates = false
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Paths1/Path2D/PathFollow2D"]
 remote_path = NodePath("../../AnimatableBody2D")
 
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Path2D"]
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Paths1/Path2D"]
 position = Vector2(0, 7)
 rotation = -0.009646
 scale = Vector2(0.99999994, 0.99999994)
 
-[node name="Sprite2D" type="Sprite2D" parent="Path2D/AnimatableBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Paths1/Path2D/AnimatableBody2D"]
 scale = Vector2(0.16, 0.16)
 texture = ExtResource("28_omctb")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/AnimatableBody2D"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Paths1/Path2D/AnimatableBody2D/Sprite2D"]
+show_behind_parent = true
+position = Vector2(85071.516, -523.18726)
+rotation = 0.009645999
+scale = Vector2(3.1250002, 3.1250002)
+occluder = SubResource("OccluderPolygon2D_gx4ae")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paths1/Path2D/AnimatableBody2D"]
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_ab58e")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Path2D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Paths1/Path2D"]
 libraries = {
 &"": SubResource("AnimationLibrary_hsak5")
 }
 
-[node name="Path2D3" parent="." instance=ExtResource("29_wwhd0")]
-position = Vector2(6742, -294)
+[node name="Path2D3" parent="Paths1" instance=ExtResource("29_wwhd0")]
 curve = SubResource("Curve2D_p0owv")
 loop = false
 speed = 0.2
 speed_scale = 0.6
 
-[node name="Path2D8" parent="." instance=ExtResource("29_wwhd0")]
-position = Vector2(12907, -523)
+[node name="Path2D8" parent="Paths1" instance=ExtResource("29_wwhd0")]
+position = Vector2(6165, -229)
 curve = SubResource("Curve2D_r8hxo")
 loop = false
 speed = 0.5
 speed_scale = 0.6
 
-[node name="Path2D6" parent="." instance=ExtResource("29_wwhd0")]
-position = Vector2(8931, -242)
+[node name="Path2D6" parent="Paths1" instance=ExtResource("29_wwhd0")]
+position = Vector2(2189, 52)
 curve = SubResource("Curve2D_r8hxo")
 loop = false
 speed = 0.5
@@ -739,6 +771,10 @@ position = Vector2(1311, 468)
 
 [node name="StaticBody2D5" parent="CollidersGroup3" instance=ExtResource("31_wxfsj")]
 position = Vector2(2088, 497)
+
+[node name="StaticBody2D7" parent="CollidersGroup3" instance=ExtResource("31_wxfsj")]
+position = Vector2(3369, 501)
+scale = Vector2(-1, 1)
 
 [node name="Stick" parent="CollidersGroup3" instance=ExtResource("36_h21sb")]
 position = Vector2(1395, 502)
@@ -819,22 +855,92 @@ position = Vector2(16000, 0)
 position = Vector2(-371, -66)
 shape = SubResource("RectangleShape2D_jxxm7")
 
-[node name="Path2D7" parent="." instance=ExtResource("29_wwhd0")]
-position = Vector2(10267, -294)
+[node name="CollidersGroup5 Platforms" type="Node2D" parent="."]
+position = Vector2(6368, -378)
+scale = Vector2(0.7, 0.7)
+
+[node name="StaticBody2D10" parent="CollidersGroup5 Platforms" instance=ExtResource("33_p0uu1")]
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="StaticBody2D2" parent="CollidersGroup5 Platforms" instance=ExtResource("33_p0uu1")]
+position = Vector2(7154.285, 387.14282)
+scale = Vector2(1.4285713, 1.4285713)
+
+[node name="StaticBody2D3" parent="CollidersGroup5 Platforms" instance=ExtResource("35_giaiy")]
+position = Vector2(7912.8555, -55.714294)
+scale = Vector2(1.4285713, 1.4285713)
+
+[node name="StaticBody2D4" parent="CollidersGroup5 Platforms" instance=ExtResource("34_qwcmd")]
+position = Vector2(11907.143, 39.99997)
+scale = Vector2(1.4285713, 1.4285713)
+
+[node name="Paths" type="Node2D" parent="."]
+position = Vector2(6368, -378)
+scale = Vector2(0.7, 0.7)
+
+[node name="Path2D7" parent="Paths" instance=ExtResource("29_wwhd0")]
+position = Vector2(5569.999, 119.99997)
+scale = Vector2(1.4285713, 1.4285713)
 curve = SubResource("Curve2D_po7p3")
 
-[node name="Path2D9" parent="." instance=ExtResource("29_wwhd0")]
-position = Vector2(13723, -482)
+[node name="Path2D9" parent="Paths" instance=ExtResource("29_wwhd0")]
+position = Vector2(10507.143, -148.57147)
+scale = Vector2(1.4285713, 1.4285713)
 curve = SubResource("Curve2D_po7p3")
 
-[node name="StaticBody2D2" parent="." instance=ExtResource("33_p0uu1")]
-position = Vector2(11376, -107)
+[node name="Path2D10" parent="Paths" instance=ExtResource("29_wwhd0")]
+position = Vector2(17474.285, -245.7143)
+scale = Vector2(1.4285713, 1.4285713)
+curve = SubResource("Curve2D_po7p3")
 
-[node name="StaticBody2D3" parent="." instance=ExtResource("35_giaiy")]
-position = Vector2(11907, -417)
+[node name="BossField" type="Node2D" parent="."]
+position = Vector2(6368, -378)
+scale = Vector2(0.7, 0.7)
 
-[node name="StaticBody2D4" parent="." instance=ExtResource("34_qwcmd")]
-position = Vector2(14703, -350)
+[node name="StaticBody2D3" parent="BossField" instance=ExtResource("34_qwcmd")]
+position = Vector2(13950, 1148.5714)
+
+[node name="StaticBody2D7" parent="BossField" instance=ExtResource("34_qwcmd")]
+position = Vector2(19164.285, 1191.4286)
+
+[node name="StaticBody2D12" parent="BossField" instance=ExtResource("34_qwcmd")]
+modulate = Color(0.41823784, 0.9049061, 0.7997385, 1)
+position = Vector2(16881.428, 1175.7142)
+scale = Vector2(1.2, 1.2)
+
+[node name="StaticBody2D8" parent="BossField" instance=ExtResource("34_qwcmd")]
+position = Vector2(18772.855, 301.42856)
+scale = Vector2(-0.79, 0.79)
+
+[node name="StaticBody2D5" parent="BossField" instance=ExtResource("31_wxfsj")]
+position = Vector2(14130, 1221.4286)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="StaticBody2D10" parent="BossField" instance=ExtResource("31_wxfsj")]
+position = Vector2(15785.715, 1287.143)
+scale = Vector2(-1, 1)
+
+[node name="StaticBody2D11" parent="BossField" instance=ExtResource("31_wxfsj")]
+position = Vector2(19534.287, 310)
+scale = Vector2(-1, 1)
+
+[node name="StaticBody2D13" parent="BossField" instance=ExtResource("31_wxfsj")]
+position = Vector2(19414.285, 361.4286)
+scale = Vector2(0.71, 0.71)
+
+[node name="StaticBody2D6" parent="BossField" instance=ExtResource("31_wxfsj")]
+position = Vector2(13768.571, 1221.4286)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Log" parent="BossField" instance=ExtResource("32_wjwmg")]
+position = Vector2(14005.715, 1385.7142)
+scale = Vector2(1.5, 1.5)
+
+[node name="StaticBody2D2" parent="BossField" instance=ExtResource("33_p0uu1")]
+position = Vector2(14599.999, 1404.2856)
+
+[node name="StaticBody2D9" parent="BossField" instance=ExtResource("33_p0uu1")]
+position = Vector2(16904.285, 1380)
 
 [node name="Merchant" parent="." instance=ExtResource("42_6veax")]
 position = Vector2(14790, -232)
@@ -849,17 +955,24 @@ position = Vector2(11270, -110)
 scale = Vector2(0.95, 0.95)
 
 [node name="JumpPad" parent="." instance=ExtResource("44_q51h0")]
-position = Vector2(6169, 600)
+position = Vector2(6763, 591)
+
+[node name="JumpPad3" parent="." instance=ExtResource("44_q51h0")]
+position = Vector2(10842, 591)
+
+[node name="JumpPad2" parent="." instance=ExtResource("44_q51h0")]
+position = Vector2(19820, 591)
 
 [node name="Boss Dialogue Area" type="Area2D" parent="."]
 position = Vector2(6288, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boss Dialogue Area"]
-position = Vector2(11562, 438)
+position = Vector2(11887, 61)
 shape = SubResource("RectangleShape2D_hesmo")
 
 [node name="Kingstar" parent="." instance=ExtResource("45_vyw26")]
-position = Vector2(18291, 348)
+modulate = Color(0.72156864, 0.8117647, 0.57254905, 1)
+position = Vector2(18610, 344)
 scale = Vector2(0.6, 0.6)
 
 [connection signal="flood_finished" from="Trash Flood" to="." method="_on_trash_flood_flood_finished"]

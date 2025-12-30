@@ -37,10 +37,6 @@ func fade_out_screen():
 	tween.tween_property(screen_fade, "color:a", 0.0, 1.5)
 	await tween.finished
 
-# OUTRO PARTTTTTTTTTT
-func _on_boss_died() -> void:
-	get_tree().change_scene_to_file.call_deferred("res://scenes/Main Scenes/ending.tscn")
-
 func start_dialogue(title: String, make_player_movable: bool, balloon):
 	GameManager.set_player_movable(make_player_movable)
 

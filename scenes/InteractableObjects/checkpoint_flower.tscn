@@ -390,7 +390,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ct7lq"]
-size = Vector2(97, 288)
+size = Vector2(97, 812)
 
 [node name="CheckpointFlower" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_5hycy")
@@ -400,7 +400,7 @@ script = ExtResource("82_ct7lq")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0.5, -18)
+position = Vector2(0.5, -280)
 shape = SubResource("RectangleShape2D_ct7lq")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

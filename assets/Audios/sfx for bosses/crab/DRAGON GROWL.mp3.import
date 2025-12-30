@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://coh1p4uytq3gk"
+path="res://.godot/imported/DRAGON GROWL.mp3-182f3ae61f9529960531e9817c8ee4a3.mp3str"
+
+[deps]
+
+source_file="res://assets/Audios/sfx for bosses/crab/DRAGON GROWL.mp3"
+dest_files=["res://.godot/imported/DRAGON GROWL.mp3-182f3ae61f9529960531e9817c8ee4a3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

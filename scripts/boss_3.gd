@@ -11,8 +11,11 @@ const CHASE_DURATION = 5.0
 const LIGHTS_OFF_DURATION = 15.0
 const ATTACK_DURATION = 1.0
 
+var boss_dialogue_resource: DialogueResource = preload("res://dialogues/boss.dialogue")
+var boss_balloon_scene = preload("res://balloons/Boss2Balloon2.tscn")
+
 # Attack and detection ranges
-const ATTACK_RANGE = 200.0
+const ATTACK_RANGE = 150.0
 
 # Node references
 @onready var animated_sprite = $SpriteNode/AnimatedSprite2D
@@ -39,7 +42,7 @@ var distance_traveled = 0
 # Boss stats
 @export var max_hp = 100
 var current_hp = max_hp
-const DAMAGE_PER_HIT = 25
+const DAMAGE_PER_HIT = 20
 
 # Attack cycle tracking
 var chase_cycle_count = 0
@@ -127,12 +130,14 @@ func update_raycast_direction():
 	wall_ray.force_raycast_update()
 
 func change_state(new_state: State):
+	if current_state == State.DEATH:
+		return
+	
 	if current_state == new_state:
 		return
 	
 	# Exit current state logic
 	if current_state == State.LIGHTS_OFF and new_state != State.ATTACK:
-		# Huwag i-on ang lights kung lilipat lang sa ATTACK
 		if new_state != State.ATTACK:
 			turn_lights_on()
 	
@@ -177,16 +182,20 @@ func change_state(new_state: State):
 			# Disable back hitbox - not vulnerable
 			back_hurtbox.set_deferred("monitoring", false)
 			back_hurtbox.set_deferred("monitorable", false)
+			if chase_cycle_count == 1:
+				start_dialogue("p2_fighting")
 		State.LIGHTS_OFF:
 			print("Entering LIGHTS_OFF")
 			turn_lights_off()
 			# Disable back hitbox
 			back_hurtbox.set_deferred("monitoring", false)
 			back_hurtbox.set_deferred("monitorable", false)
+			start_dialogue("p2_dark")
 		State.ATTACK:
 			print("Entering ATTACK")
 			velocity.x = 0
 			animated_sprite.play("attack")
+			$"../BGM3".play()
 		State.DEATH:
 			print("Entering DEATH")
 			_enter_death_state()
@@ -328,6 +337,10 @@ func _handle_attack_state(delta):
 		lights_off_timer += delta
 
 	if state_timer >= ATTACK_DURATION:
+		if current_hp <= 0:
+			change_state(State.DEATH)
+			return
+		
 		print("Attack finished → Returning to ", State.keys()[state_before_attack])
 		current_state = state_before_attack
 		state_timer = 0.0
@@ -355,8 +368,7 @@ func turn_lights_off():
 	print("Lights OFF")
 	lights_on = false
 	
-	if canvas_modulate:
-		canvas_modulate.color = Color.DIM_GRAY
+	canvas_modulate.color = Color("525252ff")
 	
 	anglerfish_light.enabled = true
 	anglerfish_light.energy = 1.5
@@ -369,8 +381,7 @@ func turn_lights_on():
 	print("Lights ON")
 	lights_on = true
 	
-	if canvas_modulate:
-		canvas_modulate.color = Color.WHITE
+	canvas_modulate.color = Color("959595ff")
 	
 	anglerfish_light.enabled = false
 	
@@ -383,7 +394,7 @@ func update_light_detector_size(lights_on_state: bool):
 	
 	var shape = light_detection_shape.shape
 	if lights_on_state:
-		shape.size = Vector2(2900, 1425)
+		shape.size = Vector2(2135, 1425)
 	else:
 		shape.size = Vector2(975, 1425)
 
@@ -424,7 +435,9 @@ func _enter_death_state():
 	back_hurtbox.set_deferred("monitorable", false)
 	light_detection.set_deferred("monitoring", false)
 	light_detection.set_deferred("monitorable", false)
-	
+	start_dialogue("p2_end")
+	$SpriteNode/BackHitbox.queue_free()
+	$SpriteNode/LightDetectionArea.queue_free()
 	print("=== BOSS DIED ===")
 
 # ============================================================
@@ -468,3 +481,23 @@ func _on_light_detection_area_body_entered(body: Node2D) -> void:
 		print("Player entered")
 		canvas_layer.visible = true 
 		change_state(State.CHASE)
+
+# ============================================================
+# DIALOGUE
+# ============================================================
+func start_dialogue(title: String):
+	var balloon_instance = boss_balloon_scene.instantiate()
+	get_tree().current_scene.add_child(balloon_instance)
+	
+	# Connect dialogue finished signal once
+	if not DialogueManager.dialogue_ended.is_connected(_on_dialogue_ended):
+		DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
+
+	balloon_instance.start(boss_dialogue_resource, title)
+
+func _on_dialogue_ended(_resource):
+	DialogueManager.dialogue_ended.disconnect(_on_dialogue_ended)
+	
+	if current_state == State.DEATH:
+		await $"..".fade_in_screen()
+		GameManager.load_to_scene("res://scenes/Main Scenes/3rd_scene.tscn")

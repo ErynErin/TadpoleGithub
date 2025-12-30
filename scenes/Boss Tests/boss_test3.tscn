@@ -84,6 +84,7 @@ texture = ExtResource("4_of1b3")
 [node name="Lighting" type="CanvasModulate" parent="."]
 light_mask = 0
 visibility_layer = 0
+color = Color(0.58431375, 0.58431375, 0.58431375, 1)
 
 [node name="JuiceBox" parent="." instance=ExtResource("5_pp3yt")]
 position = Vector2(-1883.0001, 602)

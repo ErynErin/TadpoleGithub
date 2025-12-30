@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://1xrdny8bdyyc"]
+[gd_scene load_steps=8 format=3 uid="uid://1xrdny8bdyyc"]
 
 [ext_resource type="Script" uid="uid://c7b6yy075t0a2" path="res://scenes/Colliders/p_1_moving.gd" id="1_m2xsi"]
 [ext_resource type="Texture2D" uid="uid://biwg361wkgfx4" path="res://scenes/Platforms/p1-moving-asset.svg" id="2_d8qga"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ukqqx"]
+polygon = PackedVector2Array(-685.1772, -244.12048, 646.0713, -237.52916, 776.65204, -167.51633, 850.98535, -98.04609, 881.57074, -28.99785, 893.2865, 52.368946, 873.63306, 145.93373, 829.28217, 208.00882, 772.7937, 232.46509, -783.5649, 236.20285, -827.0114, 204.5323, -876.4665, 147.80261, -881.14874, -14.750116, -849.1165, -95.69491, -792.206, -163.89912)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ab58e"]
 radius = 40.0
@@ -63,6 +66,9 @@ scale = Vector2(0.99999994, 0.99999994)
 [node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
 scale = Vector2(0.16, 0.16)
 texture = ExtResource("2_d8qga")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="AnimatableBody2D/Sprite2D"]
+occluder = SubResource("OccluderPolygon2D_ukqqx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
 rotation = -1.5708

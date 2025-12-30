@@ -84,7 +84,7 @@ func _on_spawn_timer_timeout() -> void:
 	var max_scale: float = 2.6
 
 	var normalized_depth: float = inverse_lerp(max_scale, min_scale, base_scale)
-	var blur_strength: float = lerp(0.0, 4.5, normalized_depth)
+	var blur_strength: float = lerp(0.5, 5.0, normalized_depth)
 
 	var shader_mat: ShaderMaterial = fish_instance.material as ShaderMaterial
 	shader_mat.set_shader_parameter("blur_strength", blur_strength)
