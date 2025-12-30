@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://fcipy7tw0uuv"
+path="res://.godot/imported/splat.mp3-8e5765f97af4b2ca9c1efbd72fff9102.mp3str"
+
+[deps]
+
+source_file="res://assets/Audios/sfx for bosses/squid/splat.mp3"
+dest_files=["res://.godot/imported/splat.mp3-8e5765f97af4b2ca9c1efbd72fff9102.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

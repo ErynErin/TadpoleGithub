@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d4a75cu7ebxjb"
+path="res://.godot/imported/T.REX ROAR - Sound Design - Pierre Mendola 4.mp3-5ef3ac3ea618703cc71b3d9c4a3db6d0.mp3str"
+
+[deps]
+
+source_file="res://assets/Audios/sfx for bosses/crab/T.REX ROAR - Sound Design - Pierre Mendola 4.mp3"
+dest_files=["res://.godot/imported/T.REX ROAR - Sound Design - Pierre Mendola 4.mp3-5ef3ac3ea618703cc71b3d9c4a3db6d0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

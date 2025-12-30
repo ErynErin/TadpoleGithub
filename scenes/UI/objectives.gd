@@ -39,7 +39,7 @@ func _ready():
 			b_2_check_box.visible = false
 			m_check_box.visible = true
 			t_check_box.visible = false
-			c_label.visible = true
+			c_label.visible = true			
 		3:
 			c_check_box.visible = false
 			b_1_check_box.visible = false

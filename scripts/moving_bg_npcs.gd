@@ -2,15 +2,22 @@ extends Node2D
 
 @export var fish_scenes: Array[PackedScene]
 @onready var spawn_timer: Timer = $SpawnTimer
-var spawn_from_right: bool 
+var spawn_from_right: bool
 var current_stage: int
 
 @export var screen_width: float = 27000.0
 @export var screen_height: float = 2162.0
 
+var current_fish_index: int = 0
+
 func _ready() -> void:
 	if not spawn_timer.timeout.is_connected(_on_spawn_timer_timeout):
 		spawn_timer.timeout.connect(_on_spawn_timer_timeout)
+		
+	randomize()
+	if not fish_scenes.is_empty():
+		current_fish_index = randi() % fish_scenes.size()
+		
 	start_fish_swarm()
 	spawn_from_right = true
 	current_stage = GameManager.phase_num
@@ -23,8 +30,14 @@ func _on_spawn_timer_timeout() -> void:
 	if fish_scenes.is_empty(): return
 
 	# Select Fish Type
-	var fish_index: int = randi() % fish_scenes.size()
+	var fish_index = current_fish_index
+	current_fish_index = (current_fish_index + 1) % fish_scenes.size()
 	var fish_instance = fish_scenes[fish_index].instantiate()
+	
+	var mat: ShaderMaterial = ShaderMaterial.new()
+	mat.shader = preload("res://scenes/Moving BG NPCs/blur.gdshader")
+	fish_instance.material = mat
+
 	
 	if fish_instance is AnimatedSprite2D:
 		var fish_name: String = ""
@@ -57,7 +70,7 @@ func _on_spawn_timer_timeout() -> void:
 	# Scaling logic
 	var base_scale: float = 0.0
 	if fish_index == 2:
-		base_scale = randf_range(2.5, 3.0) # Big fish
+		base_scale = randf_range(1.5, 2.6) # Big fish
 	else:
 		base_scale = randf_range(1.2, 2.5) # Small fish
 	
@@ -66,10 +79,22 @@ func _on_spawn_timer_timeout() -> void:
 	else:
 		fish_instance.scale = Vector2(base_scale * direction_multiplier, base_scale)
 
+	# Depth-based blur
+	var min_scale: float = 1.2
+	var max_scale: float = 2.6
+
+	var normalized_depth: float = inverse_lerp(max_scale, min_scale, base_scale)
+	var blur_strength: float = lerp(0.5, 5.0, normalized_depth)
+
+	var shader_mat: ShaderMaterial = fish_instance.material as ShaderMaterial
+	shader_mat.set_shader_parameter("blur_strength", blur_strength)
+
+	fish_instance.modulate.a = lerp(1.0, 0.55, normalized_depth)
+
 	# Slow Movement Logic
 	add_child(fish_instance)
 	var tween = create_tween()
-	var duration: float = randf_range(70, 100) 
+	var duration: float = randf_range(70, 100)
 	
 	spawn_from_right = !spawn_from_right # alternate spawning sides
 	

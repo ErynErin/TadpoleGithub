@@ -112,7 +112,7 @@ theme_override_constants/separation = 30
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_5o4qr")
 theme_override_font_sizes/font_size = 60
-text = "Scornus Health"
+text = "Voltaire"
 horizontal_alignment = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/VBoxContainer"]
@@ -127,12 +127,12 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-656, 95.5)
+position = Vector2(-750, 95.5)
 shape = SubResource("RectangleShape2D_5o4qr")
 disabled = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(696, 95.5)
+position = Vector2(750, 95.5)
 shape = SubResource("RectangleShape2D_5o4qr")
 disabled = true
 

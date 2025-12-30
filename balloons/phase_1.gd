@@ -1,7 +1,7 @@
 extends AnimatedSprite2D
 
 # The full scene file path to check against
-const TARGET_SCENE_PATH: String = "res://scenes/Main Scenes/nursery_scene.tscn"
+const TARGET_SCENE_PATH: String = "res://scenes/Main Scenes/1st_scene.tscn"
 
 func _ready() -> void:
 	update_visibility()

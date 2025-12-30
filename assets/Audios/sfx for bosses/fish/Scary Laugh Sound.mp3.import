@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bgigcliw584je"
+path="res://.godot/imported/Scary Laugh Sound.mp3-4423a9a16984ad9cf06941314fc14d35.mp3str"
+
+[deps]
+
+source_file="res://assets/Audios/sfx for bosses/fish/Scary Laugh Sound.mp3"
+dest_files=["res://.godot/imported/Scary Laugh Sound.mp3-4423a9a16984ad9cf06941314fc14d35.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

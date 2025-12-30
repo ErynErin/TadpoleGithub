@@ -12,15 +12,22 @@
 : There might be more enemies around here and they'll start attacking if they see you.
 : Don't forget to eat and heal up![wait=1] Be careful.
 
-~ trash_flood
-: Trash_flood!
+~ turtle
+Turtle: Yooo waSsUp! You new here?
+- Hi! You look really cool!
+- What’s that on your body?
+Turtle: Oh this treasure? Well I was swimmin then it got stuck on my mouth, so now I can blow bubbles out of it.
+Turtle: Cool isn’t it?
 => END
 
-~ boss_opening
-Scornus: squeeeakk squeeakk
-Scornus: There’s someone in here?
-Scornus: I’m pretty sure I shut off all corners of my area though..
-Scornus: I really hate it when someone thinks they can go near here.
-Scornus: Well I guess that just means one thing.
-Scornus: I can just eat you up.[wait=1] It’s time for dinner anyway!
+~ trash_flood
+: Trash flood!
+=> END
+
+~ minigame_start
+System: Careful! You’ve entered the Manawari Cave, an area full of flesh-eating creatures ready to come at you any moment. Watch out for the falling objects too!
+=> END
+
+~ minigame_end
+System: You survived! 
 => END

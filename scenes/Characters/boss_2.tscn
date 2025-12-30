@@ -1,7 +1,7 @@
-[gd_scene load_steps=45 format=3 uid="uid://tg2fgqghhh5c"]
+[gd_scene load_steps=50 format=3 uid="uid://tg2fgqghhh5c"]
 
 [ext_resource type="Texture2D" uid="uid://upsvvtfj213" path="res://assets/Characters/Squid/DEATHSQUID/DEATHSQUID_0000.png" id="1_3rxdx"]
-[ext_resource type="Script" uid="uid://b54dul470kn3f" path="res://scenes/Characters/squid.gd" id="1_osqvv"]
+[ext_resource type="Script" uid="uid://b54dul470kn3f" path="res://scenes/Characters/boss_2.gd" id="1_osqvv"]
 [ext_resource type="Texture2D" uid="uid://2t1fafkwx6cu" path="res://assets/Characters/Squid/DEATHSQUID/DEATHSQUID_0001.png" id="2_kb62t"]
 [ext_resource type="Texture2D" uid="uid://dkobpwvo4fe5k" path="res://assets/Characters/Squid/DEATHSQUID/DEATHSQUID_0002.png" id="3_4xl3b"]
 [ext_resource type="Texture2D" uid="uid://b6k2t5fiirbib" path="res://assets/Characters/Squid/DEATHSQUID/DEATHSQUID_0003.png" id="4_uw1t7"]
@@ -37,6 +37,11 @@
 [ext_resource type="Texture2D" uid="uid://dk6pvn3vcjqgw" path="res://assets/Characters/Squid/SQUID/Squid_IDLE_0012.png" id="28_vaklv"]
 [ext_resource type="Texture2D" uid="uid://bkim37ua7crcy" path="res://assets/Characters/Squid/SQUID/Squid_IDLE_0013.png" id="29_cq7rq"]
 [ext_resource type="Texture2D" uid="uid://4r0bh3udy14u" path="res://assets/Characters/Squid/SQUID/Squid_IDLE_0014.png" id="30_va7aa"]
+[ext_resource type="AudioStream" uid="uid://cjdt113gcder6" path="res://assets/Audios/sfx for bosses/squid/rubber-tire-screech-5-202579.mp3" id="39_gli2l"]
+[ext_resource type="AudioStream" uid="uid://4ay0pwqxhoa6" path="res://assets/Audios/sfx for bosses/squid/ball projectile.mp3" id="40_gli2l"]
+[ext_resource type="AudioStream" uid="uid://fcipy7tw0uuv" path="res://assets/Audios/sfx for bosses/squid/splat.mp3" id="41_fb3uo"]
+[ext_resource type="AudioStream" uid="uid://b13ltc8wyd4s3" path="res://assets/Audios/sfx for bosses/squid/hit boss.mp3" id="42_8ksrf"]
+[ext_resource type="AudioStream" uid="uid://bujqajwkj5ffh" path="res://assets/Audios/sfx for bosses/squid/1230.MP3" id="43_gli2l"]
 [ext_resource type="Script" uid="uid://dktsel320mpw7" path="res://scripts/hurtbox.gd" id="50_osqvv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1he7j"]
@@ -270,7 +275,7 @@ autoplay = "idle"
 [node name="PlayerDetector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
-position = Vector2(-482.5, 118)
+position = Vector2(-649, 118)
 shape = SubResource("RectangleShape2D_xok1n")
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
@@ -290,6 +295,30 @@ offset_right = 76.0
 offset_bottom = -235.0
 theme_override_font_sizes/font_size = 50
 text = "debug"
+
+[node name="Screech" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("39_gli2l")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="Ball" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("40_gli2l")
+bus = &"SFX"
+
+[node name="Ink" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("41_fb3uo")
+volume_db = -4.0
+bus = &"SFX"
+
+[node name="Hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("42_8ksrf")
+bus = &"SFX"
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("43_gli2l")
+volume_db = -10.0
+bus = &"Background Music"
+parameters/looping = true
 
 [connection signal="area_entered" from="Pivot/HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]

@@ -1,0 +1,103 @@
+[gd_scene load_steps=8 format=3 uid="uid://bk7s314sdlkvy"]
+
+[ext_resource type="Script" uid="uid://bsuo5draq2jgd" path="res://balloons/balloon.gd" id="1_ivs7a"]
+[ext_resource type="Texture2D" uid="uid://dt2obvvo2q08g" path="res://assets/GUI/Dialogue Boxes/fishdb.PNG" id="13_sotek"]
+[ext_resource type="Theme" uid="uid://bxycdq0lkine8" path="res://balloonthemehuhu.tres" id="14_dyxut"]
+[ext_resource type="FontFile" uid="uid://chvpvepqarnv6" path="res://assets/Fonts/Tedtadpole-Regular.ttf" id="15_3l04g"]
+[ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="16_qyaqu"]
+[ext_resource type="Theme" uid="uid://c72lgfdpdpscu" path="res://teddialoguebutton.tres" id="17_fmdgx"]
+[ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="18_6a3wp"]
+
+[node name="BossBalloon" type="CanvasLayer"]
+layer = 100
+script = ExtResource("1_ivs7a")
+
+[node name="Custom Balloon" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -714.0
+offset_top = -817.0
+offset_right = 1206.0
+offset_bottom = 263.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.755, 0.755)
+texture = ExtResource("13_sotek")
+
+[node name="Balloon" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 246.0
+offset_top = -277.0
+offset_right = 246.0
+offset_bottom = -277.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.755, 0.755)
+theme = ExtResource("14_dyxut")
+
+[node name="CharacterLabel" type="RichTextLabel" parent="Balloon"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 0
+offset_left = 481.0
+offset_top = 691.12427
+offset_right = 673.0
+offset_bottom = 759.12427
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = -10
+theme_override_fonts/normal_font = ExtResource("15_3l04g")
+theme_override_font_sizes/normal_font_size = 43
+bbcode_enabled = true
+text = "Falsestar Temptress"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="DialogueLabel" parent="Balloon" instance=ExtResource("16_qyaqu")]
+unique_name_in_owner = true
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = 456.0
+offset_top = 818.0
+offset_right = 1457.0
+offset_bottom = 992.0
+grow_horizontal = 1
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("15_3l04g")
+theme_override_font_sizes/normal_font_size = 40
+text = "Dialogue..."
+
+[node name="ResponsesMenu" type="VBoxContainer" parent="Balloon" node_paths=PackedStringArray("response_template")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -515.009
+offset_top = 353.721
+offset_right = 65.9912
+offset_bottom = 423.721
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+theme = ExtResource("17_fmdgx")
+theme_override_constants/separation = 2
+alignment = 1
+script = ExtResource("18_6a3wp")
+response_template = NodePath("ResponseExample")
+
+[node name="ResponseExample" type="Button" parent="Balloon/ResponsesMenu"]
+layout_mode = 2
+text = "Response example"

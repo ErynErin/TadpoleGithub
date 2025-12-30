@@ -1,6 +1,6 @@
-[gd_scene load_steps=58 format=4 uid="uid://cfv4f6bi46hrx"]
+[gd_scene load_steps=61 format=4 uid="uid://cfv4f6bi46hrx"]
 
-[ext_resource type="Script" uid="uid://bht730yy73mmk" path="res://scenes/Main Scenes/2_nd_scene.gd" id="1_3xvx2"]
+[ext_resource type="Script" uid="uid://bht730yy73mmk" path="res://scenes/Main Scenes/2nd_scene.gd" id="1_3xvx2"]
 [ext_resource type="Shader" uid="uid://bwnej1yl2rc5h" path="res://watershader.gdshader" id="6_42ul7"]
 [ext_resource type="Texture2D" uid="uid://cdbvoy6qxhbpt" path="res://assets/BG/Phase 2/6.png" id="6_lny5s"]
 [ext_resource type="Texture2D" uid="uid://cc6aiqta7j02x" path="res://assets/BG/Phase 2/1.png" id="7_aqdem"]
@@ -35,9 +35,12 @@
 [ext_resource type="PackedScene" uid="uid://blvil0vgakf4g" path="res://scenes/Colliders/colliderP2_1.tscn" id="26_f1wsw"]
 [ext_resource type="PackedScene" uid="uid://d0non4l3cian2" path="res://scenes/Colliders/colliderP2_2.tscn" id="27_c7qhk"]
 [ext_resource type="PackedScene" uid="uid://d38gbeoyt7da5" path="res://scenes/Characters/turtle.tscn" id="29_d0pof"]
+[ext_resource type="PackedScene" uid="uid://cg4hf3ye5wijf" path="res://scenes/InteractableObjects/checkpoint_flower.tscn" id="30_6gasr"]
 [ext_resource type="PackedScene" uid="uid://8cmfe7p7qtwt" path="res://scenes/Colliders/p2-moving.tscn" id="31_ce7ql"]
 [ext_resource type="PackedScene" uid="uid://bd2nsvjgw1m62" path="res://scenes/Trash Flood/trash_flood.tscn" id="35_lny5s"]
+[ext_resource type="Texture2D" uid="uid://dwlrwp06gq2rf" path="res://assets/blurred circle.png" id="36_mh7sn"]
 [ext_resource type="PackedScene" uid="uid://c7c0kwribi2cr" path="res://scenes/Platforms/jump_pad_p2.tscn" id="39_mh7sn"]
+[ext_resource type="Texture2D" uid="uid://curvnwkia2ts7" path="res://assets/BG/Minigame/cave outside.png" id="41_6gasr"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_lny5s"]
 noise_type = 2
@@ -54,6 +57,7 @@ seamless_blend_skirt = 0.61
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5l5e4"]
 shader = ExtResource("6_42ul7")
 shader_parameter/color = Color(0.4, 0.521569, 0.282353, 0.121569)
+shader_parameter/brightness = -0.11399995791499996
 shader_parameter/fast_noise = SubResource("NoiseTexture2D_42ul7")
 shader_parameter/speed = Vector2(0.07, 0.07)
 shader_parameter/wave_strength = 2.0
@@ -65,15 +69,6 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_goyj0"]
 bg_color = Color(1, 0.321569, 0.364706, 1)
-
-[sub_resource type="Gradient" id="Gradient_bf605"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_lny5s"]
-gradient = SubResource("Gradient_bf605")
-fill = 1
-fill_from = Vector2(0.469512, 0.490854)
-fill_to = Vector2(0.765244, 0.756098)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vksdc"]
 distance = 122.738
@@ -105,6 +100,15 @@ texture_region_size = Vector2i(600, 600)
 [sub_resource type="TileSet" id="TileSet_goyj0"]
 physics_layer_0/collision_layer = 15
 sources/1 = SubResource("TileSetAtlasSource_6u0xl")
+
+[sub_resource type="Gradient" id="Gradient_88inl"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lny5s"]
+gradient = SubResource("Gradient_88inl")
+fill = 1
+fill_from = Vector2(0.469512, 0.490854)
+fill_to = Vector2(0.765244, 0.756098)
 
 [sub_resource type="Curve2D" id="Curve2D_ce7ql"]
 _data = {
@@ -145,6 +149,7 @@ motion_scale = Vector2(0.1, 1)
 motion_mirroring = Vector2(4096, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground2/ParallaxLayer"]
+position = Vector2(0, -42.666626)
 scale = Vector2(1.6, 1.6)
 texture = ExtResource("7_aqdem")
 
@@ -153,7 +158,7 @@ motion_scale = Vector2(0.1, 1)
 motion_mirroring = Vector2(4096, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground2/ParallaxLayer6"]
-position = Vector2(2048, 0)
+position = Vector2(2048, -42.666626)
 scale = Vector2(1.6, 1.6)
 texture = ExtResource("7_aqdem")
 flip_h = true
@@ -163,6 +168,7 @@ motion_scale = Vector2(0.3, 1)
 motion_mirroring = Vector2(4096, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground2/ParallaxLayer2"]
+position = Vector2(0, -42.666626)
 scale = Vector2(1.6, 1.6)
 texture = ExtResource("8_w82rq")
 
@@ -171,7 +177,7 @@ motion_scale = Vector2(0.3, 1)
 motion_mirroring = Vector2(4096, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground2/ParallaxLayer8"]
-position = Vector2(2048, 0)
+position = Vector2(2048, -42.666626)
 scale = Vector2(1.6, 1.6)
 texture = ExtResource("8_w82rq")
 flip_h = true
@@ -181,7 +187,7 @@ motion_scale = Vector2(0.4, 1)
 motion_mirroring = Vector2(4096, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground2/ParallaxLayer3"]
-position = Vector2(133.333, 0)
+position = Vector2(133.333, -42.666626)
 scale = Vector2(1.80833, 1.6)
 texture = ExtResource("9_rjjk6")
 
@@ -190,7 +196,7 @@ motion_scale = Vector2(0.4, 1)
 motion_mirroring = Vector2(4096, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground2/ParallaxLayer9"]
-position = Vector2(2048, -100)
+position = Vector2(2048, -42.667)
 scale = Vector2(1.6, 1.6)
 texture = ExtResource("9_rjjk6")
 flip_h = true
@@ -200,7 +206,8 @@ motion_scale = Vector2(0.6, 1)
 motion_mirroring = Vector2(4096, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground2/ParallaxLayer4"]
-scale = Vector2(1.6, 1.6)
+position = Vector2(0, 70)
+scale = Vector2(2.1, 2.1)
 texture = ExtResource("10_plhnw")
 
 [node name="ParallaxLayer10" type="ParallaxLayer" parent="Parallax2D/ParallaxBackground2"]
@@ -208,8 +215,8 @@ motion_scale = Vector2(0.6, 1)
 motion_mirroring = Vector2(4096, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground2/ParallaxLayer10"]
-position = Vector2(2048, 0)
-scale = Vector2(1.6, 1.6)
+position = Vector2(2500, 70)
+scale = Vector2(2.1, 2.1)
 texture = ExtResource("10_plhnw")
 flip_h = true
 
@@ -218,6 +225,7 @@ motion_scale = Vector2(0.8, 1)
 motion_mirroring = Vector2(4096, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground2/ParallaxLayer5"]
+position = Vector2(0, -42.666626)
 scale = Vector2(1.6, 1.6)
 texture = ExtResource("11_t7lwq")
 
@@ -226,18 +234,14 @@ motion_scale = Vector2(0.8, 1)
 motion_mirroring = Vector2(4096, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/ParallaxBackground2/ParallaxLayer11"]
-position = Vector2(2048, 0)
+position = Vector2(2048, -42.666626)
 scale = Vector2(1.6, 1.6)
 texture = ExtResource("11_t7lwq")
 flip_h = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_repeat = 2
-position = Vector2(0, 26)
-scale = Vector2(2.4, 2.4)
-texture = ExtResource("6_lny5s")
-region_enabled = true
-region_rect = Rect2(0, 0, 15000, 720)
+[node name="Moving BG NPCs" parent="." instance=ExtResource("10_07et6")]
+position = Vector2(-4840, -1182)
+scale = Vector2(0.845, 0.845)
 
 [node name="Shader" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_5l5e4")
@@ -248,12 +252,16 @@ texture = ExtResource("7_rrk3c")
 region_enabled = true
 region_rect = Rect2(0, 0, 10000, 1000)
 
-[node name="Moving BG NPCs" parent="." instance=ExtResource("10_07et6")]
-position = Vector2(-4840, -1182)
-scale = Vector2(0.845, 0.845)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
+scale = Vector2(2.4, 2.4)
+texture = ExtResource("6_lny5s")
+region_enabled = true
+region_rect = Rect2(0, 0, 15000, 720)
 
 [node name="GUI" type="CanvasLayer" parent="."]
 layer = 10
+visible = false
 scale = Vector2(0.6, 0.6)
 transform = Transform2D(0.6, 0, 0, 0.6, 0, 0)
 
@@ -306,24 +314,11 @@ script = ExtResource("14_c37bx")
 anchors_preset = -1
 scale = Vector2(1.67, 1.67)
 
-[node name="Pause Menu" parent="GUI" instance=ExtResource("15_2npaq")]
-process_mode = 1
-visible = false
-z_index = 10
-offset_right = 958.0
-offset_bottom = 546.0
-scale = Vector2(1.11, 1.11)
-
-[node name="Options" parent="GUI" instance=ExtResource("15_3xvx2")]
-visible = false
-scale = Vector2(1.67, 1.67)
-
 [node name="merchant shop" parent="GUI" instance=ExtResource("14_dwpsk")]
 visible = false
 scale = Vector2(1.67, 1.67)
 
 [node name="ScreenFade" type="ColorRect" parent="GUI"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -331,6 +326,17 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.67, 1.67)
 color = Color(0, 0, 0, 1)
+
+[node name="Pause Menu" parent="GUI" instance=ExtResource("15_2npaq")]
+process_mode = 1
+visible = false
+offset_right = 958.0
+offset_bottom = 546.0
+scale = Vector2(1.11, 1.11)
+
+[node name="Options" parent="GUI" instance=ExtResource("15_3xvx2")]
+visible = false
+scale = Vector2(1.67, 1.67)
 
 [node name="Food" type="Node2D" parent="."]
 position = Vector2(0, 200)
@@ -367,31 +373,7 @@ scale = Vector2(1.3, 1.3)
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(-1082.08, 27.6356)
 scale = Vector2(3.92913, 4.3)
-color = Color(0.726731, 0.726732, 0.726732, 1)
-
-[node name="player" parent="." instance=ExtResource("17_ysw53")]
-z_index = 5
-position = Vector2(-1080.36, 58.5956)
-scale = Vector2(0.43, 0.43)
-
-[node name="Camera2D2" type="Camera2D" parent="player"]
-position = Vector2(-43.9999, 742)
-scale = Vector2(0.3, 0.3)
-offset = Vector2(0, -400)
-process_callback = 0
-limit_top = -200
-limit_bottom = 1200
-limit_smoothed = true
-position_smoothing_enabled = true
-editor_draw_limits = true
-editor_draw_drag_margin = true
-
-[node name="PointLight2D" type="PointLight2D" parent="player/Camera2D2"]
-position = Vector2(133.333, -2713.33)
-scale = Vector2(30.4583, 33.3333)
-energy = 0.3
-texture = SubResource("GradientTexture2D_lny5s")
-texture_scale = 0.68
+color = Color(0.58431375, 0.58431375, 0.58431375, 1)
 
 [node name="Parallax2D2" type="Parallax2D" parent="."]
 
@@ -404,8 +386,10 @@ motion_scale = Vector2(1.1, 1)
 motion_mirroring = Vector2(4096, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D2/ParallaxBackground/ParallaxLayer7"]
+modulate = Color(0.69965345, 0.6996535, 0.69965315, 1)
 z_index = 6
-scale = Vector2(1.6, 1.6)
+position = Vector2(0, -150)
+scale = Vector2(2, 2)
 texture = ExtResource("7_dj1db")
 offset = Vector2(0, 100)
 
@@ -415,12 +399,12 @@ motion_scale = Vector2(1.1, 1)
 motion_mirroring = Vector2(4096, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D2/ParallaxBackground/ParallaxLayer12"]
+modulate = Color(0.69965345, 0.6996535, 0.69965315, 1)
 z_index = 6
-position = Vector2(2048, 0)
-scale = Vector2(1.6, 1.6)
+position = Vector2(2600, -150)
+scale = Vector2(2, 2)
 texture = ExtResource("7_dj1db")
 offset = Vector2(0, 100)
-flip_h = true
 
 [node name="World Boundaries" type="Node2D" parent="."]
 position = Vector2(1, 68)
@@ -451,11 +435,6 @@ shape = SubResource("WorldBoundaryShape2D_goyj0")
 [node name="Merchant" parent="." instance=ExtResource("18_vksdc")]
 position = Vector2(11232, 504)
 scale = Vector2(0.15, 0.15)
-
-[node name="ChangeScene" parent="." instance=ExtResource("18_3xvx2")]
-position = Vector2(15576, 105)
-scale = Vector2(1, 10)
-next_scene = "res://scenes/Main Scenes/3rd_scene.tscn"
 
 [node name="Beetle" parent="." instance=ExtResource("23_d0pof")]
 position = Vector2(1192, 512)
@@ -527,11 +506,55 @@ scale = Vector2(0.8, 0.8)
 position = Vector2(3472, -416)
 scale = Vector2(0.8, 0.8)
 
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(360, 104)
+scale = Vector2(0.13, 0.13)
+tile_map_data = PackedByteArray("AACGAJUAAgABAAEAAACZALkAAwABAAEAAAC7ALkAAwAAAAAAAADdALkAAwABAAAAAAABAbkAAwACAAAAAABrAdD/AQAAAAEAAACQAdD/AQABAAEAAAC1AdD/AQABAAAAAADaAdD/AQACAAAAAACjBUr/AQAAAAEAAADIBUr/AQABAAEAAADtBUr/AQABAAAAAAASBkr/AQACAAAAAAC4Bkn/AQAAAAEAAADdBkn/AQABAAEAAAACB0n/AQACAAEAAAAnB0n/AQACAAEAAABMB0n/AQACAAEAAABxB0n/AQABAAEAAACWB0n/AQACAAEAAAC7B0n/AQABAAAAAADgB0n/AQACAAAAAACnCIL/AQAAAAEAAADMCIL/AQABAAEAAADxCIL/AQACAAEAAAAWCYL/AQACAAEAAAA7CYL/AQACAAEAAABgCYL/AQABAAEAAACFCYL/AQACAAEAAACqCYL/AQABAAAAAADPCYL/AQACAAAAAAA=")
+tile_set = SubResource("TileSet_goyj0")
+
+[node name="CheckpointFlower" parent="." instance=ExtResource("30_6gasr")]
+position = Vector2(-1182, 539)
+scale = Vector2(0.795, 0.795)
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.3137255)
+position = Vector2(-1102, 607.125)
+scale = Vector2(0.2, 0.05249998)
+texture = ExtResource("36_mh7sn")
+offset = Vector2(0, 900)
+
+[node name="player" parent="." instance=ExtResource("17_ysw53")]
+z_index = 5
+position = Vector2(-1200, 41)
+scale = Vector2(0.43, 0.43)
+shadow_path = NodePath("../Shadow")
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(-43.9999, 742)
+scale = Vector2(0.3, 0.3)
+offset = Vector2(0, -400)
+process_callback = 0
+limit_top = -200
+limit_bottom = 1200
+limit_smoothed = true
+position_smoothing_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="PointLight2D" type="PointLight2D" parent="player/Camera2D"]
+position = Vector2(133.333, -2713.33)
+scale = Vector2(30.4583, 33.3333)
+energy = 0.3
+texture = SubResource("GradientTexture2D_lny5s")
+texture_scale = 0.68
+
 [node name="Bomber Fish" parent="." instance=ExtResource("25_yxl4q")]
+modulate = Color(0.7953936, 0.9147592, 0.9144255, 1)
 position = Vector2(6592, -400)
 scale = Vector2(0.7, 0.7)
 
 [node name="Bomber Fish2" parent="." instance=ExtResource("25_yxl4q")]
+modulate = Color(0.7953936, 0.9147592, 0.9144255, 1)
 position = Vector2(2536, -544)
 scale = Vector2(0.7, 0.7)
 
@@ -580,12 +603,6 @@ volume_db = -10.0
 autoplay = true
 parameters/looping = true
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-position = Vector2(360, 104)
-scale = Vector2(0.13, 0.13)
-tile_map_data = PackedByteArray("AACGAJUAAgABAAEAAACZALkAAwABAAEAAAC7ALkAAwAAAAAAAADdALkAAwABAAAAAAABAbkAAwACAAAAAABrAdD/AQAAAAEAAACQAdD/AQABAAEAAAC1AdD/AQABAAAAAADaAdD/AQACAAAAAACjBUr/AQAAAAEAAADIBUr/AQABAAEAAADtBUr/AQABAAAAAAASBkr/AQACAAAAAAC4Bkn/AQAAAAEAAADdBkn/AQABAAEAAAACB0n/AQACAAEAAAAnB0n/AQACAAEAAABMB0n/AQACAAEAAABxB0n/AQABAAEAAACWB0n/AQACAAEAAAC7B0n/AQABAAAAAADgB0n/AQACAAAAAACnCIL/AQAAAAEAAADMCIL/AQABAAEAAADxCIL/AQACAAEAAAAWCYL/AQACAAEAAAA7CYL/AQACAAEAAABgCYL/AQABAAEAAACFCYL/AQACAAEAAACqCYL/AQABAAAAAADPCYL/AQACAAAAAAA=")
-tile_set = SubResource("TileSet_goyj0")
-
 [node name="Path2D2" parent="." instance=ExtResource("31_ce7ql")]
 position = Vector2(1920, 512)
 curve = SubResource("Curve2D_ce7ql")
@@ -631,6 +648,20 @@ disabled = true
 
 [node name="JumpPad" parent="." instance=ExtResource("39_mh7sn")]
 position = Vector2(857, 553)
+
+[node name="CheckpointFlower2" parent="." instance=ExtResource("30_6gasr")]
+position = Vector2(13000, 539)
+scale = Vector2(0.795, 0.795)
+
+[node name="Cave" type="Sprite2D" parent="."]
+modulate = Color(0.44705883, 0.6039216, 0.63529414, 1)
+position = Vector2(13170, 370)
+texture = ExtResource("41_6gasr")
+
+[node name="ChangeScene" parent="." instance=ExtResource("18_3xvx2")]
+position = Vector2(13592, 94)
+scale = Vector2(0.35, 5)
+next_scene = "res://scenes/Main Scenes/minigame.tscn"
 
 [connection signal="flood_finished" from="Trash Flood" to="." method="_on_trash_flood_flood_finished"]
 [connection signal="body_entered" from="Trash Flood Signal" to="." method="_on_trash_flood_body_entered"]

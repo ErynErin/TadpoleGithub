@@ -81,7 +81,7 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bg5hs"]
-size = Vector2(2903.5, 1426.5)
+size = Vector2(2136, 1426.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vbujc"]
 size = Vector2(374, 586)
@@ -315,7 +315,84 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 15.0
+"speed": 21.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("35_2oej0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_pvn70")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_mjfjn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_4x7s1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_kpwl3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_ydolp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_ga4lh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_eno00")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_lljaa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_0t215")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_fdq7p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_ma7cd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_k8hit")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_ogj1o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_ux3hl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_86vwi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_ek37k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_rrsmw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_eocqs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_4045x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_rjvhu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_1tk8i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_m80dh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_ugcg6")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_67864"]
@@ -344,7 +421,8 @@ script = ExtResource("1_bg5hs")
 [node name="SpriteNode" type="Node2D" parent="."]
 
 [node name="AnglerfishLight" type="PointLight2D" parent="SpriteNode"]
-position = Vector2(-493, -248)
+position = Vector2(-510.5, -3.4999676)
+scale = Vector2(1.7011963, 2.1953015)
 texture = SubResource("GradientTexture2D_oqyof")
 texture_scale = 7.21
 
@@ -352,7 +430,7 @@ texture_scale = 7.21
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpriteNode/LightDetectionArea"]
-position = Vector2(-320.25, -26.25)
+position = Vector2(-704, -26.25)
 shape = SubResource("RectangleShape2D_bg5hs")
 
 [node name="BackHitbox" type="Area2D" parent="SpriteNode"]
@@ -393,7 +471,7 @@ theme_override_constants/separation = 30
 layout_mode = 2
 theme_override_fonts/font = ExtResource("70_bg5hs")
 theme_override_font_sizes/font_size = 60
-text = "Kingstar Health"
+text = "Falsestar Temptress"
 horizontal_alignment = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/VBoxContainer"]
@@ -402,6 +480,8 @@ theme_override_font_sizes/font_size = 40
 theme_override_styles/background = SubResource("StyleBoxFlat_oqyof")
 theme_override_styles/fill = SubResource("StyleBoxFlat_67864")
 value = 50.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="body_entered" from="SpriteNode/LightDetectionArea" to="." method="_on_light_detection_area_body_entered"]
 [connection signal="body_exited" from="SpriteNode/LightDetectionArea" to="." method="_on_light_detection_area_body_exited"]

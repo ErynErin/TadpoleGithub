@@ -8,6 +8,13 @@ const MAX_JUMPS = 2
 @onready var pivot: Node2D = $Pivot
 @onready var animated_sprite: AnimatedSprite2D = $Pivot/AnimatedSprite2D
 
+@export var shadow_path: NodePath
+@onready var shadow: Sprite2D = get_node(shadow_path)
+const SHADOW_SCALE_SPEED := 15.0
+const SHADOW_MIN_FACTOR := 0.0
+@onready var SHADOW_BASE_SCALE := shadow.scale
+var shadow_ground_y := 0.0
+
 var jumps_left: int = MAX_JUMPS
 
 func _ready():
@@ -30,6 +37,7 @@ func _physics_process(delta: float) -> void:
 			$JumpAudio.play()
 			velocity.y = JUMP_VELOCITY
 			jumps_left -= 1
+			
 
 		# Handle sprint
 		if Input.is_action_pressed("Sprint") and Input.get_axis("left", "right"):
@@ -49,6 +57,20 @@ func _physics_process(delta: float) -> void:
 	else:
 		# On floor: reset jumps
 		jumps_left = MAX_JUMPS
+	
+	# Shadow
+	if is_on_floor():
+		shadow_ground_y = global_position.y
+
+	shadow.global_position.x = global_position.x
+	shadow.global_position.y = shadow_ground_y
+	
+	var scale_factor := 1.0
+
+	if not is_on_floor():
+		scale_factor = SHADOW_MIN_FACTOR
+
+	shadow.scale = shadow.scale.lerp(SHADOW_BASE_SCALE * scale_factor, SHADOW_SCALE_SPEED * delta)
 
 	# Animation
 	if GameManager.can_move and GameManager.current_health > 0:
@@ -73,6 +95,7 @@ func take_damage(damage: float):
 
 func _on_hurt_box_area_entered(area) -> void:
 	animation_player.play("hurt")
+	$HurtAudio.play()
 	
 	if area and area.owner:   
 		print("Hit by: ", area.owner.name)
@@ -81,7 +104,7 @@ func _on_hurt_box_area_entered(area) -> void:
 		if area.owner.name == "Beetle":
 			if area.owner.has_method("notify_player_hit"):
 				area.owner.notify_player_hit()
-			take_damage(10.0)
+			take_damage(10)
 		elif "trash_type" in area.owner:
 			take_damage(5)
 		elif "ball_projectile" in area.owner:
@@ -94,6 +117,8 @@ func _on_hurt_box_area_entered(area) -> void:
 			take_damage(10)
 		elif "AnglerFish" in area.owner:
 			take_damage(10)
+		elif "Minigame" == area.owner.name:
+			take_damage(5)
 
 func _on_player_died():
 	$DeathAudio.play()

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed = 500.0
+var speed = 700.0
 var ball_projectile: String = "ball_projectile"
 
 func setup_projectile(direction: Vector2):

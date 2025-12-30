@@ -125,6 +125,7 @@ layer = 100
 script = ExtResource("1_oemax")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.72156864, 0.8117647, 0.57254905, 1)
 position = Vector2(1661.68, 610.093)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_mxw73")
@@ -132,15 +133,8 @@ animation = &"idle_100"
 autoplay = "idle_100"
 frame_progress = 0.532925
 
-[node name="Boss" type="TextureRect" parent="."]
-visible = false
-offset_left = 728.0
-offset_top = -337.0
-offset_right = 2776.0
-offset_bottom = 1711.0
-texture = ExtResource("2_oemax")
-
 [node name="Custom Balloon" type="TextureRect" parent="."]
+modulate = Color(0.72156864, 0.8117647, 0.57254905, 1)
 offset_top = 19.5
 offset_right = 1920.0
 offset_bottom = 1099.5
@@ -184,6 +178,7 @@ offset_left = 456.0
 offset_top = 818.0
 offset_right = 1457.0
 offset_bottom = 992.0
+grow_horizontal = 1
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("3_oemax")

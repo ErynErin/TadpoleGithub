@@ -1,4 +1,4 @@
-[gd_scene load_steps=222 format=3 uid="uid://ca5h26hc7p7b0"]
+[gd_scene load_steps=223 format=3 uid="uid://ca5h26hc7p7b0"]
 
 [ext_resource type="Texture2D" uid="uid://dglal1ggfmd5a" path="res://assets/Characters/Kingstar/ATTACKS/Attack100/Attack100_0000.png" id="1_qyqpj"]
 [ext_resource type="Script" uid="uid://ir21uqpbkx3x" path="res://scripts/boss_1.gd" id="1_wom53"]
@@ -208,9 +208,10 @@
 [ext_resource type="Texture2D" uid="uid://7vmxp5as11vk" path="res://assets/Characters/Kingstar/WALKS/walk75/walk75_0015.png" id="202_x14g0"]
 [ext_resource type="Script" uid="uid://dktsel320mpw7" path="res://scripts/hurtbox.gd" id="203_sb23d"]
 [ext_resource type="Script" uid="uid://cfdlbfbudy12s" path="res://scripts/hitbox.gd" id="204_yksyv"]
-[ext_resource type="AudioStream" uid="uid://cfxappkesjowb" path="res://assets/Audios/enemies/boss roar.mp3" id="209_ijpti"]
 [ext_resource type="FontFile" uid="uid://chvpvepqarnv6" path="res://assets/Fonts/Tedtadpole-Regular.ttf" id="209_kmcfq"]
-[ext_resource type="AudioStream" uid="uid://biylr2yomysax" path="res://assets/Audios/enemies/boss huff.mp3" id="210_kmcfq"]
+[ext_resource type="AudioStream" uid="uid://coh1p4uytq3gk" path="res://assets/Audios/sfx for bosses/crab/DRAGON GROWL.mp3" id="210_yo1hq"]
+[ext_resource type="AudioStream" uid="uid://dfeqby3rxgr36" path="res://assets/Audios/sfx for bosses/crab/Scary Monster Sounds 4.mp3" id="211_c11jh"]
+[ext_resource type="AudioStream" uid="uid://d4a75cu7ebxjb" path="res://assets/Audios/sfx for bosses/crab/T.REX ROAR - Sound Design - Pierre Mendola 4.mp3" id="212_0pmju"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qyqpj"]
 size = Vector2(578, 816)
@@ -952,22 +953,6 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_wom53"]
-resource_name = "hurt"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/AnimatedSprite2D:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.233333, 0.366667, 0.45),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_sb23d"]
 resource_name = "attack"
 step = 0.1
@@ -982,6 +967,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [true, false, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_wom53"]
+resource_name = "hurt"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.233333, 0.366667, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2pets"]
@@ -1074,7 +1075,7 @@ theme_override_constants/separation = 30
 layout_mode = 2
 theme_override_fonts/font = ExtResource("209_kmcfq")
 theme_override_font_sizes/font_size = 60
-text = "Kingstar Health"
+text = "Ironclaw Dominus"
 horizontal_alignment = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/VBoxContainer"]
@@ -1084,14 +1085,22 @@ theme_override_styles/background = SubResource("StyleBoxFlat_kmcfq")
 theme_override_styles/fill = SubResource("StyleBoxFlat_yo1hq")
 value = 50.0
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("209_ijpti")
-volume_db = -10.0
+[node name="Audio_AttackSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("210_yo1hq")
+volume_db = -20.0
 bus = &"SFX"
 
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("210_kmcfq")
-bus = &"SFX"
+[node name="Audio_HighHealth" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("211_c11jh")
+volume_db = -15.0
+bus = &"Background Music"
+parameters/looping = true
+
+[node name="Audio_LowHealth" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("212_0pmju")
+volume_db = -15.0
+bus = &"Background Music"
+parameters/looping = true
 
 [node name="Label" type="Label" parent="."]
 visible = false

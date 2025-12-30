@@ -19,6 +19,13 @@ enum State { INACTIVE, WALK, DASH, CHARGE, ATTACK, REST, DEATH }
 @onready var progress_bar: ProgressBar = $CanvasLayer/VBoxContainer/ProgressBar
 @onready var label: Label = $Label
 @onready var node_2d: Node2D = $Node2D
+@onready var attack_sfx: AudioStreamPlayer = $Audio_AttackSFX
+@onready var bgm_high: AudioStreamPlayer = $Audio_HighHealth
+@onready var bgm_low: AudioStreamPlayer = $Audio_LowHealth
+
+
+var boss_dialogue_resource: DialogueResource = preload("res://dialogues/boss.dialogue")
+var boss_balloon_scene = preload("res://balloons/Boss1Balloon.tscn")
 
 var current_state = State.WALK
 var boss_health = 100.0
@@ -32,8 +39,34 @@ func start() -> void:
 	progress_bar.max_value = max_boss_health
 	progress_bar.value = boss_health
 	$CanvasLayer.visible = true
+	_update_bg_sfx()
 	_change_state(State.CHARGE)
-	print("starting...")
+
+func _update_bg_sfx():
+	if boss_health > max_boss_health * 0.5:
+		if not bgm_high.playing:
+			fade_out(bgm_low, 1.0)
+			fade_in(bgm_high, 1.0)
+	else:
+		if not bgm_low.playing:
+			fade_out(bgm_high, 1.0)
+			fade_in(bgm_low, 1.0)
+
+func fade_in(audio: AudioStreamPlayer, duration = 1.0, target_db = -10.0):
+	audio.volume_db = -40
+	audio.play()
+	
+	var tween = create_tween()
+	tween.tween_property(audio, "volume_db", target_db, duration)
+
+func fade_out(audio: AudioStreamPlayer, duration = 1.0):
+	if not audio.playing:
+		return
+	
+	var tween = create_tween()
+	tween.tween_property(audio, "volume_db", -40, duration)
+	tween.tween_callback(audio.stop)
+
 
 func _physics_process(delta: float) -> void:
 	if current_state == State.DEATH:
@@ -151,6 +184,9 @@ func _rest_state(_delta: float) -> void:
 		_change_state(State.WALK)
 
 func _change_state(new_state: State) -> void:
+	if current_state == State.DEATH:
+		return
+	
 	if current_state == new_state:
 		return
 
@@ -168,6 +204,7 @@ func _change_state(new_state: State) -> void:
 		State.ATTACK:
 			_set_hitboxes(false, true) # Hitbox enabled
 			_play_animation_for_health_state("attack")
+			attack_sfx.play()
 		State.REST:
 			_set_hitboxes(true, false) # Vulnerable
 			_play_animation_for_health_state("idle")
@@ -180,7 +217,8 @@ func _change_state(new_state: State) -> void:
 			_play_animation_for_health_state("dash")
 			animation_player.play("RESET")
 		State.DEATH:
-			_set_hitboxes(false, false)
+			fade_out(bgm_high, 1.5)
+			fade_out(bgm_low, 1.5)
 			animation_player.play("RESET")
 			animated_sprite.play("death")
 
@@ -196,6 +234,7 @@ func take_damage(damage: float) -> void:
 	progress_bar.value = boss_health
 	
 	if boss_health <= 0:
+		start_dialogue("p1_end")
 		print("Health depleted, switching to DEATH")
 		_change_state(State.DEATH)
 		$CanvasLayer.visible = false
@@ -237,7 +276,7 @@ func _on_hurt_box_area_entered(area) -> void:
 		take_damage(GameManager.strength)
 
 func _on_hit_box_area_entered(area) -> void:	
-	if area.owner.is_in_group("player"):
+	if area.owner.is_in_group("player") and current_state != State.DEATH:
 		print("Player hit! Waiting 2 seconds to check if still in hitbox...")
 		await get_tree().create_timer(3).timeout
 		
@@ -259,3 +298,20 @@ func _on_timer_timeout() -> void:
 		State.REST:
 			print("Rest complete, switching to WALK")
 			_change_state(State.WALK)
+
+func start_dialogue(title: String):
+	var balloon_instance = boss_balloon_scene.instantiate()
+	get_tree().current_scene.add_child(balloon_instance)
+	
+	# Connect dialogue finished signal once
+	if not DialogueManager.dialogue_ended.is_connected(_on_dialogue_ended):
+		DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
+
+	balloon_instance.start(boss_dialogue_resource, title)
+
+func _on_dialogue_ended(_resource):
+	DialogueManager.dialogue_ended.disconnect(_on_dialogue_ended)
+	
+	if current_state == State.DEATH:
+		await $"..".fade_in_screen()
+		GameManager.load_to_scene("res://scenes/Main Scenes/2nd_scene.tscn")

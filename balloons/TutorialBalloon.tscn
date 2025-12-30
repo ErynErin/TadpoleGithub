@@ -87,6 +87,7 @@ horizontal_alignment = 1
 
 [node name="ResponsesMenu" type="VBoxContainer" parent="Balloon" node_paths=PackedStringArray("response_template")]
 unique_name_in_owner = true
+modulate = Color(0.7921569, 0.7294118, 0.7921569, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

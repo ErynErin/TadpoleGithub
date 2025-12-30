@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b0r6ar55wagwo"
+path="res://.godot/imported/😟 Tense & Orchestral (Free Music) - _REFUSING THE ULTIMATUM_ by Arthur Vyncke 🇧🇪 4.mp3-7c3770855e236dd7841beacfdaf22c72.mp3str"
+
+[deps]
+
+source_file="res://assets/Audios/sfx for bosses/fish/😟 Tense & Orchestral (Free Music) - _REFUSING THE ULTIMATUM_ by Arthur Vyncke 🇧🇪 4.mp3"
+dest_files=["res://.godot/imported/😟 Tense & Orchestral (Free Music) - _REFUSING THE ULTIMATUM_ by Arthur Vyncke 🇧🇪 4.mp3-7c3770855e236dd7841beacfdaf22c72.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

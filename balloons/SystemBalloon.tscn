@@ -125,6 +125,7 @@ script = ExtResource("6_yjeio")
 response_template = NodePath("ResponseExample")
 
 [node name="ResponseExample" type="Button" parent="Balloon/ResponsesMenu"]
+modulate = Color(0.7921569, 0.7294118, 0.7921569, 1)
 layout_mode = 2
 text = "Response example"
 
