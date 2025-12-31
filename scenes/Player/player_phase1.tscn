@@ -516,8 +516,8 @@ bus = &"SFX"
 
 [node name="HurtAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("100_qshar")
-volume_db = -17.0
-pitch_scale = 1.2
+volume_db = -18.0
+pitch_scale = 1.1
 bus = &"SFX"
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

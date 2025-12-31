@@ -430,13 +430,6 @@ theme_override_font_sizes/font_size = 50
 text = "You still have objectives left to do!"
 horizontal_alignment = 1
 
-[node name="Objectives" parent="GUI" instance=ExtResource("18_4wy7k")]
-scale = Vector2(1.67, 1.67)
-
-[node name="merchant shop" parent="GUI" instance=ExtResource("19_fsfp7")]
-visible = false
-scale = Vector2(1.67, 1.67)
-
 [node name="ScreenFade" type="ColorRect" parent="GUI"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -445,6 +438,13 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.67, 1.67)
 color = Color(0, 0, 0, 1)
+
+[node name="Objectives" parent="GUI" instance=ExtResource("18_4wy7k")]
+scale = Vector2(1.67, 1.67)
+
+[node name="merchant shop" parent="GUI" instance=ExtResource("19_fsfp7")]
+visible = false
+scale = Vector2(1.67, 1.67)
 
 [node name="Pause Menu" parent="GUI" instance=ExtResource("20_rtbla")]
 process_mode = 1
@@ -463,7 +463,7 @@ rotation = -0.254818
 color = Color(1, 1, 0.87451, 1)
 energy = 0.44
 shadow_enabled = true
-shadow_color = Color(0.24115631, 0.24115595, 0.2411561, 0.1764706)
+shadow_color = Color(0, 0, 0, 0.16862746)
 shadow_filter = 1
 shadow_filter_smooth = 2.0
 max_distance = 3000.0
@@ -648,12 +648,12 @@ tile_map_data = PackedByteArray("AABhAJUAAgAAAAAAAACGAJUAAgABAAEAAAB2ALkAAwAAAAE
 tile_set = SubResource("TileSet_45e12")
 
 [node name="CheckpointFlower" parent="." instance=ExtResource("28_k6wof")]
-position = Vector2(-1365, 566)
+position = Vector2(-1107, 566)
 scale = Vector2(0.795, 0.795)
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.3137255)
-position = Vector2(-1102, 607.125)
+position = Vector2(-1290, 607.125)
 scale = Vector2(0.2, 0.05249998)
 texture = ExtResource("38_vcggy")
 offset = Vector2(0, 900)
@@ -807,6 +807,7 @@ process_mode = 3
 stream = ExtResource("41_2g62o")
 volume_db = -20.0
 autoplay = true
+bus = &"Background Music"
 parameters/looping = true
 
 [node name="Dialogue Signal Areas" type="Node2D" parent="."]

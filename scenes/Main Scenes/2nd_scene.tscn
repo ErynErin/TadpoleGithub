@@ -261,7 +261,6 @@ region_rect = Rect2(0, 0, 15000, 720)
 
 [node name="GUI" type="CanvasLayer" parent="."]
 layer = 10
-visible = false
 scale = Vector2(0.6, 0.6)
 transform = Transform2D(0.6, 0, 0, 0.6, 0, 0)
 
@@ -310,14 +309,6 @@ theme_override_font_sizes/font_size = 50
 text = "00"
 script = ExtResource("14_c37bx")
 
-[node name="Objectives" parent="GUI" instance=ExtResource("13_6u0xl")]
-anchors_preset = -1
-scale = Vector2(1.67, 1.67)
-
-[node name="merchant shop" parent="GUI" instance=ExtResource("14_dwpsk")]
-visible = false
-scale = Vector2(1.67, 1.67)
-
 [node name="ScreenFade" type="ColorRect" parent="GUI"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -326,6 +317,14 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.67, 1.67)
 color = Color(0, 0, 0, 1)
+
+[node name="Objectives" parent="GUI" instance=ExtResource("13_6u0xl")]
+anchors_preset = -1
+scale = Vector2(1.67, 1.67)
+
+[node name="merchant shop" parent="GUI" instance=ExtResource("14_dwpsk")]
+visible = false
+scale = Vector2(1.67, 1.67)
 
 [node name="Pause Menu" parent="GUI" instance=ExtResource("15_2npaq")]
 process_mode = 1
@@ -513,7 +512,7 @@ tile_map_data = PackedByteArray("AACGAJUAAgABAAEAAACZALkAAwABAAEAAAC7ALkAAwAAAAA
 tile_set = SubResource("TileSet_goyj0")
 
 [node name="CheckpointFlower" parent="." instance=ExtResource("30_6gasr")]
-position = Vector2(-1182, 539)
+position = Vector2(-1022, 539)
 scale = Vector2(0.795, 0.795)
 
 [node name="Shadow" type="Sprite2D" parent="."]
@@ -525,7 +524,7 @@ offset = Vector2(0, 900)
 
 [node name="player" parent="." instance=ExtResource("17_ysw53")]
 z_index = 5
-position = Vector2(-1200, 41)
+position = Vector2(-1250, 41)
 scale = Vector2(0.43, 0.43)
 shadow_path = NodePath("../Shadow")
 

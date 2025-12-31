@@ -95,7 +95,10 @@ func take_damage(damage: float):
 
 func _on_hurt_box_area_entered(area) -> void:
 	animation_player.play("hurt")
-	$HurtAudio.play()
+	
+	var hurt_audio = $HurtAudio 
+	hurt_audio.pitch_scale = randf_range(0.9, 1.4)
+	hurt_audio.play()
 	
 	if area and area.owner:   
 		print("Hit by: ", area.owner.name)

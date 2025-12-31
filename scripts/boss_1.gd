@@ -23,7 +23,6 @@ enum State { INACTIVE, WALK, DASH, CHARGE, ATTACK, REST, DEATH }
 @onready var bgm_high: AudioStreamPlayer = $Audio_HighHealth
 @onready var bgm_low: AudioStreamPlayer = $Audio_LowHealth
 
-
 var boss_dialogue_resource: DialogueResource = preload("res://dialogues/boss.dialogue")
 var boss_balloon_scene = preload("res://balloons/Boss1Balloon.tscn")
 

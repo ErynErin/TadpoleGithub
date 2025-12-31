@@ -15,7 +15,7 @@ var boss_dialogue_resource: DialogueResource = preload("res://dialogues/boss.dia
 var boss_balloon_scene = preload("res://balloons/Boss2Balloon2.tscn")
 
 # Attack and detection ranges
-const ATTACK_RANGE = 150.0
+const ATTACK_RANGE = 250.0
 
 # Node references
 @onready var animated_sprite = $SpriteNode/AnimatedSprite2D

@@ -427,7 +427,7 @@ bus = &"SFX"
 
 [node name="HurtAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("80_vb6el")
-volume_db = -17.0
+volume_db = -18.0
 pitch_scale = 1.2
 bus = &"SFX"
 

@@ -30,6 +30,8 @@ func _on_skip_button_pressed() -> void:
 
 func _on_video_stream_player_finished():
 	print("Video finished!")
+	video_player.visible = false
+	$CanvasLayer/SkipButton.visible = false
 	screen_fade.color.a = 1.0
 	screen_fade.set_z_index(1000)
 	$AudioStreamPlayer.play()
